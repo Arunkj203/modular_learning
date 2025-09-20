@@ -1,0 +1,329 @@
+[
+  {
+    "id": "divide-integer",
+    "name": "Integer Division",
+    "tags": [
+      "division",
+      "arithmetic",
+      "mathematics"
+    ],
+    "description": "Divide a total quantity into equal sized groups"
+  },
+  {
+    "id": "calculate-group-size",
+    "name": "Group Size Calculator",
+    "tags": [
+      "grouping",
+      "mathematics"
+    ],
+    "description": "Calculate the size of each group given a total quantity and number of groups"
+  },
+  {
+    "id": "check-divisibility",
+    "name": "Divisibility Checker",
+    "tags": [
+      "division",
+      "arithmetic",
+      "mathematics"
+    ],
+    "description": "Check if a total quantity can be evenly divided into a specified number of groups"
+  },
+  {
+    "id": "calculate-remainder",
+    "name": "Remainder Calculator",
+    "tags": [
+      "division",
+      "arithmetic",
+      "mathematics"
+    ],
+    "description": "Calculate the remainder when a total quantity is divided into a specified number of groups"
+  },
+  {
+    "id": "subtract-weights",
+    "name": "Subtract Weights",
+    "tags": [
+      "weight",
+      "subtraction",
+      "arithmetic"
+    ],
+    "description": "Subtract the weight of one object from the total weight to find the weight of another object"
+  },
+  {
+    "id": "calculate-difference",
+    "name": "Calculate Difference",
+    "tags": [
+      "arithmetic",
+      "difference"
+    ],
+    "description": "Calculate the difference between two numbers"
+  },
+  {
+    "id": "find-unknown-value",
+    "name": "Find Unknown Value",
+    "tags": [
+      "algebra",
+      "equation"
+    ],
+    "description": "Find the unknown value in a simple equation"
+  },
+  {
+    "id": "solve-simple-equation",
+    "name": "Solve Simple Equation",
+    "tags": [
+      "algebra",
+      "equation",
+      "simple"
+    ],
+    "description": "Solve a simple equation with one unknown variable"
+  },
+  {
+    "id": "divide-integer",
+    "name": "Integer Division",
+    "tags": [
+      "arithmetic",
+      "division"
+    ],
+    "description": "Divide a total quantity into equal sized groups"
+  },
+  {
+    "id": "calculate-group-size",
+    "name": "Group Size Calculator",
+    "tags": [
+      "arithmetic",
+      "grouping"
+    ],
+    "description": "Calculate the size of each group given a total quantity and number of groups"
+  },
+  {
+    "id": "check-divisibility",
+    "name": "Divisibility Checker",
+    "tags": [
+      "arithmetic",
+      "division"
+    ],
+    "description": "Check if a total quantity can be divided evenly into a specified number of groups"
+  },
+  {
+    "id": "calculate-remainder",
+    "name": "Remainder Calculator",
+    "tags": [
+      "arithmetic",
+      "division"
+    ],
+    "description": "Calculate the remainder when a total quantity is divided into a specified number of groups"
+  },
+  {
+    "id": "subtract-weights",
+    "name": "Subtract Weights",
+    "tags": [
+      "weight calculation",
+      "subtraction"
+    ],
+    "description": "Subtract one weight from another to find the difference"
+  },
+  {
+    "id": "solve-linear-equation",
+    "name": "Solve Linear Equation",
+    "tags": [
+      "algebraic reasoning",
+      "linear equation"
+    ],
+    "description": "Solve a simple linear equation with one variable"
+  },
+  {
+    "id": "calculate-difference",
+    "name": "Calculate Difference",
+    "tags": [
+      "basic arithmetic",
+      "subtraction"
+    ],
+    "description": "Calculate the difference between two numbers"
+  },
+  {
+    "id": "parse-math-problem",
+    "name": "Parse Math Problem",
+    "tags": [
+      "math problem parsing",
+      "natural language processing"
+    ],
+    "description": "Parse a simple math problem to extract relevant information"
+  },
+  {
+    "id": "calculate-cost-per-item",
+    "name": "Cost Per Item",
+    "tags": [
+      "Basic Arithmetic",
+      "Cost Calculation"
+    ],
+    "description": "Calculates the cost of each item given the total cost and number of items"
+  },
+  {
+    "id": "calculate-remaining-balance",
+    "name": "Remaining Balance",
+    "tags": [
+      "Basic Arithmetic",
+      "Balance Calculation"
+    ],
+    "description": "Calculates the remaining balance after a purchase"
+  },
+  {
+    "id": "check-sufficient-balance",
+    "name": "Sufficient Balance",
+    "tags": [
+      "Basic Arithmetic",
+      "Balance Check"
+    ],
+    "description": "Checks if the balance is sufficient for a purchase"
+  },
+  {
+    "id": "calculate-total-cost",
+    "name": "Total Cost",
+    "tags": [
+      "Basic Arithmetic",
+      "Cost Calculation"
+    ],
+    "description": "Calculates the total cost of multiple items"
+  },
+  {
+    "id": "divide-total-pages",
+    "name": "Divide Total Pages",
+    "tags": [
+      "Basic Math",
+      "Division"
+    ],
+    "description": "Divide the total number of pages by the number of chapters to find the number of pages per chapter"
+  },
+  {
+    "id": "calculate-reading-rate",
+    "name": "Calculate Reading Rate",
+    "tags": [
+      "Basic Math",
+      "Division"
+    ],
+    "description": "Calculate the average number of pages read per day"
+  },
+  {
+    "id": "validate-chapter-page-count",
+    "name": "Validate Chapter Page Count",
+    "tags": [
+      "Basic Math",
+      "Validation"
+    ],
+    "description": "Check if the total number of pages is evenly divisible by the number of chapters"
+  },
+  {
+    "id": "calculate-total-reading-time",
+    "name": "Calculate Total Reading Time",
+    "tags": [
+      "Basic Math",
+      "Division"
+    ],
+    "description": "Calculate the total time spent reading a book in days"
+  },
+  {
+    "id": "subtract-amount",
+    "name": "Subtract Amount",
+    "tags": [
+      "Basic Math",
+      "Subtraction"
+    ],
+    "description": "Subtract a given amount from an initial value"
+  },
+  {
+    "id": "calculate-remaining-balance",
+    "name": "Calculate Remaining Balance",
+    "tags": [
+      "Basic Math",
+      "Finance"
+    ],
+    "description": "Calculate the remaining balance after a transaction"
+  },
+  {
+    "id": "perform-simple-arithmetic",
+    "name": "Perform Simple Arithmetic",
+    "tags": [
+      "Basic Math",
+      "Arithmetic"
+    ],
+    "description": "Perform a simple arithmetic operation (addition, subtraction, multiplication, division) on two numbers"
+  },
+  {
+    "id": "calculate-difference",
+    "name": "Calculate Difference",
+    "tags": [
+      "Basic Math",
+      "Subtraction"
+    ],
+    "description": "Calculate the difference between two numbers"
+  },
+  {
+    "id": "calculate-difference",
+    "name": "Calculate Difference",
+    "tags": [
+      "arithmetic",
+      "comparison"
+    ],
+    "description": "Calculates the difference between two numbers"
+  },
+  {
+    "id": "subtract-numbers",
+    "name": "Subtract Numbers",
+    "tags": [
+      "arithmetic"
+    ],
+    "description": "Subtracts one number from another"
+  },
+  {
+    "id": "compare-quantities",
+    "name": "Compare Quantities",
+    "tags": [
+      "comparison"
+    ],
+    "description": "Compares two quantities and determines which is larger"
+  },
+  {
+    "id": "calculate-loss",
+    "name": "Calculate Loss",
+    "tags": [
+      "arithmetic",
+      "loss"
+    ],
+    "description": "Calculates the loss by subtracting the initial amount from the final amount"
+  },
+  {
+    "id": "subtract-numbers",
+    "name": "Subtract Numbers",
+    "tags": [
+      "arithmetic",
+      "subtraction"
+    ],
+    "description": "Subtract one number from another to find the difference"
+  },
+  {
+    "id": "compare-quantities",
+    "name": "Compare Quantities",
+    "tags": [
+      "comparison",
+      "arithmetic"
+    ],
+    "description": "Compare two quantities to determine which is larger and by how much"
+  },
+  {
+    "id": "calculate-difference",
+    "name": "Calculate Difference",
+    "tags": [
+      "arithmetic",
+      "difference"
+    ],
+    "description": "Calculate the difference between two numbers"
+  },
+  {
+    "id": "determine-larger-quantity",
+    "name": "Determine Larger Quantity",
+    "tags": [
+      "comparison",
+      "arithmetic"
+    ],
+    "description": "Determine which of two quantities is larger"
+  }
+]

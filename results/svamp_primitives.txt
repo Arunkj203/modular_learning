@@ -1,0 +1,45 @@
+=== Problem ===
+Problem: There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?
+=== Generated Primitives ===
+- calculate-group-size: Group Size Calculator (reusable=True)
+- divide-total-items: Total Item Divider (reusable=True)
+- check-group-size: Group Size Checker (reusable=True)
+- parse-word-problem: Word Problem Parser (reusable=True)
+----End----
+
+=== Problem ===
+Problem: Marco and his dad went strawberry picking. Marco's dad's strawberries weighed 11 pounds. If together their strawberries weighed 30 pounds. How much did Marco's strawberries weigh?
+=== Generated Primitives ===
+- subtract-weights: Subtract Weights (reusable=True)
+- parse-weight-problem: Parse Weight Problem (reusable=True)
+- calculate-difference: Calculate Difference (reusable=True)
+- extract-numbers-from-text: Extract Numbers from Text (reusable=True)
+----End----
+
+=== Problem ===
+Problem: Edward spent $ 6 to buy 2 books each book costing him the same amount of money. Now he has $ 12. How much did each book cost?
+=== Generated Primitives ===
+- calculate-cost-per-item: Cost Per Item (reusable=True)
+- calculate-remaining-balance: Remaining Balance (reusable=True)
+- parse-word-problem: Word Problem Parser (reusable=True)
+- validate-purchase-amount: Purchase Amount Validator (reusable=True)
+----End----
+
+=== Problem ===
+Problem: Frank was reading through his favorite book. The book had 3 chapters, each with the same number of pages. It has a total of 594 pages. It took Frank 607 days to finish the book. How many pages are in each chapter?
+=== Generated Primitives ===
+- calculate-chapter-pages: Chapter Pages Calculator (reusable=True)
+- calculate-reading-days: Reading Days Calculator (reusable=True)
+- calculate-pages-per-day: Pages Per Day Calculator (reusable=True)
+- parse-word-problem: Word Problem Parser (reusable=True)
+----End----
+
+=== Problem ===
+Problem: There were 78 dollars in Olivia's wallet. She spent 15 dollars at a supermarket. How much money does she have left?
+=== Generated Primitives ===
+- subtract-amount: Subtract Amount (reusable=True)
+- parse-money-amount: Parse Money Amount (reusable=True)
+- calculate-remaining-balance: Calculate Remaining Balance (reusable=True)
+- extract-number-from-text: Extract Number from Text (reusable=True)
+----End----
+

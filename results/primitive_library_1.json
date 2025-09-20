@@ -1,0 +1,1626 @@
+[
+    {
+        "id": "divide-integer",
+        "name": "Integer Division",
+        "description": "Divide a total quantity into equal sized groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total",
+                "groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total": 290,
+                "groups": 2
+            },
+            "output": {
+                "size": 145
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "division",
+            "arithmetic",
+            "mathematics"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-group-size",
+        "name": "Group Size Calculator",
+        "description": "Calculate the size of each group given a total quantity and number of groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_quantity": {
+                    "type": "integer"
+                },
+                "num_groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total_quantity",
+                "num_groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "group_size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total_quantity": 87,
+                "num_groups": 93
+            },
+            "output": {
+                "group_size": 0
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "grouping",
+            "mathematics"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "check-divisibility",
+        "name": "Divisibility Checker",
+        "description": "Check if a total quantity can be evenly divided into a specified number of groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total",
+                "groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "divisible": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total": 290,
+                "groups": 2
+            },
+            "output": {
+                "divisible": true
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "division",
+            "arithmetic",
+            "mathematics"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-remainder",
+        "name": "Remainder Calculator",
+        "description": "Calculate the remainder when a total quantity is divided into a specified number of groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total",
+                "groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "remainder": {
+                    "type": "integer"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total": 87,
+                "groups": 93
+            },
+            "output": {
+                "remainder": 87
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "division",
+            "arithmetic",
+            "mathematics"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "subtract-weights",
+        "name": "Subtract Weights",
+        "description": "Subtract the weight of one object from the total weight to find the weight of another object",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_weight": {
+                    "type": "number"
+                },
+                "object_weight": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "total_weight",
+                "object_weight"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "result"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "total_weight": 30,
+                "object_weight": 11
+            },
+            "output": {
+                "result": 19
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "weight",
+            "subtraction",
+            "arithmetic"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-difference",
+        "name": "Calculate Difference",
+        "description": "Calculate the difference between two numbers",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "num1": {
+                    "type": "number"
+                },
+                "num2": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "num1",
+                "num2"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "result"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "num1": 30,
+                "num2": 11
+            },
+            "output": {
+                "result": 19
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "difference"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "find-unknown-value",
+        "name": "Find Unknown Value",
+        "description": "Find the unknown value in a simple equation",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "number"
+                },
+                "known": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "total",
+                "known"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "result"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "total": 30,
+                "known": 11
+            },
+            "output": {
+                "result": 19
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "algebra",
+            "equation"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "solve-simple-equation",
+        "name": "Solve Simple Equation",
+        "description": "Solve a simple equation with one unknown variable",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "equation": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "equation"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "result"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "equation": "x + 11 = 30"
+            },
+            "output": {
+                "result": 19
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "algebra",
+            "equation",
+            "simple"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "divide-integer",
+        "name": "Integer Division",
+        "description": "Divide a total quantity into equal sized groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total",
+                "groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total": 290,
+                "groups": 2
+            },
+            "output": {
+                "size": 145
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "division"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-group-size",
+        "name": "Group Size Calculator",
+        "description": "Calculate the size of each group given a total quantity and number of groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "num_groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total",
+                "num_groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "group_size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total": 87,
+                "num_groups": 93
+            },
+            "output": {
+                "group_size": 0
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "grouping"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "check-divisibility",
+        "name": "Divisibility Checker",
+        "description": "Check if a total quantity can be divided evenly into a specified number of groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total",
+                "groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "divisible": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total": 290,
+                "groups": 2
+            },
+            "output": {
+                "divisible": true
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "division"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-remainder",
+        "name": "Remainder Calculator",
+        "description": "Calculate the remainder when a total quantity is divided into a specified number of groups",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total",
+                "groups"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "remainder": {
+                    "type": "integer"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total": 87,
+                "groups": 93
+            },
+            "output": {
+                "remainder": 87
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "division"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "subtract-weights",
+        "name": "Subtract Weights",
+        "description": "Subtract one weight from another to find the difference",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_weight": {
+                    "type": "number"
+                },
+                "known_weight": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "total_weight",
+                "known_weight"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "unknown_weight": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total_weight": 30,
+                "known_weight": 11
+            },
+            "output": {
+                "unknown_weight": 19
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "weight calculation",
+            "subtraction"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "solve-linear-equation",
+        "name": "Solve Linear Equation",
+        "description": "Solve a simple linear equation with one variable",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "equation": {
+                    "type": "string"
+                },
+                "known_value": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "equation",
+                "known_value"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "solution": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "equation": "x + 11 = 30",
+                "known_value": 11
+            },
+            "output": {
+                "solution": 19
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "algebraic reasoning",
+            "linear equation"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-difference",
+        "name": "Calculate Difference",
+        "description": "Calculate the difference between two numbers",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "num1": {
+                    "type": "number"
+                },
+                "num2": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "num1",
+                "num2"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "difference": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "num1": 30,
+                "num2": 11
+            },
+            "output": {
+                "difference": 19
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "basic arithmetic",
+            "subtraction"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "parse-math-problem",
+        "name": "Parse Math Problem",
+        "description": "Parse a simple math problem to extract relevant information",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "problem_text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "problem_text"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "numbers": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "operation": {
+                    "type": "string"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "problem_text": "Marco's dad's strawberries weighed 11 pounds. If together their strawberries weighed 30 pounds."
+            },
+            "output": {
+                "numbers": [
+                    11,
+                    30
+                ],
+                "operation": "subtraction"
+            }
+        },
+        "complexity": "O(n)",
+        "reusable": true,
+        "tags": [
+            "math problem parsing",
+            "natural language processing"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-cost-per-item",
+        "name": "Cost Per Item",
+        "description": "Calculates the cost of each item given the total cost and number of items",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_cost": {
+                    "type": "number"
+                },
+                "num_items": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total_cost",
+                "num_items"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "cost_per_item": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total_cost": 6,
+                "num_items": 2
+            },
+            "output": {
+                "cost_per_item": 3
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Arithmetic",
+            "Cost Calculation"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-remaining-balance",
+        "name": "Remaining Balance",
+        "description": "Calculates the remaining balance after a purchase",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "initial_balance": {
+                    "type": "number"
+                },
+                "purchase_amount": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "initial_balance",
+                "purchase_amount"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "remaining_balance": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "initial_balance": 18,
+                "purchase_amount": 6
+            },
+            "output": {
+                "remaining_balance": 12
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Arithmetic",
+            "Balance Calculation"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "check-sufficient-balance",
+        "name": "Sufficient Balance",
+        "description": "Checks if the balance is sufficient for a purchase",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "number"
+                },
+                "purchase_amount": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "balance",
+                "purchase_amount"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "is_sufficient": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "balance": 12,
+                "purchase_amount": 6
+            },
+            "output": {
+                "is_sufficient": true
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Arithmetic",
+            "Balance Check"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-total-cost",
+        "name": "Total Cost",
+        "description": "Calculates the total cost of multiple items",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "cost_per_item": {
+                    "type": "number"
+                },
+                "num_items": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "cost_per_item",
+                "num_items"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "total_cost": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "cost_per_item": 3,
+                "num_items": 2
+            },
+            "output": {
+                "total_cost": 6
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Arithmetic",
+            "Cost Calculation"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "divide-total-pages",
+        "name": "Divide Total Pages",
+        "description": "Divide the total number of pages by the number of chapters to find the number of pages per chapter",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_pages": {
+                    "type": "integer"
+                },
+                "num_chapters": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total_pages",
+                "num_chapters"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "pages_per_chapter": {
+                    "type": "integer"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total_pages": 594,
+                "num_chapters": 3
+            },
+            "output": {
+                "pages_per_chapter": 198
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Division"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-reading-rate",
+        "name": "Calculate Reading Rate",
+        "description": "Calculate the average number of pages read per day",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_pages": {
+                    "type": "integer"
+                },
+                "total_days": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total_pages",
+                "total_days"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "pages_per_day": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total_pages": 594,
+                "total_days": 607
+            },
+            "output": {
+                "pages_per_day": 0.979
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Division"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "validate-chapter-page-count",
+        "name": "Validate Chapter Page Count",
+        "description": "Check if the total number of pages is evenly divisible by the number of chapters",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_pages": {
+                    "type": "integer"
+                },
+                "num_chapters": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "total_pages",
+                "num_chapters"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "is_valid": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total_pages": 594,
+                "num_chapters": 3
+            },
+            "output": {
+                "is_valid": true
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Validation"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-total-reading-time",
+        "name": "Calculate Total Reading Time",
+        "description": "Calculate the total time spent reading a book in days",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "total_pages": {
+                    "type": "integer"
+                },
+                "reading_rate": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "total_pages",
+                "reading_rate"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "total_days": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "total_pages": 594,
+                "reading_rate": 0.979
+            },
+            "output": {
+                "total_days": 607
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Division"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "subtract-amount",
+        "name": "Subtract Amount",
+        "description": "Subtract a given amount from an initial value",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "initial_value": {
+                    "type": "number"
+                },
+                "amount": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "initial_value",
+                "amount"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "result"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "initial_value": 78,
+                "amount": 15
+            },
+            "output": {
+                "result": 63
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Subtraction"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-remaining-balance",
+        "name": "Calculate Remaining Balance",
+        "description": "Calculate the remaining balance after a transaction",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "initial_balance": {
+                    "type": "number"
+                },
+                "transaction_amount": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "initial_balance",
+                "transaction_amount"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "remaining_balance": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "remaining_balance"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "initial_balance": 78,
+                "transaction_amount": 15
+            },
+            "output": {
+                "remaining_balance": 63
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Finance"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "perform-simple-arithmetic",
+        "name": "Perform Simple Arithmetic",
+        "description": "Perform a simple arithmetic operation (addition, subtraction, multiplication, division) on two numbers",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "num1": {
+                    "type": "number"
+                },
+                "num2": {
+                    "type": "number"
+                },
+                "operation": {
+                    "type": "string",
+                    "enum": [
+                        "add",
+                        "subtract",
+                        "multiply",
+                        "divide"
+                    ]
+                }
+            },
+            "required": [
+                "num1",
+                "num2",
+                "operation"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "result"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "num1": 78,
+                "num2": 15,
+                "operation": "subtract"
+            },
+            "output": {
+                "result": 63
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Arithmetic"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-difference",
+        "name": "Calculate Difference",
+        "description": "Calculate the difference between two numbers",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "minuend": {
+                    "type": "number"
+                },
+                "subtrahend": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "minuend",
+                "subtrahend"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "difference": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "difference"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "minuend": 78,
+                "subtrahend": 15
+            },
+            "output": {
+                "difference": 63
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "Basic Math",
+            "Subtraction"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-difference",
+        "name": "Calculate Difference",
+        "description": "Calculates the difference between two numbers",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "num1": {
+                    "type": "integer"
+                },
+                "num2": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "num1",
+                "num2"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "difference": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "difference"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "num1": 412,
+                "num2": 90
+            },
+            "output": {
+                "difference": 322
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "comparison"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "subtract-numbers",
+        "name": "Subtract Numbers",
+        "description": "Subtracts one number from another",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "minuend": {
+                    "type": "integer"
+                },
+                "subtrahend": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "minuend",
+                "subtrahend"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "result"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "minuend": 412,
+                "subtrahend": 90
+            },
+            "output": {
+                "result": 322
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "compare-quantities",
+        "name": "Compare Quantities",
+        "description": "Compares two quantities and determines which is larger",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "quantity1": {
+                    "type": "integer"
+                },
+                "quantity2": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "quantity1",
+                "quantity2"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "comparison": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "comparison"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "quantity1": 412,
+                "quantity2": 90
+            },
+            "output": {
+                "comparison": "quantity1 is larger"
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "comparison"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-loss",
+        "name": "Calculate Loss",
+        "description": "Calculates the loss by subtracting the initial amount from the final amount",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "initial_amount": {
+                    "type": "integer"
+                },
+                "final_amount": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "initial_amount",
+                "final_amount"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "loss": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "loss"
+            ]
+        },
+        "example_call": {
+            "input": {
+                "initial_amount": 110,
+                "final_amount": -302
+            },
+            "output": {
+                "loss": 412
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "loss"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "subtract-numbers",
+        "name": "Subtract Numbers",
+        "description": "Subtract one number from another to find the difference",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "minuend": {
+                    "type": "number"
+                },
+                "subtrahend": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "minuend",
+                "subtrahend"
+            ]
+        },
+        "output_schema": {
+            "type": "number"
+        },
+        "example_call": {
+            "input": {
+                "minuend": 50,
+                "subtrahend": 20
+            },
+            "output": 30
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "subtraction"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "compare-quantities",
+        "name": "Compare Quantities",
+        "description": "Compare two quantities to determine which is larger and by how much",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "quantity1": {
+                    "type": "number"
+                },
+                "quantity2": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "quantity1",
+                "quantity2"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "difference": {
+                    "type": "number"
+                },
+                "larger_quantity": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "quantity1": 50,
+                "quantity2": 20
+            },
+            "output": {
+                "difference": 30,
+                "larger_quantity": 50
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "comparison",
+            "arithmetic"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "calculate-difference",
+        "name": "Calculate Difference",
+        "description": "Calculate the difference between two numbers",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "num1": {
+                    "type": "number"
+                },
+                "num2": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "num1",
+                "num2"
+            ]
+        },
+        "output_schema": {
+            "type": "number"
+        },
+        "example_call": {
+            "input": {
+                "num1": 50,
+                "num2": 20
+            },
+            "output": 30
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "arithmetic",
+            "difference"
+        ],
+        "provenance": "pipeline_generated"
+    },
+    {
+        "id": "determine-larger-quantity",
+        "name": "Determine Larger Quantity",
+        "description": "Determine which of two quantities is larger",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "quantity1": {
+                    "type": "number"
+                },
+                "quantity2": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "quantity1",
+                "quantity2"
+            ]
+        },
+        "output_schema": {
+            "type": "object",
+            "properties": {
+                "larger_quantity": {
+                    "type": "number"
+                }
+            }
+        },
+        "example_call": {
+            "input": {
+                "quantity1": 50,
+                "quantity2": 20
+            },
+            "output": {
+                "larger_quantity": 50
+            }
+        },
+        "complexity": "O(1)",
+        "reusable": true,
+        "tags": [
+            "comparison",
+            "arithmetic"
+        ],
+        "provenance": "pipeline_generated"
+    }
+]
