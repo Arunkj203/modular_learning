@@ -43,7 +43,8 @@ def run_phase2(problem_text, analysis):
     for p in sequence_primitives:
         # Minimal info for execution
         primitive_entry = {
-            "id": p.get("id") or p.get("name"),
+            "id": p.get("id"),
+            "name": p.get("name", ""),
             "input": p.get("input_schema", {}),
             "output": p.get("output_schema", {}),
             "description": p.get("description", "")

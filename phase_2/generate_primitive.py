@@ -12,6 +12,7 @@ Rules:
 1. Use existing primitives if they match the task. Otherwise, generate a new primitive.
 2. Each primitive must include:
    - id: short unique id (or reuse existing id)
+   - name: short human-friendly name
    - description: one-sentence description
    - input: minimal input schema (field names/types)
    - output: minimal output schema (field names/types)
@@ -39,6 +40,7 @@ def generate_primitives_from_problem(
         for p in old_primitives:
             summary.append({
                 "id": p.get("id"),
+                "name": p.get("name", ""),
                 "description": p.get("description", ""),
                 "input": p.get("input_schema", {}),
                 "output": p.get("output_schema", {})

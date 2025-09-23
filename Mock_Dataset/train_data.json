@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Instruction: Solve the equation.\nInput: 12 + 7\nOutput: 19"
+  },
+  {
+    "text": "Instruction: Solve the equation.\nInput: 5 * 3\nOutput: 15"
+  },
+  {
+    "text": "Instruction: Find the inverse operation.\nInput: If x + 4 = 9, what is x?\nOutput: 5"
+  },
+  {
+    "text": "Instruction: Simplify the expression.\nInput: 2 * (3 + 4)\nOutput: 14"
+  },
+  {
+    "text": "Instruction: Isolate the variable.\nInput: 2x + 3 = 11\nOutput: x = 4"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "input": "12 - 5",
+    "output": "7"
+  },
+  {
+    "input": "3 * 9",
+    "output": "27"
+  },
+  {
+    "input": "If y + 6 = 14, what is y?",
+    "output": "8"
+  }
+]

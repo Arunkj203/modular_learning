@@ -1,36 +1,26 @@
-# phase_3/synthetic_data.py
 from models_config import call_openrouter
 import json
 
 # === Seed Example Generation ===
-def generate_seed_examples(primitive_entry, n=5):
-    """
-    Generate a few seed examples for a primitive using LLM.
-    Each example has {"input": ..., "output": ...}.
-    """
+def generate_seed_examples_for_format(primitive_entry, format_id, n=5):
     system_prompt = "You are a helpful data generator that produces high-quality training examples."
     user_prompt = f"""
-    Primitive:
-    ID: {primitive_entry['id']}
-    Description: {primitive_entry.get('description', '')}
-    Input schema: {primitive_entry.get('input', {})}
-    Output schema: {primitive_entry.get('output', {})}
+Primitive:
+ID: {primitive_entry['id']}
+Description: {primitive_entry.get('description', '')}
 
-    Task:
-    Generate {n} synthetic training examples as a JSON list.
-    Each example must have "input" and "output" fields.
-        """
+Task:
+Create training examples in a DISTINCT input-output format #{format_id}.
+Each example must have "input" and "output" fields.
+Return a JSON list with {n} examples.
+    """
 
     response = call_openrouter(system_prompt, user_prompt)
     return parse_json_list(response)
 
 
 # === Bootstrapping from Seeds ===
-def bootstrap_examples(seed_examples, target_size=30):
-    """
-    Expand seed examples into a larger dataset by asking LLM
-    to generate paraphrased or varied versions.
-    """
+def bootstrap_examples(seed_examples, target_size=20):
     system_prompt = "You are a helpful data generator that creates paraphrased variations of training examples."
     examples = seed_examples.copy()
 
@@ -58,40 +48,50 @@ Return only valid JSON with "input" and "output".
 
 # === JSON Helpers ===
 def parse_json_list(text: str):
-    """
-    Try to parse LLM output into a Python list of dicts.
-    Cleans common formatting issues.
-    """
     try:
         if text.startswith("```"):
             text = text.strip("`").split("json")[-1].strip()
         return json.loads(text)
     except Exception as e:
-        print("⚠️ JSON list parsing failed, returning empty list. Error:", e)
+        print("⚠️ JSON list parsing failed:", e)
         return []
 
-
 def parse_json_obj(text: str):
-    """
-    Try to parse LLM output into a single JSON object (dict).
-    Cleans common formatting issues.
-    """
     try:
         if text.startswith("```"):
             text = text.strip("`").split("json")[-1].strip()
         return json.loads(text)
     except Exception as e:
-        print("⚠️ JSON object parsing failed, skipping. Error:", e)
+        print("⚠️ JSON object parsing failed:", e)
         return None
 
 
 # === Main Function ===
-def generate_synthetic_data_for_primitive(primitive_entry, target_size=30):
+def generate_synthetic_data_for_primitive(
+    primitive_entry, n_formats=3, n_samples_per_format=20, save_path=None
+):
     """
-    Generate a synthetic dataset for a primitive by:
-    1. Creating seed examples
-    2. Bootstrapping them to target size
+    Generate a synthetic dataset for a primitive with:
+    - n_formats different input-output formats
+    - n_samples_per_format per format
+    Returns a list of dicts with a "text" field, directly usable in LoRA training.
     """
-    seeds = generate_seed_examples(primitive_entry, n=5)
-    dataset = bootstrap_examples(seeds, target_size=target_size)
-    return dataset
+    full_dataset = []
+
+    for f in range(1, n_formats + 1):
+        print(f"=== Generating format {f} for primitive {primitive_entry['id']} ===")
+        seeds = generate_seed_examples_for_format(primitive_entry, f, n=5)
+        format_dataset = bootstrap_examples(seeds, target_size=n_samples_per_format)
+
+        # Convert to LoRA training format
+        for ex in format_dataset:
+            text_example = f"Input: {ex['input']}\nOutput: {ex['output']}"
+            full_dataset.append({"text": text_example, "format_id": f})
+
+    # Optionally save
+    if save_path:
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(full_dataset, f, indent=2, ensure_ascii=False)
+        print(f"✅ Saved dataset to {save_path}")
+
+    return full_dataset
