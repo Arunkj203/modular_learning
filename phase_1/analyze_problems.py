@@ -3,10 +3,11 @@
 import json 
 from typing import Dict, Any
 
-from models_config.model_config import call_openrouter
+from model_config import generate_text
 from utils import extract_json_from_text
 
-def analyze_problem(problem_entry: Dict[str, Any]) -> Dict[str, Any]:
+
+def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str, Any]:
 
     """
     Analyze a math problem using LLM via OpenRouter.
@@ -34,7 +35,7 @@ def analyze_problem(problem_entry: Dict[str, Any]) -> Dict[str, Any]:
     - tags
     """
 
-    raw = call_openrouter(system_prompt, user_prompt, max_tokens=400)
+    raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
 
     try:
         json_text = extract_json_from_text(raw)

@@ -4,13 +4,12 @@ import json
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 
-BASE_MODEL_PATH = "./base_model"
-LORA_DIR = "./lora_adapters"
-tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL_PATH)
+
+from modular_learning.model_config import OUTPUT_DIR, DEVICE
 
 
 
-def run_phase4(primitive_sequence, problem_text):
+def run_phase4(model, tokenizer , primitive_sequence, problem_text):
     """
     Phase 4: Problem solving using a sequence of primitives (dicts with id, description).
     
@@ -21,13 +20,13 @@ def run_phase4(primitive_sequence, problem_text):
     Returns:
         final_solution (str), steps (list of dicts): Each dict has 'primitive_id', 'description', 'output'.
     """
-    device = "cuda" if torch.cuda.is_available() else "cpu"
     state_text = problem_text
     steps = []
     feedback_entries = []  # Collect feedback for this problem
 
     # Load base model once (reuse for all primitives)
-    base_model = AutoModelForCausalLM.from_pretrained(BASE_MODEL_PATH, device_map="auto")
+    base_model = model
+
 
     judge_model = AutoModelForCausalLM.from_pretrained("gpt-4-jurassic", device_map="auto")
 
@@ -38,13 +37,13 @@ def run_phase4(primitive_sequence, problem_text):
         description = primitive_entry.get("description", "")
         try:
             # Load LoRA adapter for this primitive
-            lora_path = f"{LORA_DIR}/{primitive_id}"
+            lora_path = f"{OUTPUT_DIR}/{primitive_id}"
             model = PeftModel.from_pretrained(base_model, lora_path)
             model.eval()
-            model.to(device)
+            model.to(DEVICE)
             
             # Tokenize current state
-            inputs = tokenizer(state_text, return_tensors="pt").to(device)
+            inputs = tokenizer(state_text, return_tensors="pt").to(DEVICE)
             
             # Generate output
             with torch.no_grad():
@@ -73,7 +72,6 @@ def run_phase4(primitive_sequence, problem_text):
 
             feedback_entries.append({
                 "primitive_id": primitive_id,
-                "description": description,
                 "input": state_text,
                 "output": primitive_output,
                 "valid": judge_result["valid"],

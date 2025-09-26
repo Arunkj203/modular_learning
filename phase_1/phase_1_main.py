@@ -1,11 +1,11 @@
 # phase_1_main.py
 
 import json
-from preprocess import preprocess_problem
-from analyze_problems import analyze_problem
+from .preprocess import preprocess_problem
+from .analyze_problems import analyze_problem
 
 
-def run_phase1(problem=None, dataset_name="SVAMP"):
+def run_phase1(model, tokenizer,problem=None, dataset_name="SVAMP"):
     """
     Run Phase 1: Preprocess and Analyze one problem.
     
@@ -21,12 +21,12 @@ def run_phase1(problem=None, dataset_name="SVAMP"):
 
     # Step 1 - Data Preprocessing
     processed = preprocess_problem(problem, dataset_name=dataset_name)
-    print("\n=== Processed Problem (JSON) ===")
-    print(json.dumps(processed, indent=2))
+    # print("\n=== Processed Problem (JSON) ===")
+    # print(json.dumps(processed, indent=2))
 
     # Step 2 - Analyze the Problem
-    analysis = analyze_problem(processed)
-    print("\n=== Analysis (JSON) ===")
-    print(json.dumps(analysis, indent=2))
+    analysis = analyze_problem(model, tokenizer ,processed)
+    # print("\n=== Analysis (JSON) ===")
+    # print(json.dumps(analysis, indent=2))
 
     return processed, analysis

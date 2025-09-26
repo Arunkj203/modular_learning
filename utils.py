@@ -1,5 +1,5 @@
 
-import json,os,re
+import json,re
 from typing import Dict, Any, List
 
 # ---------------- Parsing Helpers ----------------
@@ -59,21 +59,6 @@ def extract_json_from_text(text: str) -> str:
     raise ValueError("Failed to parse JSON from LLM output.")
 
 
-# --- JSON handling ---
-def load_primitives(json_path: str) -> List[Dict[str, Any]]:
-    if not os.path.exists(json_path):
-        with open(json_path, "w", encoding="utf-8") as f:
-            json.dump([], f, indent=4, ensure_ascii=False)
-        return []
-    with open(json_path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def save_primitives(json_path: str, new_primitives: List[Dict[str, Any]]):
-    """Append new primitives to JSON file without overwriting old ones."""
-    all_primitives = load_primitives(json_path)
-    all_primitives.extend(new_primitives)
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(all_primitives, f, indent=4, ensure_ascii=False)
 
 
 # ---------------- Validation ----------------
@@ -97,64 +82,3 @@ def validate_primitive_schema(p: Dict[str, Any]) -> List[str]:
     return errors
 
 
-# --- Utility: Summarize old primitives ---
-def summarize_primitives(primitives: List[Dict[str, Any]]) -> str:
-    """Summarize old primitives to feed as context into the LLM prompt."""
-    summaries = [
-        {
-            "id": p.get("id"),
-            "name": p.get("name"),
-            "tags": p.get("tags", []),
-            "description": p.get("description", "")
-        }
-        for p in primitives
-    ]
-    return json.dumps(summaries, indent=2, ensure_ascii=False)
-
-
-
-def convert_primitives_for_library(primitives: List[Dict]) -> List[Dict]:
-    """
-    Convert raw primitives into the Library Storage format with Metadata + LoRA (no path yet).
-    """
-    converted = []
-    for p in primitives:
-        entry = {
-            "primitive_name": p.get("name", ""),
-            "description": p.get("description", ""),
-            "input_format": p.get("input_schema", {}),
-            "output_format": p.get("output_schema", {}),
-            "metadata": p.get("tags", [])
-        }
-        converted.append(entry)
-    return converted
-
-
-def print_primitives(primitives):
-    """
-    Print primitive details in a readable text format.
-    """
-    for p in convert_primitives_for_library(primitives):
-        print("=== Primitive ===")
-        print(f"Name       : {p['primitive_name']}")
-        print(f"Description: {p['description']}")
-        print(f"Input      : {json.dumps(p['input_format'], indent=2, ensure_ascii=False)}")
-        print(f"Output     : {json.dumps(p['output_format'], indent=2, ensure_ascii=False)}")
-        print(f"Metadata   : {', '.join(p['metadata']) if p['metadata'] else 'None'}")
-        print("-----------------------END----------------------------------------------")
-
-
-
-
-def export_primitives_summary(json_path: str, output_txt: str):
-    """
-    Load all primitives from the JSON library, summarize them,
-    and save to a plain text file.
-    """
-    primitives = load_primitives(json_path)
-    summary_text = summarize_primitives(primitives)
-
-    with open(output_txt, "w", encoding="utf-8") as f:
-        f.write(summary_text)
-
-    print(f"✅ Saved summarized primitives to {output_txt}")

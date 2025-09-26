@@ -3,9 +3,11 @@
 import os
 import torch
 
-from transformers import AutoModelForCausalLM, AutoTokenizer
+# from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import LoraConfig, PeftModel
 from trl import SFTTrainer,SFTConfig
+
+from modular_learning.model_config import get_model_and_tokenizer, OUTPUT_DIR, DEVICE
 
 
 
@@ -24,23 +26,9 @@ LR = 2e-4
 # ==================================================
 # HELPERS
 # ==================================================
-def load_base_model(base_model_name: str):
-    """Load base model and tokenizer with quantization."""
-    tokenizer = AutoTokenizer.from_pretrained(base_model_name)
-    tokenizer.pad_token = tokenizer.eos_token
-    tokenizer.padding_side = "right"
-
-    model = AutoModelForCausalLM.from_pretrained(
-        base_model_name,
-        load_in_4bit=True,
-        device_map="auto"
-    )
-    model.config.use_cache = False
-    return model, tokenizer
 
 
-
-def train_primitive(model, tokenizer, dataset, primitive_name , OUTPUT_DIR):
+def train_primitive(copy_model, copy_tokenizer, dataset, primitive_id):
     """Train one primitive as a LoRA adapter."""
 
     # LoRA configuration
@@ -59,7 +47,7 @@ def train_primitive(model, tokenizer, dataset, primitive_name , OUTPUT_DIR):
     
     sft_config = SFTConfig(
         max_length=64,
-        output_dir=os.path.join(OUTPUT_DIR, primitive_name),
+        output_dir=os.path.join(OUTPUT_DIR, primitive_id),
         overwrite_output_dir=True,
         per_device_train_batch_size=BATCH_SIZE,
         num_train_epochs=NUM_EPOCHS,
@@ -78,28 +66,31 @@ def train_primitive(model, tokenizer, dataset, primitive_name , OUTPUT_DIR):
     # SFT Trainer setup
 
     trainer = SFTTrainer(
-            model=model,
+            model=copy_model,
             train_dataset=dataset["train"],
             eval_dataset=dataset["val"],
-            processing_class=tokenizer,
+            processing_class=copy_tokenizer,
             args=sft_config,
             peft_config=peft_config,
         )
 
 
-    print(f"Training LoRA adapter for primitive '{primitive_name}'...")
+    print(f"Training LoRA adapter for primitive '{primitive_id}'...")
     trainer.train()
 
     print("Training completed. Saving model...")
-    return model
+    return copy_model
 
 
 
 # ------------------------
 # Load LoRA-adapted model
 # ------------------------
-def load_lora_model(base_model_name: str, lora_path: str):
-    base_model, tokenizer = load_base_model(base_model_name)
+def load_lora_model(lora_path: str):
+
+    # Load base model once
+    base_model, tokenizer = get_model_and_tokenizer()
+    
     model = PeftModel.from_pretrained(base_model, lora_path)
     return model, tokenizer
 
@@ -108,7 +99,7 @@ def load_lora_model(base_model_name: str, lora_path: str):
 # Evaluate
 # ------------------------
 
-def evaluate_lora(model, tokenizer, test_data, device):
+def evaluate_lora(model, tokenizer, test_data):
     model.eval()
     correct = 0
 
@@ -119,7 +110,7 @@ def evaluate_lora(model, tokenizer, test_data, device):
         # Expected output (after "Output:")
         expected = sample["text"].rsplit("Output:", 1)[1].strip()
 
-        inputs = tokenizer(prompt, return_tensors="pt").to(device)
+        inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
         with torch.no_grad():
             output_ids = model.generate(
                 **inputs,
@@ -143,4 +134,20 @@ def evaluate_lora(model, tokenizer, test_data, device):
 
 
 
+
+
+
+# def load_base_model(base_model_name: str):
+#     """Load base model and tokenizer with quantization."""
+#     tokenizer = AutoTokenizer.from_pretrained(base_model_name)
+#     tokenizer.pad_token = tokenizer.eos_token
+#     tokenizer.padding_side = "right"
+
+#     model = AutoModelForCausalLM.from_pretrained(
+#         base_model_name,
+#         load_in_4bit=True,
+#         device_map="auto"
+#     )
+#     model.config.use_cache = False
+#     return model, tokenizer
 

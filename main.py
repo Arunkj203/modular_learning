@@ -1,63 +1,86 @@
 # Main code file
+from modular_learning.solve import solve
+import sys
 
-from phase_1.phase_1_main import run_phase1
-from phase_2.phase_2_main import run_phase2
-from phase_3.phase_3_main import run_phase3
-from phase_4.phase_4_main import run_phase4
+from modular_learning.model_config import get_model_and_tokenizer
 
-
-
-from config import *
-from datasets import load_dataset
-
-
-# Load SVAMP dataset
-dataset = load_dataset(DATASET_SVAMP)
-dataset1 = load_dataset(DATASET_ASDIV)
-dataset2= load_dataset(DATASET_GSM8K)
-dataset3 = load_dataset(DATASET_MATH23K)
-
-
-all_feedback = []  # Collect feedback for all problems
-
-
-for problem in dataset['train']:
-
-    '''  Phase 1: Problem Analysis'''
-
-    processed, analysis = run_phase1(problem, dataset_name="SVAMP")
-
-
-    '''  Phase 2: Primitive Generation  '''
-
-    primitive_sequence , new_primitives_to_train = run_phase2(processed["question"], analysis)
-
-
-    '''  Phase 3: Primitive Training and Testing  '''
-
-    status = run_phase3(new_primitives_to_train)
-    if not status:
-        print("Phase 3 failed. Exiting.")
-        exit(1)
-
-    # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
-
-    ''' Phase 4: Problem Solving + Feedback '''
-    solution, steps, feedback_entries = run_phase4(primitive_sequence, problem_text=processed["question"])
-
-    print("Steps:", steps)
-    print("Solution:", solution)
-
-    # Collect all feedback
-    all_feedback.extend(feedback_entries) 
-    # Changes need to be made in phase 4 (return feedback entries)
-
-# --- After all problems, save feedback dataset for batch training ---
+from datasets import Dataset
 import json
-feedback_file = "./results/feedback_dataset.json"
-with open(feedback_file, "w") as f:
-    json.dump(all_feedback, f, indent=2)
 
-# # --- Optional: retrain LoRA adapters in batch ---
-# run_phase3(feedback_file)
-# print("✅ LoRA adapters retrained with session feedback")
+def main():
+
+    # dataset_name = sys.argv[1] # e.g., "SVAMP"
+
+    # Load dataset
+    dataset_name = "SVAMP"
+
+    # Load model and tokenizer
+    model, tokenizer = get_model_and_tokenizer()
+
+    print(f"Model and tokenizer loaded for {dataset_name}.")
+
+    train_acc , train_feedback_entries = solve(dataset_name,"train","Training", model, tokenizer)
+    test_acc , test_feedback_entries = solve(dataset_name,"test","Testing", model, tokenizer)
+
+    
+
+    # Save feedback entries for LoRA training
+    tokenized_datasets = prepare_lora_dataset_by_primitive(train_feedback_entries.extend(test_feedback_entries), tokenizer)
+
+    # Save all primitive datasets together in one JSON file
+    save_file = "./lora_dataset_all.json"
+    with open(save_file, "w", encoding="utf-8") as f:
+        json.dump(tokenized_datasets, f, ensure_ascii=False, indent=2)
+
+    print(f"Saved all primitive datasets to {save_file}")
+
+
+    print(f"Train Accuracy on {dataset_name}: {train_acc*100:.2f}%")
+    print(f"Test Accuracy on {dataset_name}: {test_acc*100:.2f}%")
+
+
+if __name__ == "__main__":
+    main()
+
+def prepare_lora_dataset_by_primitive(feedback_entries, tokenizer, max_length=512):
+    """
+    Prepares tokenized dataset per primitive for LoRA training.
+    
+    Returns: dict { primitive_id: list_of_tokenized_entries }
+    """
+    # Group entries by primitive_id
+    primitive_groups = {}
+    for entry in feedback_entries:
+        pid = entry["primitive_id"]
+        if pid not in primitive_groups:
+            primitive_groups[pid] = []
+        # Choose corrected_output if invalid, else original output
+        target_output = entry.get("corrected_output") if not entry.get("valid", True) else entry.get("output")
+        primitive_groups[pid].append({
+            "input": entry["input"],
+            "output": target_output
+        })
+    
+    # Tokenize datasets
+    tokenized_datasets = {}
+    for pid, entries in primitive_groups.items():
+        dataset = Dataset.from_list(entries)
+
+        def tokenize_fn(entry):
+            prompt = f"Instruction: {entry['input']}\nResponse:"
+            full_text = f"{prompt} {entry['output']}"
+            tokenized = tokenizer(
+                full_text,
+                truncation=True,
+                padding="max_length",
+                max_length=max_length
+            )
+            tokenized["labels"] = tokenized["input_ids"].copy()
+            return tokenized
+
+        tokenized_dataset = dataset.map(tokenize_fn, remove_columns=dataset.column_names)
+        # Convert to list of dicts for saving
+        tokenized_datasets[pid] = tokenized_dataset[:]
+    
+    return tokenized_datasets
+
