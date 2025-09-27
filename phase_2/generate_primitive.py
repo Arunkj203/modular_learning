@@ -85,27 +85,27 @@ def generate_primitives_from_problem(
         json_text = extract_json_from_text(raw_output)
         primitives_sequence = json.loads(json_text)
 
-        # Ensure it's a list of primitives
-        if isinstance(primitives_sequence, dict):
-            # wrap single object in a list
-            primitives_sequence = [primitives_sequence]
+    except Exception as e:
+        raise RuntimeError(f"Failed to parse JSON from LLM output: {e}\nLLM output:\n{raw_output}")
 
-        # ---------------- Post-process to assign IDs ----------------
-        for p in primitives_sequence:
-            # Reuse existing ID if LLM says 'existing' and name matches
-            if p.get("status") == "existing" and p.get("id") in existing_ids:
-                pass  # keep the existing ID
-            elif p.get("status") == "new" and p.get("id") == "":
-                # Generate a new unique ID for new primitives or if LLM is unsure
-                unique_suffix = uuid.uuid4().hex[:8]
-                p['id'] = f"{p['name']}_{unique_suffix}"
-            else:
-                raise RuntimeError(f"Failed to assign ID for primitive: {p}")
+    # Ensure it's a list of primitives
+    if isinstance(primitives_sequence, dict):
+        # wrap single object in a list
+        primitives_sequence = [primitives_sequence]
+
+    # ---------------- Post-process to assign IDs ----------------
+    for p in primitives_sequence:
+        # Reuse existing ID if LLM says 'existing' and name matches
+        if p.get("status") == "existing" and p.get("id") in existing_ids:
+            pass  # keep the existing ID
+        elif p.get("status") == "new" or (p.get("status") == "existing" and p.get("id") not in existing_ids):            # Generate a new unique ID for new primitives or if LLM is unsure
+            unique_suffix = uuid.uuid4().hex[:8]
+            p['id'] = f"{p['name']}_{unique_suffix}"
+        else:
+            raise RuntimeError(f"Failed to assign ID for primitive: {p}")
 
     
 
-    except Exception as e:
-        raise RuntimeError(f"Failed to parse JSON from LLM output: {e}\nLLM output:\n{raw_output}")
 
     if not isinstance(primitives_sequence, list):
         raise RuntimeError("LLM output JSON is not a list.")
