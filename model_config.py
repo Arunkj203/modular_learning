@@ -21,9 +21,9 @@ except Exception:
 # Config: model selection
 # -----------------------------
 
-# BASE_MODEL = "meta-llama/Llama-2-7b-hf"   # Original Model
+BASE_MODEL = "meta-llama/Llama-2-7b-hf"   # Original Model
 
-BASE_MODEL = "HuggingFaceM4/tiny-random-LlamaForCausalLM"  # Test Model
+# BASE_MODEL = "HuggingFaceM4/tiny-random-LlamaForCausalLM"  # Test Model
 OUTPUT_DIR = "./results/lora_adapters"
 
 
