@@ -13,6 +13,12 @@ Task:
 Create training examples in a DISTINCT input-output format #{format_id}.
 Each example must have "input" and "output" fields.
 Return a JSON list with {n} examples.
+
+Important:
+- Output only valid JSON.
+- Do not include any extra text or code after the JSON.
+- Stop immediately after closing the final brace of the JSON object.
+
     """
 
     response = generate_text(model ,tokenizer, system_prompt, user_prompt)
@@ -36,6 +42,12 @@ Given this example:
 Generate a paraphrased variant with the same meaning,
 but different phrasing, numbers, or structure.
 Return only valid JSON with "input" and "output".
+
+Important:
+- Output only valid JSON.
+- Do not include any extra text or code after the JSON.
+- Stop immediately after closing the final brace of the JSON object.
+
             """
 
             response = generate_text(model ,tokenizer, system_prompt, user_prompt)

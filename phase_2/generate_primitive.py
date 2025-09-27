@@ -29,6 +29,7 @@ Rules:
 3. Produce a sequence in execution order.
 4. Output must be valid JSON and contain ONLY the JSON array of primitives.
 5. For new primitives, provide only the minimal info required to train later.
+
 """
 
 def generate_primitives_from_problem(
@@ -46,10 +47,11 @@ def generate_primitives_from_problem(
     """
 
     old_primitives_text = ""
+    summary = []
+    existing_ids = []
+
     if old_primitives:
         # Summarize existing primitives for LLM
-        summary = []
-        existing_ids = []
         for p in old_primitives:
             summary.append({
                 # "id": p.get("id"),
@@ -69,7 +71,12 @@ def generate_primitives_from_problem(
     if analysis:
         user_prompt += f"\nProblem analysis:\n{json.dumps(analysis, indent=2, ensure_ascii=False)}\n"
 
-    user_prompt += "\nGenerate only the sequence of primitives in execution order."
+    user_prompt += '''\nGenerate only the sequence of primitives in execution order.
+            Important:
+            - Output only valid JSON.
+            - Do not include any extra text or code after the JSON.
+            - Stop immediately after closing the final brace of the JSON object.
+        '''
 
     print("Calling LLM to generate primitive sequence...")
     raw_output = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500, temperature=0.2)

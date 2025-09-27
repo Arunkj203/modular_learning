@@ -116,6 +116,12 @@ Respond with JSON:
     "reason": "short explanation",
     "corrected_output": "..."
 }}
+
+Important:
+    - Output only valid JSON.
+    - Do not include any extra text or code after the JSON.
+    - Stop immediately after closing the final brace of the JSON object.
+
 """
     response_text = judge_model.generate(prompt, max_new_tokens=128)
     try:
