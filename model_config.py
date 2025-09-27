@@ -6,6 +6,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import os , requests
 
 
+
+
 # Optional: load .env
 try:
     from dotenv import load_dotenv 
@@ -29,6 +31,9 @@ OUTPUT_DIR = "./results/lora_adapters"
 # DEVICE = "cuda"  # full GPU
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
+HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+
 # -----------------------------
 # Singleton loader
 # -----------------------------
@@ -37,13 +42,14 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 def get_model_and_tokenizer():
 
     print(f"Loading tokenizer for {BASE_MODEL}...")
-    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL,token=HUGGINGFACEHUB_API_TOKEN)
 
     print(f"Loading model {BASE_MODEL} on {DEVICE} (FP16)...")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         device_map="auto",
         dtype=torch.float16,
+        token = HUGGINGFACEHUB_API_TOKEN
     )
 
     return model, tokenizer

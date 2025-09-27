@@ -34,7 +34,8 @@ def run_phase4(model, tokenizer , primitive_sequence, problem_text):
     for primitive_entry in primitive_sequence:
         primitive_id = primitive_entry["id"]
         primitive_name = primitive_entry.get("name", "")
-        description = primitive_entry.get("description", "")
+        description = prim
+        itive_entry.get("description", "")
         try:
             # Load LoRA adapter for this primitive
             lora_path = f"{OUTPUT_DIR}/{primitive_id}"
