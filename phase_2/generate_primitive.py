@@ -72,11 +72,16 @@ def generate_primitives_from_problem(
     user_prompt += "\nGenerate only the sequence of primitives in execution order."
 
     print("Calling LLM to generate primitive sequence...")
-    raw_output = generate_text(model ,tokenizer, system_prompt, user_prompt)
+    raw_output = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500, temperature=0.2)
 
     try:
         json_text = extract_json_from_text(raw_output)
         primitives_sequence = json.loads(json_text)
+
+        # Ensure it's a list of primitives
+        if isinstance(primitives_sequence, dict):
+            # wrap single object in a list
+            primitives_sequence = [primitives_sequence]
 
         # ---------------- Post-process to assign IDs ----------------
         for p in primitives_sequence:

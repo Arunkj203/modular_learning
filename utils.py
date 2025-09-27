@@ -9,20 +9,29 @@ def extract_json_from_text(text: str) -> str:
     Extract the first valid JSON object or array from LLM output.
     Handles extra commentary, backticks, or partial echoes.
     """
-    # Remove Markdown code fences
-    text = re.sub(r'```(?:json)?', '', text)
+
+     # Try to find RESPONSE: first
+    match = re.search(r'RESPONSE:\s*(.*)', text, flags=re.S)
+    if match:
+        response_text = match.group(1)
+    else:
+        response_text = text  # fallback: assume entire output is JSON
+
+        # Remove Markdown code fences
+    response_text = re.sub(r'```(?:json)?', '', response_text)
 
     # Try direct json.loads
     try:
-        json.loads(text)
-        return text
+        json.loads(response_text)
+        return response_text
     except Exception:
         pass
+
 
     # Bracket matching
     start_idx = None
     start_char = None
-    for i, ch in enumerate(text):
+    for i, ch in enumerate(response_text):
         if ch in ('{', '['):
             start_idx = i
             start_char = ch
@@ -31,8 +40,8 @@ def extract_json_from_text(text: str) -> str:
         raise ValueError("No JSON object/array found in LLM output.")
 
     stack = []
-    for j in range(start_idx, len(text)):
-        ch = text[j]
+    for j in range(start_idx, len(response_text)):
+        ch = response_text[j]
         if ch == start_char:
             stack.append(ch)
         elif ch == '}' and stack and stack[-1] == '{':
@@ -40,7 +49,7 @@ def extract_json_from_text(text: str) -> str:
         elif ch == ']' and stack and stack[-1] == '[':
             stack.pop()
         if not stack:
-            candidate = text[start_idx:j+1]
+            candidate = response_text[start_idx:j+1]
             try:
                 json.loads(candidate)
                 return candidate
@@ -48,7 +57,7 @@ def extract_json_from_text(text: str) -> str:
                 continue
 
     # Last resort: non-greedy regex
-    matches = re.findall(r'(\[.*?\]|\{.*?\})', text, flags=re.S)
+    matches = re.findall(r'(\[.*?\]|\{.*?\})', response_text, flags=re.S)
     for m in matches:
         try:
             json.loads(m)
