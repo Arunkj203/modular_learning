@@ -12,8 +12,9 @@ import numpy as np
 
 
 # ---------------- Prompt Template for Phase 2 ----------------
-PRIMITIVE_SEQUENCE_PROMPT = """
-You are an assistant that produces a sequence of **primitives** to solve a given problem.
+system_prompt = f"""
+You are an AI reasoning assistant that generates minimal programmatic primitives to solve a problem.
+
 Rules:
 1. Use existing primitives if they match the task. Otherwise, generate a new primitive.
 2. Each primitive must include:
@@ -25,8 +26,8 @@ Rules:
    - related_primitives: list of primitive IDs or names it often co-occurs with
    - status: 'existing' if reused, 'new' if generated
 
-3. Produce a **sequence in execution order**.
-4. Output must be valid JSON and contain **ONLY** the JSON array of primitives.
+3. Produce a sequence in execution order.
+4. Output must be valid JSON and contain ONLY the JSON array of primitives.
 5. For new primitives, provide only the minimal info required to train later.
 """
 
@@ -61,21 +62,14 @@ def generate_primitives_from_problem(
             existing_ids.append(p.get("id"))
         old_primitives_text = f"\nExisting primitives:\n{json.dumps(summary, indent=2, ensure_ascii=False)}\n"
 
-    analysis_text = ""
-    if analysis:
-        analysis_text = f"\nProblem analysis:\n{json.dumps(analysis, indent=2, ensure_ascii=False)}\n"
-
-    user_prompt = (
-        f"{PRIMITIVE_SEQUENCE_PROMPT}\n\n"
-        f"Problem:\n{problem_text}\n"
-    )
+    user_prompt = f"Problem:\n{problem_text}\n"
     if domain_hint:
-        user_prompt += f"\nDomain hint: {domain_hint}\n"
+        user_prompt += f"Domain hint: {domain_hint}\n"
     user_prompt += old_primitives_text
-    user_prompt += analysis_text
-    user_prompt += "\nGenerate only the sequence of primitives in execution order."
+    if analysis:
+        user_prompt += f"\nProblem analysis:\n{json.dumps(analysis, indent=2, ensure_ascii=False)}\n"
 
-    system_prompt = "You are an AI reasoning assistant that generates minimal programmatic primitives to solve a problem."
+    user_prompt += "\nGenerate only the sequence of primitives in execution order."
 
     print("Calling LLM to generate primitive sequence...")
     raw_output = generate_text(model ,tokenizer, system_prompt, user_prompt)
