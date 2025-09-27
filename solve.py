@@ -1,12 +1,12 @@
 
-from phase_1.phase_1_main import run_phase1
-from phase_2.phase_2_main import run_phase2
-from phase_3.phase_3_main import run_phase3
-from phase_4.phase_4_main import run_phase4
+from .phase_1.phase_1_main import run_phase1
+from .phase_2.phase_2_main import run_phase2
+from .phase_3.phase_3_main import run_phase3
+from .phase_4.phase_4_main import run_phase4
 
-from modular_learning.config import *
+from .config import *
 from datasets import load_dataset
-from  modular_learning.utils import *
+from .utils import *
 
 def solve(dataset_name,mode,mode_text, model, tokenizer):
 

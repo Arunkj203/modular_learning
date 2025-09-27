@@ -7,7 +7,7 @@ import copy
 import torch
 
 
-from modular_learning.model_config import  OUTPUT_DIR, DEVICE
+from ..model_config import OUTPUT_DIR, DEVICE
 
 
 def run_phase3(model, tokenizer ,new_primitives_to_train, metric_threshold=0.8):

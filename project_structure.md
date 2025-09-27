@@ -2,33 +2,42 @@
 
 ```
 modular_learning/
+├── __init__.py
+├── .gitignore
 ├── config.py
 ├── main.py
+├── model_config.py
+├── project_structure.md
 ├── README.md
 ├── requirements.txt
-├── task_controller.py
+├── solve.py
+├── test_lora_code.py
 ├── utils.py
-├── models_config/
-│   └── model_config.py
+├── Mock_Dataset/
+│   ├── test_data.json
+│   └── train_data.json
 ├── others/
+│   ├── __init__.py
 │   ├── Calc_token.py
 │   └── workflow.txt
 ├── phase_1/
+│   ├── __init__.py
 │   ├── analyze_problems.py
 │   ├── phase_1_main.py
 │   └── preprocess.py
 ├── phase_2/
+│   ├── __init__.py
 │   ├── generate_primitive.py
-│   ├── phase_2_main.py
-│   └── retrieve_primitives.py
+│   └── phase_2_main.py
 ├── phase_3/
-│   ├── evaluate_lora.py
+│   ├── __init__.py
 │   ├── lora_training.py
 │   ├── phase_3_main.py
 │   └── synthetic_data.py
 ├── phase_4/
+│   ├── __init__.py
 │   ├── evaluate.py
-│   ├── phase_4_main.py
+│   └── phase_4_main.py
 └── results/
     ├── primitive_library_1.json
     ├── primitive_summary.txt
@@ -37,7 +46,7 @@ modular_learning/
 
 ## Directory Descriptions
 
-- **models_config/**: Configuration files for different models
+- **Mock_Dataset/**: Mock dataset files for testing and training
 - **others/**: Miscellaneous utility files and documentation
 - **phase_1/**: Initial problem analysis and preprocessing phase
 - **phase_2/**: Primitive generation phase

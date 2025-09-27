@@ -3,8 +3,8 @@
 import json 
 from typing import Dict, Any
 
-from model_config import generate_text
-from utils import extract_json_from_text
+from ..model_config import generate_text
+from ..utils import extract_json_from_text
 
 
 def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str, Any]:

@@ -4,10 +4,10 @@ from typing import Dict, Any, List, Optional
 import json
 import uuid
 
-from model_config import generate_text
-from utils import extract_json_from_text
+from ..model_config import generate_text
+from ..utils import extract_json_from_text
 
-from config import *
+from ..config import *
 import numpy as np
 
 

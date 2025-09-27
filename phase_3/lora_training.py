@@ -7,7 +7,7 @@ import torch
 from peft import LoraConfig, PeftModel
 from trl import SFTTrainer,SFTConfig
 
-from modular_learning.model_config import get_model_and_tokenizer, OUTPUT_DIR, DEVICE
+from ..model_config import get_model_and_tokenizer, OUTPUT_DIR, DEVICE
 
 
 

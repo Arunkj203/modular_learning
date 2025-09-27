@@ -1,8 +1,8 @@
 # Main code file
-from modular_learning.solve import solve
+from .solve import solve
 import sys
 
-from modular_learning.model_config import get_model_and_tokenizer
+from .model_config import get_model_and_tokenizer
 
 from datasets import Dataset
 import json

@@ -5,7 +5,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 
 
-from modular_learning.model_config import OUTPUT_DIR, DEVICE
+from ..model_config import OUTPUT_DIR, DEVICE
 
 
 
@@ -34,8 +34,7 @@ def run_phase4(model, tokenizer , primitive_sequence, problem_text):
     for primitive_entry in primitive_sequence:
         primitive_id = primitive_entry["id"]
         primitive_name = primitive_entry.get("name", "")
-        description = prim
-        itive_entry.get("description", "")
+        description = primitive_entry.get("description", "")
         try:
             # Load LoRA adapter for this primitive
             lora_path = f"{OUTPUT_DIR}/{primitive_id}"

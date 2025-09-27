@@ -1,4 +1,4 @@
-from modular_learning.model_config import generate_text
+from ..model_config import generate_text
 import json
 
 # === Seed Example Generation ===
