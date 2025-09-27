@@ -5,7 +5,7 @@ import json
 import uuid
 
 from ..model_config import generate_text
-from ..utils import extract_json_from_text
+from .utils import extract_json_from_text
 
 from ..config import *
 import numpy as np
@@ -86,7 +86,7 @@ def generate_primitives_from_problem(
         primitives_sequence = json.loads(json_text)
 
     except Exception as e:
-        raise RuntimeError(f"Failed to parse JSON from LLM output: {e}\nLLM output:\n{raw_output}")
+        raise RuntimeError(f"Failed to parse JSON from LLM output: {e}")
 
     # Ensure it's a list of primitives
     if isinstance(primitives_sequence, dict):

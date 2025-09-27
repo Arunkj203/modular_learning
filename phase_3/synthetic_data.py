@@ -58,6 +58,7 @@ Important:
     return examples
 
 
+# want to change these parsers to be more robust
 # === JSON Helpers ===
 def parse_json_list(text: str):
     try:
@@ -65,8 +66,7 @@ def parse_json_list(text: str):
             text = text.strip("`").split("json")[-1].strip()
         return json.loads(text)
     except Exception as e:
-        print("⚠️ JSON list parsing failed:", e)
-        return []
+        raise RuntimeError(f"JSON list parsing failed:{e}")
 
 def parse_json_obj(text: str):
     try:
@@ -74,8 +74,7 @@ def parse_json_obj(text: str):
             text = text.strip("`").split("json")[-1].strip()
         return json.loads(text)
     except Exception as e:
-        print("⚠️ JSON object parsing failed:", e)
-        return None
+        raise RuntimeError(f"JSON list parsing failed:{e}")
 
 
 # === Main Function ===
