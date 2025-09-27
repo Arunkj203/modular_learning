@@ -29,7 +29,7 @@ def solve(dataset_name,mode,mode_text, model, tokenizer):
         processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
         gt = normalize_answer(processed["answer"])
 
-        print("Phase 1 : Processed")
+        print("Phase 1 : Processed",analysis)
 
         '''  Phase 2: Primitive Generation  '''
 
