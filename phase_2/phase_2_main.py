@@ -1,6 +1,6 @@
 # phase_3_main.py
 
-from ..utils import *
+from .utils import *
 from .generate_primitive import *
 
 

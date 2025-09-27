@@ -7,7 +7,6 @@ import re
 
 
 from ..model_config import generate_text
-from ..utils import extract_json_from_text
 
 
 def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str, Any]:
@@ -49,10 +48,9 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     try:
         return extract_analysis_dict(raw)
     
-    except Exception:
+    except Exception as e:
         
-        print("⚠️ Could not parse JSON from analysis output:", raw)
-        return {"problem_type": "unknown", "domain": "unknown", "methods": [], "tags": []}
+        raise RuntimeError(f"Could not parse JSON from analysis output:{e}")
     
 
 
