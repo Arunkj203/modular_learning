@@ -3,19 +3,23 @@ import json,re
 from typing import Dict, Any, List
 
 # ---------------- Parsing Helpers ----------------
+
 def extract_json_from_text(text: str) -> str:
     """
-    Attempts to extract the first JSON object/array from text.
-    Helpful when the LLM adds backticks or commentary.
+    Extract the first valid JSON object or array from LLM output.
+    Handles extra commentary, backticks, or partial echoes.
     """
-    # Try direct json loads first
+    # Remove Markdown code fences
+    text = re.sub(r'```(?:json)?', '', text)
+
+    # Try direct json.loads
     try:
         json.loads(text)
         return text
     except Exception:
         pass
 
-    # Find first { ... } or [ ... ] block using bracket matching
+    # Bracket matching
     start_idx = None
     start_char = None
     for i, ch in enumerate(text):
@@ -26,36 +30,32 @@ def extract_json_from_text(text: str) -> str:
     if start_idx is None:
         raise ValueError("No JSON object/array found in LLM output.")
 
-    # find matching bracket
     stack = []
     for j in range(start_idx, len(text)):
         ch = text[j]
         if ch == start_char:
             stack.append(ch)
-        elif ch == ']':
-            if stack and stack[-1] == '[':
-                stack.pop()
-            else:
-                # mismatch
-                pass
-        elif ch == '}':
-            if stack and stack[-1] == '{':
-                stack.pop()
+        elif ch == '}' and stack and stack[-1] == '{':
+            stack.pop()
+        elif ch == ']' and stack and stack[-1] == '[':
+            stack.pop()
         if not stack:
             candidate = text[start_idx:j+1]
             try:
-                _ = json.loads(candidate)
+                json.loads(candidate)
                 return candidate
             except Exception:
                 continue
-    # last resort: extract all braces and attempt
-    matches = re.findall(r'(\[.*\]|\{.*\})', text, flags=re.S)
+
+    # Last resort: non-greedy regex
+    matches = re.findall(r'(\[.*?\]|\{.*?\})', text, flags=re.S)
     for m in matches:
         try:
-            _ = json.loads(m)
+            json.loads(m)
             return m
         except Exception:
             continue
+
     raise ValueError("Failed to parse JSON from LLM output.")
 
 
