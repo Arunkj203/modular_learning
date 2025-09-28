@@ -77,10 +77,10 @@ print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Pri
 
 '''  Phase 3: Primitive Training and Testing  '''
 
-#status = run_phase3(model, tokenizer ,new_primitives_to_train)
-#if not status:
-#    print("Phase 3 failed. Exiting.")
-#    exit(1)
+status = run_phase3(model, tokenizer ,new_primitives_to_train)
+if not status:
+   print("Phase 3 failed. Exiting.")
+   exit(1)
 
 #print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
 # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
