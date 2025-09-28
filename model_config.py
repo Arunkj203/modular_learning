@@ -81,20 +81,29 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
 
     # Decode to string
     raw_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
-
+	
+    print(raw_output)
     # Extract text after RESPONSE:
     after_response = raw_output.split("RESPONSE:")[-1]
 
     # Extract text between <start> and <end>
-    match = re.search(r'<start>(.*?)<end>', after_response, flags=re.S)
-    if not match:
-        raise ValueError("No <start> ... <end> JSON block found in output.")
+    # match = re.search(r'<start>(.*?)<end>', after_response, flags=re.S)
+    #if not match:
+    #    raise ValueError(f"No <start> ... <end> JSON block found in output==>\n{after_response}.")
 
-    json_text = match.group(1).strip()
+    #json_text = match.group(1).strip()
 
     # Remove trailing commas before } or ]
-    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
+    #json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
 
+    # Search for JSON object or array
+    match = re.search(r'(\{.*?\}|\[.*?\])', after_response, flags=re.S)
+    if not match:
+        raise ValueError("No JSON object/array found after RESPONSE:")
+
+    json_text = match.group(1).strip()
+    # Remove trailing commas
+    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
     return json_text  # Can now pass to json.loads(json_text)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
