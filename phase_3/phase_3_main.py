@@ -60,7 +60,7 @@ def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
             num_train_epochs=NUM_EPOCHS,
             learning_rate=LR,
             logging_steps=10,
-            evaluation_strategy="epoch",   # corrected key: "evaluation_strategy"
+            eval_strategy="epoch",  
             save_strategy="epoch",
             save_total_limit=1,
             fp16=torch.cuda.is_available(),
@@ -75,7 +75,7 @@ def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
             model=base_model,
             train_dataset=dataset["train"],
             eval_dataset=dataset["val"],
-            tokenizer=tokenizer,       # correct arg name
+            processing_class=tokenizer,       
             args=sft_config,
             peft_config=peft_config,
         )
