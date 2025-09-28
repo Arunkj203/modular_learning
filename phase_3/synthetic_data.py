@@ -7,20 +7,29 @@ def generate_seed_examples_for_format(model ,tokenizer, primitive_entry, format_
     user_prompt = f"""
 Primitive:
 ID: {primitive_entry['id']}
+Name: {primitive_entry['name']}
 Description: {primitive_entry.get('description', '')}
+Domain: {primitive_entry.get('domain', '')}
+Input constraints: {primitive_entry.get('constraints', '')}
 
 Task:
-Create training examples in a DISTINCT input-output format #{format_id}.
-Each example must have "input" and "output" fields.
-Return a JSON list with {n} examples.
+Create {n} DISTINCT training examples in JSON.
 
-Important:
-- Output only valid JSON.
-- Do not include any extra text or code after the JSON.
-- Stop immediately after closing the final brace of the JSON object.
+Format:
+[
+  {{
+    "input": "string",
+    "output": "string"
+  }},
+  ...
+]
 
-    """
-
+Rules:
+- Each input must respect the constraints and demonstrate the transformation rule.
+- Each output must show the correct transformed result.
+- Return ONLY a valid JSON array of {n} objects.
+- No extra text outside the JSON.
+"""
     response = generate_text(model ,tokenizer, system_prompt, user_prompt)
     return parse_json_list(response)
 
