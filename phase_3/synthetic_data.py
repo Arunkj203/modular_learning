@@ -70,6 +70,7 @@ Rules:
 """
 
     response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
+    
     return parse_json(response, expect_list=True)
 
 
