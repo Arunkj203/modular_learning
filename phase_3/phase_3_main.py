@@ -7,6 +7,9 @@ from peft import LoraConfig
 from trl import SFTTrainer, SFTConfig
 from ..model_config import OUTPUT_DIR
 
+from datasets import Dataset, DatasetDict
+import random
+
 
 # ==================================================
 # CONFIG
@@ -35,8 +38,14 @@ def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
         # --------------------------------------------------
         # 1. Dataset for this primitive
         # --------------------------------------------------
-        dataset = generate_synthetic_data_for_primitive(base_model, tokenizer, primitive)
-        test_set = dataset[:50]  # take first 50 for quick evaluation
+        examples  = generate_synthetic_data_for_primitive(base_model, tokenizer, primitive)
+
+        #  Change later : split based on formats
+
+        # Split into train/val/test
+        dataset = prepare_datasets(examples, test_size=0.1, val_size=0.1)
+
+
 
         # --------------------------------------------------
         # 2. LoRA config (fresh for every primitive)
@@ -91,7 +100,7 @@ def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
         # 6. Evaluate
         # --------------------------------------------------
         trained_model = trainer.model
-        accuracy = evaluate_lora(trained_model, tokenizer, test_set)
+        accuracy = evaluate_lora(trained_model, tokenizer, dataset["test"])
 
         # --------------------------------------------------
         # 7. Save adapter only if it meets the threshold
@@ -111,3 +120,26 @@ def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
         torch.cuda.empty_cache()
 
     return True
+
+
+
+def prepare_datasets(examples, test_size=0.1, val_size=0.1, seed=42):
+    """
+    Split a list of examples into train/val/test DatasetDict.
+    """
+    random.seed(seed)
+    random.shuffle(examples)
+
+    n_total = len(examples)
+    n_test = int(n_total * test_size)
+    n_val = int(n_total * val_size)
+
+    test_data = examples[:n_test]
+    val_data = examples[n_test:n_test + n_val]
+    train_data = examples[n_test + n_val:]
+
+    return DatasetDict({
+        "train": Dataset.from_list(train_data),
+        "val": Dataset.from_list(val_data),
+        "test": Dataset.from_list(test_data),
+    })
