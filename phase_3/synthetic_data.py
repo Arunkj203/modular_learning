@@ -43,21 +43,23 @@ def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_
         Requirements:
         - Generate at least 5 diverse examples with different types of inputs (edge cases, negative, zero, etc.).
         - Ensure outputs are **correctly computed** from the inputs.
-        - Format as a JSON list of objects:
-        - Enclose the JSON array between <start> and <end>.
+        - Format the output as a JSON list of objects and enclose it between <start> and <end> markers.
 
+        Format Example:
+        <start>
         [
         {{
-        "input": {primitive_entry.get('input_schema', {})},
-        "output": {primitive_entry.get('output_schema', {})}
+            "input": {primitive_entry.get('input_schema', {})},
+            "output": {primitive_entry.get('output_schema', {})}
         }},
         ...
         ]
-        - Make it neat and consistent for training.
+        <end>
+        - Make it neat, consistent, and ready for training.
         """
 
     response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
-    print(response)
+    # print(response)
 
     return parse_raw_op_with_markers(response)
 
@@ -76,19 +78,25 @@ def bootstrap_examples(model, tokenizer, seed_examples, target_size=20):
                 break
 
             user_prompt = f"""
-Given this example:
-{json.dumps(ex, ensure_ascii=False)}
+                    Given this example:
+                    {json.dumps(ex, ensure_ascii=False, indent=2)}
 
-Generate a paraphrased variant with the same meaning,
-but different phrasing, numbers, or structure.
-Return only valid JSON with "input" and "output".
+                    Generate a **paraphrased variant** with the same meaning,
+                    but with different phrasing, numbers, or structure.
 
-Important:
-- Enclose the JSON array between <start> and <end>.
-- Output only valid JSON.
-- No extra text outside the JSON.
-"""
+                    Requirements:
+                    - Return only a single JSON object with "input" and "output".
+                    - Wrap the JSON inside <start> and <end>.
+                    - Do not output anything outside the markers.
 
+                    Example format:
+                    <start>
+                    {{
+                    "input": {{"a": 2, "b": 3}},
+                    "output": {{"sum": 5}}
+                    }}
+                    <end>
+                    """
             response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=500)
             new_ex = parse_raw_op_with_markers(response)
             if new_ex:
