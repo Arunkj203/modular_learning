@@ -3,7 +3,7 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-import os , requests
+import os , requests , re
 
 
 
@@ -65,6 +65,7 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
         USER:
         {user_prompt}
 
+        RESPONSE:
         """
 
 
@@ -73,11 +74,28 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
         outputs = model.generate(
             **inputs,
             max_new_tokens=max_tokens,
-            temperature=0.0,
             do_sample=False,
-        )
-    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+            eos_token_id=tokenizer.eos_token_id
 
+        )
+
+    # Decode to string
+    raw_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    # Extract text after RESPONSE:
+    after_response = raw_output.split("RESPONSE:")[-1]
+
+    # Extract text between <start> and <end>
+    match = re.search(r'<start>(.*?)<end>', after_response, flags=re.S)
+    if not match:
+        raise ValueError("No <start> ... <end> JSON block found in output.")
+
+    json_text = match.group(1).strip()
+
+    # Remove trailing commas before } or ]
+    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
+
+    return json_text  # Can now pass to json.loads(json_text)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 

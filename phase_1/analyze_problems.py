@@ -36,13 +36,17 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
 
     Intermediate steps (if any): {steps}
 
-    Return exactly this format:
+    Return exactly this JSON format enclosed in <start> and <end>:
+    <start>
+
     {{
     "problem_type": "...",
     "domain": "...",
     "methods": ["...","..."],
     "tags": ["...","..."]
     }}
+
+    <end>
 
     Rules:
     - Output ONLY valid JSON.
@@ -56,9 +60,7 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
     print("Raw analysis output:", raw)
     try:
-
-        json_text = extract_analysis_dict(raw)
-        return json.loads(json_text)
+        return json.loads(raw)
     
     except Exception as e:
         
