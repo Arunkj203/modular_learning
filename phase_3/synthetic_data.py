@@ -74,6 +74,7 @@ def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_
         """
 
     response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
+    print(response)
 
     return parse_strict_json(response)
 
