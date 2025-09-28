@@ -54,7 +54,7 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     
     
     raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
-
+    print("Raw analysis output:", raw)
     try:
 
         json_text = extract_analysis_dict(raw)
