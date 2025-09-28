@@ -85,10 +85,12 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
     # Extract text after RESPONSE:
     after_response = raw_output.split("RESPONSE:")[-1]
 
+    
+
     # Extract text between <start> and <end>
     match = re.search(r'<start>(.*?)<end>', after_response, flags=re.S)
     if not match:
-        raise ValueError("No <start> ... <end> JSON block found in output.")
+        raise ValueError(f"No <start> ... <end> JSON block found in output==>\n{after_response}.")
 
     json_text = match.group(1).strip()
 
