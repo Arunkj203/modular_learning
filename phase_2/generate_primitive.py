@@ -1,7 +1,7 @@
 # phase_2/generate_primitive.py
 
 from typing import Dict, Any, List, Optional
-import json
+import json , re
 import uuid
 
 from ..model_config import generate_text
@@ -9,7 +9,6 @@ from .utils import extract_json_from_text
 
 from ..config import *
 import numpy as np
-
 
 # ---------------- Prompt Template for Phase 2 ----------------
 system_prompt = f"""
@@ -84,7 +83,7 @@ def generate_primitives_from_problem(
     print("Raw LLM output for primitives:", raw_output)
     try:
         # json_text = extract_json_from_text(raw_output)
-        primitives_sequence = json.loads(raw_output)
+        primitives_sequence = parse_llm_json(raw_output)
 
     except Exception as e:
         raise RuntimeError(f"Failed to parse JSON from LLM output: {e}")
@@ -106,11 +105,6 @@ def generate_primitives_from_problem(
             raise RuntimeError(f"Failed to assign ID for primitive: {p}")
 
     
-
-
-    if not isinstance(primitives_sequence, list):
-        raise RuntimeError("LLM output JSON is not a list.")
-
     # Minimal validation
     valid_primitives = []
     for p in primitives_sequence:
@@ -187,6 +181,30 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
 
     return [primitive_metadata[pid] for pid in retrieved]
 
+def fix_truncated_json(raw_text: str) -> str:
+    # Count brackets
+    open_braces = raw_text.count("{")
+    close_braces = raw_text.count("}")
+    open_brackets = raw_text.count("[")
+    close_brackets = raw_text.count("]")
+
+    # Append missing closing braces/brackets
+    fixed_text = raw_text + ("}" * (open_braces - close_braces)) + ("]" * (open_brackets - close_brackets))
+    
+    # Remove trailing commas before } or ]
+    fixed_text = re.sub(r',(\s*[\}\]])', r'\1', fixed_text)
+    return fixed_text
+
+
+def parse_llm_json(raw_text: str):
+    # Extract first JSON object/array after RESPONSE:
+    after_response = raw_text.split("RESPONSE:")[-1]
+    match = re.search(r'(\{.*|\[.*)', after_response, flags=re.S)
+    if not match:
+        raise ValueError("No JSON found")
+    json_text = match.group(1).strip()
+    json_text = fix_truncated_json(json_text)
+    return json.loads(json_text)
 
 
 

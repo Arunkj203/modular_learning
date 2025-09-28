@@ -58,36 +58,24 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     
     
     raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
-    print("Raw analysis output:", raw)
+    # print("Raw analysis output:", raw)
     try:
-        return json.loads(raw)
+        json_text = extract_analysis_dict(raw)
+        return json.loads(json_text)
     
     except Exception as e:
         
-        raise RuntimeError(f"Could not parse JSON from analysis output:{e}")
+        raise RuntimeError(f"Could not parse JSON from analysis output:{e}\n LLM output:\n{raw}")
     
 
 
 def extract_analysis_dict(raw_output: str) -> dict:
-    """
-    Extract the JSON dict after RESPONSE: from raw LLM output.
-    """
-    # Grab everything after RESPONSE:
-    match = re.search(r'RESPONSE:\s*(\{.*?\})', raw_output, flags=re.S)
+     # Search for JSON object or array
+    match = re.search(r'(\{.*?\}|\[.*?\])', raw_output, flags=re.S)
     if not match:
-        # fallback: assume entire output is JSON
-        response_text = raw_output
-    else:
-        response_text = match.group(1)
+        raise ValueError("No JSON object/array found after RESPONSE:")
 
-    # Remove potential backticks/code fences
-    response_text = re.sub(r'```(?:json)?', '', response_text).strip()
-
-    """
-    Remove trailing commas before closing brackets/braces.
-    """
-    # Remove trailing commas before } or ]
-    response_text = re.sub(r',(\s*[\}\]])', r'\1', response_text)
-
-    # Parse JSON into Python dict
-    return response_text
+    json_text = match.group(1).strip()
+    # Remove trailing commas
+    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
+    return json_text
