@@ -30,7 +30,8 @@ Rules:
 - Return ONLY a valid JSON array of {n} objects.
 - No extra text outside the JSON.
 """
-    response = generate_text(model ,tokenizer, system_prompt, user_prompt)
+    response = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500)
+    print(response)
     return parse_json_list(response)
 
 
@@ -59,7 +60,7 @@ Important:
 
             """
 
-            response = generate_text(model ,tokenizer, system_prompt, user_prompt)
+            response = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500)
             new_ex = parse_json_obj(response)
             if new_ex:
                 examples.append(new_ex)

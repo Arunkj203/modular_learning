@@ -1,7 +1,3 @@
-
-
-
-           
 from .phase_1.phase_1_main import run_phase1
 from .phase_2.phase_2_main import run_phase2
 from .phase_3.phase_3_main import run_phase3
@@ -35,9 +31,9 @@ print(f"\n=== Problem {1} ===")
 '''  Phase 1: Problem Analysis'''
 
 processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
-# gt = normalize_answer(processed["answer"])
+#gt = normalize_answer(processed["answer"])
 
-print("Phase 1 : Processed",analysis)
+print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 # analysis :
 # {'problem_type': 'combinations', 
