@@ -19,11 +19,27 @@ problem = {'ID': 'chal-777',
            }
 
 
-#processed = {'id': 'chal-777', 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 'answer': '145', 'intermediate_steps': '( 290.0 / 2.0 )', 'type': 'Common-Division'}
-#analysis = {'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}
+processed = { 'id': 'chal-777', 
+'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 
+'answer': '145', 
+'intermediate_steps': '( 290.0 / 2.0 )', 
+'type': 'Common-Division' }
 
-#primitive_sequence = [{'id': 'divide_adc5b268', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}, {'id': 'multiply_bc137ea9', 'name': 'multiply', 'input': {}, 'output': {}, 'description': 'Multiply two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}]
-#new_primitives_to_train =  [{'id': 'divide_adc5b268', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}, {'id': 'multiply_bc137ea9', 'name': 'multiply', 'input': {}, 'output': {}, 'description': 'Multiply two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}]
+analysis = {'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}
+
+primitive_sequence =[{'id': 'divide_0b679e5d', 'name': 'divide', 
+'input': {}, 'output': {}, 
+'description': 'Divide two numbers', 
+'problem_type': 'division', 
+'domain': 'math', 'methods': ['division'],
+ 'tags': ['division']} ]
+
+new_primitives_to_train =  [{'id': 'divide_0b679e5d', 'name': 'divide', 
+'input': {}, 'output': {}, 
+'description': 'Divide two numbers', 
+'problem_type': 'division', 
+'domain': 'math', 'methods': ['division'],
+ 'tags': ['division']} ]
 
 
 # Load model and tokenizer
@@ -38,7 +54,7 @@ print(f"\n=== Problem {1} ===")
 
 '''  Phase 1: Problem Analysis'''
 
-processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
+# processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
 
 #gt = normalize_answer(processed["answer"])
 
@@ -55,7 +71,7 @@ print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 '''  Phase 2: Primitive Generation  '''
 
-primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
+# primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
 
 print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
 
@@ -91,16 +107,16 @@ if not status:
    print("Phase 3 failed. Exiting.")
    exit(1)
 
-#print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
+print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
 # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
 ''' Phase 4: Problem Solving + Feedback '''
-#solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
+solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
 
-#print("Phase 4 : Problem Solved")
+print("Phase 4 : Problem Solved")
 
-#print("Steps:", steps)
-#print("Solution:", solution)
+print("Steps:", steps)
+print("Solution:", solution)
 
 
 def normalize_answer(ans):

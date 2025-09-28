@@ -106,8 +106,10 @@ def bootstrap_examples(model, tokenizer, seed_examples, target_size=20):
 
 
 # === Main Function ===
+
+''' Note : change n_formats &  n_samples_per_format after testing'''
 def generate_synthetic_data_for_primitive(
-    model, tokenizer, primitive_entry, n_formats=3, n_samples_per_format=20, save_path=None
+    model, tokenizer, primitive_entry, n_formats=2, n_samples_per_format=2, save_path=None
 ):
     """
     Generate a synthetic dataset for a primitive with:
@@ -131,10 +133,10 @@ def generate_synthetic_data_for_primitive(
             text_example = f"Input: {ex['input']}\nOutput: {ex['output']}"
             full_dataset.append({"text": text_example, "format_id": f})
 
-    # Optionally save
-    if save_path:
-        with open(save_path, "w", encoding="utf-8") as f:
-            json.dump(full_dataset, f, indent=2, ensure_ascii=False)
-        print(f"Saved dataset to {save_path}")
+    # # Optionally save
+    # if save_path:
+    #     with open(save_path, "w", encoding="utf-8") as f:
+    #         json.dump(full_dataset, f, indent=2, ensure_ascii=False)
+    #     print(f"Saved dataset to {save_path}")
 
     return full_dataset
