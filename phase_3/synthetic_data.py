@@ -1,9 +1,48 @@
-from ..model_config import generate_text
 import json
+from ..model_config import generate_text
+
+# === Robust JSON Parser ===
+def parse_json(text: str, expect_list: bool = False):
+    """
+    Extract and parse JSON from LLM output.
+    Cleans up markdown fences, stray text, and ensures valid JSON.
+
+    Args:
+        text (str): raw LLM output
+        expect_list (bool): True if expecting a JSON array
+
+    Returns:
+        parsed (dict or list): parsed JSON object or list
+    """
+    try:
+        # Remove markdown fences (```json ... ```)
+        if text.startswith("```"):
+            text = text.strip("`").split("json")[-1].strip()
+
+        # Extract JSON substring (between first { or [ and last } or ])
+        start = min([i for i in [text.find("{"), text.find("[")] if i != -1])
+        end = max([i for i in [text.rfind("}"), text.rfind("]")] if i != -1]) + 1
+        json_str = text[start:end].strip()
+
+        parsed = json.loads(json_str)
+
+        # If expecting list but got object, wrap it
+        if expect_list and isinstance(parsed, dict):
+            parsed = [parsed]
+
+        return parsed
+
+    except Exception as e:
+        raise RuntimeError(f"❌ Failed to parse JSON: {e}\nRaw text: {text}")
+
 
 # === Seed Example Generation ===
-def generate_seed_examples_for_format(model ,tokenizer, primitive_entry, format_id, n=5):
+def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_id, n=5):
+    """
+    Generate n seed training examples for a primitive in a specific format.
+    """
     system_prompt = "You are a helpful data generator that produces high-quality training examples."
+
     user_prompt = f"""
 Primitive:
 ID: {primitive_entry['id']}
@@ -30,13 +69,16 @@ Rules:
 - Return ONLY a valid JSON array of {n} objects.
 - No extra text outside the JSON.
 """
-    response = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500)
-    print(response)
-    return parse_json_list(response)
+
+    response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
+    return parse_json(response, expect_list=True)
 
 
 # === Bootstrapping from Seeds ===
-def bootstrap_examples(model ,tokenizer, seed_examples, target_size=20):
+def bootstrap_examples(model, tokenizer, seed_examples, target_size=20):
+    """
+    Expand seed examples into a larger dataset by paraphrasing.
+    """
     system_prompt = "You are a helpful data generator that creates paraphrased variations of training examples."
     examples = seed_examples.copy()
 
@@ -47,7 +89,7 @@ def bootstrap_examples(model ,tokenizer, seed_examples, target_size=20):
 
             user_prompt = f"""
 Given this example:
-{ex}
+{json.dumps(ex, ensure_ascii=False)}
 
 Generate a paraphrased variant with the same meaning,
 but different phrasing, numbers, or structure.
@@ -55,54 +97,33 @@ Return only valid JSON with "input" and "output".
 
 Important:
 - Output only valid JSON.
-- Do not include any extra text or code after the JSON.
-- Stop immediately after closing the final brace of the JSON object.
+- No extra text outside the JSON.
+"""
 
-            """
-
-            response = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500)
-            new_ex = parse_json_obj(response)
+            response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=500)
+            new_ex = parse_json(response, expect_list=False)
             if new_ex:
                 examples.append(new_ex)
 
     return examples
 
 
-# want to change these parsers to be more robust
-# === JSON Helpers ===
-def parse_json_list(text: str):
-    try:
-        if text.startswith("```"):
-            text = text.strip("`").split("json")[-1].strip()
-        return json.loads(text)
-    except Exception as e:
-        raise RuntimeError(f"JSON list parsing failed:{e}")
-
-def parse_json_obj(text: str):
-    try:
-        if text.startswith("```"):
-            text = text.strip("`").split("json")[-1].strip()
-        return json.loads(text)
-    except Exception as e:
-        raise RuntimeError(f"JSON list parsing failed:{e}")
-
-
 # === Main Function ===
 def generate_synthetic_data_for_primitive(
-   model ,tokenizer, primitive_entry, n_formats=3, n_samples_per_format=20, save_path=None
+    model, tokenizer, primitive_entry, n_formats=3, n_samples_per_format=20, save_path=None
 ):
     """
     Generate a synthetic dataset for a primitive with:
     - n_formats different input-output formats
     - n_samples_per_format per format
-    Returns a list of dicts with a "text" field, directly usable in LoRA training.
+    Returns a list of dicts with "text" field, directly usable in LoRA training.
     """
     full_dataset = []
 
     for f in range(1, n_formats + 1):
         print(f"=== Generating format {f} for primitive {primitive_entry['id']} ===")
-        seeds = generate_seed_examples_for_format(model ,tokenizer, primitive_entry, f, n=5)
-        format_dataset = bootstrap_examples(model ,tokenizer, seeds, target_size=n_samples_per_format)
+        seeds = generate_seed_examples_for_format(model, tokenizer, primitive_entry, f, n=5)
+        format_dataset = bootstrap_examples(model, tokenizer, seeds, target_size=n_samples_per_format)
 
         # Convert to LoRA training format
         for ex in format_dataset:

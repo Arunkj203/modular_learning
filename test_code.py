@@ -238,3 +238,22 @@ Parsed op:
 
 
 '''
+
+# Sample op
+
+'''
+--- Train on SVAMP ---
+
+=== Problem 1 ===
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Phase 1 : Processed:
+ {'id': 'chal-777', 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 'answer': '145', 'intermediate_steps': '( 290.0 / 2.0 )', 'type': 'Common-Division'}
+Analysis: {'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}
+Retrieved 0 relevant primitives.
+Calling LLM to generate primitive sequence...
+LLM returned 2 primitives in sequence.
+Phase 2 : Primitive Sequence Generated
+ [{'id': 'divide_adc5b268', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}, {'id': 'multiply_bc137ea9', 'name': 'multiply', 'input': {}, 'output': {}, 'description': 'Multiply two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}]
+New Primitives to train: [{'id': 'divide_adc5b268', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}, {'id': 'multiply_bc137ea9', 'name': 'multiply', 'input': {}, 'output': {}, 'description': 'Multiply two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}]
+
+'''
