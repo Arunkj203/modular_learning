@@ -35,15 +35,48 @@ print(f"\n=== Problem {1} ===")
 '''  Phase 1: Problem Analysis'''
 
 processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
-gt = normalize_answer(processed["answer"])
+# gt = normalize_answer(processed["answer"])
 
 print("Phase 1 : Processed",analysis)
+
+# analysis :
+# {'problem_type': 'combinations', 
+# 'domain': 'combinations', 
+# 'methods': ['intermediate'], 
+# 'tags': ['Combinations', 'Combinatorics']}
+
+
+
 
 '''  Phase 2: Primitive Generation  '''
 
 primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
 
 print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
+
+#  Primitive Sequence Generated
+#  [{'id': 'combinations_66752315', 
+# 'name': 'combinations', 
+# 'input': {}, 
+# 'output': {}, 
+# 'description': 'Combinations', 
+# 'problem_type': 'combinations',
+#  'domain': 'combinations', 
+# 'methods': ['intermediate'], 
+# 'tags': ['Combinations', 'Combinatorics']}]
+
+
+# New Primitives to train: 
+# [{'id': 'combinations_66752315', 
+# 'name': 'combinations', 
+# 'input': {}, 
+# 'output': {}, 
+# 'description': 
+# 'Combinations', 
+# 'problem_type': 'combinations', 
+# 'domain': 'combinations', 
+# 'methods': ['intermediate'], 
+# 'tags': ['Combinations', 'Combinatorics']}]
 
 
 '''  Phase 3: Primitive Training and Testing  '''

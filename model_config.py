@@ -57,7 +57,7 @@ def get_model_and_tokenizer():
 # -----------------------------
 # Helper function for generation
 # -----------------------------
-def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200, temperature=0.7):
+def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
 
     prompt = f"""SYSTEM:
         {system_prompt}
@@ -74,9 +74,8 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200, t
         outputs = model.generate(
             **inputs,
             max_new_tokens=max_tokens,
-            temperature=temperature,
-            do_sample=True,
-            top_p=0.95,
+            temperature=0.0,
+            do_sample=False,
         )
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
