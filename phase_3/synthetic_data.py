@@ -54,20 +54,19 @@ Input constraints: {primitive_entry.get('constraints', '')}
 Task:
 Create {n} DISTINCT training examples in JSON.
 
-Format:
+
+Valid output format example (for 2 examples):
 [
-  {{
-    "input": "string",
-    "output": "string"
-  }},
-  ...
+  {{"input": "some input text", "output": "expected output text"}},
+  {{"input": "another input", "output": "another output"}}
 ]
 
 Rules:
-- Each input must respect the constraints and demonstrate the transformation rule.
-- Each output must show the correct transformed result.
-- Return ONLY a valid JSON array of {n} objects.
-- No extra text outside the JSON.
+- Output MUST be ONLY a JSON array of {n} objects.
+- Each object must have exactly two fields: "input" (string) and "output" (string).
+- No explanations, no markdown, no extra text.
+- Ensure all examples follow the primitive's description and constraints.
+
 """
 
     response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
