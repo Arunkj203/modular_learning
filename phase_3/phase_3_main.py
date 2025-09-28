@@ -39,9 +39,9 @@ def run_phase3(model, tokenizer ,new_primitives_to_train, metric_threshold=0.8):
         if accuracy >= metric_threshold:
             adapter_path = os.path.join(OUTPUT_DIR, primitive["id"])
             trained_model.save_pretrained(adapter_path)
-            print(f"✅ Saved adapter for {name} at {adapter_path}")
+            print(f"Saved adapter for {name} at {adapter_path}")
         else:
-            print(f"❌ Adapter for {name} did not meet the threshold ({accuracy:.2f}). Skipping save.")
+            print(f" Adapter for {name} did not meet the threshold ({accuracy:.2f}). Skipping save.")
             return False
         
     return True

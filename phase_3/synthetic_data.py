@@ -33,7 +33,7 @@ def parse_json(text: str, expect_list: bool = False):
         return parsed
 
     except Exception as e:
-        raise RuntimeError(f"❌ Failed to parse JSON: {e}\nRaw text: {text}")
+        raise RuntimeError(f"Failed to parse JSON: {e}\nRaw text: {text}")
 
 
 # === Seed Example Generation ===
@@ -123,6 +123,8 @@ def generate_synthetic_data_for_primitive(
     for f in range(1, n_formats + 1):
         print(f"=== Generating format {f} for primitive {primitive_entry['id']} ===")
         seeds = generate_seed_examples_for_format(model, tokenizer, primitive_entry, f, n=5)
+
+        print(f"Generated \n {seeds} seed examples for format {f}.")
         format_dataset = bootstrap_examples(model, tokenizer, seeds, target_size=n_samples_per_format)
 
         # Convert to LoRA training format
@@ -134,6 +136,6 @@ def generate_synthetic_data_for_primitive(
     if save_path:
         with open(save_path, "w", encoding="utf-8") as f:
             json.dump(full_dataset, f, indent=2, ensure_ascii=False)
-        print(f"✅ Saved dataset to {save_path}")
+        print(f"Saved dataset to {save_path}")
 
     return full_dataset
