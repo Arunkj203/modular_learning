@@ -80,7 +80,7 @@ def generate_primitives_from_problem(
 
     print("Calling LLM to generate primitive sequence...")
     raw_output = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500)
-    # print("Raw LLM output for primitives:", raw_output)
+    print("Raw LLM output for primitives:", raw_output)
     try:
         # json_text = extract_json_from_text(raw_output)
         primitives_sequence = parse_llm_json(raw_output)["primitives"]

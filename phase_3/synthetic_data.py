@@ -1,4 +1,4 @@
-import json
+import json , re
 from ..model_config import generate_text
 
 # === Robust JSON Parser ===
@@ -36,6 +36,13 @@ def parse_json(text: str, expect_list: bool = False):
         raise RuntimeError(f"Failed to parse JSON: {e}\nRaw text: {text}")
 
 
+def parse_strict_json(response_text):
+    match = re.search(r'<<<JSON>>>(.*?)<<<END>>>', response_text, re.S)
+    if match:
+        return json.loads(match.group(1).strip())
+    raise ValueError("No valid JSON found in the response")
+
+
 # === Seed Example Generation ===
 def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_id, n=5):
     """
@@ -44,34 +51,32 @@ def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_
     system_prompt = "You are a helpful data generator that produces high-quality training examples."
 
     user_prompt = f"""
-Primitive:
-ID: {primitive_entry['id']}
-Name: {primitive_entry['name']}
-Description: {primitive_entry.get('description', '')}
-Domain: {primitive_entry.get('domain', '')}
-Input constraints: {primitive_entry.get('constraints', '')}
+        Primitive:
+        ID: {primitive_entry['id']}
+        Name: {primitive_entry['name']}
+        Description: {primitive_entry.get('description', '')}
+        Domain: {primitive_entry.get('domain', '')}
+        Input constraints: {primitive_entry.get('constraints', '')}
 
-Task:
-Create {n} DISTINCT training examples in JSON.
+        Task:
+        Generate {n} DISTINCT training examples.
 
+        Rules:
+        - Output ONLY the JSON array between <<<JSON>>> and <<<END>>> markers.
+        - Each object must have exactly two fields: "input" (string) and "output" (string).
+        - No explanations, no markdown, no extra text.
 
-Valid output format example (for 2 examples):
-[
-  {{"input": "some input text", "output": "expected output text"}},
-  {{"input": "another input", "output": "another output"}}
-]
-
-Rules:
-- Output MUST be ONLY a JSON array of {n} objects.
-- Each object must have exactly two fields: "input" (string) and "output" (string).
-- No explanations, no markdown, no extra text.
-- Ensure all examples follow the primitive's description and constraints.
-
-"""
+        <<<JSON>>>
+        [
+        {{"input": "sample input", "output": "sample output"}}
+        ]
+        <<<END>>>
+        """
 
     response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
-    # print(response)
-    return parse_json(response, expect_list=True)
+    print(response)
+
+    return parse_strict_json(response)
 
 
 # === Bootstrapping from Seeds ===
