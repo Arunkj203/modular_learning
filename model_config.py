@@ -65,7 +65,6 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
         USER:
         {user_prompt}
 
-        RESPONSE:
         """
 
 
