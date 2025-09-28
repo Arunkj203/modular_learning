@@ -120,149 +120,30 @@ def normalize_answer(ans):
 
 
 
-'''
-SYSTEM:
+# Phase 1 : Processed:
+#  {'id': 'chal-777', 
+# 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 
+# 'answer': '145', 
+# 'intermediate_steps': '( 290.0 / 2.0 )', 
+# 'type': 'Common-Division'}
+# 
+# Analysis: {'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}
 
-You are an AI reasoning assistant that generates minimal programmatic primitives to solve a problem.
+# Retrieved 0 relevant primitives.
 
-Rules:
-1. Use existing primitives if they match the task. Otherwise, generate a new primitive.
-2. Each primitive must include:
-   - id: reuse the existing primitive's id if it exists; otherwise leave it as an empty string
-   - name: short human-friendly name
-   - description: one-sentence description
-   - input: minimal input schema (field names/types)
-   - output: minimal output schema (field names/types)
-   - related_primitives: list of primitive IDs or names it often co-occurs with
-   - status: 'existing' if reused, 'new' if generated
+# Calling LLM to generate primitive sequence...
 
-3. Produce a sequence in execution order.
-4. Output must be valid JSON and contain ONLY the JSON array of primitives.
-5. For new primitives, provide only the minimal info required to train later.
+# Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
 
+# LLM returned 2 primitives in sequence.
 
-
-        USER:
-        Problem:
-There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?
-Domain hint: math
-
-Problem analysis:
-{
-  "problem_type": "classification",
-  "domain": "math",
-  "methods": [
-    "divide",
-    "multiply"
-  ],
-  "tags": [
-    "division",
-    "multiplication"
-  ]
-}
-
-Generate only the sequence of primitives in execution order.
-                Important:
-                - Enclose the JSON array between <start> and <end>.
-                - Output only valid JSON.
-                - Do not include any extra text or code after the <end> marker.
-
-
-        RESPONSE:
-
-        {
-          "problem_type": "classification",
-          "domain": "math",
-          "methods": [
-            "divide",
-            "multiply"
-          ],
-          "tags": [
-            "division",
-            "multiplication"
-          ],
-          "primitives": [
-            {
-              "id": "divide",
-              "name": "divide",
-              "description": "Divide two numbers",
-              "input": {
-                "type": "number",
-                "name": "a"
-              },
-              "output": {
-                "type": "number",
-                "name": "b"
-              },
-              "related_primitives": [
-                "multiply"
-              ],
-              "status": "existing"
-            },
-            {
-              "id": "multiply",
-              "name": "multiply",
-              "description": "Multiply two numbers",
-              "input": {
-                "type": "number",
-                "name": "a"
-              },
-              "output": {
-                "type": "number",
-                "name": "b"
-              },
-              "related_primitives": [
-                "divide"
-              ],
-              "status": "existing"
-            }
-          ]
-        }
-
-
-
-
-Parsed op:
- {
-          "problem_type": "classification",
-          "domain": "math",
-          "methods": [
-            "divide",
-            "multiply"
-          ],
-          "tags": [
-            "division",
-            "multiplication"
-          ],
-          "primitives": [
-            {
-              "id": "divide",
-              "name": "divide",
-              "description": "Divide two numbers",
-              "input": {
-                "type": "number",
-                "name": "a"
-              }
-
-
-
-'''
-
-# Sample op
-
-'''
---- Train on SVAMP ---
-
-=== Problem 1 ===
-The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
-Phase 1 : Processed:
- {'id': 'chal-777', 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 'answer': '145', 'intermediate_steps': '( 290.0 / 2.0 )', 'type': 'Common-Division'}
-Analysis: {'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}
-Retrieved 0 relevant primitives.
-Calling LLM to generate primitive sequence...
-LLM returned 2 primitives in sequence.
-Phase 2 : Primitive Sequence Generated
- [{'id': 'divide_adc5b268', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}, {'id': 'multiply_bc137ea9', 'name': 'multiply', 'input': {}, 'output': {}, 'description': 'Multiply two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}]
-New Primitives to train: [{'id': 'divide_adc5b268', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}, {'id': 'multiply_bc137ea9', 'name': 'multiply', 'input': {}, 'output': {}, 'description': 'Multiply two numbers', 'problem_type': 'classification', 'domain': 'math', 'methods': ['divide', 'multiply'], 'tags': ['division', 'multiplication']}]
-
-'''
+# Phase 2 : Primitive Sequence Generated
+#  [
+# {'id': 'divide_0b679e5d', 'name': 'divide', 
+# 'input': {}, 'output': {}, 
+# 'description': 'Divide two numbers', 
+# 'problem_type': 'division', 
+# 'domain': 'math', 'methods': ['division'],
+#  'tags': ['division']}, {
+# 'id': 'divide_96c5d626', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}]
+# New Primitives to train: [{'id': 'divide_0b679e5d', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}, {'id': 'divide_96c5d626', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}]

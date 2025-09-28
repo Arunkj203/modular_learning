@@ -2,45 +2,22 @@ import json , re
 from ..model_config import generate_text
 
 # === Robust JSON Parser ===
-def parse_json(text: str, expect_list: bool = False):
+def parse_raw_op_with_markers(raw_text: str):
     """
-    Extract and parse JSON from LLM output.
-    Cleans up markdown fences, stray text, and ensures valid JSON.
-
-    Args:
-        text (str): raw LLM output
-        expect_list (bool): True if expecting a JSON array
-
-    Returns:
-        parsed (dict or list): parsed JSON object or list
+    Extract JSON array of primitives from raw LLM output wrapped with <start> and <end>
     """
-    try:
-        # Remove markdown fences (```json ... ```)
-        if text.startswith("```"):
-            text = text.strip("`").split("json")[-1].strip()
+    # Extract text between <start> and <end>
+    match = re.search(r"<start>(.*?)<end>", raw_text, flags=re.S)
+    if not match:
+        raise ValueError("Could not find <start> ... <end> in raw output")
 
-        # Extract JSON substring (between first { or [ and last } or ])
-        start = min([i for i in [text.find("{"), text.find("[")] if i != -1])
-        end = max([i for i in [text.rfind("}"), text.rfind("]")] if i != -1]) + 1
-        json_str = text[start:end].strip()
+    json_text = match.group(1).strip()
 
-        parsed = json.loads(json_str)
+    # Remove trailing commas before } or ]
+    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
 
-        # If expecting list but got object, wrap it
-        if expect_list and isinstance(parsed, dict):
-            parsed = [parsed]
-
-        return parsed
-
-    except Exception as e:
-        raise RuntimeError(f"Failed to parse JSON: {e}\nRaw text: {text}")
-
-
-def parse_strict_json(response_text):
-    match = re.search(r'<<<JSON>>>(.*?)<<<END>>>', response_text, re.S)
-    if match:
-        return json.loads(match.group(1).strip())
-    raise ValueError("No valid JSON found in the response")
+    # Parse JSON
+    return json.loads(json_text)
 
 
 # === Seed Example Generation ===
@@ -56,27 +33,33 @@ def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_
         Name: {primitive_entry['name']}
         Description: {primitive_entry.get('description', '')}
         Domain: {primitive_entry.get('domain', '')}
-        Input constraints: {primitive_entry.get('constraints', '')}
 
-        Task:
-        Generate {n} DISTINCT training examples.
+        Input Schema:
+        {primitive_entry.get('input_schema', {})}
 
-        Rules:
-        - Output ONLY the JSON array between <<<JSON>>> and <<<END>>> markers.
-        - Each object must have exactly two fields: "input" (string) and "output" (string).
-        - No explanations, no markdown, no extra text.
+        Output Schema:
+        {primitive_entry.get('output_schema', {})}
 
-        <<<JSON>>>
+        Requirements:
+        - Generate at least 5 diverse examples with different types of inputs (edge cases, negative, zero, etc.).
+        - Ensure outputs are **correctly computed** from the inputs.
+        - Format as a JSON list of objects:
+        - Enclose the JSON array between <start> and <end>.
+
         [
-        {{"input": "sample input", "output": "sample output"}}
+        {{
+        "input": {primitive_entry.get('input_schema', {})},
+        "output": {primitive_entry.get('output_schema', {})}
+        }},
+        ...
         ]
-        <<<END>>>
+        - Make it neat and consistent for training.
         """
 
     response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
     print(response)
 
-    return parse_strict_json(response)
+    return parse_raw_op_with_markers(response)
 
 
 # === Bootstrapping from Seeds ===
@@ -101,12 +84,13 @@ but different phrasing, numbers, or structure.
 Return only valid JSON with "input" and "output".
 
 Important:
+- Enclose the JSON array between <start> and <end>.
 - Output only valid JSON.
 - No extra text outside the JSON.
 """
 
             response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=500)
-            new_ex = parse_json(response, expect_list=False)
+            new_ex = parse_raw_op_with_markers(response)
             if new_ex:
                 examples.append(new_ex)
 
@@ -129,8 +113,10 @@ def generate_synthetic_data_for_primitive(
         print(f"=== Generating format {f} for primitive {primitive_entry['id']} ===")
         seeds = generate_seed_examples_for_format(model, tokenizer, primitive_entry, f, n=5)
 
-        print(f"Generated \n {seeds} seed examples for format {f}.")
+        print(f"Generated seeds:\n {seeds} seed examples for format {f}.")
         format_dataset = bootstrap_examples(model, tokenizer, seeds, target_size=n_samples_per_format)
+
+        print(f"Bootstrapped data:\n {format_dataset} examples for format {f}.")
 
         # Convert to LoRA training format
         for ex in format_dataset:
