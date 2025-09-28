@@ -35,9 +35,9 @@ print(f"\n=== Problem {1} ===")
 '''  Phase 1: Problem Analysis'''
 
 processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
-gt = normalize_answer(processed["answer"])
+#gt = normalize_answer(processed["answer"])
 
-print("Phase 1 : Processed",analysis)
+print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 '''  Phase 2: Primitive Generation  '''
 
