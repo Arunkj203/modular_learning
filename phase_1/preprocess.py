@@ -17,17 +17,20 @@ def preprocess_problem(problem_entry: dict, dataset_name: str = "SVAMP"):
 
     if dataset_name == "svamp":
         pid = problem_entry.get("ID")
-        body = problem_entry.get("Body", "")
-        q = problem_entry.get("Question", "")
-        question = f"{body.strip()} {q.strip()}".strip()
+        # body = problem_entry.get("Body", "")
+        # q = problem_entry.get("Question", "")
+        # question = f"{body.strip()} {q.strip()}".strip()
+        question = problem_entry.get("question_concat", "").strip()
         answer = problem_entry.get("Answer")
+        type_ = problem_entry.get("Type")
         # SVAMP has no explicit intermediate steps
-        steps = None
+        steps = problem_entry.get("Equation")
 
     elif dataset_name == "asdiv":
         pid = problem_entry.get("ID")
         question = problem_entry.get("Problem", "").strip()
         answer = problem_entry.get("Answer")
+        type_ = problem_entry.get("Type","")
         # equation field as steps if available
         steps = problem_entry.get("Equation")
 
@@ -35,6 +38,7 @@ def preprocess_problem(problem_entry: dict, dataset_name: str = "SVAMP"):
         pid = problem_entry.get("id")  # sometimes not available
         question = problem_entry.get("question", "").strip()
         answer = problem_entry.get("answer")
+        type_ = problem_entry.get("Type","")        
         steps = problem_entry.get("rationale") or problem_entry.get("steps")
 
     else:
@@ -42,6 +46,7 @@ def preprocess_problem(problem_entry: dict, dataset_name: str = "SVAMP"):
         question = problem_entry.get("Problem") or problem_entry.get("question")
         answer = problem_entry.get("Answer") or problem_entry.get("answer")
         steps = problem_entry.get("Equation") or problem_entry.get("rationale")
+        type_ = problem_entry.get("Type","")
 
     # Clean whitespace
     if question:
@@ -50,10 +55,13 @@ def preprocess_problem(problem_entry: dict, dataset_name: str = "SVAMP"):
         answer = str(answer).strip()
     if steps:
         steps = re.sub(r"\s+", " ", str(steps))
+    if type_:
+        type_ = type_.strip()
 
     return {
         "id": pid,
         "question": question,
         "answer": answer,
-        "intermediate_steps": steps
+        "intermediate_steps": steps,
+        "type": type_
     }
