@@ -22,6 +22,7 @@ Important:
     """
 
     response = generate_text(model ,tokenizer, system_prompt, user_prompt)
+    print(response)
     return parse_json_list(response)
 
 
