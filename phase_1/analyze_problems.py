@@ -46,7 +46,9 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
 
     try:
-        return extract_analysis_dict(raw)
+
+        json_text = extract_analysis_dict(raw)
+        return json.loads(json_text)
     
     except Exception as e:
         
@@ -76,4 +78,4 @@ def extract_analysis_dict(raw_output: str) -> dict:
     response_text = re.sub(r',(\s*[\}\]])', r'\1', response_text)
 
     # Parse JSON into Python dict
-    return json.loads(response_text)
+    return response_text
