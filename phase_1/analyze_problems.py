@@ -24,25 +24,35 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     question = problem_entry.get("question", "")
     steps = problem_entry.get("intermediate_steps", "")
 
-    system_prompt = "You are an expert problem analyst. Identify the problem type, domain, and reasoning strategies.You only produce JSON output.Never include code, explanations, or any text outside the JSON."
+    
+    system_prompt = (
+    "You are an expert problem analyst. "
+    "Identify the problem type, domain, and reasoning strategies."
+    "You must output a JSON object ONLY, nothing else."
+    )
+
     user_prompt = f"""
     Problem: {question}
 
     Intermediate steps (if any): {steps}
 
-    Return a JSON object with fields:
-    - problem_type
-    - domain
-    - methods
-    - tags
+    Return exactly this format:
+    {{
+    "problem_type": "...",
+    "domain": "...",
+    "methods": ["...","..."],
+    "tags": ["...","..."]
+    }}
 
-    Important:
-    - Output only valid JSON.
-    - Do not include any extra text or code after the JSON.
-    - Stop immediately after closing the final brace of the JSON object.
-
+    Rules:
+    - Output ONLY valid JSON.
+    - No extra keys.
+    - No text before or after the JSON.
     """
 
+    
+    
+    
     raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
 
     try:
