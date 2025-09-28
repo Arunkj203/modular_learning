@@ -28,61 +28,6 @@ LR = 2e-4
 # ==================================================
 
 
-def train_primitive(copy_model, copy_tokenizer, dataset, primitive_id):
-    """Train one primitive as a LoRA adapter."""
-
-    # LoRA configuration
-
-
-    # fresh LoRA config for this primitive
-    peft_config = LoraConfig(
-        r=LORA_R,
-        lora_alpha=LORA_ALPHA,
-        lora_dropout=LORA_DROPOUT,
-        bias="none",
-        task_type="CAUSAL_LM"
-    )
-
-    # Training arguments : Create SFTConfig
-    
-    sft_config = SFTConfig(
-        max_length=64,
-        output_dir=os.path.join(OUTPUT_DIR, primitive_id),
-        overwrite_output_dir=True,
-        per_device_train_batch_size=BATCH_SIZE,
-        num_train_epochs=NUM_EPOCHS,
-        learning_rate=LR,
-        logging_steps=10,
-        eval_strategy ="epoch",
-        save_strategy="epoch",
-        save_total_limit=1,
-        fp16=torch.cuda.is_available(),
-        report_to="none",
-        dataset_text_field="text",
-
-    )
-
-    
-    # SFT Trainer setup
-
-    trainer = SFTTrainer(
-            model=copy_model,
-            train_dataset=dataset["train"],
-            eval_dataset=dataset["val"],
-            processing_class=copy_tokenizer,
-            args=sft_config,
-            peft_config=peft_config,
-        )
-
-
-    print(f"Training LoRA adapter for primitive '{primitive_id}'...")
-    trainer.train()
-
-    print("Training completed. Saving model...")
-    return copy_model
-
-
-
 # ------------------------
 # Load LoRA-adapted model
 # ------------------------
