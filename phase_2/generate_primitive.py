@@ -71,19 +71,20 @@ def generate_primitives_from_problem(
     if analysis:
         user_prompt += f"\nProblem analysis:\n{json.dumps(analysis, indent=2, ensure_ascii=False)}\n"
 
+   # Add instructions for <start>/<end> markers
     user_prompt += '''\nGenerate only the sequence of primitives in execution order.
-            Important:
-            - Output only valid JSON.
-            - Do not include any extra text or code after the JSON.
-            - Stop immediately after closing the final brace of the JSON object.
-        '''
+                Important:
+                - Enclose the JSON array between <start> and <end>.
+                - Output only valid JSON.
+                - Do not include any extra text or code after the <end> marker.
+                '''
 
     print("Calling LLM to generate primitive sequence...")
     raw_output = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500)
     print("Raw LLM output for primitives:", raw_output)
     try:
-        json_text = extract_json_from_text(raw_output)
-        primitives_sequence = json.loads(json_text)
+        # json_text = extract_json_from_text(raw_output)
+        primitives_sequence = json.loads(raw_output)
 
     except Exception as e:
         raise RuntimeError(f"Failed to parse JSON from LLM output: {e}")
