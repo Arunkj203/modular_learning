@@ -30,7 +30,7 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
         "You are an expert problem analyst. "
         "Identify the problem type, domain, reasoning strategies, "
         "and break the problem into clear, sequential subtasks."
-        "You must output a JSON object ONLY."
+        "You must output a JSON object ONLY, and enclose it EXACTLY between <start> and <end> markers."
     )
 
     user_prompt = f"""
@@ -52,10 +52,11 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     }}
     <end>
 
-    Rules:
-    - Output ONLY valid JSON.
-    - No extra keys.
-    - Number subtasks sequentially.
+    Instructions:
+    - Output a valid JSON object with the following keys: problem_type, domain, methods, tags, subtasks.
+    - Subtasks should be a list of step/instruction objects, numbered sequentially.
+    - Enclose the entire JSON **exactly** between <start> and <end> markers
+
     """
 
     
