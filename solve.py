@@ -20,7 +20,7 @@ def solve(dataset_name,mode,mode_text, model ,tokenizer):
 
     print(f"\n--- {mode_text} on {dataset_name} ---")
 
-    for idx , problem in  enumerate(list(dataset[mode])[:20]):  # Limit to first 20 for testing
+    for idx , problem in  enumerate(list(dataset[mode])):  # Limit to first 20 for testing
         print(f"\n=== Problem {idx+1} ===")
 
         '''  Phase 1: Problem Analysis'''
@@ -52,9 +52,10 @@ def solve(dataset_name,mode,mode_text, model ,tokenizer):
 
         print("Phase 4 : Problem Solved")
 
-        # print("Steps:", steps)
-        # print("Solution:", solution)
-
+        print("Steps:", steps)
+        print("Solution:", solution)
+	
+        return 10,[]
         # Collect all feedback
         all_feedback.extend(feedback_entries) 
         # Changes need to be made in phase 4 (return feedback entries)

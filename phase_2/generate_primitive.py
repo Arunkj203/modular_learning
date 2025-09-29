@@ -83,7 +83,7 @@ def generate_primitives_from_problem(
     # print("Raw LLM output for primitives:", raw_output)
     try:
         # json_text = extract_json_from_text(raw_output)
-        primitives_sequence = parse_raw_op_with_markers(raw_output)["primitives"]
+        primitives_sequence = parse_raw_op_with_markers(raw_output)
 
     except Exception as e:
         raise RuntimeError(f"Failed to parse JSON from LLM output: {e}")
