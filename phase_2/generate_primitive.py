@@ -25,7 +25,12 @@ Rules:
    - status: 'existing' if reused, 'new' if generated
 3. Generate primitives in **execution order**, respecting subtask dependencies.
 4. For new primitives, provide only minimal info required for later LoRA training.
-5. Output must be valid JSON: an array of primitives only, enclosed between <start> and <end>.
+5. Output must be **valid JSON**:
+   - The outermost structure MUST be a JSON array `[...]`.
+   - Each element MUST be a full JSON object `{...}`.
+   - Objects MUST be separated by commas.
+   - Do not include comments, trailing commas, or extra keys.
+6. Wrap the array strictly between `<start>` and `<end>` markers.
 """
 
 
