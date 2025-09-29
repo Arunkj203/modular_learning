@@ -105,6 +105,7 @@ def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
         # --------------------------------------------------
         # 7. Save adapter only if it meets the threshold
         # --------------------------------------------------
+        '''
         if accuracy >= metric_threshold:
             adapter_path = os.path.join(OUTPUT_DIR, primitive_id)
             trained_model.save_pretrained(adapter_path)  # saves only adapter weights
@@ -112,7 +113,13 @@ def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
         else:
             print(f"Adapter for {name} did not meet the threshold ({accuracy:.2f}). Skipping save.")
             return False
+        '''
 
+        adapter_path = os.path.join(OUTPUT_DIR, primitive_id)
+        trained_model.save_pretrained(adapter_path)  # saves only adapter weights
+        print(f"Saved adapter for {name} at {adapter_path}")
+
+        
         # --------------------------------------------------
         # 8. Cleanup to free memory
         # --------------------------------------------------

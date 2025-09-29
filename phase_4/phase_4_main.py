@@ -9,7 +9,7 @@ from ..model_config import OUTPUT_DIR, DEVICE
 
 
 
-def run_phase4(model, tokenizer , primitive_sequence, problem_text):
+def run_phase4(base_model, tokenizer , judge_model ,primitive_sequence, problem_text):
     """
     Phase 4: Problem solving using a sequence of primitives (dicts with id, description).
     
@@ -23,12 +23,6 @@ def run_phase4(model, tokenizer , primitive_sequence, problem_text):
     state_text = problem_text
     steps = []
     feedback_entries = []  # Collect feedback for this problem
-
-    # Load base model once (reuse for all primitives)
-    base_model = model
-
-
-    judge_model = AutoModelForCausalLM.from_pretrained("gpt-4-jurassic", device_map="auto")
 
     
     for primitive_entry in primitive_sequence:

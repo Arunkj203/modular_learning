@@ -43,8 +43,8 @@ new_primitives_to_train =  [{'id': 'divide_0b679e5d', 'name': 'divide',
 
 
 # Load model and tokenizer
-model, tokenizer = get_model_and_tokenizer()
-
+model, judge_model, tokenizer = get_model_and_tokenizer()
+ 
 print(f"Model and tokenizer loaded for {dataset_name}.")
 
 print(f"\n--- Train on {dataset_name} ---")
@@ -101,6 +101,8 @@ print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Pri
 
 
 '''  Phase 3: Primitive Training and Testing  '''
+# This is trained , next step is to use this trained primitive in phase 4
+# and see if it works correctly
 
 status = run_phase3(model, tokenizer ,new_primitives_to_train)
 if not status:
@@ -111,7 +113,7 @@ print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives
 # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
 ''' Phase 4: Problem Solving + Feedback '''
-solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
+solution, steps, feedback_entries = run_phase4(model,judge_model, tokenizer ,primitive_sequence, problem_text=processed["question"])
 
 print("Phase 4 : Problem Solved")
 

@@ -7,7 +7,7 @@ from .phase_4.phase_4_main import run_phase4
 from .config import *
 from datasets import load_dataset
 
-def solve(dataset_name,mode,mode_text, model, tokenizer):
+def solve(dataset_name,mode,mode_text, model,judge_model ,tokenizer):
 
     correct, total = 0, 0
     primitive_logs = []
@@ -48,7 +48,7 @@ def solve(dataset_name,mode,mode_text, model, tokenizer):
         # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
         ''' Phase 4: Problem Solving + Feedback '''
-        solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
+        solution, steps, feedback_entries = run_phase4(model, tokenizer,judge_model ,primitive_sequence, problem_text=processed["question"])
 
         print("Phase 4 : Problem Solved")
 
