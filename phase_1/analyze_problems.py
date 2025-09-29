@@ -36,13 +36,6 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
 
         Intermediate steps (if any): {steps}
 
-        Instructions:
-        - Output a valid JSON object with the following keys: problem_type, domain, methods, tags, subtasks.
-        - Each subtask in 'subtasks' must have:
-            - step: sequential number
-            - instruction: a conceptual action describing what to do to progress toward solving the problem, **without computing the answer**.
-        - Enclose the entire JSON exactly between <start> and <end> markers.
-        - Do NOT include any extra text before, after, or inside the markers.
 
         Example:
         <start>
@@ -57,6 +50,16 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
         ]
         }}
         <end>
+
+
+        Instructions:
+        - Output a valid JSON object with the following keys: problem_type, domain, methods, tags, subtasks.
+        - Each subtask in 'subtasks' must have:
+            - step: sequential number
+            - instruction: a conceptual action describing what to do to progress toward solving the problem, **without computing the answer**.
+        - Enclose the entire JSON exactly between <start> and <end> markers.
+        - Do NOT include any extra text before, after, or inside the markers.
+
         """
     
     
