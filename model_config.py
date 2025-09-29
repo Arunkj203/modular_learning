@@ -24,7 +24,6 @@ except Exception:
 #BASE_MODEL = "meta-llama/Llama-2-7b-hf"   # Original Model
 
 BASE_MODEL = "meta-llama/CodeLlama-34b-hf" # Larger Model
-judge_model_Name = "gpt-4-jurassic"
 
 # BASE_MODEL = "HuggingFaceM4/tiny-random-LlamaForCausalLM"  # Test Model
 OUTPUT_DIR = "./results/lora_adapters"
@@ -56,10 +55,7 @@ def get_model_and_tokenizer():
         token = HUGGINGFACEHUB_API_TOKEN
     )
 
-    judge_model = AutoModelForCausalLM.from_pretrained(judge_model_Name, device_map="auto")
-
-
-    return model, judge_model , tokenizer
+    return model , tokenizer
 
 # -----------------------------
 # Helper function for generation

@@ -1,15 +1,14 @@
 # phase_4_main.py
 import torch
 import json
-from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 
 
-from ..model_config import OUTPUT_DIR, DEVICE
+from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter
 
 
 
-def run_phase4(base_model, tokenizer , judge_model ,primitive_sequence, problem_text):
+def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text):
     """
     Phase 4: Problem solving using a sequence of primitives (dicts with id, description).
     
@@ -24,70 +23,76 @@ def run_phase4(base_model, tokenizer , judge_model ,primitive_sequence, problem_
     steps = []
     feedback_entries = []  # Collect feedback for this problem
 
+    # Cache for loaded LoRA models
+    primitive_cache = {}
+
     
     for primitive_entry in primitive_sequence:
         primitive_id = primitive_entry["id"]
         primitive_name = primitive_entry.get("name", "")
         description = primitive_entry.get("description", "")
+
         try:
-            # Load LoRA adapter for this primitive
-            lora_path = f"{OUTPUT_DIR}/{primitive_id}"
-            model = PeftModel.from_pretrained(base_model, lora_path)
-            model.eval()
-            model.to(DEVICE)
+            # === Load or reuse LoRA adapter ===
+            if primitive_id not in primitive_cache:
+                lora_path = f"{OUTPUT_DIR}/{primitive_id}"
+                primitive_model = PeftModel.from_pretrained(base_model, lora_path)
+                primitive_model.to(DEVICE)
+                primitive_model.eval()
+                primitive_cache[primitive_id] = primitive_model
+            model = primitive_cache[primitive_id]
             
-            # Tokenize current state
-            inputs = tokenizer(state_text, return_tensors="pt").to(DEVICE)
-            
-            # Generate output
+            # === Inference ===
+            inputs = tokenizer(state_text, return_tensors="pt", truncation=True).to(DEVICE)
             with torch.no_grad():
                 outputs = model.generate(**inputs, max_new_tokens=128)
             primitive_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
-            
-            # --- LLM validation & correction in a single step ---
-            judge_result = llm_validate_and_correct(
-                        judge_model,
-                        primitive_id,
-                        description,
-                        state_text,
-                        primitive_output
-                    )
 
+            # === Validate & correct ===
+            judge_result = llm_validate_and_correct(
+                primitive_id,
+                description,
+                state_text,
+                primitive_output
+            )
+
+            corrected_output = judge_result.get("corrected_output", primitive_output)
+            valid = judge_result.get("valid", False)
 
             steps.append({
                 "primitive": primitive_name,
                 "description": description,
                 "input": state_text,
                 "output": primitive_output,
-                "valid": judge_result["valid"],
-                "validation_reason": judge_result["reason"],
-                "corrected_output" : judge_result["corrected_output"]
+                "valid": valid,
+                "validation_reason": judge_result.get("reason", ""),
+                "corrected_output": corrected_output
             })
 
             feedback_entries.append({
                 "primitive_id": primitive_id,
                 "input": state_text,
                 "output": primitive_output,
-                "valid": judge_result["valid"],
-                "validation_reason": judge_result["reason"],
-                "corrected_output": judge_result["corrected_output"]
+                "valid": valid,
+                "validation_reason": judge_result.get("reason", ""),
+                "corrected_output": corrected_output
             })
 
-            # Update state for next primitive
-            state_text = primitive_output
-        
+            # === Update state for next primitive ===
+            state_text = corrected_output
+
         except Exception as e:
             print(f"Error applying primitive {primitive_id}: {e}")
-            return None, steps
+            return None, steps, feedback_entries
+
     
     return state_text, steps , feedback_entries
 
 
 
-
-def llm_validate_and_correct(judge_model, primitive_name, description, input_text, output_text):
+def llm_validate_and_correct(primitive_name, description, input_text, output_text):
     """
-    Validate a primitive output and optionally correct it in a single LLM call.
+    Validate a primitive output and optionally correct it using an external judge model.
 
     Returns:
         dict: {
@@ -96,7 +101,8 @@ def llm_validate_and_correct(judge_model, primitive_name, description, input_tex
             "corrected_output": <corrected output if invalid, or original output if valid>
         }
     """
-    prompt = f"""
+    system_prompt = "You are a strict JSON-only judge for validating primitive outputs."
+    user_prompt = f"""
 Primitive Name: {primitive_name}
 Description: {description}
 Input: {input_text}
@@ -104,29 +110,31 @@ Output: {output_text}
 
 Question: Is the output correct? If not, provide the corrected output.
 
-Respond with JSON:
+Respond ONLY with valid JSON in this format:
 {{
     "valid": true/false,
     "reason": "short explanation",
     "corrected_output": "..."
 }}
-
-Important:
-    - Output only valid JSON.
-    - Do not include any extra text or code after the JSON.
-    - Stop immediately after closing the final brace of the JSON object.
-
 """
-    response_text = judge_model.generate(prompt, max_new_tokens=128)
+
     try:
+        # Call OpenRouter judge
+        response_text = call_openrouter(system_prompt, user_prompt, max_tokens=200)
+
+        # Parse JSON response
         result = json.loads(response_text)
-        # Ensure corrected_output exists
-        if "corrected_output" not in result or not result["corrected_output"]:
+
+        # Ensure corrected_output is present
+        if not result.get("corrected_output"):
             result["corrected_output"] = output_text
+
         return result
-    except Exception:
+
+    except Exception as e:
+        # Fallback if parsing fails
         return {
             "valid": None,
-            "reason": "LLM response unparsable",
+            "reason": f"LLM response unparsable: {str(e)}",
             "corrected_output": output_text
         }

@@ -15,12 +15,12 @@ def main():
     dataset_name = "SVAMP"
 
     # Load model and tokenizer
-    model, judge_model , tokenizer = get_model_and_tokenizer()
+    model , tokenizer = get_model_and_tokenizer()
 
     print(f"Model and tokenizer loaded for {dataset_name}.")
 
-    train_acc , train_feedback_entries = solve(dataset_name,"train","Training", model,judge_model, tokenizer)
-    test_acc , test_feedback_entries = solve(dataset_name,"test","Testing", model,judge_model, tokenizer)
+    train_acc , train_feedback_entries = solve(dataset_name,"train","Training", model, tokenizer)
+    test_acc , test_feedback_entries = solve(dataset_name,"test","Testing", model, tokenizer)
 
     
 
