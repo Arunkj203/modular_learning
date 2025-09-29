@@ -69,12 +69,12 @@ def evaluate_lora(model, tokenizer, test_data):
         if expected in generated:
             correct += 1
         else:
-            print(f"❌ Prompt: {prompt}")
+            print(f"Prompt: {prompt}")
             print(f"Expected: {expected}")
             print(f"Generated: {generated}\n")
 
     accuracy = correct / len(test_data)
-    print(f"✅ Accuracy: {accuracy*100:.2f}%")
+    print(f"Accuracy: {accuracy*100:.2f}%")
     return accuracy
 
 

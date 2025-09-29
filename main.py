@@ -7,6 +7,10 @@ from .model_config import get_model_and_tokenizer
 from datasets import Dataset
 import json
 
+import warnings
+
+warnings.simplefilter("ignore")      # Suppress Python warnings
+
 def main():
 
     # dataset_name = sys.argv[1] # e.g., "SVAMP"
