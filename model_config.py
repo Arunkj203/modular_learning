@@ -85,7 +85,7 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
     # Decode to string
     raw_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
 	
-   # print(raw_output)
+    print(raw_output)
     # Extract text after RESPONSE:
     after_response = raw_output.split("RESPONSE:")[-1]
 
