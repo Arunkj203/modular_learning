@@ -7,6 +7,7 @@ import re
 
 
 from ..model_config import generate_text
+from ..config import parse_raw_op_with_markers
 
 
 def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str, Any]:
@@ -26,9 +27,10 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
 
     
     system_prompt = (
-    "You are an expert problem analyst. "
-    "Identify the problem type, domain, and reasoning strategies."
-    "You must output a JSON object ONLY, nothing else."
+        "You are an expert problem analyst. "
+        "Identify the problem type, domain, reasoning strategies, "
+        "and break the problem into clear, sequential subtasks."
+        "You must output a JSON object ONLY."
     )
 
     user_prompt = f"""
@@ -38,20 +40,22 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
 
     Return exactly this JSON format enclosed in <start> and <end>:
     <start>
-
     {{
-    "problem_type": "...",
-    "domain": "...",
-    "methods": ["...","..."],
-    "tags": ["...","..."]
+        "problem_type": "...",
+        "domain": "...",
+        "methods": ["...","..."],
+        "tags": ["...","..."],
+        "subtasks": [
+            {{"step": 1, "instruction": "..."}},
+            {{"step": 2, "instruction": "..."}}
+        ]
     }}
-
     <end>
 
     Rules:
     - Output ONLY valid JSON.
     - No extra keys.
-    - No text before or after the JSON.
+    - Number subtasks sequentially.
     """
 
     
@@ -60,22 +64,9 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
     # print("Raw analysis output:", raw)
     try:
-        json_text = extract_analysis_dict(raw)
-        return json.loads(json_text)
+        return parse_raw_op_with_markers(raw)
     
     except Exception as e:
-        
         raise RuntimeError(f"Could not parse JSON from analysis output:{e}\n LLM output:\n{raw}")
     
 
-
-def extract_analysis_dict(raw_output: str) -> dict:
-     # Search for JSON object or array
-    match = re.search(r'(\{.*?\}|\[.*?\])', raw_output, flags=re.S)
-    if not match:
-        raise ValueError("No JSON object/array found after RESPONSE:")
-
-    json_text = match.group(1).strip()
-    # Remove trailing commas
-    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
-    return json_text

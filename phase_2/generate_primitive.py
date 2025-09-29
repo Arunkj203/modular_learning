@@ -5,7 +5,6 @@ import json , re
 import uuid
 
 from ..model_config import generate_text
-from .utils import extract_json_from_text
 
 from ..config import *
 import numpy as np
@@ -15,21 +14,20 @@ system_prompt = f"""
 You are an AI reasoning assistant that generates minimal programmatic primitives to solve a problem.
 
 Rules:
-1. Use existing primitives if they match the task. Otherwise, generate a new primitive.
+1. Use existing primitives if they match a subtask. Otherwise, generate a new primitive.
 2. Each primitive must include:
-   - id: reuse the existing primitive's id if it exists; otherwise leave it as an empty string
+   - id: reuse existing primitive's id if applicable; otherwise leave empty
    - name: short human-friendly name
    - description: one-sentence description
    - input: minimal input schema (field names/types)
    - output: minimal output schema (field names/types)
    - related_primitives: list of primitive IDs or names it often co-occurs with
    - status: 'existing' if reused, 'new' if generated
-
-3. Produce a sequence in execution order.
-4. Output must be valid JSON and contain ONLY the JSON array of primitives.
-5. For new primitives, provide only the minimal info required to train later.
-
+3. Generate primitives in **execution order**, respecting subtask dependencies.
+4. For new primitives, provide only minimal info required for later LoRA training.
+5. Output must be valid JSON: an array of primitives only, enclosed between <start> and <end>.
 """
+
 
 def generate_primitives_from_problem(
     model ,tokenizer,  
@@ -45,7 +43,6 @@ def generate_primitives_from_problem(
 
     """
 
-    old_primitives_text = ""
     summary = []
     existing_ids = []
 
@@ -61,22 +58,52 @@ def generate_primitives_from_problem(
             })
 
             existing_ids.append(p.get("id"))
-        old_primitives_text = f"\nExisting primitives:\n{json.dumps(summary, indent=2, ensure_ascii=False)}\n"
 
-    user_prompt = f"Problem:\n{problem_text}\n"
-    if domain_hint:
-        user_prompt += f"Domain hint: {domain_hint}\n"
-    user_prompt += old_primitives_text
+    
+    # ---------------- Split analysis fields ----------------
     if analysis:
-        user_prompt += f"\nProblem analysis:\n{json.dumps(analysis, indent=2, ensure_ascii=False)}\n"
+        # Copy analysis to avoid modifying original
+        analysis_copy = analysis.copy()
+        
+        # Pop subtasks from analysis
+        subtasks = analysis_copy.pop("subtasks", [])
+        domain = analysis_copy.pop("domain","")
+    else:
+        analysis_copy = {}
+        subtasks = []
+        domain = ""
 
-   # Add instructions for <start>/<end> markers
-    user_prompt += '''\nGenerate only the sequence of primitives in execution order.
-                Important:
-                - Enclose the JSON array between <start> and <end>.
-                - Output only valid JSON.
-                - Do not include any extra text or code after the <end> marker.
-                '''
+
+    # ---------------- Prepare subtasks ----------------
+    subtasks_text = ""
+    if subtasks:
+        subtasks_text = json.dumps(subtasks, indent=2, ensure_ascii=False)
+
+
+    user_prompt = f"""
+            Problem:
+            {problem_text}
+
+            Domain hint: {domain_hint or 'None'} - {domain}
+
+            Existing primitives (if any):
+            {json.dumps(summary, indent=2, ensure_ascii=False)}
+
+            Problem analysis:
+            {json.dumps(analysis_copy, indent=2, ensure_ascii=False)}
+
+            Subtasks:
+            {subtasks_text}
+
+
+            Instructions for LLM:
+            - The 'subtasks' from analysis represent the logical steps to solve the problem.
+            - Map each subtask to one or more primitives, reusing existing ones if possible.
+            - Each primitive should be atomic, minimal, and solvable independently.
+            - Output only the JSON array of primitives, between <start> and <end>.
+            - Do NOT include any extra text outside the markers.
+            """
+    
 
     print("Calling LLM to generate primitive sequence...")
     raw_output = generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=1500)
@@ -182,23 +209,6 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
     return [primitive_metadata[pid] for pid in retrieved]
 
 
-
-def parse_raw_op_with_markers(raw_text: str):
-    """
-    Extract JSON array of primitives from raw LLM output wrapped with <start> and <end>
-    """
-    # Extract text between <start> and <end>
-    match = re.search(r"<start>(.*?)<end>", raw_text, flags=re.S)
-    if not match:
-        raise ValueError("Could not find <start> ... <end> in raw output")
-
-    json_text = match.group(1).strip()
-
-    # Remove trailing commas before } or ]
-    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
-
-    # Parse JSON
-    return json.loads(json_text)
 
 
 

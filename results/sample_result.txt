@@ -1,15 +1,14 @@
-Loading tokenizer for meta-llama/CodeLlama-34b-hf...
-Loading model meta-llama/CodeLlama-34b-hf on cuda (FP16)...
-Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:11<00:00,  1.69s/it]
 Model and tokenizer loaded for SVAMP.
+
 primitive_graph.gpickle not found, starting with empty graph
 primitive_vectors.index not found, starting with empty FAISS index
 primitive_maps.pkl not found, starting with empty metadata
 
+
 --- Training on SVAMP ---
 
 === Problem 1 ===
-Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+
 Phase 1 : Processed {'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}
 Retrieved 0 relevant primitives.
 Calling LLM to generate primitive sequence...
@@ -19,30 +18,35 @@ Phase 2 : Primitive Sequence Generated
 
 === Training primitive: divide ===
 === Generating format 1 for primitive divide_5631db4b ===
-Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+
 Generated seeds:
  [{'input': {'x': 1, 'y': 2}, 'output': {'value': 0.5}}, {'input': {'x': 2, 'y': 1}, 'output': {'value': 2}}, {'input': {'x': 1, 'y': 1}, 'output': {'value': 1}}, {'input': {'x': 2, 'y': 2}, 'output': {'value': 1}}, {'input': {'x': 1, 'y': 0}, 'output': {'value': None}}] seed examples for format 1.
+
 Bootstrapped data:
  [{'input': {'x': 1, 'y': 2}, 'output': {'value': 0.5}}, {'input': {'x': 2, 'y': 1}, 'output': {'value': 2}}, {'input': {'x': 1, 'y': 1}, 'output': {'value': 1}}, {'input': {'x': 2, 'y': 2}, 'output': {'value': 1}}, {'input': {'x': 1, 'y': 0}, 'output': {'value': None}}] examples for format 1.
+
 === Generating format 2 for primitive divide_5631db4b ===
-Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+
 Generated seeds:
  [{'input': {'x': 1, 'y': 2}, 'output': {'value': 0.5}}, {'input': {'x': 2, 'y': 1}, 'output': {'value': 2}}, {'input': {'x': 1, 'y': 1}, 'output': {'value': 1}}, {'input': {'x': 2, 'y': 2}, 'output': {'value': 1}}, {'input': {'x': 1, 'y': 0}, 'output': {'value': None}}] seed examples for format 2.
+
 Bootstrapped data:
  [{'input': {'x': 1, 'y': 2}, 'output': {'value': 0.5}}, {'input': {'x': 2, 'y': 1}, 'output': {'value': 2}}, {'input': {'x': 1, 'y': 1}, 'output': {'value': 1}}, {'input': {'x': 2, 'y': 2}, 'output': {'value': 1}}, {'input': {'x': 1, 'y': 0}, 'output': {'value': None}}] examples for format 2.
-Adding EOS to train dataset: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 3430.57 examples/s]
-Tokenizing train dataset: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 2221.27 examples/s]
-Truncating train dataset: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 4563.99 examples/s]
-Adding EOS to eval dataset: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 661.56 examples/s]
-Tokenizing eval dataset: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 499.38 examples/s]
-Truncating eval dataset: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 686.47 examples/s]
-Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+Adding EOS to train dataset:  
+Tokenizing train dataset:   
+Truncating train dataset:   
+Adding EOS to eval dataset:
+Tokenizing eval dataset:
+Truncating eval dataset:
+
 Training LoRA adapter for primitive 'divide_5631db4b'...
 {'eval_loss': 1.9992022514343262, 'eval_runtime': 0.066, 'eval_samples_per_second': 15.147, 'eval_steps_per_second': 15.147, 'eval_entropy': 1.6944500207901, 'eval_num_tokens': 202.0, 'eval_mean_token_accuracy': 0.5416666865348816, 'epoch': 1.0}
 {'eval_loss': 1.8880548477172852, 'eval_runtime': 0.065, 'eval_samples_per_second': 15.392, 'eval_steps_per_second': 15.392, 'eval_entropy': 1.7410413026809692, 'eval_num_tokens': 404.0, 'eval_mean_token_accuracy': 0.5416666865348816, 'epoch': 2.0}
 {'eval_loss': 1.8296147584915161, 'eval_runtime': 0.065, 'eval_samples_per_second': 15.389, 'eval_steps_per_second': 15.389, 'eval_entropy': 1.764137625694275, 'eval_num_tokens': 606.0, 'eval_mean_token_accuracy': 0.5833333134651184, 'epoch': 3.0}
 {'train_runtime': 3.4058, 'train_samples_per_second': 7.047, 'train_steps_per_second': 1.762, 'train_loss': 1.8502264022827148, 'epoch': 3.0}
 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:03<00:00,  1.76it/s]
+
 Training completed.
 ❌ Prompt: Input: {'x': 1, 'y': 1}
 Output:
@@ -93,17 +97,34 @@ Output: {'x': 1, 'y': 1}
 Input: {'
 
 Accuracy: 0.00%
+
 Saved adapter for divide at ./results/lora_adapters/divide_138bf26d
+
 Phase 3 completed. Trained 2 new primitives.
+
+
 Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
 Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+
+
 Phase 4 : Problem Solved
-Steps: [{'primitive': 'divide', 'description': 'Divide two numbers', 'input': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 'output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 29", 'valid': None, 'validation_reason': 'LLM response unparsable: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions', 'corrected_output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 29"}, {'primitive': 'divide', 'description': 'Divide two numbers', 'input': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 29", 'output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - This question was asked on reddit on 2018-03-11 at 01:00:00.\nOriginal post by The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas", 'valid': None, 'validation_reason': 'LLM response unparsable: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions', 'corrected_output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - This question was asked on reddit on 2018-03-11 at 01:00:00.\nOriginal post by The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas"}]
+
+Steps: [
+    {'primitive': 'divide', 'description': 'Divide two numbers', 
+    'input': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?",
+     'output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 29",
+      'valid': None, 
+      'validation_reason': 'LLM response unparsable: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions', 
+      'corrected_output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 29"},
+       {'primitive': 'divide', 'description': 'Divide two numbers', 'input': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 29", 'output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - This question was asked on reddit on 2018-03-11 at 01:00:00.\nOriginal post by The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas", 'valid': None, 'validation_reason': 'LLM response unparsable: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions', 'corrected_output': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - This question was asked on reddit on 2018-03-11 at 01:00:00.\nOriginal post by The_Senate\nThere are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas"}]
+
 Solution: There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?
 There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Checked by reddit user The_Senate
 There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - Original Question
 There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas? - This question was asked on reddit on 2018-03-11 at 01:00:00.
 Original post by The_Senate
+
 There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas
+
 Train Accuracy on SVAMP: 1000.00%

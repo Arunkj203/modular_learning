@@ -1,0 +1,50 @@
+1. Workflow / Pipeline
+
+Parallelize independent tasks (LoRA training, next primitive generation, data gen).
+
+Batch similar problems/primitives for LLM calls.
+
+Use asynchronous orchestration to avoid blocking.
+
+
+2. LLM Usage
+
+Use task-specialized LLMs (analysis, primitive generation, data generation).
+
+Optimize prompts: minimal context + structured output.
+
+Cache outputs for repeated or similar problems.
+
+
+3. LoRA Training
+
+Incremental / online LoRA updates instead of full retraining.
+
+Share low-rank delta for similar primitives.
+
+Fine-tune only on difficult or ambiguous primitives.
+
+
+4. Synthetic Data
+
+Use template-based generation first, LLM only for diversity.
+
+Apply rule-based data augmentation (invert, shuffle, numeric variations).
+
+Integrate LoRA/validation to reject invalid data early.
+
+
+5. Memory & Modularization
+
+Store reusable modules (analysis patterns, primitives, data templates).
+
+Dynamic skill routing: reuse similar past primitives/data.
+
+Use graph-based mapping to identify recomputation needs.
+
+
+6. Monitoring & Optimization
+
+Profile per-task latency and resource usage.
+
+Identify bottlenecks before optimizing blindly.

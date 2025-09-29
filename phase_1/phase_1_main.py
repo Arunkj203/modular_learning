@@ -25,6 +25,8 @@ def run_phase1(model, tokenizer,problem=None, dataset_name="SVAMP"):
 
     # Step 2 - Analyze the Problem
     analysis = analyze_problem(model, tokenizer ,processed)
+
+    
     # print("\n=== Analysis (JSON) ===")
     # print(json.dumps(analysis, indent=2))
 
