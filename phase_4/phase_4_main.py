@@ -109,7 +109,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
 
             # Call your generate_text wrapper
             output_text = generate_text(
-                model=model, 
+                model=base_model, 
                 tokenizer=tokenizer, 
                 system_prompt=system_prompt, 
                 user_prompt=user_prompt,
