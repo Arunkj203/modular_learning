@@ -198,7 +198,7 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
     if primitive_id_map is None or len(primitive_id_map) == 0:
         return []
 
-    retrieved = [primitive_id_map[i] for i in I[0]]
+    retrieved = [primitive_id_map[i] for i in I[0] if i != -1]
 
     # Expand using graph relationships
     if expand_related:
