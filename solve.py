@@ -13,6 +13,8 @@ def solve(dataset_name,mode,mode_text, model ,tokenizer):
     primitive_logs = []
     all_feedback = []  # Collect feedback for all problems
 
+    use_lora = False
+
     dataset = load_dataset(dataset_path[dataset_name])
 
 
@@ -20,7 +22,7 @@ def solve(dataset_name,mode,mode_text, model ,tokenizer):
 
     print(f"\n--- {mode_text} on {dataset_name} ---")
 
-    for idx , problem in  enumerate(list(dataset[mode])):  # Limit to first 20 for testing
+    for idx , problem in  enumerate(list(dataset[mode])[:5]):  # Limit to first 20 for testing
         print(f"\n=== Problem {idx+1} ===")
 
         '''  Phase 1: Problem Analysis'''
@@ -36,17 +38,18 @@ def solve(dataset_name,mode,mode_text, model ,tokenizer):
 
         print(f"Phase 2 : Primitive Sequence Generated")
 
+        if use_lora:
+            '''  Phase 3: Primitive Training and Testing  '''
 
-        '''  Phase 3: Primitive Training and Testing  '''
+            status = run_phase3(model, tokenizer ,new_primitives_to_train)
+            if not status:
+                print("Phase 3 failed. Exiting.")
+                exit(1)
 
-        status = run_phase3(model, tokenizer ,new_primitives_to_train)
-        if not status:
-            print("Phase 3 failed. Exiting.")
-            exit(1)
+            print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
+            # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
-        print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
-        # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
-
+        
         ''' Phase 4: Problem Solving + Feedback '''
         solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
 
@@ -55,9 +58,8 @@ def solve(dataset_name,mode,mode_text, model ,tokenizer):
         print("Steps:", steps)
         print("Solution:", solution)
 	
-        return 10,[]
         # Collect all feedback
-        all_feedback.extend(feedback_entries) 
+        # all_feedback.extend(feedback_entries) 
         # Changes need to be made in phase 4 (return feedback entries)
 
         pred = normalize_answer(solution)

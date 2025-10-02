@@ -28,6 +28,7 @@ LR = 2e-4
 # ==================================================
 
 
+
 # ------------------------
 # Load LoRA-adapted model
 # ------------------------
@@ -38,6 +39,8 @@ def load_lora_model(lora_path: str):
     
     model = PeftModel.from_pretrained(base_model, lora_path)
     return model, tokenizer
+
+
 
 
 # ------------------------

@@ -4,11 +4,12 @@ import json
 from peft import PeftModel
 
 
-from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter
+from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter ,generate_text
 
 
 
-def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text):
+def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora=False):
+
     """
     Phase 4: Problem solving using a sequence of primitives (dicts with id, description).
     
@@ -19,6 +20,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text):
     Returns:
         final_solution (str), steps (list of dicts): Each dict has 'primitive_id', 'description', 'output'.
     """
+
     state_text = problem_text
     steps = []
     feedback_entries = []  # Collect feedback for this problem
@@ -32,62 +34,101 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text):
         primitive_name = primitive_entry.get("name", "")
         description = primitive_entry.get("description", "")
 
-        try:
-            # === Load or reuse LoRA adapter ===
-            if primitive_id not in primitive_cache:
-                lora_path = f"{OUTPUT_DIR}/{primitive_id}"
-                primitive_model = PeftModel.from_pretrained(base_model, lora_path)
-                primitive_model.to(DEVICE)
-                primitive_model.eval()
-                primitive_cache[primitive_id] = primitive_model
-            model = primitive_cache[primitive_id]
-            
-            # === Inference ===
-            inputs = tokenizer(state_text, return_tensors="pt", truncation=True).to(DEVICE)
-            with torch.no_grad():
-                outputs = model.generate(**inputs, max_new_tokens=128)
-            primitive_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        if use_lora :
 
-            # === Validate & correct ===
-            judge_result = llm_validate_and_correct(
-                primitive_id,
-                description,
-                state_text,
-                primitive_output
-            )
+            try:
+                # === Load or reuse LoRA adapter ===
+                if primitive_id not in primitive_cache:
+                    lora_path = f"{OUTPUT_DIR}/{primitive_id}"
+                    primitive_model = PeftModel.from_pretrained(base_model, lora_path)
+                    primitive_model.to(DEVICE)
+                    primitive_model.eval()
+                    primitive_cache[primitive_id] = primitive_model
+                model = primitive_cache[primitive_id]
+                
+                # === Inference ===
+                inputs = tokenizer(state_text, return_tensors="pt", truncation=True).to(DEVICE)
+                with torch.no_grad():
+                    outputs = model.generate(**inputs, max_new_tokens=128)
+                primitive_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-            corrected_output = judge_result.get("corrected_output", primitive_output)
-            valid = judge_result.get("valid", False)
+                # === Validate & correct ===
+                judge_result = llm_validate_and_correct(
+                    primitive_id,
+                    description,
+                    state_text,
+                    primitive_output
+                )
 
-            steps.append({
-                "primitive": primitive_name,
-                "description": description,
-                "input": state_text,
-                "output": primitive_output,
-                "valid": valid,
-                "validation_reason": judge_result.get("reason", ""),
-                "corrected_output": corrected_output
-            })
+                corrected_output = judge_result.get("corrected_output", primitive_output)
+                valid = judge_result.get("valid", False)
 
-            feedback_entries.append({
-                "primitive_id": primitive_id,
-                "input": state_text,
-                "output": primitive_output,
-                "valid": valid,
-                "validation_reason": judge_result.get("reason", ""),
-                "corrected_output": corrected_output
-            })
+                steps.append({
+                    "primitive": primitive_name,
+                    "description": description,
+                    "input": state_text,
+                    "output": primitive_output,
+                    "valid": valid,
+                    "validation_reason": judge_result.get("reason", ""),
+                    "corrected_output": corrected_output
+                })
 
-            # === Update state for next primitive ===
-            state_text = corrected_output
+                feedback_entries.append({
+                    "primitive_id": primitive_id,
+                    "input": state_text,
+                    "output": primitive_output,
+                    "valid": valid,
+                    "validation_reason": judge_result.get("reason", ""),
+                    "corrected_output": corrected_output
+                })
 
-        except Exception as e:
-            print(f"Error applying primitive {primitive_id}: {e}")
-            return None, steps, feedback_entries
+                # === Update state for next primitive ===
+                state_text = corrected_output
+
+            except Exception as e:
+                print(f"Error applying primitive {primitive_id}: {e}")
+                return None, steps, feedback_entries
 
     
-    return state_text, steps , feedback_entries
 
+        else:
+            # Build system and user prompts for primitive execution
+            system_prompt = "You are a precise executor of primitive operations. Always return only the transformed state."
+            
+            user_prompt = f"""
+                Problem State:
+                {state_text}
+
+                Primitive to apply:
+                ID: {primitive_id}
+                Name: {primitive_name}
+                Description: {description}
+
+                Task: Apply the primitive operation to the problem state and return the new state only.
+                """
+
+            # Call your generate_text wrapper
+            output_text = generate_text(
+                model=model, 
+                tokenizer=tokenizer, 
+                system_prompt=system_prompt, 
+                user_prompt=user_prompt,
+                max_tokens=300
+            ).strip()
+
+            # Record this step (include pre/post state for debugging)
+            steps.append({
+                "primitive_id": primitive_id,
+                "name": primitive_name,
+                "description": description,
+                "input": state_text,
+                "output": output_text
+            })
+
+            # Update the state for the next primitive
+            state_text = output_text
+
+    return state_text, steps , feedback_entries
 
 
 def llm_validate_and_correct(primitive_name, description, input_text, output_text):
