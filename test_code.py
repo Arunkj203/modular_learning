@@ -19,27 +19,11 @@ problem = {'ID': 'chal-777',
            }
 
 
-processed = { 'id': 'chal-777', 
-'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 
-'answer': '145', 
-'intermediate_steps': '( 290.0 / 2.0 )', 
-'type': 'Common-Division' }
-
-analysis = {'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}
-
-primitive_sequence =[{'id': 'divide_0b679e5d', 'name': 'divide', 
-'input': {}, 'output': {}, 
-'description': 'Divide two numbers', 
-'problem_type': 'division', 
-'domain': 'math', 'methods': ['division'],
- 'tags': ['division']} ]
-
-new_primitives_to_train =  [{'id': 'divide_0b679e5d', 'name': 'divide', 
-'input': {}, 'output': {}, 
-'description': 'Divide two numbers', 
-'problem_type': 'division', 
-'domain': 'math', 'methods': ['division'],
- 'tags': ['division']} ]
+# processed = { 'id': 'chal-777', 
+# 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 
+# 'answer': '145', 
+# 'intermediate_steps': '( 290.0 / 2.0 )', 
+# 'type': 'Common-Division' }
 
 
 # Load model and tokenizer
@@ -54,7 +38,7 @@ print(f"\n=== Problem {1} ===")
 
 '''  Phase 1: Problem Analysis'''
 
-# processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
+processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
 
 #gt = normalize_answer(processed["answer"])
 
@@ -71,9 +55,9 @@ print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 '''  Phase 2: Primitive Generation  '''
 
-# primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
+primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
 
-print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
+# print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
 
 #  Primitive Sequence Generated
 #  [{'id': 'combinations_66752315', 
@@ -104,12 +88,12 @@ print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Pri
 # This is trained , next step is to use this trained primitive in phase 4
 # and see if it works correctly
 
-status = run_phase3(model, tokenizer ,new_primitives_to_train)
-if not status:
-   print("Phase 3 failed. Exiting.")
-   exit(1)
+# status = run_phase3(model, tokenizer ,new_primitives_to_train)
+# if not status:
+#    print("Phase 3 failed. Exiting.")
+#    exit(1)
 
-print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
+# print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
 # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
 ''' Phase 4: Problem Solving + Feedback '''
@@ -138,30 +122,3 @@ def normalize_answer(ans):
 
 
 
-# Phase 1 : Processed:
-#  {'id': 'chal-777', 
-# 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 
-# 'answer': '145', 
-# 'intermediate_steps': '( 290.0 / 2.0 )', 
-# 'type': 'Common-Division'}
-# 
-# Analysis: {'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}
-
-# Retrieved 0 relevant primitives.
-
-# Calling LLM to generate primitive sequence...
-
-# Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
-
-# LLM returned 2 primitives in sequence.
-
-# Phase 2 : Primitive Sequence Generated
-#  [
-# {'id': 'divide_0b679e5d', 'name': 'divide', 
-# 'input': {}, 'output': {}, 
-# 'description': 'Divide two numbers', 
-# 'problem_type': 'division', 
-# 'domain': 'math', 'methods': ['division'],
-#  'tags': ['division']}, {
-# 'id': 'divide_96c5d626', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}]
-# New Primitives to train: [{'id': 'divide_0b679e5d', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}, {'id': 'divide_96c5d626', 'name': 'divide', 'input': {}, 'output': {}, 'description': 'Divide two numbers', 'problem_type': 'division', 'domain': 'math', 'methods': ['division'], 'tags': ['division']}]

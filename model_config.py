@@ -85,9 +85,7 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
 	
     # print(raw_output)
     # Extract text after RESPONSE:
-    after_response = raw_output.split("RESPONSE:")[-1]
-
-    
+    after_response = raw_output.split("RESPONSE:")[-1].strip()    
 
     # Extract text between <start> and <end>
     # match = re.search(r'<start>(.*?)<end>', after_response, flags=re.S)
