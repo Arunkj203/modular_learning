@@ -5,7 +5,7 @@ from peft import PeftModel
 
 
 from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter ,generate_text
-
+from ..config import Retries , parse_raw_op_with_markers
 
 
 def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora=False):
@@ -91,9 +91,13 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
 
 
         else:
-            # Build system and user prompts for primitive execution
-            system_prompt = "You are a precise executor of primitive operations. Always return only the transformed state."
-            
+           # Build system and user prompts for primitive execution
+            system_prompt = """You are a precise executor of primitive operations.
+            Always apply the given primitive to the problem state.
+            Always return the result as a JSON object wrapped in <start> and <end> markers.
+            Do not include any extra commentary.
+            """
+
             user_prompt = f"""
                 Problem State:
                 {state_text}
@@ -103,17 +107,48 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 Name: {primitive_name}
                 Description: {description}
 
-                Task: Apply the primitive operation to the problem state and return the new state only.
+                Task: Apply the primitive operation to the problem state.
+                Return JSON in this exact format:
+
+                <start>
+                {{
+                "result": "new problem state here"
+                }}
+                <end>
                 """
 
-            # Call your generate_text wrapper
-            output_text = generate_text(
-                model=base_model, 
-                tokenizer=tokenizer, 
-                system_prompt=system_prompt, 
-                user_prompt=user_prompt,
-                max_tokens=300
-            ).strip()
+            
+            last_error = None
+            error = False
+            for attempt in range(1, Retries + 1):
+
+                # Call your generate_text wrapper
+                raw = generate_text(
+                    model=base_model, 
+                    tokenizer=tokenizer, 
+                    system_prompt=system_prompt, 
+                    user_prompt=user_prompt,
+                    max_tokens=300
+                ).strip()
+
+                try:
+                    # json_text = extract_json_from_text(raw_output)
+                    op = parse_raw_op_with_markers(raw)["result"]
+                    error = False
+                    break
+                except Exception as e:
+                    last_error = e
+                    error = True
+                    print(f"[WARN] Attempt {attempt} failed: {e}")
+                    # optional: short delay before retry
+            
+            if error:
+                # If all attempts failed, raise
+                raise RuntimeError(
+                    f"Could not parse JSON after {Retries} attempts. "
+                    f"Last error: {last_error}\nLast LLM output:\n{raw}"
+                )
+
 
             # Record this step (include pre/post state for debugging)
             steps.append({
@@ -121,11 +156,11 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 "name": primitive_name,
                 "description": description,
                 "input": state_text,
-                "output": output_text
+                "output": op
             })
 
             # Update the state for the next primitive
-            state_text = output_text
+            state_text = op
 
     return state_text, steps , feedback_entries
 
