@@ -17,7 +17,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     primitive_logs = []
     all_feedback = []  # Collect feedback for all problems
 
-    max_errors = 10
+    max_errors = 4
     errors = 0 
 
 
@@ -78,7 +78,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
                 f.write(f"\nFinal Solution:\n{solution}\n")
                 
-                print(f"====== Problem {idx+1} Spolved =======")
+                print(f"====== Problem {idx+1} Solved =======")
 
                 # Collect all feedback
                 # all_feedback.extend(feedback_entries) 
@@ -94,8 +94,12 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
             except Exception as e:
                 errors += 1
                 f.write(f"\n[ERROR] Problem {idx+1} failed: {e}\n")
+                
+                print(f"\n[ERROR] Problem {idx+1} failed: {e}\n")
+
                 if errors >= max_errors:
                     f.write(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+                    print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
                     break
 
         # Write accuracy at the end

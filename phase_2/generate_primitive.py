@@ -115,7 +115,7 @@ def generate_primitives_from_problem(
     last_error = None
     error = False
     for attempt in range(1, Retries + 1):
-        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
+        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=2500)
         try:
             # json_text = extract_json_from_text(raw_output)
             primitives_sequence = parse_raw_op_with_markers(raw)
