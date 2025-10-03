@@ -128,12 +128,13 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                     tokenizer=tokenizer, 
                     system_prompt=system_prompt, 
                     user_prompt=user_prompt,
-                    max_tokens=1500
+                    max_tokens=500
                 )
                 
                 try:
                     # json_text = extract_json_from_text(raw_output)
                     op = parse_raw_op_with_markers(raw)["result"]
+                    print("\nResult:",op)
                     error = False
                     break
                 except Exception as e:
