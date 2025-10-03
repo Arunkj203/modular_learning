@@ -89,7 +89,6 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 print(f"Error applying primitive {primitive_id}: {e}")
                 return None, steps, feedback_entries
 
-    
 
         else:
             # Build system and user prompts for primitive execution
