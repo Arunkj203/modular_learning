@@ -9,9 +9,9 @@ from datasets import load_dataset
 
 import os
 
-# Remove exceptios that stop abruptly
 
-max_errors = 10 
+max_errors = 10
+errors = 0 
 
 def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
@@ -31,6 +31,8 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
         f.write(f"=== {mode_text} on {dataset_name} ===\n\n")
 
         for idx, problem in enumerate(list(dataset[mode])[:5]):  # limit for testing
+            print(f"=== Problem {idx+1} ===")
+
             f.write(f"\n=== Problem {idx+1} ===\n")
             
             try:
@@ -41,6 +43,8 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                 f.write(f"\nQuestion:\n{processed['question']}\n")
                 f.write(f"\nGround Truth Answer:\n{gt}\n")
                 f.write(f"\nPhase 1 - Analysis:\n{analysis}\n")
+                print(f"Phase 1 - Analysed")
+                
 
                 # Phase 2: Primitive Generation
                 primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
@@ -48,6 +52,8 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                 for prim in primitive_sequence:
                     f.write(f"  ID: {prim['id']}, Name: {prim.get('name','')}, Desc: {prim.get('description','')}\n")
 
+                print(f"\nPhase 2 - Primitive Sequence Generated")
+                
                 # Optional Phase 3: Training
                 if use_lora:
                     status = run_phase3(model, tokenizer, new_primitives_to_train)
@@ -70,6 +76,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
                 f.write(f"\nFinal Solution:\n{solution}\n")
                 
+                print(f"====== Problem {idx+1} Spolved =======")
 
                 # Collect all feedback
                 # all_feedback.extend(feedback_entries) 

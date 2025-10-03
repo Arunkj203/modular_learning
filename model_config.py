@@ -5,6 +5,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 import os , requests , re
 
+import warnings
+
+warnings.simplefilter("ignore")      # Suppress Python warnings
 
 
 
