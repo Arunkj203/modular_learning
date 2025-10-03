@@ -57,7 +57,7 @@ print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
 
-# print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
+print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
 
 #  Primitive Sequence Generated
 #  [{'id': 'combinations_66752315', 
