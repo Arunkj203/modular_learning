@@ -9,8 +9,6 @@ from datasets import load_dataset
 
 import os
 
-
-
 def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
     correct, total = 0, 0
