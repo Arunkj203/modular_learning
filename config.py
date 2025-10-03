@@ -9,6 +9,7 @@ import pickle
 
 # Constants
 Retries = 3
+Base_dir_path = os.path.dirname(os.path.abspath(__file__))
 
 # Dataset paths
 dataset_path = {
@@ -20,11 +21,14 @@ dataset_path = {
 
 
 
+# Path to Datasets folder inside the project
+primitve_storage_dir = os.path.join(Base_dir_path, "primitve_storage")
+os.makedirs(primitve_storage_dir, exist_ok=True)  # create if missing
 
-# --- Paths ---
-GRAPH_PATH = "primitive_graph.gpickle"
-FAISS_PATH = "primitive_vectors.index"
-METADATA_PATH = "primitive_maps.pkl"
+# --- Paths inside Datasets ---
+GRAPH_PATH = os.path.join(primitve_storage_dir, "primitive_graph.gpickle")
+FAISS_PATH = os.path.join(primitve_storage_dir, "primitive_vectors.index")
+METADATA_PATH = os.path.join(primitve_storage_dir, "primitive_maps.pkl")
 
 # --- Globals ---
 primitive_graph = nx.DiGraph()
