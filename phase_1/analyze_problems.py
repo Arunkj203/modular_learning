@@ -3,7 +3,7 @@
 from typing import Dict, Any
 
 from ..model_config import generate_text
-from ..config import parse_raw_op_with_markers
+from ..config import parse_raw_op_with_markers , Retries
 
 
 def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str, Any]:
@@ -62,14 +62,19 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
 
         """
     
-    
-    
-    raw = generate_text(model ,tokenizer, system_prompt, user_prompt, max_tokens=400)
-    # print("Raw analysis output:", raw)
-    try:
-        return parse_raw_op_with_markers(raw)
-    
-    except Exception as e:
-        raise RuntimeError(f"Could not parse JSON from analysis output:{e}\n LLM output:\n{raw}")
-    
-
+        
+        
+    last_error = None
+    for attempt in range(1, Retries + 1):
+        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=300)
+        try:
+            return parse_raw_op_with_markers(raw)
+        except Exception as e:
+            last_error = e
+            print(f"[WARN] Attempt {attempt} failed: {e}")
+            # optional: short delay before retry
+    # If all attempts failed, raise
+    raise RuntimeError(
+        f"Could not parse JSON after {Retries} attempts. "
+        f"Last error: {last_error}\nLast LLM output:\n{raw}"
+    )

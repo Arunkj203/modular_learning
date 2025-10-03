@@ -26,7 +26,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
 
     # Step 1 - Retrieve relevant primitives from library
     existing_primitives = retrieve_primitives(analysis)
-    print(f"Retrieved {len(existing_primitives)} relevant primitives.")
+    # print(f"Retrieved {len(existing_primitives)} relevant primitives.")
 
 
     # Step 2 - Ask LLM to generate a sequence using old primitives or new ones
@@ -38,7 +38,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
         old_primitives=existing_primitives,
         analysis=analysis
     )
-    print(f"LLM returned {len(sequence_primitives)} primitives in sequence.")
+    # print(f"LLM returned {len(sequence_primitives)} primitives in sequence.")
 
 
     # Step 3 - Separate new primitives (to train later)

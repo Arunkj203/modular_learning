@@ -7,6 +7,9 @@ import pickle
 
 
 
+# Constants
+Retries = 3
+
 # Dataset paths
 dataset_path = {
     "SVAMP": "ChilleD/SVAMP",

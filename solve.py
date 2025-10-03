@@ -9,6 +9,10 @@ from datasets import load_dataset
 
 import os
 
+# Remove exceptios that stop abruptly
+
+max_errors = 10 
+
 def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
     correct, total = 0, 0
@@ -28,53 +32,62 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
         for idx, problem in enumerate(list(dataset[mode])[:5]):  # limit for testing
             f.write(f"\n=== Problem {idx+1} ===\n")
-
-            # Phase 1: Problem Analysis
-            processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
-            gt = normalize_answer(processed["answer"])
-            f.write(f"\nQuestion:\n{processed['question']}\n")
-            f.write(f"\nGround Truth Answer:\n{gt}\n")
-            f.write(f"\nPhase 1 - Analysis:\n{analysis}\n")
-
-            # Phase 2: Primitive Generation
-            primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
-            f.write("\nPhase 2 - Primitive Sequence:\n")
-            for prim in primitive_sequence:
-                f.write(f"  ID: {prim['id']}, Name: {prim.get('name','')}, Desc: {prim.get('description','')}\n")
-
-            # Optional Phase 3: Training
-            if use_lora:
-                status = run_phase3(model, tokenizer, new_primitives_to_train)
-                if not status:
-                    f.write("\nPhase 3 failed. Exiting.\n")
-                    exit(1)
-                f.write(f"\nPhase 3 completed. Trained {len(new_primitives_to_train)} new primitives.\n")
-                # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
-
-            # Phase 4: Problem Solving
-            solution, steps, feedback_entries = run_phase4(
-                model, tokenizer, primitive_sequence, problem_text=processed["question"]
-            )
-
-            f.write("\nPhase 4 - Execution Steps:\n")
-            for step in steps:
-                f.write(f"  Primitive {step['primitive_id']} ({step['name']}):\n")
-                f.write(f"    Input: {step['input']}\n")
-                f.write(f"    Output: {step['output']}\n")
-
-            f.write(f"\nFinal Solution:\n{solution}\n")
             
+            try:
 
-            # Collect all feedback
-            # all_feedback.extend(feedback_entries) 
-            # Changes need to be made in phase 4 (return feedback entries)
+                # Phase 1: Problem Analysis
+                processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
+                gt = normalize_answer(processed["answer"])
+                f.write(f"\nQuestion:\n{processed['question']}\n")
+                f.write(f"\nGround Truth Answer:\n{gt}\n")
+                f.write(f"\nPhase 1 - Analysis:\n{analysis}\n")
+
+                # Phase 2: Primitive Generation
+                primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
+                f.write("\nPhase 2 - Primitive Sequence:\n")
+                for prim in primitive_sequence:
+                    f.write(f"  ID: {prim['id']}, Name: {prim.get('name','')}, Desc: {prim.get('description','')}\n")
+
+                # Optional Phase 3: Training
+                if use_lora:
+                    status = run_phase3(model, tokenizer, new_primitives_to_train)
+                    if not status:
+                        f.write("\nPhase 3 failed. Exiting.\n")
+                        exit(1)
+                    f.write(f"\nPhase 3 completed. Trained {len(new_primitives_to_train)} new primitives.\n")
+                    # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
+
+                # Phase 4: Problem Solving
+                solution, steps, feedback_entries = run_phase4(
+                    model, tokenizer, primitive_sequence, problem_text=processed["question"]
+                )
+
+                f.write("\nPhase 4 - Execution Steps:\n")
+                for step in steps:
+                    f.write(f"  Primitive {step['primitive_id']} ({step['name']}):\n")
+                    f.write(f"    Input: {step['input']}\n")
+                    f.write(f"    Output: {step['output']}\n")
+
+                f.write(f"\nFinal Solution:\n{solution}\n")
+                
+
+                # Collect all feedback
+                # all_feedback.extend(feedback_entries) 
+                # Changes need to be made in phase 4 (return feedback entries)
 
 
-            # Track accuracy
-            pred = normalize_answer(solution)
-            if pred == gt:
-                correct += 1
-            total += 1
+                # Track accuracy
+                pred = normalize_answer(solution)
+                if pred == gt:
+                    correct += 1
+                total += 1
+
+            except Exception as e:
+                errors += 1
+                f.write(f"\n[ERROR] Problem {idx+1} failed: {e}\n")
+                if errors >= max_errors:
+                    f.write(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+                    break
 
         # Write accuracy at the end
         acc = correct / total if total > 0 else 0
