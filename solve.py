@@ -29,9 +29,11 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     full_path = os.path.join(Base_dir_path, log_dir)
     os.makedirs(full_path, exist_ok=True)
     log_file = os.path.join(full_path, f"{dataset_name}_{mode}[12:17].txt")
+    print(f"Log saving in file:{log_file}")
 
     with open(log_file, "w", encoding="utf-8") as f:
         f.write(f"=== {mode_text} on {dataset_name} ===\n\n")
+
 
         for idx, problem in enumerate(list(dataset[mode])[12:17]):  # limit for testing
             print(f"=== Problem {idx+1} ===")
@@ -41,21 +43,23 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
             try:
 
                 # Phase 1: Problem Analysis
+                print(f"Phase 1 - Analysing...")
+
                 processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
                 gt = normalize_answer(processed["answer"])
                 f.write(f"\nQuestion:\n{processed['question']}\n")
                 f.write(f"\nGround Truth Answer:\n{gt}\n")
                 f.write(f"\nPhase 1 - Analysis:\n{analysis}\n")
-                print(f"Phase 1 - Analysed")
                 
 
                 # Phase 2: Primitive Generation
+                print(f"\nPhase 2 - Primitive Sequence Generating...")
+
                 primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
                 f.write("\nPhase 2 - Primitive Sequence:\n")
                 for prim in primitive_sequence:
                     f.write(f"  ID: {prim['id']}, Name: {prim.get('name','')}, Desc: {prim.get('description','')}\n")
 
-                print(f"\nPhase 2 - Primitive Sequence Generated")
                 
                 # Optional Phase 3: Training
                 if use_lora:
@@ -65,8 +69,13 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                         exit(1)
                     f.write(f"\nPhase 3 completed. Trained {len(new_primitives_to_train)} new primitives.\n")
                     # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
+                
+                else:
+                    print("Phase 3 Skipped...")
 
                 # Phase 4: Problem Solving
+                print("Phase 4 -  Solving...")
+               
                 solution, steps, feedback_entries = run_phase4(
                     model, tokenizer, primitive_sequence, problem_text=processed["question"]
                 )

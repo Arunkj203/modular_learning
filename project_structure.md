@@ -11,14 +11,16 @@ modular_learning/
 ├── README.md
 ├── requirements.txt
 ├── solve.py
-├── test_lora_code.py
-├── utils.py
+├── test_code.py
+├── logs/
+│   └── SVAMP_train.txt
 ├── Mock_Dataset/
 │   ├── test_data.json
 │   └── train_data.json
 ├── others/
 │   ├── __init__.py
 │   ├── Calc_token.py
+│   ├── suggestions.txt
 │   └── workflow.txt
 ├── phase_1/
 │   ├── __init__.py
@@ -28,7 +30,8 @@ modular_learning/
 ├── phase_2/
 │   ├── __init__.py
 │   ├── generate_primitive.py
-│   └── phase_2_main.py
+│   ├── phase_2_main.py
+│   └── utils.py
 ├── phase_3/
 │   ├── __init__.py
 │   ├── lora_training.py
@@ -36,20 +39,23 @@ modular_learning/
 │   └── synthetic_data.py
 ├── phase_4/
 │   ├── __init__.py
-│   ├── evaluate.py
 │   └── phase_4_main.py
+├── primitve_storage/
 └── results/
     ├── primitive_library_1.json
     ├── primitive_summary.txt
+    ├── sample_result.txt
     └── svamp_primitives.txt
 ```
 
 ## Directory Descriptions
 
+- **logs/**: Log files from training and other processes
 - **Mock_Dataset/**: Mock dataset files for testing and training
 - **others/**: Miscellaneous utility files and documentation
 - **phase_1/**: Initial problem analysis and preprocessing phase
 - **phase_2/**: Primitive generation phase
 - **phase_3/**: LoRA training and evaluation phase
 - **phase_4/**: Final evaluation phase
+- **primitve_storage/**: Storage for primitive data
 - **results/**: Output files and results from different phases
