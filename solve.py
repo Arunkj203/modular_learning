@@ -10,14 +10,16 @@ from datasets import load_dataset
 import os
 
 
-max_errors = 10
-errors = 0 
 
 def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
     correct, total = 0, 0
     primitive_logs = []
     all_feedback = []  # Collect feedback for all problems
+
+    max_errors = 10
+    errors = 0 
+
 
     use_lora = False
     dataset = load_dataset(dataset_path[dataset_name])

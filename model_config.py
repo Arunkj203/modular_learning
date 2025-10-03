@@ -5,12 +5,6 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 import os , requests , re
 
-import warnings
-
-warnings.simplefilter("ignore")      # Suppress Python warnings
-
-
-
 # Optional: load .env
 try:
     from dotenv import load_dotenv 
@@ -81,8 +75,9 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
             **inputs,
             max_new_tokens=max_tokens,
             do_sample=False,
-            eos_token_id=tokenizer.eos_token_id
-
+            eos_token_id=tokenizer.eos_token_id,
+            pad_token_id=tokenizer.eos_token_id   # add this
+            
         )
 
     # Decode to string
