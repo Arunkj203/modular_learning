@@ -136,7 +136,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 try:
                     # json_text = extract_json_from_text(raw_output)
                     op = parse_raw_op_with_markers(raw)["result"]
-                    print("\nResult:",op)
+                    # print("\nResult:",op)
                     error = False
                     break
                 except Exception as e:
