@@ -93,10 +93,11 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
         else:
            # Build system and user prompts for primitive execution
             system_prompt = """You are a precise executor of primitive operations.
-            Always apply the given primitive to the problem state.
-            Always return the result as a JSON object wrapped in <start> and <end> markers.
-            Do not include any extra commentary.
-            """
+                    Always apply the given primitive to the problem state.
+                    Always transform the state logically or numerically as instructed.
+                    Never repeat or restate the question text.
+                    Always return only the computed new state as JSON wrapped in <start> and <end>.
+                    """
 
             user_prompt = f"""
                 Problem State:
@@ -108,11 +109,12 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 Description: {description}
 
                 Task: Apply the primitive operation to the problem state.
+                If numbers are involved, compute them. If expressions are involved, simplify them.
                 Return JSON in this exact format:
 
                 <start>
                 {{
-                "result": "new problem state here"
+                "result": "updated state or computed value"
                 }}
                 <end>
                 """
