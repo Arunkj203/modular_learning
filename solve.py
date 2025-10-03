@@ -106,6 +106,8 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
         acc = correct / total if total > 0 else 0
         f.write(f"\n\n=== Accuracy: {acc:.2f} ({correct}/{total}) ===\n")
 
+        # Save memory
+        save_memory()
     return acc, feedback_entries
 
 
