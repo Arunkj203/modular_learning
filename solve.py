@@ -119,21 +119,59 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     return acc, feedback_entries
 
 
+def normalize_answer(text: str):
+    """
+    Normalize a model's final output for comparison with ground truth.
+    Works across math, logic, and general text reasoning datasets.
+    """
 
-def normalize_answer(ans):
-    """Normalize numbers/strings for comparison."""
-    if ans is None:
+    if text is None:
         return None
-    if isinstance(ans, str):
-        ans = ans.strip().lower()
-        # try to coerce to number if possible
+
+    text = str(text).strip()
+
+    # --- 1. JSON safety: if the model wrapped its answer in JSON ---
+    try:
+        obj = json.loads(text)
+        # flatten if it's a dict with one field like {"answer": 4}
+        if isinstance(obj, dict) and len(obj) == 1:
+            text = list(obj.values())[0]
+        elif isinstance(obj, list) and len(obj) == 1:
+            text = obj[0]
+    except Exception:
+        pass
+
+    # --- 2. Remove common prefixes/suffixes ---
+    text = re.sub(r'(?i)\b(answer|final answer|result|output|solution)\b[:\-\s]*', '', text)
+    text = text.strip().replace("=", "").strip()
+
+    # --- 3. Extract numbers if present ---
+    numbers = re.findall(r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?', text)
+    if numbers:
+        # Pick the last number as the most likely final value
         try:
-            return str(float(ans))
-        except:
-            return ans
-    if isinstance(ans, (int, float)):
-        return str(float(ans))
-    return str(ans)
+            return float(numbers[-1])
+        except ValueError:
+            pass
+
+    # --- 4. If it's symbolic math (like 'x=4' or '104/26=4') ---
+    if re.search(r'[\+\-\*/=]', text):
+        try:
+            # Evaluate the last part after '=' if any
+            if '=' in text:
+                expr = text.split('=')[-1].strip()
+            else:
+                expr = text
+            result = eval(expr, {"__builtins__": None}, {})
+            return float(result)
+        except Exception:
+            pass
+
+    # --- 5. Fallback: textual normalization ---
+    text = text.lower().strip()
+    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r'\s+', ' ', text)
+    return text
 
 
 
