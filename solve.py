@@ -88,7 +88,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                     f.write(f"    Input: {step['input']}\n")
                     f.write(f"    Output: {step['output']}\n")
 
-                f.write(f"\nFinal Solution:  {solution}\n Normalized solution:{pred}\n")
+                f.write(f"\nFinal Solution:  {solution}\nNormalized solution:{pred}\n")
                 
                 print(f"\n====================== Problem {idx+1} Solved ======================\n")
 
