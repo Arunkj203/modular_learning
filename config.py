@@ -44,43 +44,42 @@ def load_memory():
 
     # Load graph
     if os.path.exists(GRAPH_PATH):
-        g = nx.read_gpickle(GRAPH_PATH)
-        primitive_graph.clear()
-        primitive_graph.update(g)
+        primitive_graph = nx.read_gpickle(GRAPH_PATH)  # Direct assignment
         print(f"Graph loaded from {GRAPH_PATH}")
     else:
+        primitive_graph = nx.DiGraph()  # Initialize fresh graph
         print(f"{GRAPH_PATH} not found, starting with empty graph")
 
-    # Load FAISS index
+    # Load FAISS index - FIXED: Direct assignment
     if os.path.exists(FAISS_PATH):
-        idx = faiss.read_index(FAISS_PATH)
-        # Reconstruct all vectors and add to existing index
-        faiss_index.reset()
-        for i in range(idx.ntotal):
-            vec = idx.reconstruct(i)
-            faiss_index.add(vec.reshape(1, -1))
+        faiss_index = faiss.read_index(FAISS_PATH)  # Direct assignment
         print(f"FAISS index loaded from {FAISS_PATH}")
     else:
+        # Initialize new index (adjust dimensions as needed)
+        dimension = 768  # Adjust to your embedding dimension
+        faiss_index = faiss.IndexFlatL2(dimension)
         print(f"{FAISS_PATH} not found, starting with empty FAISS index")
 
     # Load metadata
     if os.path.exists(METADATA_PATH):
         with open(METADATA_PATH, "rb") as f:
             data = pickle.load(f)
-            primitive_id_map.clear()
-            primitive_id_map.update(data["id_map"])
-            primitive_metadata.clear()
-            primitive_metadata.update(data["metadata"])
+            primitive_id_map = data["id_map"]  # Direct assignment
+            primitive_metadata = data["metadata"]  # Direct assignment
         print(f"Metadata loaded from {METADATA_PATH}")
     else:
+        primitive_id_map = {}  # Initialize fresh
+        primitive_metadata = {}
         print(f"{METADATA_PATH} not found, starting with empty metadata")
+
 
 # --- Save Memory Function ---
 def save_memory():
     global primitive_graph, faiss_index, primitive_id_map, primitive_metadata
 
-    # Save graph
-    nx.write_gpickle(primitive_graph, GRAPH_PATH)
+    # Save graph - using pickle for speed
+    with open(GRAPH_PATH, 'wb') as f:
+        pickle.dump(primitive_graph, f)
 
     # Save FAISS index
     faiss.write_index(faiss_index, FAISS_PATH)

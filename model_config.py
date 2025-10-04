@@ -1,9 +1,8 @@
 
 # model_config.py
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
-
-import os , requests , re
+from transformers import AutoTokenizer, AutoModelForCausalLM ,StoppingCriteria, StoppingCriteriaList 
+import os , requests 
 
 # Optional: load .env
 try:
@@ -57,6 +56,25 @@ def get_model_and_tokenizer():
 # -----------------------------
 # Helper function for generation
 # -----------------------------
+
+from transformers import StoppingCriteria, StoppingCriteriaList
+
+class StopOnToken(StoppingCriteria):
+    def __init__(self, tokenizer, stop_token):
+        self.tokenizer = tokenizer
+        self.stop_token = stop_token
+        self.stop_token_ids = tokenizer.encode(stop_token, add_special_tokens=False)
+        
+    def __call__(self, input_ids, scores, **kwargs):
+        # Check if the last tokens match our stop token
+        if input_ids.shape[1] < len(self.stop_token_ids):
+            return False
+            
+        # Get the recent tokens that could match our stop token
+        recent_tokens = input_ids[0, -len(self.stop_token_ids):].tolist()
+        return recent_tokens == self.stop_token_ids
+
+
 def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
 
     prompt = f"""SYSTEM:
@@ -76,7 +94,10 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
             max_new_tokens=max_tokens,
             do_sample=False,
             eos_token_id=tokenizer.eos_token_id,
-            pad_token_id=tokenizer.eos_token_id   # add this
+            pad_token_id=tokenizer.eos_token_id,   # add this
+            stopping_criteria=StoppingCriteriaList([
+        StopOnToken(tokenizer, "<end>")
+    ])
             
         )
 
@@ -84,18 +105,9 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
     raw_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
 	
     #print(raw_output)
+
     # Extract text after RESPONSE:
     after_response = raw_output.split("RESPONSE:")[-1].strip()    
-
-    # Extract text between <start> and <end>
-    # match = re.search(r'<start>(.*?)<end>', after_response, flags=re.S)
-    #if not match:
-    #    raise ValueError(f"No <start> ... <end> JSON block found in output==>\n{after_response}.")
-
-    #json_text = match.group(1).strip()
-
-    # Remove trailing commas before } or ]
-    #json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
 
     return after_response  # Can now pass to json.loads(json_text)
 

@@ -114,8 +114,15 @@ def generate_primitives_from_problem(
 
     last_error = None
     error = False
+
+    # Calculate dynamic max_tokens based on complexity
+    base_tokens = 1500
+    complexity_estimate = len(tokenizer(user_prompt)['input_ids'])
+    dynamic_max_tokens = base_tokens + complexity_estimate
+
+
     for attempt in range(1, Retries + 1):
-        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=2500)
+        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=dynamic_max_tokens)
         try:
             # json_text = extract_json_from_text(raw_output)
             primitives_sequence = parse_raw_op_with_markers(raw)
