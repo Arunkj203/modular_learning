@@ -34,7 +34,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
 
         for idx, problem in enumerate(list(dataset[mode])[20:25]):  # limit for testing
-            print(f"=== Problem {idx+1} ===")
+            print(f"====================== Problem {idx+1} ======================")
 
             f.write(f"\n====================== Problem {idx+1} ======================\n")
             
