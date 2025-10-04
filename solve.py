@@ -26,22 +26,22 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     # Ensure log directory exists
     full_path = os.path.join(Base_dir_path, log_dir)
     os.makedirs(full_path, exist_ok=True)
-    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-new.txt")
+    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-05.10--12-17 pb.txt")
     print(f"Log saving in file:{log_file}")
 
     with open(log_file, "w", encoding="utf-8") as f:
         f.write(f"=== {mode_text} on {dataset_name} ===\n\n")
 
 
-        for idx, problem in enumerate(list(dataset[mode])[12:14]):  # limit for testing
+        for idx, problem in enumerate(list(dataset[mode])[12:17]):  # limit for testing
             print(f"=== Problem {idx+1} ===")
 
-            f.write(f"\n=== Problem {idx+1} ===\n")
+            f.write(f"\n====================== Problem {idx+1} ======================\n")
             
             try:
 
                 # Phase 1: Problem Analysis
-                print(f"Phase 1 - Analysing...")
+                print(f"\nPhase 1 - Analysing...\n")
 
                 processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
                 gt = normalize_answer(processed["answer"])
@@ -51,13 +51,16 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                 
 
                 # Phase 2: Primitive Generation
-                print(f"\nPhase 2 - Primitive Sequence Generating...")
+                print(f"\nPhase 2 - Primitive Sequence Generating...\n")
 
                 primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
                 f.write("\nPhase 2 - Primitive Sequence:\n")
-                for prim in primitive_sequence:
-                    f.write(f"  ID: {prim['id']}, Name: {prim.get('name','')}, Desc: {prim.get('description','')}\n")
+                f.write(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
 
+                for prim in primitive_sequence:
+                    f.write(f"  ID: {prim['id']} \n, prim: {prim} \n")
+
+                print(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
                 
                 # Optional Phase 3: Training
                 if use_lora:
@@ -69,14 +72,15 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                     # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
                 
                 else:
-                    print("Phase 3 Skipped...")
+                    print("\nPhase 3 Skipped...\n")
 
                 # Phase 4: Problem Solving
-                print("Phase 4 -  Solving...")
-               
+                print("\nPhase 4 -  Solving...\n")
+
                 solution, steps, feedback_entries = run_phase4(
                     model, tokenizer, primitive_sequence, problem_text=processed["question"]
                 )
+                pred = normalize_answer(solution)        
 
                 f.write("\nPhase 4 - Execution Steps:\n")
                 for step in steps:
@@ -84,9 +88,9 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                     f.write(f"    Input: {step['input']}\n")
                     f.write(f"    Output: {step['output']}\n")
 
-                f.write(f"\nFinal Solution:\n{solution}\n")
+                f.write(f"\nFinal Solution:  {solution}\n Normalized solution:{pred}\n")
                 
-                print(f"====== Problem {idx+1} Solved =======")
+                print(f"\n====================== Problem {idx+1} Solved ======================\n")
 
                 # Collect all feedback
                 # all_feedback.extend(feedback_entries) 
@@ -94,7 +98,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
 
                 # Track accuracy
-                pred = normalize_answer(solution)
+                
                 if pred == gt:
                     correct += 1
                 total += 1
