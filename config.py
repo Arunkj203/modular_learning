@@ -44,7 +44,8 @@ def load_memory():
 
     # Load graph
     if os.path.exists(GRAPH_PATH):
-        primitive_graph = nx.read_gpickle(GRAPH_PATH)  # Direct assignment
+        with open(GRAPH_PATH, 'rb') as f:
+            primitive_graph = pickle.load(f)  # Direct assignment
         print(f"Graph loaded from {GRAPH_PATH}")
     else:
         primitive_graph = nx.DiGraph()  # Initialize fresh graph
