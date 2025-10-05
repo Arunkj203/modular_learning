@@ -82,12 +82,12 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
         "You are a meta-reasoning analyst inspired by the SELF-DISCOVER framework. "
         "Your goal is to analyze the given math problem, select reasoning modules that best fit the task, "
         "and design a conceptual decomposition plan. The default reasoning module" 
-        f"{reasoning_modules["default_reasoning_module"]}"
+        f"{reasoning_modules['default_reasoning_module']}"
         "is always included. From the provided list of reasoning modules, select 2–4 additional modules "
         "that would most help solve the problem. "
         "Do not compute the answer — focus only on reasoning structure.\n\n"
         "Reasoning Modules JSON:\n"
-        f"{reasoning_modules["available_reasoning_modules"]}"
+        f"{reasoning_modules['available_reasoning_modules']}"
     )
 
     user_prompt = f"""
