@@ -80,7 +80,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                 solution, steps, feedback_entries = run_phase4(
                     model, tokenizer, primitive_sequence, problem_text=processed["question"]
                 )
-                pred = normalize_answer(solution)        
+                pred = normalize_answer(solution)
 
                 f.write("\nPhase 4 - Execution Steps:\n")
                 for step in steps:
@@ -120,7 +120,9 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
         # Save memory
         #save_memory()
-    return acc, feedback_entries
+
+
+    return acc
 
 
 def normalize_answer(text: str):

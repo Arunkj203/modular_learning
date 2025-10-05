@@ -79,14 +79,14 @@ class StopOnToken(StoppingCriteria):
 
 def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
 
-    prompt = (
-    f"<s>[SYSTEM]\n{system_prompt}\n"
-    f"[USER]\n{user_prompt}\n"
-    f"[ASSISTANT]\n"
-    "Output starts now. Do not repeat the problem. Only produce the JSON output enclosed in <start> and <end>.\n"
+    prompt = f"""SYSTEM:
+        {system_prompt}
 
-    )
+        USER:
+        {user_prompt}
 
+        RESPONSE:
+        """
 
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
     
@@ -113,7 +113,7 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
     #print(raw_output)
 
     # Extract text after RESPONSE:
-    generated_text = raw_output.split("[ASSISTANT]")[-1].strip()
+    generated_text = raw_output.split("RESPONSE:")[-1].strip()
 
     return generated_text  # Can now pass to json.loads(json_text)
 
