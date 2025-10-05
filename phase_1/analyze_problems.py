@@ -45,6 +45,7 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
         <end>
 
         Instructions:
+        - Output exactly one valid JSON object as a single-line array with no spaces or newlines 
         - Output exactly one valid JSON object with keys: problem_type, domain, methods, tags, subtasks.
         - Each subtask must have:
         - step: sequential number starting from 1
