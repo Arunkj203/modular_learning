@@ -167,7 +167,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     dynamic_max_tokens_2 = min(4096, max(400, 2 * complexity_estimate_2))
 
 
-    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens_2=600)
+    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens=600)
         
     # merge results
     return {
