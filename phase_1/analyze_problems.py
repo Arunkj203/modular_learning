@@ -81,12 +81,13 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     system_prompt = (
         "You are a meta-reasoning analyst inspired by the SELF-DISCOVER framework. "
         "Your goal is to analyze the given math problem, select reasoning modules that best fit the task, "
-        "and design a conceptual decomposition plan. The default reasoning module (ID: 38) "
+        "and design a conceptual decomposition plan. The default reasoning module" 
+        f"{reasoning_modules["default_reasoning_module"]}"
         "is always included. From the provided list of reasoning modules, select 2–4 additional modules "
         "that would most help solve the problem. "
         "Do not compute the answer — focus only on reasoning structure.\n\n"
         "Reasoning Modules JSON:\n"
-        f"{reasoning_modules}"
+        f"{reasoning_modules["available_reasoning_modules"]}"
     )
 
     user_prompt = f"""
@@ -125,7 +126,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     phase1_output = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=dynamic_max_tokens)
     
     # === Phase 2: Decompose into Subtasks ===
-    reasoning_modules = phase1_output.get("selected_reasoning_modules", [])
+    selected_modules = phase1_output.get("selected_reasoning_modules", [])
     decomposition_plan = phase1_output.get("decomposition_plan", [])
 
     system_prompt_2 = (
@@ -139,7 +140,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     user_prompt_2 = f"""
         Problem: {question}
 
-        Selected reasoning modules: {reasoning_modules}
+        Selected reasoning modules: {selected_modules}
         Initial decomposition plan: {decomposition_plan}
 
         Format your response strictly as JSON between <start> and <end>:
