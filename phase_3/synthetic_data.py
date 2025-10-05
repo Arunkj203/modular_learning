@@ -1,25 +1,6 @@
 import json , re
 from ..model_config import generate_text
 
-# === Robust JSON Parser ===
-def parse_raw_op_with_markers(raw_text: str):
-    """
-    Extract JSON array of primitives from raw LLM output wrapped with <start> and <end>
-    """
-    # Extract text between <start> and <end>
-    match = re.search(r"<start>(.*?)<end>", raw_text, flags=re.S)
-    if not match:
-        raise ValueError("Could not find <start> ... <end> in raw output")
-
-    json_text = match.group(1).strip()
-
-    # Remove trailing commas before } or ]
-    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
-
-    # Parse JSON
-    return json.loads(json_text)
-
-
 # === Seed Example Generation ===
 def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_id, n=5):
     """
