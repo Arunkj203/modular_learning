@@ -123,7 +123,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     complexity_estimate = len(tokenizer(user_prompt)["input_ids"])
     dynamic_max_tokens = min(4096, max(400, 2 * complexity_estimate))
 
-    phase1_output = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=dynamic_max_tokens)
+    phase1_output = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
     
     # === Phase 2: Decompose into Subtasks ===
     selected_modules = phase1_output.get("selected_reasoning_modules", [])
@@ -155,7 +155,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
         <end>
         """
 
-    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, max_tokens=600)
+    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens=600)
         
     # merge results
     return {

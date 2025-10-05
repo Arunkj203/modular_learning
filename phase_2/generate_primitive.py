@@ -119,7 +119,7 @@ def generate_primitives_from_problem(
     dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
 
 
-    primitives_sequence = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=dynamic_max_tokens)
+    primitives_sequence = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
        
 
     # Ensure it's a list of primitives
