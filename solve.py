@@ -120,7 +120,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
         # Save memory
         save_memory()
-    return acc
+    return acc,all_feedback
 
 
 def normalize_answer(text: str):

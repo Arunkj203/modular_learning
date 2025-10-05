@@ -2,7 +2,7 @@
 # model_config.py
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM ,StoppingCriteria, StoppingCriteriaList 
-import os , requests 
+import os , requests , re , json
 
 from transformers import GenerationConfig
 
@@ -35,6 +35,10 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+
+# Constants
+Retries = 3
 
 
 # -----------------------------
@@ -77,7 +81,7 @@ class StopOnToken(StoppingCriteria):
         return recent_tokens == self.stop_token_ids
 
 
-def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
+def generate_text(model ,tokenizer, system_prompt, user_prompt,dynamic_max_tokens=200):
 
     prompt = f"""SYSTEM:
         {system_prompt}
@@ -87,35 +91,62 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
 
         RESPONSE:
         """
-
+    last_error = None
+    raw = None
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
-    
-    gen_cfg = GenerationConfig(
-            max_new_tokens=max_tokens,
-            do_sample=False,
-            pad_token_id=tokenizer.eos_token_id,
-            eos_token_id=tokenizer.eos_token_id,
-            )
 
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs,
-            generation_config=gen_cfg,
-            stopping_criteria=StoppingCriteriaList([
-        StopOnToken(tokenizer, "<end>")
-    ])
+    for attempt in range(Retries):
+
+        try:
         
-        )
+            max_tokens = min(4096, dynamic_max_tokens * (2 ** attempt))
+        
+            gen_cfg = GenerationConfig(
+                    max_new_tokens=max_tokens,
+                    do_sample=False,
+                    pad_token_id=tokenizer.eos_token_id,
+                    eos_token_id=tokenizer.eos_token_id,
+                    )
 
-    # Decode to string
-    raw_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
-	
-    print(raw_output)
+            with torch.no_grad():
+                outputs = model.generate(
+                    **inputs,
+                    generation_config=gen_cfg,
+                    stopping_criteria=StoppingCriteriaList([
+                StopOnToken(tokenizer, "<end>")
+            ])
+                
+                )
 
-    # Extract text after RESPONSE:
-    generated_text = raw_output.split("RESPONSE:")[-1].strip()
+            # Decode to string
+            raw = tokenizer.decode(outputs[0], skip_special_tokens=True)
+            
+            # print(raw)
 
-    return generated_text  # Can now pass to json.loads(json_text)
+            # Extract text after RESPONSE:
+            generated_text = raw.split("RESPONSE:")[-1].strip()
+
+            """
+            Extract JSON array of primitives from raw LLM output wrapped with <start> and <end>
+            """
+            # Extract text between <start> and <end>
+            match = re.search(r"<start>(.*?)<end>", generated_text, flags=re.S)
+            if not match:
+                raise ValueError("Could not find <start> ... <end> in raw output")
+
+            json_text = match.group(1).strip()
+
+            # Remove trailing commas before } or ]
+            json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
+
+            return json.loads(json_text)
+
+        except Exception as e:
+                    last_error = e
+                    print(f"[WARN] Phase 1 attempt {attempt+1} failed: {e}")
+    else:
+        raise RuntimeError(f"Parsing failed after {Retries} attempts.\n{raw}")
+
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 

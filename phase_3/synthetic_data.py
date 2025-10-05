@@ -61,7 +61,7 @@ def generate_seed_examples_for_format(model, tokenizer, primitive_entry, format_
     response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=1500)
     # print(response)
 
-    return parse_raw_op_with_markers(response)
+    return response
 
 
 # === Bootstrapping from Seeds ===
@@ -97,8 +97,7 @@ def bootstrap_examples(model, tokenizer, seed_examples, target_size=20):
                     }}
                     <end>
                     """
-            response = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=500)
-            new_ex = parse_raw_op_with_markers(response)
+            new_ex = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=500)
             if new_ex:
                 examples.append(new_ex)
 

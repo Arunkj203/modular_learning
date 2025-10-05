@@ -127,40 +127,15 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
             complexity_estimate = len(tokenizer(user_prompt)['input_ids'])
             dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
 
-
-            for attempt in range(Retries):
-
-                max_tokens = min(4096 , dynamic_max_tokens * (2 ** attempt) )
-
                 # Call your generate_text wrapper
-                raw = generate_text(
+            op = generate_text(
                     model=base_model, 
                     tokenizer=tokenizer, 
                     system_prompt=system_prompt, 
                     user_prompt=user_prompt,
-                    max_tokens=max_tokens
+                    max_tokens=dynamic_max_tokens
                 )
                 
-                try:
-                    # json_text = extract_json_from_text(raw_output)
-                    op = parse_raw_op_with_markers(raw)["result"]
-                    # print("\nResult:",op)
-                    error = False
-                    break
-                except Exception as e:
-                    last_error = e
-                    error = True
-                    print(f"[WARN] Attempt {attempt+1} failed: {e}")
-                    # optional: short delay before retry
-            
-            if error:
-                # If all attempts failed, raise
-                raise RuntimeError(
-                    f"Could not parse JSON after {Retries} attempts. "
-                    f"Last error: {last_error}\nLast LLM output:\n{raw}"
-                )
-
-
             # Record this step (include pre/post state for debugging)
             steps.append({
                 "primitive_id": primitive_id,
