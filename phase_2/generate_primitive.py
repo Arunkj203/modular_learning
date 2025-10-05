@@ -25,7 +25,7 @@ Rules:
    - status: 'existing' if reused, 'new' if generated
 3. Generate primitives in **execution order**, respecting subtask dependencies.
 4. For new primitives, provide only minimal info required for later LoRA training.
-5. Output must be **valid JSON**:
+5. Output must be **valid JSON** as a single-line array with no spaces or newlines:
    - The outermost structure MUST be a JSON array `[...]`.
    - Each element MUST be a full JSON object `{...}`.
    - Objects MUST be separated by commas.
@@ -59,8 +59,6 @@ def generate_primitives_from_problem(
                 # "id": p.get("id"),
                 "name": p.get("name", ""),
                 "description": p.get("description", ""),
-                "input": p.get("input_schema", {}),
-                "output": p.get("output_schema", {})
             })
 
             existing_ids.append(p.get("id"))
@@ -83,7 +81,7 @@ def generate_primitives_from_problem(
     # ---------------- Prepare subtasks ----------------
     subtasks_text = ""
     if subtasks:
-        subtasks_text = json.dumps(subtasks, indent=2, ensure_ascii=False)
+        subtasks_text = json.dumps(subtasks,separators=(",", ":"), ensure_ascii=False)
 
 
     user_prompt = f"""
@@ -93,10 +91,10 @@ def generate_primitives_from_problem(
             Domain hint: {domain_hint or 'None'} - {domain}
 
             Existing primitives (if any):
-            {json.dumps(summary, indent=2, ensure_ascii=False)}
+            {json.dumps(summary, separators=(",", ":"), ensure_ascii=False)}
 
             Problem analysis:
-            {json.dumps(analysis_copy, indent=2, ensure_ascii=False)}
+            {json.dumps(analysis_copy,separators=(",", ":"), ensure_ascii=False)}
 
             Subtasks:
             {subtasks_text}
