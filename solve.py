@@ -119,7 +119,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
         f.write(f"\n\n=== Accuracy: {acc:.2f} ({correct}/{total}) ===\n")
 
         # Save memory
-        save_memory()
+        #save_memory()
     return acc, feedback_entries
 
 
