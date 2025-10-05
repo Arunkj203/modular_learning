@@ -8,7 +8,6 @@ import pickle
 
 
 # Constants
-Retries = 3
 Base_dir_path = os.path.dirname(os.path.abspath(__file__))
 
 # Dataset paths
@@ -91,21 +90,4 @@ def save_memory():
 
     print("Memory saved successfully!")
 
-
-def parse_raw_op_with_markers(raw_text: str):
-    """
-    Extract JSON array of primitives from raw LLM output wrapped with <start> and <end>
-    """
-    # Extract text between <start> and <end>
-    match = re.search(r"<start>(.*?)<end>", raw_text, flags=re.S)
-    if not match:
-        raise ValueError("Could not find <start> ... <end> in raw output")
-
-    json_text = match.group(1).strip()
-
-    # Remove trailing commas before } or ]
-    json_text = re.sub(r',(\s*[\}\]])', r'\1', json_text)
-
-    # Parse JSON
-    return json.loads(json_text)
 

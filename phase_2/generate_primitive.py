@@ -119,29 +119,8 @@ def generate_primitives_from_problem(
     dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
 
 
-    for attempt in range(Retries):
-
-        max_tokens = min(4096 , dynamic_max_tokens * (2 ** attempt) )
-
-        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=max_tokens)
-        try:
-            # json_text = extract_json_from_text(raw_output)
-            primitives_sequence = parse_raw_op_with_markers(raw)
-            error = False
-            break
-        except Exception as e:
-            last_error = e
-            error = True
-            print(f"[WARN] Attempt {attempt+1} failed: {e}")
-            # optional: short delay before retry
-    
-    if error:
-        # If all attempts failed, raise
-        raise RuntimeError(
-            f"Could not parse JSON after {Retries} attempts. "
-            f"Last error: {last_error}\nLast LLM output:\n{raw}"
-        )
-
+    primitives_sequence = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=dynamic_max_tokens)
+       
 
     # Ensure it's a list of primitives
     if isinstance(primitives_sequence, dict):

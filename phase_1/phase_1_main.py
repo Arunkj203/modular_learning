@@ -1,7 +1,7 @@
 # phase_1_main.py
 
 from .preprocess import preprocess_problem
-from .analyze_problems import analyze_problem
+from .analyze_problems import analyze_and_decompose
 
 
 def run_phase1(model, tokenizer,problem=None, dataset_name="SVAMP"):
@@ -24,7 +24,7 @@ def run_phase1(model, tokenizer,problem=None, dataset_name="SVAMP"):
     # print(json.dumps(processed, indent=2))
 
     # Step 2 - Analyze the Problem
-    analysis = analyze_problem(model, tokenizer ,processed)
+    analysis = analyze_and_decompose(model, tokenizer ,processed)
 
     
     # print("\n=== Analysis (JSON) ===")
