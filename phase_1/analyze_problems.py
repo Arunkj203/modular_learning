@@ -112,6 +112,9 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
           ]
         }}
         <end>
+        
+        IMPORTANT: Your output **MUST** start with <start> and end with <end>. 
+        Do not add any explanation, comments, or extra text. Only the markers and the JSON.
 
         Guidelines:
         - Identify 2–4 reasoning modules most relevant to solving this task.
@@ -154,6 +157,10 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
           ]
         }}
         <end>
+
+        IMPORTANT: Your output **MUST** start with <start> and end with <end>. 
+        Do not add any explanation, comments, or extra text. Only the markers and the JSON.
+
         """
     
     complexity_estimate_2 = len(tokenizer(system_prompt_2 + user_prompt_2)["input_ids"])
