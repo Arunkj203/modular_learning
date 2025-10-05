@@ -20,7 +20,13 @@ problem = {'ID': 'chal-777',
 
 
 processed =  {'id': 'chal-777', 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 'answer': '145', 'intermediate_steps': '( 290.0 / 2.0 )', 'type': 'Common-Division'}
-analysis = {'problem_type': 'algebra', 'domain': 'math', 'methods': ['isolation', 'simplification'], 'tags': ['linear equation'], 'subtasks': [{'step': 1, 'instruction': 'Identify the variable to isolate'}, {'step': 2, 'instruction': 'Move constants to the other side'}]}
+analysis = {'problem_type': 'algebra', 
+            'domain': 'math', 'methods': ['isolation', 'simplification'], 
+            'tags': ['linear equation'], 
+            'subtasks': 
+            [{'step': 1, 'instruction': 'Identify the variable to isolate'}, 
+             {'step': 2, 'instruction': 'Move constants to the other side'}]
+             }
 
 
 primitive_sequence  = [{'id': 'Isolate_6acb9b6a', 'name': 'Isolate', 'input': {}, 'output': {}, 'description': 'Isolate a variable by moving all other terms to the other side of the equation', 'problem_type': 'algebra', 'domain': 'math', 'methods': ['isolation', 'simplification'], 'tags': ['linear equation']}, {'id': 'Simplify_1c05edee', 'name': 'Simplify', 'input': {}, 'output': {}, 'description': 'Simplify an equation by combining like terms', 'problem_type': 'algebra', 'domain': 'math', 'methods': ['isolation', 'simplification'], 'tags': ['linear equation']}]

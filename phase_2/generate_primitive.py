@@ -31,6 +31,7 @@ Rules:
    - Objects MUST be separated by commas.
    - Do not include comments, trailing commas, or extra keys.
 6. Wrap the array strictly between `<start>` and `<end>` markers.
+7. Return your final JSON enclosed between `<start>` and `<end>`. Do not omit `<end>`.
 """
 
 
@@ -116,13 +117,15 @@ def generate_primitives_from_problem(
     error = False
 
     # Calculate dynamic max_tokens based on complexity
-    base_tokens = 1500
     complexity_estimate = len(tokenizer(user_prompt)['input_ids'])
-    dynamic_max_tokens = base_tokens + complexity_estimate
+    dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
 
 
-    for attempt in range(1, Retries + 1):
-        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=dynamic_max_tokens)
+    for attempt in range(Retries):
+
+        max_tokens = min(4096 , dynamic_max_tokens * (2 ** attempt) )
+
+        raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=max_tokens)
         try:
             # json_text = extract_json_from_text(raw_output)
             primitives_sequence = parse_raw_op_with_markers(raw)
@@ -131,7 +134,7 @@ def generate_primitives_from_problem(
         except Exception as e:
             last_error = e
             error = True
-            print(f"[WARN] Attempt {attempt} failed: {e}")
+            print(f"[WARN] Attempt {attempt+1} failed: {e}")
             # optional: short delay before retry
     
     if error:

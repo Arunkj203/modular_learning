@@ -24,11 +24,9 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
     
     system_prompt = (
     "You are an expert problem analyst. "
-    "Identify the problem type, domain, reasoning strategies, "
-    "and break the problem into clear, sequential subtasks. "
-    "Each subtask should describe **what action to perform** conceptually, "
-    "not the solution itself. "
-    "You must output a JSON object ONLY, and enclose it EXACTLY between <start> and <end> markers."
+    "Break down the problem into conceptual subtasks that describe how to understand and represent the situation logically — not how to compute the answer. "
+    "Each subtask should capture a reasoning action, like identifying quantities, relationships, or goals. "
+    "Do not include algebraic manipulation steps or numeric calculations."
     )
 
     user_prompt = f"""
@@ -37,18 +35,9 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
         Intermediate steps (if any): {steps}
 
 
-        Example:
+        Format your response like this (do not copy this text, only follow structure):
         <start>
-        {{
-        "problem_type":"algebra",
-        "domain":"math",
-        "methods":["isolation","simplification"],
-        "tags":["linear equation"],
-        "subtasks":[
-            {{"step":1,"instruction":"Identify the variable to isolate"}},
-            {{"step":2,"instruction":"Move constants to the other side"}}
-        ]
-        }}
+            {{"problem_type": "...", "domain": "...", "methods": [...], "tags": [...], "subtasks":[...]}}
         <end>
 
 
@@ -65,13 +54,22 @@ def analyze_problem(model, tokenizer ,problem_entry: Dict[str, Any]) -> Dict[str
         
         
     last_error = None
-    for attempt in range(1, Retries + 1):
+
+    # Calculate dynamic max_tokens based on complexity
+    complexity_estimate = len(tokenizer(user_prompt)['input_ids'])
+    dynamic_max_tokens = min(4096, max(300, 2 * complexity_estimate )) 
+
+
+    for attempt in range(Retries):
+
+        max_tokens = min(4096 , dynamic_max_tokens * (2 ** attempt) )        
+
         raw = generate_text(model, tokenizer, system_prompt, user_prompt, max_tokens=300)
         try:
             return parse_raw_op_with_markers(raw)
         except Exception as e:
             last_error = e
-            print(f"[WARN] Attempt {attempt} failed: {e}")
+            print(f"[WARN] Attempt {attempt+1} failed: {e}")
             # optional: short delay before retry
     # If all attempts failed, raise
     raise RuntimeError(

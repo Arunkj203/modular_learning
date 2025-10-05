@@ -4,6 +4,10 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM ,StoppingCriteria, StoppingCriteriaList 
 import os , requests 
 
+from transformers import GenerationConfig
+
+
+
 # Optional: load .env
 try:
     from dotenv import load_dotenv 
@@ -57,8 +61,6 @@ def get_model_and_tokenizer():
 # Helper function for generation
 # -----------------------------
 
-from transformers import StoppingCriteria, StoppingCriteriaList
-
 class StopOnToken(StoppingCriteria):
     def __init__(self, tokenizer, stop_token):
         self.tokenizer = tokenizer
@@ -77,28 +79,32 @@ class StopOnToken(StoppingCriteria):
 
 def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
 
-    prompt = f"""SYSTEM:
-        {system_prompt}
+    prompt = (
+    f"<s>[SYSTEM]\n{system_prompt}\n"
+    f"[USER]\n{user_prompt}\n"
+    f"[ASSISTANT]\n"
+    "Output starts now. Do not repeat the problem. Only produce the JSON output enclosed in <start> and <end>.\n"
 
-        USER:
-        {user_prompt}
-
-        RESPONSE:
-        """
+    )
 
 
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
+    
+    gen_cfg = GenerationConfig(
+            max_new_tokens=max_tokens,
+            do_sample=False,
+            pad_token_id=tokenizer.eos_token_id,
+            eos_token_id=tokenizer.eos_token_id,
+            )
+
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=max_tokens,
-            do_sample=False,
-            eos_token_id=tokenizer.eos_token_id,
-            pad_token_id=tokenizer.eos_token_id,   # add this
+            generation_config=gen_cfg,
             stopping_criteria=StoppingCriteriaList([
         StopOnToken(tokenizer, "<end>")
     ])
-            
+        
         )
 
     # Decode to string
@@ -107,9 +113,9 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,max_tokens=200):
     #print(raw_output)
 
     # Extract text after RESPONSE:
-    after_response = raw_output.split("RESPONSE:")[-1].strip()    
+    generated_text = raw_output.split("[ASSISTANT]")[-1].strip()
 
-    return after_response  # Can now pass to json.loads(json_text)
+    return generated_text  # Can now pass to json.loads(json_text)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
