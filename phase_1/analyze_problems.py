@@ -2,7 +2,7 @@
 
 from typing import Dict, Any
 from ..model_config import generate_text
-
+import json
 
 reasoning_modules = {
   "default_reasoning_module": {
@@ -65,6 +65,9 @@ reasoning_modules = {
   ]
 }
 
+default_modules = json.dumps(reasoning_modules['default_reasoning_module'], separators=(",", ":"), ensure_ascii=False)
+compact_modules = json.dumps(reasoning_modules['available_reasoning_modules'], separators=(",", ":"), ensure_ascii=False)
+
 
 
 def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Dict[str, Any]:
@@ -82,12 +85,12 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
         "You are a meta-reasoning analyst inspired by the SELF-DISCOVER framework. "
         "Your goal is to analyze the given math problem, select reasoning modules that best fit the task, "
         "and design a conceptual decomposition plan. The default reasoning module" 
-        f"{reasoning_modules['default_reasoning_module']}"
+        f"{default_modules}"
         "is always included. From the provided list of reasoning modules, select 2–4 additional modules "
         "that would most help solve the problem. "
         "Do not compute the answer — focus only on reasoning structure.\n\n"
         "Reasoning Modules JSON:\n"
-        f"{reasoning_modules['available_reasoning_modules']}"
+        f"{compact_modules}"
     )
 
     user_prompt = f"""
@@ -103,7 +106,6 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
           "selected_reasoning_modules": ["...","..."],
           "methods": ["..."],
           "tags": ["..."],
-          "analysis_summary": "...",
           "decomposition_plan": [
             {{"goal": "","description": ""}},
             {{"goal": "","description": ""}}
@@ -113,14 +115,13 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
 
         Guidelines:
         - Identify 2–4 reasoning modules most relevant to solving this task.
-        - In 'analysis_summary', explain why those modules apply.
         - In 'decomposition_plan', outline conceptual subgoals (not computations).
         - Avoid algebraic or numeric steps; focus on reasoning structure.
         - Output one valid JSON object enclosed between <start> and <end> with no extra text.
         """
 
     # === dynamic token allocation ===
-    complexity_estimate = len(tokenizer(user_prompt)["input_ids"])
+    complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
     dynamic_max_tokens = min(4096, max(400, 2 * complexity_estimate))
 
     phase1_output = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
@@ -154,8 +155,12 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
         }}
         <end>
         """
+    
+    complexity_estimate_2 = len(tokenizer(system_prompt_2 + user_prompt_2)["input_ids"])
+    dynamic_max_tokens_2 = min(4096, max(400, 2 * complexity_estimate_2))
 
-    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens=600)
+
+    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens_2=600)
         
     # merge results
     return {

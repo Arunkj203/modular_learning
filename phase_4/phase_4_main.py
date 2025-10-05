@@ -119,7 +119,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
 
             
             # Calculate dynamic max_tokens based on complexity
-            complexity_estimate = len(tokenizer(user_prompt)['input_ids'])
+            complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
             dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
 
                 # Call your generate_text wrapper

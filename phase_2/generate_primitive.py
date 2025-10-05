@@ -115,7 +115,7 @@ def generate_primitives_from_problem(
     error = False
 
     # Calculate dynamic max_tokens based on complexity
-    complexity_estimate = len(tokenizer(user_prompt)['input_ids'])
+    complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
     dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
 
 
