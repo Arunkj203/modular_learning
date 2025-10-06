@@ -143,9 +143,9 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,dynamic_max_token
 
         except Exception as e:
                     last_error = e
-                    print(f"[WARN] Phase 1 attempt {attempt+1} failed: {e}")
+                    print(f"[WARN] Attempt {attempt+1} failed: {e}\nRaw:{raw.strip()}\n")
     else:
-        raise RuntimeError(f"Parsing failed after {Retries} attempts.\n{raw.strip()}")
+        raise RuntimeError(f"Failed\nError:{last_error}.\nRaw Output:\n{raw.strip()}")
 
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
