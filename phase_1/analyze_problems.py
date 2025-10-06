@@ -88,10 +88,8 @@ Your objectives:
 1. Identify the type and domain of the problem.
 2. Select 2–4 reasoning modules (from the list provided) that best suit this problem.
 3. Identify appropriate methods or mental operations to use.
-4.tags: include **short keywords describing problem characteristics or type**, e.g., "linear-equation", "counting", "geometry", "probability", "algebra". Avoid long sentences.
-5. Generate decomposition strategies — short statements describing *how* to simplify reasoning.
-6. Create a conceptual decomposition plan — a list of subgoals describing reasoning flow.
-7.tags: include **short keywords describing problem characteristics or type**, e.g., "linear-equation", "counting", "geometry", "probability", "algebra". Avoid long sentences.
+4. Generate decomposition strategies — short statements describing *how* to simplify reasoning.
+5. Create a conceptual decomposition plan — a list of subgoals describing reasoning flow.
 
 Always include the default reasoning module:
 {default_modules}
@@ -158,32 +156,12 @@ Do not compute or give answers — focus only on reasoning structure.
 
       ADDITIONAL RULES:
       - Fill every field. Use empty lists only if genuinely none apply.
-      - Output ONLY the JSON between <start> and <end>. No extra text, no filler.
+      - **IMPORTANT** : Output ONLY the JSON between <start> and <end>. No extra text, no filler.
       - selected_reasoning_modules: choose 2–4 modules (include default Step-By-Step).
       - methods: list conceptual techniques (e.g., "inverse-solving", "transaction-modeling", "isolation").
       - decomposition_strategies: short phrases describing *how* you will simplify / chunk reasoning.
       - decomposition_plan: two or more conceptual subgoals (no numeric computation).
 
-      Example (for clarity — do not echo this exact example back; use it as a model):
-
-      <start>
-      {{
-      "problem_type": "word_problem",
-      "domain": "Arithmetic",
-      "sub_domain": "money_word_problem",
-      "tags": ["two-step","addition-subtraction","money","word-problem"],
-      "topics": ["addition & subtraction","two-step word problems"],
-      "selected_reasoning_modules": ["Step-by-Step Reasoning","Simplification","Decomposition"],
-      "methods": ["transaction-modeling","inverse-solving"],
-      "decomposition_strategies": ["Model transactions sequentially","Isolate unknown by reversing operations"],
-      "decomposition_plan": [
-        {{"goal": "Model final amount", "description": "Express final money as initial - spent + received."}},
-        {{"goal": "Solve for initial amount", "description": "Rearrange transaction model to isolate initial amount."}}
-      ]
-      }}
-      <end>
-
-    
         '''
 
     # === dynamic token allocation ===
