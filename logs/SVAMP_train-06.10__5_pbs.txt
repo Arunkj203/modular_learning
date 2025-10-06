@@ -1,0 +1,13 @@
+=== Training on SVAMP ===
+
+
+====================== Problem 1 ======================
+
+Question:
+Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?
+
+Ground Truth Answer:
+70.0
+
+Phase 1 - Analysis:
+{'problem_type': 'word_problem', 'domain': 'Arithmetic', 'sub_domain': 'Money', 'tags': ['money', 'word_problem', 'arithmetic'], 'topics': ['arithmetic', 'word_problem'], 'selected_reasoning_modules': ['Step-By-Step', 'Simplification', 'Decomposition'], 'methods': ['Simplification', 'Decomposition'], 'decomposition_strategies': ['Simplification', 'Decomposition'], 'decomposition_plan': [{'goal': 'first_conceptual_goal', 'description': 'what_this_accomplishes'}, {'goal': 'second_conceptual_goal', 'description': 'what_this_accomplishes'}], 'subtasks': [{'step': 1, 'instruction': 'Identify the number of pencils in each pack.'}, {'step': 2, 'instruction': 'Identify the number of pencils in each row.'}, {'step': 3, 'instruction': 'Compare the number of pencils in each pack to the number of pencils in each row.'}]}
