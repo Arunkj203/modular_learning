@@ -33,8 +33,6 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
     sequence_primitives = generate_primitives_from_problem(
         model, tokenizer ,
         problem_text=problem_text,
-        domain_hint=analysis.get("domain"),
-        provenance="phase_1_pipeline",
         old_primitives=existing_primitives,
         analysis=analysis
     )
@@ -52,9 +50,8 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
         primitive_entry = {
             "id": p.get("id"),
             "name": p.get("name", ""),
-            "input": p.get("input_schema", {}),
-            "output": p.get("output_schema", {}),
             "description": p.get("description", ""),
+            "goal": p.get("goal", ""),
             "problem_type": p.get("problem_type", analysis.get("problem_type", "")),
             "domain": p.get("domain", analysis.get("domain", "")),
             "methods": p.get("methods", analysis.get("methods", [])),
