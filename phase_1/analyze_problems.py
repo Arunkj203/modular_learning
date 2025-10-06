@@ -107,17 +107,17 @@ Do not compute or give answers — focus only on reasoning structure.
 
         Format your response *exactly* as follows:
         <start>
-        {
+        {{
           "problem_type": "...",
           "domain": "...",
           "selected_reasoning_modules": ["...","..."],
           "methods": ["..."],
           "decomposition_strategies": ["Simplify structure","Identify relations","Break by variable type"],
           "decomposition_plan": [
-            {"goal": "","description": ""},
-            {"goal": "","description": ""}
+            {{"goal": "","description": ""}},
+            {{"goal": "","description": ""}}
           ]
-        }
+        }}
         <end>
 
         Rules:
