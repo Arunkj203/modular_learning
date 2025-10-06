@@ -88,8 +88,10 @@ Your objectives:
 1. Identify the type and domain of the problem.
 2. Select 2–4 reasoning modules (from the list provided) that best suit this problem.
 3. Identify appropriate methods or mental operations to use.
-4. Generate decomposition strategies — short statements describing *how* to simplify reasoning.
-5. Create a conceptual decomposition plan — a list of subgoals describing reasoning flow.
+4.tags: include **short keywords describing problem characteristics or type**, e.g., "linear-equation", "counting", "geometry", "probability", "algebra". Avoid long sentences.
+5. Generate decomposition strategies — short statements describing *how* to simplify reasoning.
+6. Create a conceptual decomposition plan — a list of subgoals describing reasoning flow.
+7.tags: include **short keywords describing problem characteristics or type**, e.g., "linear-equation", "counting", "geometry", "probability", "algebra". Avoid long sentences.
 
 Always include the default reasoning module:
 {default_modules}
@@ -107,10 +109,10 @@ Do not compute or give answers — focus only on reasoning structure.
         Format your response *exactly* as follows:
         <start>
         {{
-          "problem_type": "...",
           "domain": "...",
           "selected_reasoning_modules": ["...","..."],
           "methods": ["..."],
+          "tags": ["..."],
           "decomposition_strategies": ["Simplify structure","Identify relations","Break by variable type"],
           "decomposition_plan": [
             {{"goal": "","description": ""}},
