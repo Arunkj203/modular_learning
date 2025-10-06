@@ -82,8 +82,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
 
     # === Phase 1: Select & Analyze ===
     system_prompt = f'''You are a meta-reasoning architect.
-Your task is to analyze a given problem and outline how a reasoning system
-should think about it before attempting to solve it.
+Analyze problems and create reasoning plans in STRICT JSON format.
 
 Your objectives:
 1. Identify the type and domain of the problem.
@@ -120,11 +119,13 @@ Do not compute or give answers — focus only on reasoning structure.
         }}
         <end>
 
-        Rules:
-        - Choose only 2–4 reasoning modules (include the default automatically).
-        - Decomposition strategies describe *how* you plan to reason efficiently.
-        - Decomposition plan lists conceptual reasoning goals, not numeric steps.
-        - Output only JSON between <start> and <end>, no extra text or explanation.
+      RULES:
+      1. Your response must start with <start> and end with <end>
+      2. Choose 2-4 reasoning modules total 
+      3. Focus on reasoning structure, not solutions
+      4.Nothing outside these markers - no greetings, no explanations
+      5. JSON must be valid and parseable
+    
         '''
 
     # === dynamic token allocation ===
@@ -162,12 +163,13 @@ Do not compute or give answers — focus only on reasoning structure.
         }}
         <end>
 
-      Guidelines:
-      - Each subtask should be a single conceptual reasoning instruction.
-      - Use verbs like "identify", "compare", "estimate", "reason about", "infer".
-      - Do not restate the full problem or add commentary.
-      - Output only the JSON enclosed between <start> and <end>.
-
+      RULES:
+      1. Your response must start with <start> and end with <end>
+      2.Each subtask should be a single conceptual reasoning instruction.
+      3.Use verbs like "identify", "compare", "estimate", "reason about", "infer".
+      4. Nothing outside these markers - no greetings, no explanations
+      5. JSON must be valid and parseable
+      6. Focus on reasoning structure, not solutions
 
       '''
     

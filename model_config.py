@@ -89,10 +89,6 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,dynamic_max_token
         USER:
         {user_prompt}
 
-        STRICT RULES:
-        1. Output MUST begin with <start> and end with <end>.
-        2. Only valid JSON inside the markers.
-        3. No commentary, no explanations, no extra lines.
 
         RESPONSE:
         """
