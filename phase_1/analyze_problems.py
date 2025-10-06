@@ -100,7 +100,7 @@ Available reasoning modules (choose a few relevant ones):
 Do not compute or give answers — focus only on reasoning structure.
 '''
 
-    user_prompt = f"""
+    user_prompt = f'''
         Problem: {question}
 
         Intermediate steps (if any): {steps}
@@ -125,7 +125,7 @@ Do not compute or give answers — focus only on reasoning structure.
         - Decomposition strategies describe *how* you plan to reason efficiently.
         - Decomposition plan lists conceptual reasoning goals, not numeric steps.
         - Output only JSON between <start> and <end>, no extra text or explanation.
-        """
+        '''
 
     # === dynamic token allocation ===
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
@@ -145,7 +145,7 @@ Do not compute or give answers — focus only on reasoning structure.
         "Do not perform any calculation or algebraic manipulation."
     )
 
-    user_prompt_2 = f"""
+    user_prompt_2 = f'''
         Problem: {question}
 
         Selected reasoning modules: {selected_modules}
@@ -167,8 +167,7 @@ Do not compute or give answers — focus only on reasoning structure.
       - Use verbs like "identify", "compare", "estimate", "reason about", "infer".
       - Do not restate the full problem or add commentary.
       - Output only the JSON enclosed between <start> and <end>.
-
-        """
+      '''
     
     complexity_estimate_2 = len(tokenizer(system_prompt_2 + user_prompt_2)["input_ids"])
     dynamic_max_tokens_2 = min(4096, max(400, 2 * complexity_estimate_2))
