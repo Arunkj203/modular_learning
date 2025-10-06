@@ -81,95 +81,66 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     steps = problem_entry.get("intermediate_steps", "")
 
     # === Phase 1: Select & Analyze ===
-    system_prompt = f'''You are a meta-reasoning architect.
-Analyze problems and create reasoning plans in STRICT JSON format.
+    system_prompt = f'''You are a JSON-only analysis machine. You output nothing but valid JSON between <start> and <end>.
+                    STRICT RULES:
+                    1. Your response MUST begin with: <start>
+                    2. Your response MUST end with: <end> 
+                    3. Between these markers: ONLY valid JSON, no other text
+                    4. Violating this format is a critical failure
 
-Your objectives:
-1. Identify the type and domain of the problem.
-2. Select 2–4 reasoning modules (from the list provided) that best suit this problem.
-3. Identify appropriate methods or mental operations to use.
-4. Generate decomposition strategies — short statements describing *how* to simplify reasoning.
-5. Create a conceptual decomposition plan — a list of subgoals describing reasoning flow.
+                    Analysis objectives:
+                    - Classify problem type, domain, sub_domain
+                    - Select 2-4 reasoning modules (include: {default_modules})
+                    - Define methods and decomposition strategies
+                    - Create conceptual reasoning plan
 
-Always include the default reasoning module:
-{default_modules}
-Available reasoning modules (choose a few relevant ones):
-{compact_modules}
-
-Do not compute or give answers — focus only on reasoning structure.
-'''
+                    Available modules: {compact_modules}
+                    '''
 
     user_prompt = f'''
-        Problem: {question}
+            INPUT PROBLEM: {question}
+            INTERMEDIATE STEPS: {steps}
 
-        Intermediate steps (if any): {steps}
+            OUTPUT REQUIREMENT: You must output ONLY this exact format:
 
-        Format your response exactly as follows:
+            <start>
+            {{
+              "problem_type": "choose_from:word_problem,equation_solving,counting,comparison,proof,algebraic_manipulation,simplification,inference,optimization,pattern_identification,unit_conversion,geometry_construction,probability_calculation,inverse_operation",
+              "domain": "choose_from:Arithmetic,Algebra,Geometry,Number_Theory,Probability,Combinatorics,Calculus,Linear_Algebra,Statistics,Logic",
+              "sub_domain": "specific_area_like_money_word_problem_or_linear_equation",
+              "tags": ["keyword1", "keyword2", "keyword3"],
+              "topics": ["topic1", "topic2"],
+              "selected_reasoning_modules": ["Step-By-Step", "module2", "module3"],
+              "methods": ["method1", "method2"],
+              "decomposition_strategies": ["strategy1", "strategy2"],
+              "decomposition_plan": [
+                {{"goal": "first_conceptual_goal", "description": "what_this_accomplishes"}},
+                {{"goal": "second_conceptual_goal", "description": "what_this_accomplishes"}}
+              ]
+            }}
+            <end>
 
-      <start>
-      {{
-      "problem_type": "",
-      "domain": "",
-      "sub_domain": "",
-      "tags": [],
-      "topics": [],
-      "selected_reasoning_modules": [],
-      "methods": [],
-      "decomposition_strategies": ["Simplify structure", "Identify relations", "Break by variable type"],
-      "decomposition_plan": [
-        {{"goal": "", "description": ""}},
-        {{"goal": "", "description": ""}}
-      ]
-      }}
-      <end>
+            FIELD GUIDELINES:
+            - problem_type: One concise label from the provided list
+            - domain: One broad subject area from provided list  
+            - sub_domain: Specific area within domain (be precise)
+            - tags: 2-5 machine-friendly keywords describing problem characteristics
+            - topics: 1-3 curricular learning objectives
+            - selected_reasoning_modules: 2-4 modules including "Step-By-Step"
+            - methods: Conceptual techniques used in reasoning
+            - decomposition_strategies: How to break down the problem
+            - decomposition_plan: 2-4 conceptual reasoning goals (not computational steps)
 
-      STRICT RULES — fill these fields as instructed:
-      1. problem_type (one concise label describing the cognitive task)
-        - PURPOSE: describe *what kind of reasoning* the problem requires.
-        - CHOOSE from (preferred) or use a short hyphenated phrase:
-          [word_problem, equation_solving, counting, comparison, proof, algebraic_manipulation,
-          simplification, inference, optimization, pattern_identification, unit_conversion,
-          geometry_construction, probability_calculation, inverse_operation]
-        - EXAMPLE: "word_problem" or "equation_solving".
-        - DO NOT use generic values like "Math" or "Misc".
-
-      2. domain (broad academic subject area)
-        - PURPOSE: the major subject/discipline the problem belongs to.
-        - CHOOSE one from:
-          [Arithmetic, Algebra, Geometry, Number Theory, Probability, Combinatorics,
-          Calculus, Linear Algebra, Statistics, Logic]
-        - EXAMPLE: "Arithmetic".
-        - Keep it one word or short phrase (e.g., "Linear Algebra").
-
-      3. sub_domain (narrower, problem-specific area inside domain)
-        - PURPOSE: a more specific tag inside the domain (helps primitive matching).
-        - EXAMPLES: "money_word_problem", "linear_equation", "permutation_combination", "area_calculation".
-
-      4. tags (short problem-characteristic keywords)
-        - PURPOSE: quick machine-friendly keywords for filtering & matching primitives.
-        - FORMAT: short, hyphenated or single-word tokens. Avoid sentences.
-        - EXAMPLES: ["two-step", "addition-subtraction", "word-problem", "money", "linear-equation"].
-
-      5. topics (curricular topics / learning objectives)
-        - PURPOSE: curriculum-level topics the problem maps to.
-        - EXAMPLES: ["addition & subtraction", "two-step word problems", "fractions", "probability basics"].
-
-      ADDITIONAL RULES:
-      - Fill every field. Use empty lists only if genuinely none apply.
-      - **IMPORTANT** : Output ONLY the JSON between <start> and <end>. No extra text, no filler.
-      - selected_reasoning_modules: choose 2–4 modules (include default Step-By-Step).
-      - methods: list conceptual techniques (e.g., "inverse-solving", "transaction-modeling", "isolation").
-      - decomposition_strategies: short phrases describing *how* you will simplify / chunk reasoning.
-      - decomposition_plan: two or more conceptual subgoals (no numeric computation).
-
-        '''
-
+            BEGIN OUTPUT NOW. REMEMBER: <start> first, <end> last, JSON only between them.
+            '''
+    
     # === dynamic token allocation ===
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
     dynamic_max_tokens = min(4096, max(400, 2 * complexity_estimate))
 
     phase1_output = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
     
+    print("\nDecomposing...\n")
     # === Phase 2: Decompose into Subtasks ===
     selected_modules = phase1_output.get("selected_reasoning_modules", [])
     decomposition_plan = phase1_output.get("decomposition_plan", [])
