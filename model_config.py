@@ -124,8 +124,15 @@ def generate_text(model ,tokenizer, system_prompt, user_prompt,dynamic_max_token
             
             # print(raw.strip())
 
-            # Extract text after RESPONSE:
-            generated_text = raw.split("RESPONSE:")[-1].strip()
+            # Extract text between the first and second RESPONSE
+            responses = raw.split("RESPONSE:")
+
+            if len(responses) >= 3:
+                # There is a second RESPONSE, take text between first and second
+                generated_text = responses[1].strip()
+            else:
+                # Only one RESPONSE exists, take everything after first
+                generated_text = responses[1].strip()
 
             """
             Extract JSON array of primitives from raw LLM output wrapped with <start> and <end>
