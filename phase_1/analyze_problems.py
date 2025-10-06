@@ -81,46 +81,50 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     steps = problem_entry.get("intermediate_steps", "")
 
     # === Phase 1: Select & Analyze ===
-    system_prompt = (
-        "You are a meta-reasoning analyst inspired by the SELF-DISCOVER framework. "
-        "Your goal is to analyze the given math problem, select reasoning modules that best fit the task, "
-        "and design a conceptual decomposition plan. The default reasoning module" 
-        f"{default_modules}"
-        "is always included. From the provided list of reasoning modules, select 2–4 additional modules "
-        "that would most help solve the problem. "
-        "Do not compute the answer — focus only on reasoning structure.\n\n"
-        "Reasoning Modules JSON:\n"
-        f"{compact_modules}"
-    )
+    system_prompt = f'''You are a meta-reasoning architect.
+Your task is to analyze a given problem and outline how a reasoning system
+should think about it before attempting to solve it.
+
+Your objectives:
+1. Identify the type and domain of the problem.
+2. Select 2–4 reasoning modules (from the list provided) that best suit this problem.
+3. Identify appropriate methods or mental operations to use.
+4. Generate decomposition strategies — short statements describing *how* to simplify reasoning.
+5. Create a conceptual decomposition plan — a list of subgoals describing reasoning flow.
+
+Always include the default reasoning module:
+{default_modules}
+Available reasoning modules (choose a few relevant ones):
+{compact_modules}
+
+Do not compute or give answers — focus only on reasoning structure.
+'''
 
     user_prompt = f"""
         Problem: {question}
 
         Intermediate steps (if any): {steps}
 
-        Format your response like this (between <start> and <end> markers):
+        Format your response *exactly* as follows:
         <start>
-        {{
+        {
           "problem_type": "...",
           "domain": "...",
           "selected_reasoning_modules": ["...","..."],
           "methods": ["..."],
-          "tags": ["..."],
+          "decomposition_strategies": ["Simplify structure","Identify relations","Break by variable type"],
           "decomposition_plan": [
-            {{"goal": "","description": ""}},
-            {{"goal": "","description": ""}}
+            {"goal": "","description": ""},
+            {"goal": "","description": ""}
           ]
-        }}
+        }
         <end>
-        
-        IMPORTANT: Your output **MUST** start with <start> and end with <end>. 
-        Do not add any explanation, comments, or extra text. Only the markers and the JSON.
 
-        Guidelines:
-        - Identify 2–4 reasoning modules most relevant to solving this task.
-        - In 'decomposition_plan', outline conceptual subgoals (not computations).
-        - Avoid algebraic or numeric steps; focus on reasoning structure.
-        - Output one valid JSON object enclosed between <start> and <end> with no extra text.
+        Rules:
+        - Choose only 2–4 reasoning modules (include the default automatically).
+        - Decomposition strategies describe *how* you plan to reason efficiently.
+        - Decomposition plan lists conceptual reasoning goals, not numeric steps.
+        - Output only JSON between <start> and <end>, no extra text or explanation.
         """
 
     # === dynamic token allocation ===
@@ -158,8 +162,11 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
         }}
         <end>
 
-        IMPORTANT: Your output **MUST** start with <start> and end with <end>. 
-        Do not add any explanation, comments, or extra text. Only the markers and the JSON.
+      Guidelines:
+      - Each subtask should be a single conceptual reasoning instruction.
+      - Use verbs like "identify", "compare", "estimate", "reason about", "infer".
+      - Do not restate the full problem or add commentary.
+      - Output only the JSON enclosed between <start> and <end>.
 
         """
     
@@ -167,7 +174,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     dynamic_max_tokens_2 = min(4096, max(400, 2 * complexity_estimate_2))
 
 
-    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens=600)
+    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens=dynamic_max_tokens_2)
         
     # merge results
     return {
