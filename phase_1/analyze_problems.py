@@ -177,8 +177,8 @@ Do not compute or give answers — focus only on reasoning structure.
       "methods": ["transaction-modeling","inverse-solving"],
       "decomposition_strategies": ["Model transactions sequentially","Isolate unknown by reversing operations"],
       "decomposition_plan": [
-        {"goal": "Model final amount", "description": "Express final money as initial - spent + received."},
-        {"goal": "Solve for initial amount", "description": "Rearrange transaction model to isolate initial amount."}
+        {{"goal": "Model final amount", "description": "Express final money as initial - spent + received."}},
+        {{"goal": "Solve for initial amount", "description": "Rearrange transaction model to isolate initial amount."}}
       ]
       }}
       <end>
