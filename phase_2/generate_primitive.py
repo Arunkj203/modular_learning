@@ -11,27 +11,23 @@ import numpy as np
 
 # ---------------- Prompt Template for Phase 2 ----------------
 system_prompt = f"""
-You are an AI reasoning assistant that generates minimal programmatic primitives to solve a problem.
+You are a reasoning assistant that maps problem subtasks to minimal programmatic primitives.
 
 Rules:
-1. Use existing primitives if they match a subtask. Otherwise, generate a new primitive.
-2. Each primitive must include:
-   - id: reuse existing primitive's id if applicable; otherwise leave empty
-   - name: short human-friendly name
-   - description: one-sentence description
-   - input: minimal input schema (field names/types)
-   - output: minimal output schema (field names/types)
-   - related_primitives: list of primitive IDs or names it often co-occurs with
-   - status: 'existing' if reused, 'new' if generated
-3. Generate primitives in **execution order**, respecting subtask dependencies.
-4. For new primitives, provide only minimal info required for later LoRA training.
-5. Output must be **valid JSON** as a single-line array with no spaces or newlines:
-   - The outermost structure MUST be a JSON array `[...]`.
-   - Each element MUST be a full JSON object `{...}`.
-   - Objects MUST be separated by commas.
-   - Do not include comments, trailing commas, or extra keys.
-6. Wrap the array strictly between `<start>` and `<end>` markers.
-7. Return your final JSON enclosed between `<start>` and `<end>`. Do not omit `<end>`.
+1. Reuse existing primitives if they fit the subtask goal.
+2. If no existing primitive fits, create a new one with:
+   - name
+   - description
+   - goal (summarized subtask)
+   - status: "new"
+3. Always output in execution order.
+4. For reused primitives, include:
+   - id
+   - name
+   - status: "existing"
+5. The entire output must be valid JSON between <start> and <end>.
+6. The outer structure must be a JSON array `[...]`.
+7. No explanations, no text outside markers.
 """
 
 
@@ -82,32 +78,26 @@ def generate_primitives_from_problem(
     subtasks_text = ""
     if subtasks:
         subtasks_text = json.dumps(subtasks,separators=(",", ":"), ensure_ascii=False)
-
-
-    user_prompt = f"""
-            Problem:
-            {problem_text}
-
-            Domain hint: {domain_hint or 'None'} - {domain}
-
-            Existing primitives (if any):
-            {json.dumps(summary, separators=(",", ":"), ensure_ascii=False)}
-
-            Problem analysis:
-            {json.dumps(analysis_copy,separators=(",", ":"), ensure_ascii=False)}
-
-            Subtasks:
-            {subtasks_text}
-
-
-            Instructions for LLM:
-            - The 'subtasks' from analysis represent the logical steps to solve the problem.
-            - Map each subtask to one or more primitives, reusing existing ones if possible.
-            - Each primitive should be atomic, minimal, and solvable independently.
-            - Output only the JSON array of primitives, between <start> and <end>.
-            - Do NOT include any extra text outside the markers.
-            """
     
+    user_prompt = f"""
+                Problem:
+                {problem_text}
+
+                Problem analysis:
+                    {json.dumps(analysis_copy,separators=(",", ":"), ensure_ascii=False)}
+
+                Subtasks to solve:
+                {json.dumps(analysis['subtasks'], separators=(',', ':'), ensure_ascii=False)}
+
+                Relevant existing primitives:
+                {json.dumps(summary, separators=(',', ':'), ensure_ascii=False)}
+
+                Instructions:
+                - For each subtask, try to find the best existing primitive.
+                - If one fits, include its id and name with status 'existing'.
+                - If none fit, create a minimal new primitive (include goal and description).
+                - Output strictly valid JSON array between <start> and <end>.
+                """
 
     print("Calling LLM to generate primitive sequence...")
 
@@ -116,7 +106,7 @@ def generate_primitives_from_problem(
 
     # Calculate dynamic max_tokens based on complexity
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
-    dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
+    dynamic_max_tokens = min(4096, max(1500, 2 * complexity_estimate )) 
 
 
     primitives_sequence = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
