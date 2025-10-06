@@ -32,110 +32,93 @@ Rules:
 
 
 def generate_primitives_from_problem(
-    model ,tokenizer,  
+    model, tokenizer,
     problem_text: str,
-    domain_hint: Optional[str] = None,
-    provenance: Optional[str] = None,
     old_primitives: Optional[List[Dict[str, Any]]] = None,
     analysis: Optional[Dict[str, Any]] = None
 ) -> List[Dict[str, Any]]:
     """
     Generate a sequence of primitives to solve the given problem.
-    Existing primitives may be reused. New primitives are minimal.
-
+    Reuses existing primitives by name, assigns new IDs to new ones.
     """
 
-    summary = []
-    existing_ids = []
-
+    summary, name_to_id = [], {}
     if old_primitives:
-        # Summarize existing primitives for LLM
         for p in old_primitives:
             summary.append({
-                # "id": p.get("id"),
                 "name": p.get("name", ""),
-                "description": p.get("description", ""),
+                "description": p.get("description", "")
             })
+            name_to_id[p.get("name", "")] = p.get("id")
 
-            existing_ids.append(p.get("id"))
-
-    
-    # ---------------- Split analysis fields ----------------
     if analysis:
-        # Copy analysis to avoid modifying original
         analysis_copy = analysis.copy()
-        
-        # Pop subtasks from analysis
         subtasks = analysis_copy.pop("subtasks", [])
-        domain = analysis_copy.pop("domain","")
     else:
-        analysis_copy = {}
-        subtasks = []
-        domain = ""
+        analysis_copy, subtasks, domain = {}, [], ""
 
-
-    # ---------------- Prepare subtasks ----------------
-    subtasks_text = ""
-    if subtasks:
-        subtasks_text = json.dumps(subtasks,separators=(",", ":"), ensure_ascii=False)
-    
     user_prompt = f"""
-                Problem:
-                {problem_text}
+Problem:
+{problem_text}
 
-                Problem analysis:
-                    {json.dumps(analysis_copy,separators=(",", ":"), ensure_ascii=False)}
+Problem analysis:
+{json.dumps(analysis_copy, separators=(",", ":"), ensure_ascii=False)}
 
-                Subtasks to solve:
-                {json.dumps(analysis['subtasks'], separators=(',', ':'), ensure_ascii=False)}
+Subtasks to solve:
+{json.dumps(subtasks, separators=(",", ":"), ensure_ascii=False)}
 
-                Relevant existing primitives:
-                {json.dumps(summary, separators=(',', ':'), ensure_ascii=False)}
+Relevant existing primitives:
+{json.dumps(summary, separators=(",", ":"), ensure_ascii=False)}
 
-                Instructions:
-                - For each subtask, try to find the best existing primitive.
-                - If one fits, include its id and name with status 'existing'.
-                - If none fit, create a minimal new primitive (include goal and description).
-                - Output strictly valid JSON array between <start> and <end>.
-                """
+Instructions:
+- For each subtask, match the best existing primitive by name.
+- If one fits, output only its name with status "existing".
+- If none fit, create a new primitive (include name, description, goal, status="new").
+- Output strictly valid JSON array between <start> and <end>.
+"""
 
     print("Calling LLM to generate primitive sequence...")
 
-    last_error = None
-    error = False
-
-    # Calculate dynamic max_tokens based on complexity
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
-    dynamic_max_tokens = min(4096, max(1500, 2 * complexity_estimate )) 
+    dynamic_max_tokens = min(4096, max(1500, 2 * complexity_estimate))
 
+    primitives_sequence = generate_text(
+        model, tokenizer, system_prompt, user_prompt,
+        dynamic_max_tokens=dynamic_max_tokens
+    )
 
-    primitives_sequence = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
-       
-
-    # Ensure it's a list of primitives
+    # Ensure output is a list
     if isinstance(primitives_sequence, dict):
-        # wrap single object in a list
         primitives_sequence = [primitives_sequence]
 
-    # ---------------- Post-process to assign IDs ----------------
-    for p in primitives_sequence:
-        # Reuse existing ID if LLM says 'existing' and name matches
-        if p.get("status") == "existing" and p.get("id") in existing_ids:
-            pass  # keep the existing ID
-        elif p.get("status") == "new" or (p.get("status") == "existing" and p.get("id") not in existing_ids):            # Generate a new unique ID for new primitives or if LLM is unsure
-            unique_suffix = uuid.uuid4().hex[:8]
-            p['id'] = f"{p['name']}_{unique_suffix}"
-        else:
-            raise RuntimeError(f"Failed to assign ID for primitive: {p}")
-
-    
-    # Minimal validation
     valid_primitives = []
     for p in primitives_sequence:
-        if not all(k in p for k in ["id", "description", "input", "output"]):
-            print(f"Skipping invalid primitive: {p}")
+        name = p.get("name")
+        status = p.get("status")
+
+        if not name or not status:
+            print(f"Skipping invalid primitive (missing name/status): {p}")
             continue
-        valid_primitives.append(p)
+
+        if status == "existing":
+            pid = name_to_id.get(name)
+            if not pid:
+                # Fallback: treat as new if name not in known set
+                status = "new"
+
+        if status == "new":
+            unique_suffix = uuid.uuid4().hex[:8]
+            pid = f"{name}_{unique_suffix}"
+
+        # Normalize output
+        prim = {
+            "id": pid,
+            "name": name,
+            "status": status,
+            "description": p.get("description", ""),
+            "goal": p.get("goal", "")
+        }
+        valid_primitives.append(prim)
 
     return valid_primitives
 
