@@ -107,7 +107,6 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
             {{
               "problem_type": "choose_from:word_problem,equation_solving,counting,comparison,proof,algebraic_manipulation,simplification,inference,optimization,pattern_identification,unit_conversion,geometry_construction,probability_calculation,inverse_operation",
               "domain": "choose_from:Arithmetic,Algebra,Geometry,Number_Theory,Probability,Combinatorics,Calculus,Linear_Algebra,Statistics,Logic",
-              "sub_domain": "specific_area_like_money_word_problem_or_linear_equation",
               "tags": ["keyword1", "keyword2", "keyword3"],
               "topics": ["topic1", "topic2"],
               "selected_reasoning_modules": ["Step-By-Step", "module2", "module3"],

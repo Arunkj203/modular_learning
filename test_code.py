@@ -103,12 +103,12 @@ print(f"\nPhase 3 - Skipping...\n")
 ''' Phase 4: Problem Solving + Feedback '''
 print(f"\nPhase 4 - Solving...\n")
 
-# solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
+solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
 
-# print("Phase 4 : Problem Solved")
+print("Phase 4 : Problem Solved")
 
-# print("Steps:", steps)
-# print("Solution:", solution)
+print("Steps:", steps)
+print("Solution:", solution)
 
 
 def normalize_answer(ans):
@@ -131,9 +131,46 @@ def normalize_answer(ans):
 
 '''
 
-Phase 1 : 
+--- Train on SVAMP ---
 
-Phase 2 : 
+=== Problem 1 ===
+
+Phase 1 - Analysing...
+
+
+Decomposing...
+
+Phase 1 : Processed:
+ {'id': 'chal-370', 'question': 'Edward spent $ 17. Then he received $ 10 from his friend. Now he has $ 7. How much did Edward have before he spent his money?', 'answer': '14', 'intermediate_steps': '( ( 17.0 - 10.0 ) + 7.0 )', 'type': 'Addition'}
+Analysis: 
+{'problem_type': 'word_problem', 
+'domain': 'Arithmetic', 
+'sub_domain': 'Money Word Problem', 
+'tags': ['money', 'word_problem', 'arithmetic'], 
+'topics': ['addition', 'subtraction'], 
+'selected_reasoning_modules': ['Step-By-Step', 'Simplification'], 
+'methods': ['addition', 'subtraction'], 
+'decomposition_strategies': ['decompose_into_smaller_problems'], 
+'decomposition_plan': [{'goal': 'find_the_amount_of_money_Edward_had_before_he_spent_it', 
+'description': 'This is the core problem that we need to solve.'},
+ {'goal': 'find_the_amount_of_money_Edward_received_from_his_friend', 
+ 'description': 'This is a supporting conceptual goal that we need to solve.'}], 
+ 
+ 'subtasks': [{'step': 1, 'instruction': 'Identify the amount of money Edward spent.'}, 
+ {'step': 2, 'instruction': 'Identify the amount of money Edward received.'},
+   {'step': 3, 'instruction': 'Identify the amount of money Edward has.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+Calling LLM to generate primitive sequence...
+Phase 2 : Primitive Sequence Generated
+ [{'id': 'find_the_amount_of_money_Edward_spent_05ce974f', 'name': 'find_the_amount_of_money_Edward_spent', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward spent.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_received_327604eb', 'name': 'find_the_amount_of_money_Edward_received', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward received.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_has_0899ccea', 'name': 'find_the_amount_of_money_Edward_has', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward has.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_had_before_he_spent_it_3837a93a', 'name': 'find_the_amount_of_money_Edward_had_before_he_spent_it', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward had before he spent it.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}]
+New Primitives to train: [{'id': 'find_the_amount_of_money_Edward_spent_05ce974f', 'name': 'find_the_amount_of_money_Edward_spent', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward spent.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_received_327604eb', 'name': 'find_the_amount_of_money_Edward_received', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward received.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_has_0899ccea', 'name': 'find_the_amount_of_money_Edward_has', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward has.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_had_before_he_spent_it_3837a93a', 'name': 'find_the_amount_of_money_Edward_had_before_he_spent_it', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward had before he spent it.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}]
+
+Phase 3 - Skipping...
+
+
+Phase 4 - Solving...
 
 
 '''
