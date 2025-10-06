@@ -120,8 +120,6 @@ Do not compute or give answers — focus only on reasoning structure.
         }}
         <end>
 
-        Output your JSON following exactly this pattern.
-
         Rules:
         - Choose only 2–4 reasoning modules (include the default automatically).
         - Decomposition strategies describe *how* you plan to reason efficiently.
