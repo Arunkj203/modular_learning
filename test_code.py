@@ -45,9 +45,12 @@ user_prompt = "A train travels 120 km in 2 hours and 180 km in 3 hours. What is 
 
 # ------------------------ GENERATE ------------------------
 result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=300)
+print("\nProblem 1:\n")
 print(json.dumps(result, indent=4))
 
-
+print("\nSVAMP Problem:\n")
+user_prompt1 = problem.get("question_concat", "").strip()
+print(user_prompt1)
 
 '''My idea '''
 
