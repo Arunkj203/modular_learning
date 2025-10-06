@@ -151,7 +151,7 @@ Do not compute or give answers — focus only on reasoning structure.
         Selected reasoning modules: {selected_modules}
         Initial decomposition plan: {decomposition_plan}
 
-        Format your response strictly as JSON between <start> and <end>:
+        **Format your response strictly as JSON between <start> and <end>**:
         <start>
         {{
           "subtasks":[
@@ -167,6 +167,8 @@ Do not compute or give answers — focus only on reasoning structure.
       - Use verbs like "identify", "compare", "estimate", "reason about", "infer".
       - Do not restate the full problem or add commentary.
       - Output only the JSON enclosed between <start> and <end>.
+
+
       '''
     
     complexity_estimate_2 = len(tokenizer(system_prompt_2 + user_prompt_2)["input_ids"])
