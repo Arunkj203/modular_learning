@@ -37,6 +37,7 @@ print(f"\n--- Train on {dataset_name} ---")
 print(f"\n=== Problem {1} ===")
 
 '''  Phase 1: Problem Analysis'''
+print(f"\nPhase 1 - Analysing...\n")
 
 processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
 
@@ -54,6 +55,7 @@ print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 
 '''  Phase 2: Primitive Generation  '''
+print(f"\nPhase 2 - Primitive Sequence Generating...\n")
 
 primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
 
@@ -93,10 +95,14 @@ print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Pri
 #    print("Phase 3 failed. Exiting.")
 #    exit(1)
 
+print(f"\nPhase 3 - Skipping...\n")
+
 # print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
 # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
 ''' Phase 4: Problem Solving + Feedback '''
+print(f"\nPhase 4 - Solving...\n")
+
 # solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
 
 # print("Phase 4 : Problem Solved")
