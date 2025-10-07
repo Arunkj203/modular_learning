@@ -61,7 +61,7 @@ Fill in the correct values for "sub_tasks", "solution_steps", and "final_answer"
 
 """
 
-result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=600)
+result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=800)
 print(json.dumps(result, indent=4))
 
 
