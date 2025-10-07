@@ -37,7 +37,7 @@ HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 
 # Constants
-Retries = 1
+Retries = 3
 
 
 # -----------------------------
@@ -135,7 +135,6 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             generated_tokens = outputs[0][prompt_len:]
             raw = tokenizer.decode(generated_tokens, skip_special_tokens=False)
             generated_text = raw.strip()
-
 
             # generated_text = raw.decode(...) from model
             match = re.search(r"<start>\s*([\s\S]*?)\s*<end>", generated_text, flags=re.S)
