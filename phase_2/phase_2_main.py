@@ -53,8 +53,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
             "description": p.get("description", ""),
             "goal": p.get("goal", ""),
             "problem_type": p.get("problem_type", analysis.get("problem_type", "")),
-            "domain": p.get("domain", analysis.get("domain", "")),
-            "methods": p.get("methods", analysis.get("methods", [])),
+            "methods": p.get("methods", analysis.get("selected_modules", [])),
             "tags": p.get("tags", analysis.get("tags", [])),
         }
 
