@@ -72,20 +72,16 @@ from transformers import GenerationConfig, StoppingCriteria, StoppingCriteriaLis
 
 # The StopOnToken class is acceptable and kept as is, as it's a robust custom implementation for delimiters.
 class StopOnToken(StoppingCriteria):
-    def __init__(self, tokenizer, stop_token):
+    def __init__(self, tokenizer, stop_token="<end>"):
         self.tokenizer = tokenizer
         self.stop_token = stop_token
-        # Ensure we encode the stop token string
         self.stop_token_ids = tokenizer.encode(stop_token, add_special_tokens=False)
-        
+        self.stop_text = stop_token
+
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
-        stop_len = len(self.stop_token_ids)
-        if input_ids.shape[1] < stop_len:
-            return False
-            
-        # Check if the last tokens match the stop sequence
-        recent_tokens = input_ids[0, -stop_len:].tolist()
-        return recent_tokens == self.stop_token_ids
+        decoded_text = self.tokenizer.decode(input_ids[0], skip_special_tokens=False)
+        return self.stop_text in decoded_text
+
 
 def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=200, Retries=3, DEVICE="cuda"): # Added Retries/DEVICE for completeness
     
@@ -118,7 +114,7 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             gen_cfg = GenerationConfig(
                 max_new_tokens=max_tokens,
                 do_sample=False,
-                temperature=0.0,
+                temperature=0.2,
                 top_p=1.0,
                 pad_token_id=tokenizer.eos_token_id,
                 eos_token_id=tokenizer.eos_token_id,
@@ -137,6 +133,7 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             # ***CRITICAL FIX 2: skip_special_tokens=False to preserve <start>/<end> markers***
             raw = tokenizer.decode(generated_token_ids, skip_special_tokens=False)
             generated_text = raw.strip()
+
 
             # 1) Preferred extraction: explicit <start> ... <end>
             # Use [\s\S]*? to capture multiline content lazily, ensuring <end> is found
