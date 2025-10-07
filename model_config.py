@@ -50,7 +50,7 @@ def get_model_and_tokenizer():
     print(f"Loading tokenizer for {BASE_MODEL}...")
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL,token=HUGGINGFACEHUB_API_TOKEN)
 
-    print(f"Loading model {BASE_MODEL} on {DEVICE} (INT8)...")
+    print(f"Loading model {BASE_MODEL} on {DEVICE} (FP16)...")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         device_map="auto",
@@ -63,12 +63,6 @@ def get_model_and_tokenizer():
 # -----------------------------
 # Helper function for generation
 # -----------------------------
-
-
-import torch
-import re
-import json
-from transformers import GenerationConfig, StoppingCriteria, StoppingCriteriaList # Assuming these are imported
 
 # The StopOnToken class is acceptable and kept as is, as it's a robust custom implementation for delimiters.
 class StopOnToken(StoppingCriteria):
@@ -137,23 +131,18 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             generated_text = raw.strip()
 
             # generated_text = raw.decode(...) from model
-            match = re.search(r"<start>\s*([\s\S]*?)\s*<end>", generated_text, flags=re.S)
+            match = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", generated_text, flags=re.S)
             
             if match:
                 json_text = match.group(1).strip()
             else:
-                # Fallback: The original output is used if <end> wasn't generated
-                # But we strip <start> if it exists to clean the JSON content
-                if generated_text.startswith("<start>"):
-                    generated_text = generated_text[len("<start>"):].strip()
-
-                m = re.search(r"(\{[\s\S]*\})", generated_text, flags=re.S)
+                # Fallback: find first JSON object or array
+                m = re.search(r"([\{\[][\s\S]*[\}\]])", generated_text, flags=re.S)
                 if m:
-                    # Find the first balanced JSON object
                     json_text = m.group(1).strip()
                 else:
-                    raise ValueError("Could not find JSON object or <start>...<end> delimiters.")
-
+                    raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
+                
             # Remove common trailing commas before } or ]
             json_text = re.sub(r',\s*([\]\}])', r'\1', json_text)
 
@@ -161,7 +150,7 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
 
         except Exception as e:
             last_error = e
-            debug_raw = raw.strip() if raw else "<no raw output>"
+            debug_raw = generated_text if generated_text else "<no raw output>"
             print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\nRaw output:\n{debug_raw}\n")
     else:
         raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
