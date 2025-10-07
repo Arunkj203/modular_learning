@@ -114,8 +114,6 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             gen_cfg = GenerationConfig(
                 max_new_tokens=max_tokens,
                 do_sample=False,
-                temperature=0.2,
-                top_p=1.0,
                 pad_token_id=tokenizer.eos_token_id,
                 eos_token_id=tokenizer.eos_token_id,
             )
@@ -127,11 +125,9 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
                     stopping_criteria=stop_criteria
                 )
             
-            # ***CRITICAL FIX 3: Only decode the generated part (after prompt_len)***
-            generated_token_ids = outputs[0][prompt_len:]
             
             # ***CRITICAL FIX 2: skip_special_tokens=False to preserve <start>/<end> markers***
-            raw = tokenizer.decode(generated_token_ids, skip_special_tokens=False)
+            raw = tokenizer.decode(outputs[0][prompt_len:], skip_special_tokens=False)
             generated_text = raw.strip()
 
 
