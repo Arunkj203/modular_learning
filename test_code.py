@@ -44,13 +44,13 @@ Follow these rules:
 user_prompt = "A train travels 120 km in 2 hours and 180 km in 3 hours. What is its average speed?"
 
 # ------------------------ GENERATE ------------------------
-result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=300)
-print("\nProblem 1:\n")
-print(json.dumps(result, indent=4))
+#result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=300)
+#print("\nProblem 1:\n")
+#print(json.dumps(result, indent=4))
 
 print("\nSVAMP Problem:\n")
 user_prompt1 = problem.get("question_concat", "").strip()
-result1 = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=300)
+result1 = generate_text(model, tokenizer, system_prompt, user_prompt1, dynamic_max_tokens=600)
 print(json.dumps(result1, indent=4))
 
 '''My idea '''
