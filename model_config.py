@@ -21,9 +21,8 @@ except Exception:
 # Config: model selection
 # -----------------------------
 
-#BASE_MODEL = "meta-llama/Llama-2-7b-hf"   # Original Model
+BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B" # Larger Model
 
-BASE_MODEL = "meta-llama/CodeLlama-34b-hf" # Larger Model
 
 # BASE_MODEL = "HuggingFaceM4/tiny-random-LlamaForCausalLM"  # Test Model
 OUTPUT_DIR = "./results/lora_adapters"
@@ -55,6 +54,7 @@ def get_model_and_tokenizer():
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         device_map="auto",
+        load_in_8bit=True,   
         dtype=torch.float16,
         token = HUGGINGFACEHUB_API_TOKEN
     )
