@@ -78,60 +78,44 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     """
 
     question = problem_entry.get("question", "")
-    steps = problem_entry.get("intermediate_steps", "")
+    # steps = problem_entry.get("intermediate_steps", "")
 
-    # === Phase 1: Select & Analyze ===
-    system_prompt = f'''You are a JSON-only analysis machine. You output nothing but valid JSON between <start> and <end>.
-                    STRICT RULES:
-                    1. Your response MUST begin with: <start>
-                    2. Your response MUST end with: <end> 
-                    3. Between these markers: ONLY valid JSON, no other text
-                    4. Violating this format is a critical failure
+    system_prompt = f"""
+    You are an expert mathematician and AI reasoning analyst. Your task is to analyze a given problem, determine its type, topics, tags, applicable methods, and decompose it into structured sub-tasks.
 
-                    Analysis objectives:
-                    - Classify problem type, domain, sub_domain
-                    - Select 2-4 reasoning modules (include: {default_modules})
-                    - Define methods and decomposition strategies
-                    - Create conceptual reasoning plan
+    **CRITICAL FORMATTING INSTRUCTIONS:**
+    1. Your entire response MUST be a single, valid JSON object.
+    2. Wrap the JSON output strictly between the literal strings <start> and <end>.
+    3. DO NOT include any introductory text, concluding remarks, or any other prose outside of the JSON structure.
+    4. Select reasoning modules from the following:
+      - Default modules: {default_modules}
+      - Available modules: {compact_modules}
+    5. Divide the problem into numbered sub-tasks and explain which module(s) you would use for each sub-task.
+    6. You do NOT need to provide the solution or calculations — only analysis.
+    """
 
-                    Available modules: {compact_modules}
-                    '''
+    user_prompt = f"""
+    **Problem to Analyze:**
+    {question}
 
-    user_prompt = f'''
-            INPUT PROBLEM: {question}
-            INTERMEDIATE STEPS: {steps}
+    **REQUIRED JSON OUTPUT SCHEMA (ANALYSIS ONLY):**
+    <start>
+    {{
+      "problem_type": "<categorize problem type>",
+      "topics": ["<list relevant topics or domains>"],
+      "tags": ["<list relevant tags or keywords>"],
+      "selected_modules": ["<select relevant reasoning modules from default or available>"],
+      "sub_tasks": [
+        {{"task": "Describe sub-task 1 and associated module(s)"}},
+        {{"task": "Describe sub-task 2 and associated module(s)"}},
+        {{"task": "Describe sub-task 3 and associated module(s)"}}
+      ]
+    }}
+    <end>
 
-            OUTPUT REQUIREMENT: You must output ONLY this exact format:
+    **GENERATE THE ANALYSIS JSON NOW.**
+    """
 
-            <start>
-            {{
-              "problem_type": "choose_from:word_problem,equation_solving,counting,comparison,proof,algebraic_manipulation,simplification,inference,optimization,pattern_identification,unit_conversion,geometry_construction,probability_calculation,inverse_operation",
-              "domain": "choose_from:Arithmetic,Algebra,Geometry,Number_Theory,Probability,Combinatorics,Calculus,Linear_Algebra,Statistics,Logic",
-              "tags": ["keyword1", "keyword2", "keyword3"],
-              "topics": ["topic1", "topic2"],
-              "selected_reasoning_modules": ["Step-By-Step", "module2", "module3"],
-              "methods": ["method1", "method2"],
-              "decomposition_strategies": ["strategy1", "strategy2"],
-              "decomposition_plan": [
-                {{"goal": "first_conceptual_goal", "description": "what_this_accomplishes"}},
-                {{"goal": "second_conceptual_goal", "description": "what_this_accomplishes"}}
-              ]
-            }}
-            <end>
-
-            FIELD GUIDELINES:
-            - problem_type: One concise label from the provided list
-            - domain: One broad subject area from provided list  
-            - sub_domain: Specific area within domain (be precise)
-            - tags: 2-5 machine-friendly keywords describing problem characteristics
-            - topics: 1-3 curricular learning objectives
-            - selected_reasoning_modules: 2-4 modules including "Step-By-Step"
-            - methods: Conceptual techniques used in reasoning
-            - decomposition_strategies: How to break down the problem
-            - decomposition_plan: 2-4 conceptual reasoning goals (not computational steps)
-
-            BEGIN OUTPUT NOW. REMEMBER: <start> first, <end> last, JSON only between them.
-            '''
     
     # === dynamic token allocation ===
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
@@ -139,54 +123,5 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
 
     phase1_output = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
     
-    print("\nDecomposing...\n")
-    # === Phase 2: Decompose into Subtasks ===
-    selected_modules = phase1_output.get("selected_reasoning_modules", [])
-    decomposition_plan = phase1_output.get("decomposition_plan", [])
-
-    system_prompt_2 = (
-        "You are a structured reasoning planner. "
-        "Using the reasoning modules and decomposition plan provided, "
-        "generate clear subtasks that represent conceptual reasoning actions. "
-        "Each subtask should directly reflect how those modules would be applied. "
-        "Do not perform any calculation or algebraic manipulation."
-    )
-
-    user_prompt_2 = f'''
-        Problem: {question}
-
-        Selected reasoning modules: {selected_modules}
-        Initial decomposition plan: {decomposition_plan}
-
-        **Format your response strictly as JSON between <start> and <end>**:
-        <start>
-        {{
-          "subtasks":[
-            {{"step":1,"instruction":""}},
-            {{"step":2,"instruction":""}},
-            {{"step":3,"instruction":""}}
-          ]
-        }}
-        <end>
-
-      RULES:
-      1. Your response must start with <start> and end with <end>
-      2.Each subtask should be a single conceptual reasoning instruction.
-      3.Use verbs like "identify", "compare", "estimate", "reason about", "infer".
-      4. Nothing outside these markers - no greetings, no explanations
-      5. JSON must be valid and parseable
-      6. Focus on reasoning structure, not solutions
-
-      '''
-    
-    complexity_estimate_2 = len(tokenizer(system_prompt_2 + user_prompt_2)["input_ids"])
-    dynamic_max_tokens_2 = min(4096, max(400, 2 * complexity_estimate_2))
-
-
-    phase2_output = generate_text(model, tokenizer, system_prompt_2, user_prompt_2, dynamic_max_tokens=dynamic_max_tokens_2)
-        
-    # merge results
-    return {
-        **phase1_output,
-        "subtasks": phase2_output.get("subtasks", [])
-    }
+    return phase1_output
+   

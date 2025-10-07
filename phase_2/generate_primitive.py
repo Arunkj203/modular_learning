@@ -10,27 +10,20 @@ from ..config import *
 import numpy as np
 
 # ---------------- Prompt Template for Phase 2 ----------------
-system_prompt = f"""
+system_prompt = """
 You are a reasoning assistant that maps problem subtasks to minimal programmatic primitives.
 
 Rules:
-1. Reuse existing primitives if they fit the subtask goal.
-2. If no existing primitive fits, create a new one with:
-   - name
-   - description
-   - goal (summarized subtask)
-   - status: "new"
-3. Always output in execution order.
-4. For reused primitives, include:
-   - id
-   - name
-   - status: "existing"
-5. The entire output must be valid JSON between <start> and <end>.
-6. The outer structure must be a JSON array `[...]`.
-7. No explanations, no text outside markers.
+1. You are NOT solving the subtasks; you are only mapping them to primitives.
+2. Reuse existing primitives if they can solve a subtask:
+   - Include "id", "name", "status": "existing".
+3. If no existing primitive fits a subtask, create a new primitive:
+   - Include "name", "description", "goal" (the subtask objective), "status": "new".
+   - Generate a unique id only for new primitives.
+4. Always output primitives in the execution order of subtasks.
+5. The output must be a valid JSON array between <start> and <end>.
+6. Do not include any explanation or text outside <start> and <end>.
 """
-
-
 def generate_primitives_from_problem(
     model, tokenizer,
     problem_text: str,
@@ -58,24 +51,33 @@ def generate_primitives_from_problem(
         analysis_copy, subtasks, domain = {}, [], ""
 
     user_prompt = f"""
-Problem:
-{problem_text}
+                Problem:
+                {problem_text}
 
-Problem analysis:
-{json.dumps(analysis_copy, separators=(",", ":"), ensure_ascii=False)}
+                Problem analysis:
+                {json.dumps(analysis_copy, separators=(",", ":"), ensure_ascii=False)}
 
-Subtasks to solve:
-{json.dumps(subtasks, separators=(",", ":"), ensure_ascii=False)}
+                Subtasks to solve:
+                {json.dumps(subtasks, separators=(",", ":"), ensure_ascii=False)}
 
-Relevant existing primitives:
-{json.dumps(summary, separators=(",", ":"), ensure_ascii=False)}
+                Relevant existing primitives:
+                {json.dumps(summary, separators=(",", ":"), ensure_ascii=False)}
 
-Instructions:
-- For each subtask, match the best existing primitive by name.
-- If one fits, output only its name with status "existing".
-- If none fit, create a new primitive (include name, description, goal, status="new").
-- Output strictly valid JSON array between <start> and <end>.
-"""
+                **REQUIRED JSON OUTPUT SCHEMA (PRIMITIVE MAPPING ONLY):**
+                <start>
+                [
+                {{
+                    "id": "<existing id if reused, else generate new>",
+                    "name": "<primitive name>",
+                    "status": "<existing|new>",
+                    "description": "<description of primitive>",
+                    "goal": "<subtask objective it covers>"
+                }}
+                ]
+                <end>
+
+                **GENERATE THE PRIMITIVE MAPPING JSON NOW.**
+                """
 
     print("Calling LLM to generate primitive sequence...")
 

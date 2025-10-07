@@ -11,7 +11,7 @@ from datasets import load_dataset
 dataset_name = "SVAMP"
 dataset = load_dataset(dataset_path[dataset_name])
 
-problem = list(dataset["train"])[35].get("question_concat", "").strip()
+problem = list(dataset["train"])[35]
 
 print("Problem:", problem)
 # Load model and tokenizer
@@ -19,163 +19,69 @@ model, tokenizer = get_model_and_tokenizer()
  
 print(f"Model and tokenizer loaded for {dataset_name}.")
 
+print(f"\n--- Train on {dataset_name} ---")
 
-# ------------------------ PROMPT TEMPLATES ------------------------
-system_prompt = """
-You are an expert mathematician and programmer specializing in structured problem-solving. Your sole purpose is to solve the problem provided by the user.
+# for idx , problem in  enumerate(list(dataset[mode])[:20]):  # Limit to first 20 for testing
+print(f"\n=== Problem {1} ===")
 
-**CRITICAL FORMATTING INSTRUCTIONS:**
-1.  Your entire response MUST be a single, valid JSON object.
-2.  You MUST wrap the JSON output strictly between the literal strings <start> and <end>.
-3.  DO NOT include any introductory text, concluding remarks, or any other prose outside of the JSON structure.
-4.  You MUST replace all placeholder text (indicated by descriptive text inside the quotes) with your calculated values and descriptive steps.
-"""
+'''  Phase 1: Problem Analysis'''
+print(f"\nPhase 1 - Analysing...\n")
 
+processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
 
-print("\nSVAMP Problem:\n")
+#gt = normalize_answer(processed["answer"])
 
-user_prompt = f"""
-**Problem to Solve:**
-{problem}
-**REQUIRED JSON OUTPUT SCHEMA:**
-Fill in the correct values for "sub_tasks", "solution_steps", and "final_answer".
-
-<start>
-{{
-  "problem": "Edward spent $17. Then he received $10 from his friend. Now he has $7. How much did Edward have before he spent his money?",
-  "sub_tasks": [
-    {{"task": "Describe sub-task 1"}},
-    {{"task": "Describe sub-task 2"}},
-    {{"task": "Describe sub-task 3"}}
-  ],
-  "solution_steps": [
-    {{"step": "Step 1 calculation and explanation"}},
-    {{"step": "Step 2 calculation and explanation"}},
-    {{"step": "Step 3 calculation and explanation"}}
-  ],
-  "final_answer": "Final calculated answer with unit"
-}}
-<end>
-
-**GENERATE THE FINAL SOLUTION JSON NOW.**
-
-"""
-
-result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=800)
-print(json.dumps(result, indent=4))
+print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 
 
+'''  Phase 2: Primitive Generation  '''
+print(f"\nPhase 2 - Primitive Sequence Generating...\n")
 
-'''My idea '''
+primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
 
-# # processed =  {'id': 'chal-777', 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 'answer': '145', 'intermediate_steps': '( 290.0 / 2.0 )', 'type': 'Common-Division'}
-# # analysis = {'problem_type': 'algebra', 
-# #             'domain': 'math', 'methods': ['isolation', 'simplification'], 
-# #             'tags': ['linear equation'], 
-# #             'subtasks': 
-# #             [{'step': 1, 'instruction': 'Identify the variable to isolate'}, 
-# #              {'step': 2, 'instruction': 'Move constants to the other side'}]
-# #              }
+print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
 
 
-# # primitive_sequence  = [{'id': 'Isolate_6acb9b6a', 'name': 'Isolate', 'input': {}, 'output': {}, 'description': 'Isolate a variable by moving all other terms to the other side of the equation', 'problem_type': 'algebra', 'domain': 'math', 'methods': ['isolation', 'simplification'], 'tags': ['linear equation']}, {'id': 'Simplify_1c05edee', 'name': 'Simplify', 'input': {}, 'output': {}, 'description': 'Simplify an equation by combining like terms', 'problem_type': 'algebra', 'domain': 'math', 'methods': ['isolation', 'simplification'], 'tags': ['linear equation']}]
-# # new_primitives_to_train = [{'id': 'Isolate_6acb9b6a', 'name': 'Isolate', 'input': {}, 'output': {}, 'description': 'Isolate a variable by moving all other terms to the other side of the equation', 'problem_type': 'algebra', 'domain': 'math', 'methods': ['isolation', 'simplification'], 'tags': ['linear equation']}, {'id': 'Simplify_1c05edee', 'name': 'Simplify', 'input': {}, 'output': {}, 'description': 'Simplify an equation by combining like terms', 'problem_type': 'algebra', 'domain': 'math', 'methods': ['isolation', 'simplification'], 'tags': ['linear equation']}]
+'''  Phase 3: Primitive Training and Testing  '''
+# This is trained , next step is to use this trained primitive in phase 4
+# and see if it works correctly
 
-# print(f"\n--- Train on {dataset_name} ---")
+# status = run_phase3(model, tokenizer ,new_primitives_to_train)
+# if not status:
+#    print("Phase 3 failed. Exiting.")
+#    exit(1)
 
-# # for idx , problem in  enumerate(list(dataset[mode])[:20]):  # Limit to first 20 for testing
-# print(f"\n=== Problem {1} ===")
+print(f"\nPhase 3 - Skipping...\n")
 
-# '''  Phase 1: Problem Analysis'''
-# print(f"\nPhase 1 - Analysing...\n")
+# print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
+# Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
-# processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
+''' Phase 4: Problem Solving + Feedback '''
+print(f"\nPhase 4 - Solving...\n")
 
-# #gt = normalize_answer(processed["answer"])
+solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
 
-# print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
+print("Phase 4 : Problem Solved")
 
-# # analysis :
-# # {'problem_type': 'combinations', 
-# # 'domain': 'combinations', 
-# # 'methods': ['intermediate'], 
-# # 'tags': ['Combinations', 'Combinatorics']}
-
-
-
-
-# '''  Phase 2: Primitive Generation  '''
-# print(f"\nPhase 2 - Primitive Sequence Generating...\n")
-
-# primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
-
-# print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
-
-# #  Primitive Sequence Generated
-# #  [{'id': 'combinations_66752315', 
-# # 'name': 'combinations', 
-# # 'input': {}, 
-# # 'output': {}, 
-# # 'description': 'Combinations', 
-# # 'problem_type': 'combinations',
-# #  'domain': 'combinations', 
-# # 'methods': ['intermediate'], 
-# # 'tags': ['Combinations', 'Combinatorics']}]
+print("Steps:", steps)
+print("Solution:", solution)
 
 
-# # New Primitives to train: 
-# # [{'id': 'combinations_66752315', 
-# # 'name': 'combinations', 
-# # 'input': {}, 
-# # 'output': {}, 
-# # 'description': 
-# # 'Combinations', 
-# # 'problem_type': 'combinations', 
-# # 'domain': 'combinations', 
-# # 'methods': ['intermediate'], 
-# # 'tags': ['Combinations', 'Combinatorics']}]
-
-
-# '''  Phase 3: Primitive Training and Testing  '''
-# # This is trained , next step is to use this trained primitive in phase 4
-# # and see if it works correctly
-
-# # status = run_phase3(model, tokenizer ,new_primitives_to_train)
-# # if not status:
-# #    print("Phase 3 failed. Exiting.")
-# #    exit(1)
-
-# print(f"\nPhase 3 - Skipping...\n")
-
-# # print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
-# # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
-
-# ''' Phase 4: Problem Solving + Feedback '''
-# print(f"\nPhase 4 - Solving...\n")
-
-# solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
-
-# print("Phase 4 : Problem Solved")
-
-# print("Steps:", steps)
-# print("Solution:", solution)
-
-
-# def normalize_answer(ans):
-#     """Normalize numbers/strings for comparison."""
-#     if ans is None:
-#         return None
-#     if isinstance(ans, str):
-#         ans = ans.strip().lower()
-#         # try to coerce to number if possible
-#         try:
-#             return str(float(ans))
-#         except:
-#             return ans
-#     if isinstance(ans, (int, float)):
-#         return str(float(ans))
-#     return str(ans)
+def normalize_answer(ans):
+    """Normalize numbers/strings for comparison."""
+    if ans is None:
+        return None
+    if isinstance(ans, str):
+        ans = ans.strip().lower()
+        # try to coerce to number if possible
+        try:
+            return str(float(ans))
+        except:
+            return ans
+    if isinstance(ans, (int, float)):
+        return str(float(ans))
+    return str(ans)
 
 
 

@@ -90,12 +90,20 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
 
         else:
            # Build system and user prompts for primitive execution
-            system_prompt = """You are a precise executor of primitive operations.
-                    Always apply the given primitive to the problem state.
-                    Always transform the state logically or numerically as instructed.
-                    Never repeat or restate the question text.
-                    Always return only the computed new state as JSON wrapped in <start> and <end>.
-                    """
+            system_prompt = """
+                You are an expert reasoning assistant that applies programmatic primitives to problem states.
+
+                **CRITICAL INSTRUCTIONS:**
+                1. Your sole purpose is to generate the next problem state after applying the given primitive.
+                2. You must output ONLY valid JSON strictly between <start> and <end> markers.
+                3. The JSON must follow this structure:
+                {
+                    "new_state": "<updated problem state after applying the primitive>",
+                }
+                4. Do not include explanations, comments, or any text outside the <start> and <end> markers.
+                5. Apply the primitive logically to the state; do not solve unrelated subtasks.
+                6. Preserve all relevant details from the original state in the new state.
+                """
 
             user_prompt = f"""
                 Problem State:
@@ -106,21 +114,25 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 Name: {primitive_name}
                 Description: {description}
 
-                Task: Apply the primitive operation to the problem state.
-                If numbers are involved, compute them. If expressions are involved, simplify them.
-                Return JSON in this exact format:
-
+                **REQUIRED JSON OUTPUT SCHEMA (NEXT STATE ONLY):**
                 <start>
                 {{
-                "result": "updated state or computed value"
+                "result": "<updated problem state after applying the primitive>",
+                "primitive_applied": {{
+                    "id": "{primitive_id}",
+                    "name": "{primitive_name}"
+                }},
+                "notes": "<optional remarks if needed, otherwise leave empty>"
                 }}
                 <end>
+
+                **GENERATE THE NEXT STATE JSON NOW.**
                 """
 
             
             # Calculate dynamic max_tokens based on complexity
             complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
-            dynamic_max_tokens = min(4096, max(512, 2 * complexity_estimate )) 
+            dynamic_max_tokens = min(4096, max(600, 2 * complexity_estimate )) 
 
                 # Call your generate_text wrapper
             op = generate_text(
