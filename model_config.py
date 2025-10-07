@@ -56,7 +56,7 @@ def get_model_and_tokenizer():
     print(f"Loading tokenizer for {BASE_MODEL}...")
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL,token=HUGGINGFACEHUB_API_TOKEN)
 
-    print(f"Loading model {BASE_MODEL} on {DEVICE} (FP8)...")
+    print(f"Loading model {BASE_MODEL} on {DEVICE} (INT8)...")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         device_map="auto",
@@ -139,6 +139,8 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             generated_token_ids = outputs[0][inputs["input_ids"].shape[-1]:]
             raw = tokenizer.decode(generated_token_ids, skip_special_tokens=True)
             
+            print(f"Text Generated:\n{raw}\n")
+
             # Remove the <end> token if it was generated and used to stop the generation
             generated_text = raw.replace("<end>", "").strip()
 
