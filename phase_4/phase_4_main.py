@@ -95,12 +95,12 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
 
                 **CRITICAL INSTRUCTIONS:**
                 1. Your sole purpose is to generate the next problem state after applying the given primitive.
-                2. You must output ONLY valid JSON strictly between <start> and <end> markers.
+                2. You must output ONLY valid JSON strictly between <<START>> and <<END>> markers.
                 3. The JSON must follow this structure:
                 {
-                    "new_state": "<updated problem state after applying the primitive>",
+                    "result": "<updated problem state after applying the primitive>",
                 }
-                4. Do not include explanations, comments, or any text outside the <start> and <end> markers.
+                4. Do not include explanations, comments, or any text outside the <<START>> and <<END>> markers.
                 5. Apply the primitive logically to the state; do not solve unrelated subtasks.
                 6. Preserve all relevant details from the original state in the new state.
                 """
@@ -115,7 +115,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 Description: {description}
 
                 **REQUIRED JSON OUTPUT SCHEMA (NEXT STATE ONLY):**
-                <start>
+                <<START>>
                 {{
                 "result": "<updated problem state after applying the primitive>",
                 "primitive_applied": {{
@@ -124,7 +124,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 }},
                 "notes": "<optional remarks if needed, otherwise leave empty>"
                 }}
-                <end>
+                <<END>>
 
                 **GENERATE THE NEXT STATE JSON NOW.**
                 """

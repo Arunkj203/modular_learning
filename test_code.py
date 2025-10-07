@@ -13,7 +13,7 @@ dataset = load_dataset(dataset_path[dataset_name])
 
 problem = list(dataset["train"])[35]
 
-print("Problem:", problem)
+# print("Problem:", problem)
 # Load model and tokenizer
 model, tokenizer = get_model_and_tokenizer()
  

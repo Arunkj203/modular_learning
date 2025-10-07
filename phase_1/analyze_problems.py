@@ -85,7 +85,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
 
     **CRITICAL FORMATTING INSTRUCTIONS:**
     1. Your entire response MUST be a single, valid JSON object.
-    2. Wrap the JSON output strictly between the literal strings <start> and <end>.
+    2. Wrap the JSON output strictly between the literal strings <<START>> and <<END>>.
     3. DO NOT include any introductory text, concluding remarks, or any other prose outside of the JSON structure.
     4. Select reasoning modules from the following:
       - Default modules: {default_modules}
@@ -99,7 +99,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     {question}
 
     **REQUIRED JSON OUTPUT SCHEMA (ANALYSIS ONLY):**
-    <start>
+    <<START>>
     {{
       "problem_type": "<categorize problem type>",
       "topics": ["<list relevant topics or domains>"],
@@ -111,7 +111,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
         {{"task": "Describe sub-task 3 and associated module(s)"}}
       ]
     }}
-    <end>
+    <<END>>
 
     **GENERATE THE ANALYSIS JSON NOW.**
     """

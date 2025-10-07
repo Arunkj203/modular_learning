@@ -26,8 +26,8 @@ Rules:
    - Generate a unique id only for new primitives.
 5. Avoid problem-specific names; use generic action-oriented names like "Parse Numeric Values", "Formulate Equation", "Simplify Expression".
 6. Output primitives in the execution order of subtasks.
-7. Always output a valid JSON array between <start> and <end>.
-8. Do not include any text outside <start> and <end>.
+7. Always output a valid JSON array between <<START>> and <<END>>.
+8. Do not include any text outside <<START>> and <<END>>.
 """
 
 
@@ -71,7 +71,7 @@ def generate_primitives_from_problem(
                 {json.dumps(summary, separators=(",", ":"), ensure_ascii=False)}
 
                 **REQUIRED JSON OUTPUT SCHEMA (PRIMITIVE MAPPING ONLY):**
-                <start>
+                <<START>>
                 [
                 {{
                     "id": "<existing id if reused, else generate new>",
@@ -81,7 +81,7 @@ def generate_primitives_from_problem(
                     "goal": "<subtask objective it covers>"
                 }}
                 ]
-                <end>
+                <<END>>
 
                 **GENERATE THE PRIMITIVE MAPPING JSON NOW.**
                 """
