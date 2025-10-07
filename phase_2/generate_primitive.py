@@ -165,7 +165,7 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
     Retrieve primitives based on query and optionally expand via related primitives graph
     """
 
-    query = f"{analysis['problem_type']} {analysis['domain']} {' '.join(analysis['methods'])} {' '.join(analysis['tags'])}"
+    query = f"{analysis['problem_type']} {' '.join(analysis['methods'])} {' '.join(analysis['tags'])}"
 
     # Semantic search
     query_vec = embed_model.encode(query).astype("float32")
