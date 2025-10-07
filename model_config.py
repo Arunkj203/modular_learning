@@ -82,7 +82,7 @@ class StopOnToken(StoppingCriteria):
 
         # Check if the last tokens match our stop token
         if input_ids.shape[1] < len(self.stop_token_ids):
-        return False
+            return False
         
         # Get the recent tokens that could match our stop token
         recent_tokens = input_ids[0, -len(self.stop_token_ids):].tolist()
