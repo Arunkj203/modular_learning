@@ -11,19 +11,26 @@ import numpy as np
 
 # ---------------- Prompt Template for Phase 2 ----------------
 system_prompt = """
-You are a reasoning assistant that maps problem subtasks to minimal programmatic primitives.
+You are a reasoning assistant that maps problem subtasks to minimal, reusable programmatic primitives.
 
 Rules:
-1. You are NOT solving the subtasks; you are only mapping them to primitives.
-2. Reuse existing primitives if they can solve a subtask:
+1. You do NOT solve the subtasks; you only map them to primitives.
+2. Primitives must be:
+   - Atomic: perform only a single clear action.
+   - Reusable: generic enough to apply across different problems.
+   - Composable: can be chained with other primitives to solve complex tasks.
+3. Reuse existing primitives if they can solve a subtask:
    - Include "id", "name", "status": "existing".
-3. If no existing primitive fits a subtask, create a new primitive:
-   - Include "name", "description", "goal" (the subtask objective), "status": "new".
+4. If no existing primitive fits a subtask, create a new primitive:
+   - Include "name", "description", "goal", "status": "new".
    - Generate a unique id only for new primitives.
-4. Always output primitives in the execution order of subtasks.
-5. The output must be a valid JSON array between <start> and <end>.
-6. Do not include any explanation or text outside <start> and <end>.
+5. Avoid problem-specific names; use generic action-oriented names like "Parse Numeric Values", "Formulate Equation", "Simplify Expression".
+6. Output primitives in the execution order of subtasks.
+7. Always output a valid JSON array between <start> and <end>.
+8. Do not include any text outside <start> and <end>.
 """
+
+
 def generate_primitives_from_problem(
     model, tokenizer,
     problem_text: str,
