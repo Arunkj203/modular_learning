@@ -60,8 +60,9 @@ def get_model_and_tokenizer():
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         device_map="auto",
+        attn_implementation="flash_attention_2",
         quantization_config=bnb_config,
-        dtype=torch.float16,
+        dtype=torch.bfloat16,
         token = HUGGINGFACEHUB_API_TOKEN
     )
 
