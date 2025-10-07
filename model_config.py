@@ -137,9 +137,9 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             generated_text = raw.strip()
 
 
-            # Extract everything after <start> (ignore if <end> missing)
-            match = re.search(r"<start>\s*([\s\S]*)", generated_text, flags=re.S)
-
+            # generated_text = raw.decode(...) from model
+            match = re.search(r"<start>\s*([\s\S]*?)\s*<end>", generated_text, flags=re.S)
+            
             if match:
                 json_text = match.group(1).strip()
             else:
