@@ -50,7 +50,7 @@ print(json.dumps(result, indent=4))
 
 print("\nSVAMP Problem:\n")
 user_prompt1 = problem.get("question_concat", "").strip()
-result1 = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=300)
+result1 = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=900)
 print(json.dumps(result1, indent=4))
 
 '''My idea '''
