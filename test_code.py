@@ -21,28 +21,46 @@ print(f"Model and tokenizer loaded for {dataset_name}.")
 
 
 # ------------------------ PROMPT TEMPLATES ------------------------
-system_prompt = '''
-SYSTEM:
-You are an expert mathematician and programmer. Follow these rules EXACTLY:
-1) Output ONLY valid JSON and nothing else. Wrap it exactly between <start> and <end> markers with no extra text.
-2) Follow this schema exactly:
-{
-  "problem": "<original problem text>",
-  "sub_tasks": [{"task":"..."}],
-  "solution_steps": [{"step":"..."}],
-  "final_answer": <number or string>,
-  "feasibility": "<explain if the numeric answer violates any implicit real-world constraints>",
-  "assumptions": "<explicit assumptions used (e.g., overdraft allowed or not)>"
-}
-3) If the algebraic solution implies an intermediate negative value or other real-world impossibility, still return the algebraic solution in final_answer but state the feasibility and assumptions clearly.
-4) Do not include any extra commentary, debugging text, or explanatory paragraphs outside the JSON.
-5) Use exact arithmetic and show intermediate calculations in solution_steps.
-'''
+system_prompt = """
+You are an expert mathematician and programmer specializing in structured problem-solving. Your sole purpose is to solve the problem provided by the user.
 
+**CRITICAL FORMATTING INSTRUCTIONS:**
+1.  Your entire response MUST be a single, valid JSON object.
+2.  You MUST wrap the JSON output strictly between the literal strings <start> and <end>.
+3.  DO NOT include any introductory text, concluding remarks, or any other prose outside of the JSON structure.
+4.  You MUST replace all placeholder text (indicated by descriptive text inside the quotes) with your calculated values and descriptive steps.
+"""
 
 
 print("\nSVAMP Problem:\n")
-user_prompt = f"Problem: {problem}"
+
+user_prompt = f"""
+**Problem to Solve:**
+{problem}
+**REQUIRED JSON OUTPUT SCHEMA:**
+Fill in the correct values for "sub_tasks", "solution_steps", and "final_answer".
+
+<start>
+{{
+  "problem": "Edward spent $17. Then he received $10 from his friend. Now he has $7. How much did Edward have before he spent his money?",
+  "sub_tasks": [
+    {{"task": "Describe sub-task 1"}},
+    {{"task": "Describe sub-task 2"}},
+    {{"task": "Describe sub-task 3"}}
+  ],
+  "solution_steps": [
+    {{"step": "Step 1 calculation and explanation"}},
+    {{"step": "Step 2 calculation and explanation"}},
+    {{"step": "Step 3 calculation and explanation"}}
+  ],
+  "final_answer": "Final calculated answer with unit"
+}}
+<end>
+
+**GENERATE THE FINAL SOLUTION JSON NOW.**
+
+"""
+
 result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=600)
 print(json.dumps(result, indent=4))
 
