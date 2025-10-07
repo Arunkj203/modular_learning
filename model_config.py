@@ -71,14 +71,13 @@ import json
 from transformers import GenerationConfig, StoppingCriteria, StoppingCriteriaList # Assuming these are imported
 
 # The StopOnToken class is acceptable and kept as is, as it's a robust custom implementation for delimiters.
-class StopOnToken(StoppingCriteria):
-    def __init__(self, tokenizer, stop_token="<end>"):
+class StopOnEndToken(StoppingCriteria):
+    def __init__(self, tokenizer, stop_text="<end>"):
         self.tokenizer = tokenizer
-        self.stop_token = stop_token
-        self.stop_token_ids = tokenizer.encode(stop_token, add_special_tokens=False)
-        self.stop_text = stop_token
+        self.stop_text = stop_text
 
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
+        # Decode generated tokens so far (keep special tokens)
         decoded_text = self.tokenizer.decode(input_ids[0], skip_special_tokens=False)
         return self.stop_text in decoded_text
 
@@ -126,15 +125,15 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
                 )
             
             
-            # ***CRITICAL FIX 2: skip_special_tokens=False to preserve <start>/<end> markers***
-            raw = tokenizer.decode(outputs[0], skip_special_tokens=False)
+            # Only decode generated part after prompt
+            generated_tokens = outputs[0][prompt_len:]
+            raw = tokenizer.decode(generated_tokens, skip_special_tokens=False)
             generated_text = raw.strip()
 
 
-            # 1) Preferred extraction: explicit <start> ... <end>
-            # Use [\s\S]*? to capture multiline content lazily, ensuring <end> is found
-            match = re.search(r"<start>\s*([\s\S]*?)\s*<end>", generated_text, flags=re.S)
-            
+            # Extract everything after <start> (ignore if <end> missing)
+            match = re.search(r"<start>\s*([\s\S]*)", generated_text, flags=re.S)
+
             if match:
                 json_text = match.group(1).strip()
             else:
