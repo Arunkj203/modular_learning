@@ -71,7 +71,7 @@ import json
 from transformers import GenerationConfig, StoppingCriteria, StoppingCriteriaList # Assuming these are imported
 
 # The StopOnToken class is acceptable and kept as is, as it's a robust custom implementation for delimiters.
-class StopOnEndToken(StoppingCriteria):
+class StopOnToken(StoppingCriteria):
     def __init__(self, tokenizer, stop_text="<end>"):
         self.tokenizer = tokenizer
         self.stop_text = stop_text
