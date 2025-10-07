@@ -1,7 +1,7 @@
 
 # model_config.py
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM ,StoppingCriteria, StoppingCriteriaList 
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig ,StoppingCriteria, StoppingCriteriaList 
 import os , requests , re , json
 
 from transformers import GenerationConfig
@@ -40,6 +40,14 @@ HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 Retries = 3
 
 
+# 1. Define the Quantization Configuration for INT8
+bnb_config = BitsAndBytesConfig(
+    load_in_8bit=True,
+    llm_int8_threshold=6.0, # Optional: Adjust for better precision 
+    llm_int8_enable_fp32_cpu_offload=True # Optional: Safety net
+)
+
+
 # -----------------------------
 # Singleton loader
 # -----------------------------
@@ -54,7 +62,7 @@ def get_model_and_tokenizer():
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         device_map="auto",
-        load_in_8bit=True,   
+        quantization_config=bnb_config,
         dtype=torch.float16,
         token = HUGGINGFACEHUB_API_TOKEN
     )
