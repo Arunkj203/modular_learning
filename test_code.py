@@ -54,6 +54,9 @@ user_prompt1 = problem.get("question_concat", "").strip()
 result1 = generate_text(model, tokenizer, system_prompt, user_prompt1, dynamic_max_tokens=600)
 print(json.dumps(result1, indent=4))
 
+
+
+
 '''My idea '''
 
 # # processed =  {'id': 'chal-777', 'question': "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?", 'answer': '145', 'intermediate_steps': '( 290.0 / 2.0 )', 'type': 'Common-Division'}

@@ -101,6 +101,8 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
         add_generation_prompt=True
     )
 
+    print("Prompt Created")
+
     last_error = None
     raw = None
     
@@ -110,7 +112,9 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     for attempt in range(Retries):
 
         try:
-        
+            
+            print(f"Trying {attempt+1}")
+
             max_tokens = min(4096, dynamic_max_tokens * (2 ** attempt))
         
             gen_cfg = GenerationConfig(
