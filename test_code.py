@@ -21,38 +21,30 @@ print(f"Model and tokenizer loaded for {dataset_name}.")
 
 
 # ------------------------ PROMPT TEMPLATES ------------------------
-system_prompt = """
-You are an expert mathematician and programmer. Solve math problems by decomposing them into sub-tasks.
-Follow these rules:
-1. Read the problem carefully.
-2. Identify variables and operations.
-3. Break the problem into numbered sub-tasks.
-4. Solve each sub-task step-by-step.
-5. Show intermediate calculations.
-6. Wrap the output in JSON format between <start> and <end> as:
-<start>
+system_prompt = '''
+SYSTEM:
+You are an expert mathematician and programmer. Follow these rules EXACTLY:
+1) Output ONLY valid JSON and nothing else. Wrap it exactly between <start> and <end> markers with no extra text.
+2) Follow this schema exactly:
 {
-  "problem": "<original problem>",
-  "sub_tasks": [{"task": "Describe sub-task 1"}, ...],
-  "solution_steps": [{"step": "Step 1 calculation"}, ...],
-  "final_answer": "<final answer>"
+  "problem": "<original problem text>",
+  "sub_tasks": [{"task":"..."}],
+  "solution_steps": [{"step":"..."}],
+  "final_answer": <number or string>,
+  "feasibility": "<explain if the numeric answer violates any implicit real-world constraints>",
+  "assumptions": "<explicit assumptions used (e.g., overdraft allowed or not)>"
 }
-<end>
-"""
+3) If the algebraic solution implies an intermediate negative value or other real-world impossibility, still return the algebraic solution in final_answer but state the feasibility and assumptions clearly.
+4) Do not include any extra commentary, debugging text, or explanatory paragraphs outside the JSON.
+5) Use exact arithmetic and show intermediate calculations in solution_steps.
+'''
 
-# Example math problem
-user_prompt = "A train travels 120 km in 2 hours and 180 km in 3 hours. What is its average speed?"
 
-# ------------------------ GENERATE ------------------------
-#result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=300)
-#print("\nProblem 1:\n")
-#print(json.dumps(result, indent=4))
 
 print("\nSVAMP Problem:\n")
-user_prompt1 = str(problem)
-
-result1 = generate_text(model, tokenizer, system_prompt, user_prompt1, dynamic_max_tokens=600)
-print(json.dumps(result1, indent=4))
+user_prompt = f"Problem: {problem}"
+result = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=600)
+print(json.dumps(result, indent=4))
 
 
 
