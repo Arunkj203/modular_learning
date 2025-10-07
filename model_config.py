@@ -71,16 +71,22 @@ import json
 from transformers import GenerationConfig, StoppingCriteria, StoppingCriteriaList # Assuming these are imported
 
 # The StopOnToken class is acceptable and kept as is, as it's a robust custom implementation for delimiters.
-class StopOnEndToken(StoppingCriteria):
-    def __init__(self, tokenizer, stop_text="<end>"):
+class StopOnToken(StoppingCriteria):
+    def __init__(self, tokenizer, stop_token):
+
         self.tokenizer = tokenizer
-        self.stop_text = stop_text
+        self.stop_token = stop_token
+        self.stop_token_ids = tokenizer.encode(stop_token, add_special_tokens=False)
 
-    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
-        # Decode generated tokens so far (keep special tokens)
-        decoded_text = self.tokenizer.decode(input_ids[0], skip_special_tokens=False)
-        return self.stop_text in decoded_text
+  def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
 
+        # Check if the last tokens match our stop token
+        if input_ids.shape[1] < len(self.stop_token_ids):
+        return False
+        
+        # Get the recent tokens that could match our stop token
+        recent_tokens = input_ids[0, -len(self.stop_token_ids):].tolist()
+        return recent_tokens == self.stop_token_ids
 
 def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=200, Retries=3, DEVICE="cuda"): # Added Retries/DEVICE for completeness
     
