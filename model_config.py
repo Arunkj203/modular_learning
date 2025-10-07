@@ -127,7 +127,7 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             
             
             # ***CRITICAL FIX 2: skip_special_tokens=False to preserve <start>/<end> markers***
-            raw = tokenizer.decode(outputs[0][prompt_len:], skip_special_tokens=False)
+            raw = tokenizer.decode(outputs[0], skip_special_tokens=False)
             generated_text = raw.strip()
 
 
@@ -148,7 +148,7 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
                     # Find the first balanced JSON object
                     json_text = m.group(1).strip()
                 else:
-                    raise ValueError("Could not find JSON object or <start>...</end> delimiters.")
+                    raise ValueError("Could not find JSON object or <start>...<end> delimiters.")
 
             # Remove common trailing commas before } or ]
             json_text = re.sub(r',\s*([\]\}])', r'\1', json_text)
