@@ -78,7 +78,7 @@ class StopOnToken(StoppingCriteria):
         self.stop_token = stop_token
         self.stop_token_ids = tokenizer.encode(stop_token, add_special_tokens=False)
 
-  def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
+    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
 
         # Check if the last tokens match our stop token
         if input_ids.shape[1] < len(self.stop_token_ids):
