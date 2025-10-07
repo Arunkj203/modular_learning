@@ -11,9 +11,9 @@ from datasets import load_dataset
 dataset_name = "SVAMP"
 dataset = load_dataset(dataset_path[dataset_name])
 
-problem = list(dataset["train"])[35]
+problem = list(dataset["train"])[35].get("question_concat", "").strip()
 
-
+print("Problem:", problem)
 # Load model and tokenizer
 model, tokenizer = get_model_and_tokenizer()
  
@@ -49,7 +49,7 @@ user_prompt = "A train travels 120 km in 2 hours and 180 km in 3 hours. What is 
 #print(json.dumps(result, indent=4))
 
 print("\nSVAMP Problem:\n")
-user_prompt1 = problem.get("question_concat", "").strip()
+user_prompt1 = str(problem)
 
 result1 = generate_text(model, tokenizer, system_prompt, user_prompt1, dynamic_max_tokens=600)
 print(json.dumps(result1, indent=4))
