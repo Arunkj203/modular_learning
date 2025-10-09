@@ -104,19 +104,19 @@ def generate_primitives_from_problem(
         model, tokenizer, system_prompt, user_prompt,
         dynamic_max_tokens=dynamic_max_tokens
     )["primitive_sequence"]
-
+    print(primitives_sequence)
     if not primitives_sequence:
         print("Raw op:",primitives_sequence)
         raise ValueError("LLM did not return any primitives.")
     
 
     # Ensure output is a list
-    if isinstance(primitives_sequence, dict):
-        primitives_sequence = [primitives_sequence]
+    #if isinstance(primitives_sequence, dict):
+    #    primitives_sequence = [primitives_sequence]
 
 
    
-    return primitives_sequence 
+    return primitives_sequence
 
 
 # Storage for primitives and their embeddings
