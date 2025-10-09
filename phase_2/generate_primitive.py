@@ -103,7 +103,7 @@ def generate_primitives_from_problem(
     primitives_sequence = generate_text(
         model, tokenizer, system_prompt, user_prompt,
         dynamic_max_tokens=dynamic_max_tokens
-    )
+    )["primitive_sequence"]
 
     # Ensure output is a list
     if isinstance(primitives_sequence, dict):
