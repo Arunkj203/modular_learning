@@ -129,14 +129,13 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                     Now, generate the next problem state strictly following the system instructions.
 
                     <<START>>
-                    {
+                    {{
                     "result": "...",
-                    "primitive_applied": {
-                    "id": "<primitive_id>",
-                    "name": "<primitive_name>"
-                    },
+                    "primitive_applied": {{
+                    "name": {primitive_name}
+                    }},
                     "notes": "..."
-                    }
+                    }}
                     <<END>>
 
                 **GENERATE THE NEXT STATE JSON NOW.**
@@ -157,16 +156,10 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 )
                 
             # Record this step (include pre/post state for debugging)
-            steps.append({
-                "primitive_id": primitive_id,
-                "name": primitive_name,
-                "description": description,
-                "input": state_text,
-                "output": op
-            })
+            steps.append(op)
 
             # Update the state for the next primitive
-            state_text = op
+            state_text = op["result"]
 
     return state_text, steps , feedback_entries
 
