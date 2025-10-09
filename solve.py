@@ -26,14 +26,14 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     # Ensure log directory exists
     full_path = os.path.join(Base_dir_path, log_dir)
     os.makedirs(full_path, exist_ok=True)
-    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-06.10__5_pbs.txt")
+    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-09.10__10_pbs.txt")
     print(f"Log saving in file:{log_file}")
 
     with open(log_file, "w", encoding="utf-8") as f:
         f.write(f"=== {mode_text} on {dataset_name} ===\n\n")
 
 
-        for idx, problem in enumerate(list(dataset[mode])[15:20]):  # limit for testing
+        for idx, problem in enumerate(list(dataset[mode])[15:25]):  # limit for testing
             print(f"====================== Problem {idx+1} ======================")
 
             f.write(f"\n====================== Problem {idx+1} ======================\n")
