@@ -55,7 +55,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
                 primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
                 f.write("\nPhase 2 - Primitive Sequence:\n")
-                f.write(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
+                f.write(f"\n{new_primitives_to_train} new primitves generated out of {len(primitive_sequence)}\n")
 
                 for prim in primitive_sequence:
                     f.write(f"  ID: {prim['id']} \n, prim: {prim} \n")

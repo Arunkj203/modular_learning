@@ -131,9 +131,6 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                     <<START>>
                     {{
                     "result": "...",
-                    "primitive_applied": {{
-                    "name": {primitive_name}
-                    }},
                     "notes": "..."
                     }}
                     <<END>>
@@ -156,7 +153,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 )
                 
             # Record this step (include pre/post state for debugging)
-            steps.append(op)
+            steps.append((op, primitive_id, primitive_name, description))
 
             # Update the state for the next primitive
             state_text = op["result"]
