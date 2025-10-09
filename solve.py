@@ -60,7 +60,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                 for prim in primitive_sequence:
                     f.write(f"  ID: {prim['id']} \n, prim: {prim} \n")
 
-                print(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
+                print(f"\n{new_primitives_to_train} new primitves generated out of {len(primitive_sequence)}\n")
                 
                 # Optional Phase 3: Training
                 if use_lora:
