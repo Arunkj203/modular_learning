@@ -4,7 +4,7 @@ from .phase_3.phase_3_main import run_phase3
 from .phase_4.phase_4_main import run_phase4
 
 from .config import *
-from .model_config import get_model_and_tokenizer , generate_text
+from .model_config import get_model_and_tokenizer
 from datasets import load_dataset
 
 # Load dataset
@@ -35,7 +35,13 @@ print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
 
 
 
-'''  Phase 2: Primitive Generation  '''
+'''  Phase 2: Primitive Generation  
+
+First retrieve relevant primitives from library
+split into subtasks
+the primitives to solve subtasks
+Then generate a sequence of primitives to solve the problem
+'''
 print(f"\nPhase 2 - Primitive Sequence Generating...\n")
 
 primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
@@ -57,7 +63,9 @@ print(f"\nPhase 3 - Skipping...\n")
 # print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
 # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
 
-''' Phase 4: Problem Solving + Feedback '''
+''' Phase 4: Problem Solving + Feedback 
+with the sequence of primitives generated in phase 2,solve the problem
+'''
 print(f"\nPhase 4 - Solving...\n")
 
 solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])

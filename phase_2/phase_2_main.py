@@ -3,8 +3,8 @@
 from .utils import *
 from .generate_primitive import *
 
-
-
+from ..config import *
+import uuid
 
 
 
@@ -28,12 +28,25 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
     existing_primitives = retrieve_primitives(analysis)
     # print(f"Retrieved {len(existing_primitives)} relevant primitives.")
 
+    summary, name_to_id = [], {}
+    if existing_primitives:
+        for p in existing_primitives:
+            summary.append({
+                "name": p.get("name", ""),
+                "description": p.get("description", ""),
+                "goal": p.get("goal", ""),
+                "type": p.get("primitive_type", ""),
+                "applied_on_state": f"{p.get('applied_on_state', '')}",
+                "resulting_state": f"{p.get('resulting_state', '')}"
+            })
+            name_to_id[p.get("name", "")] = p.get("id")
+
 
     # Step 2 - Ask LLM to generate a sequence using old primitives or new ones
     sequence_primitives = generate_primitives_from_problem(
         model, tokenizer ,
         problem_text=problem_text,
-        old_primitives=existing_primitives,
+        summary=summary,
         analysis=analysis
     )
     # print(f"LLM returned {len(sequence_primitives)} primitives in sequence.")
@@ -43,27 +56,54 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
     new_primitives_to_train = []
     primitive_sequence = []
 
-    existing_ids = {p["id"] for p in existing_primitives}
+
 
     for p in sequence_primitives:
-        # Minimal info for execution
-        primitive_entry = {
-            "id": p.get("id"),
-            "name": p.get("name", ""),
-            "description": p.get("description", ""),
-            "goal": p.get("goal", ""),
-            "problem_type": p.get("problem_type", analysis.get("problem_type", "")),
-            "methods": p.get("methods", analysis.get("selected_modules", [])),
-            "tags": p.get("tags", analysis.get("tags", [])),
-        }
+            name = p.get("name")
+            status = p.get("status")
 
-        primitive_sequence.append(primitive_entry)
+            if not name or not status:
+                print(f"Skipping invalid primitive (missing name/status): {p}")
+                continue
+
+            if status == "existing":
+                pid = name_to_id.get(name)
+                if not pid:
+                    # Fallback: treat as new if name not in known set
+                    status = "new"
+
+                else:
+                    
+                    prim_id = primitive_metadata.get(pid)
+                    if not prim_id:
+                        print(f"Warning: Primitive ID {pid} not found in metadata.")
+                        continue
+                    primitive_sequence.append(prim_id)
+                    continue  # Move to next primitive in sequence
 
 
-        # Collect new primitives that are not in existing library
-        if primitive_entry["id"] not in existing_ids:
-            new_primitives_to_train.append(primitive_entry)
-            add_primitive(primitive_entry)
+            if status == "new":
+                unique_suffix = uuid.uuid4().hex[:8]
+                pid = f"{name}_{unique_suffix}"
+
+                # Minimal info for execution
+                primitive_entry = {
+                    "id": pid,
+                    "name": p.get("name", ""),
+                    "description": p.get("description", ""),
+                    "goal": p.get("goal", ""),
+                    "primitive_type": p.get("type", ""),
+                    "applied_on_state": p.get("applied_on_state", ""),
+                    "resulting_state": p.get("resulting_state", ""),
+                    "problem_type": p.get("problem_type", analysis.get("problem_type", "")),
+                    "methods": p.get("methods", analysis.get("selected_modules", [])),
+                    "tags": p.get("tags", analysis.get("tags", [])),
+                }
+                add_primitive(primitive_entry)
+                primitive_sequence.append(primitive_entry)
 
 
-    return primitive_sequence , new_primitives_to_train
+
+    return primitive_sequence , []  #new_primitives_to_train
+
+
