@@ -84,10 +84,10 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
                 f.write("\nPhase 4 - Execution Steps:\n")
                 for step in steps:
-                    f.write(f"  Primitive {step['primitive_id']} ({step['name']}):\n")
-                    f.write(f"    Input: {step['input']}\n")
-                    f.write(f"    Output: {step['output']}\n")
-
+                    f.write(f"  Primitive name :{step[2]}:\n")
+                    f.write(f"    Output: {step[0]}\n")
+                
+                
                 f.write(f"\nFinal Solution:  {solution}\nNormalized solution:{pred}\n")
                 
                 print(f"\n====================== Problem {idx+1} Solved ======================\n")
