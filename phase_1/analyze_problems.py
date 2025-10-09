@@ -81,7 +81,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     # steps = problem_entry.get("intermediate_steps", "")
 
     system_prompt = f"""
-    You are an expert mathematician and AI reasoning analyst. Your task is to analyze a given problem, determine its type, topics, tags, applicable methods, and decompose it into structured sub-tasks.
+    You are an expert mathematician and AI reasoning analyst. Your task is to analyze a given problem, determine its type, topics, tags, applicable methods.
 
     **CRITICAL FORMATTING INSTRUCTIONS:**
     1. Your entire response MUST be a single, valid JSON object.
@@ -90,8 +90,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     4. Select reasoning modules from the following:
       - Default modules: {default_modules}
       - Available modules: {compact_modules}
-    5. Divide the problem into numbered sub-tasks and explain which module(s) you would use for each sub-task.
-    6. You do NOT need to provide the solution or calculations — only analysis.
+    5. You do NOT need to provide the solution or calculations — only analysis.
     """
 
     user_prompt = f"""
@@ -105,11 +104,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
       "topics": ["<list relevant topics or domains>"],
       "tags": ["<list relevant tags or keywords>"],
       "selected_modules": ["<select relevant reasoning modules from default or available>"],
-      "sub_tasks": [
-        {{"task": "Describe sub-task 1 and associated module(s)"}},
-        {{"task": "Describe sub-task 2 and associated module(s)"}},
-        {{"task": "Describe sub-task 3 and associated module(s)"}}
-      ]
+
     }}
     <<END>>
 

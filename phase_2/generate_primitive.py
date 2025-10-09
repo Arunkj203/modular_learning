@@ -2,39 +2,70 @@
 
 from typing import Dict, Any, List, Optional
 import json
-import uuid
 
 from ..model_config import generate_text
-
-from ..config import *
 import numpy as np
 
+from ..config import *
+
 # ---------------- Prompt Template for Phase 2 ----------------
-system_prompt = """
-You are a reasoning assistant that maps problem subtasks to minimal, reusable programmatic primitives.
+system_prompt = '''
+You are a reasoning model that decomposes a problem into a sequence of human-like cognitive primitives.
+
+Definition:
+A *primitive* is a minimal, reusable cognitive operation that transforms a problem state toward its solution. 
+It represents a human-level skill — interpretable, composable, and generalizable.
+
+Characteristics:
+- Minimal cognitive transformation (atomic reasoning skill)
+- Human-interpretable (clearly states the skill being applied)
+- Reusable across problems (identified by ID and name)
+- Composable into higher-level reasoning procedures
+- One of four types:
+  1. Perceptual — recognize or extract structure
+  2. Transformational — modify a symbolic or numeric representation
+  3. Control — decide sequence, subgoal, or next operation
+  4. Evaluation — check progress, correctness, or termination
 
 Rules:
-1. You do NOT solve the subtasks; you only map them to primitives.
-2. Primitives must be:
-   - Atomic: perform only a single clear action.
-   - Reusable: generic enough to apply across different problems.
-   - Composable: can be chained with other primitives to solve complex tasks.
-3. Reuse existing primitives if they can solve a subtask:
-   - Include "id", "name", "status": "existing".
-4. If no existing primitive fits a subtask, create a new primitive:
-   - Include "name", "description", "goal", "status": "new".
-   - Generate a unique id only for new primitives.
-5. Avoid problem-specific names; use generic action-oriented names like "Parse Numeric Values", "Formulate Equation", "Simplify Expression".
-6. Output primitives in the execution order of subtasks.
-7. Always output a valid JSON array between <<START>> and <<END>>.
-8. Do not include any text outside <<START>> and <<END>>.
-"""
+- You are not solving the problem; only planning the reasoning process.
+- Each step in your plan corresponds to one primitive.
+- If a primitive is reused, list only `id`, `name`, and `"status": "Existing"`.
+- If a new primitive is introduced, define all its fields with `"status": "New"`.
+- Preserve logical step order.
+- Output strictly follows the JSON schema below.
+
+Output Schema:
+<<START>>
+{
+  "primitive_sequence": [
+    {
+      // Existing primitive reuse
+      "id": "<existing_primitive_id>",
+      "name": "<existing_primitive_name>",
+      "status": "Existing"
+    },
+    {
+      // New primitive definition
+      "id": "<new_primitive_id>",
+      "name": "<new_primitive_name>",
+      "description": "<short description of what this skill does>",
+      "type": "<Perceptual | Transformational | Control | Evaluation>",
+      "applied_on_state": "<inferred or hypothetical subgoal>",
+      "resulting_state": "<expected next subgoal or transformation>",
+      "status": "New"
+    }
+  ]
+}
+<<END>>
+
+'''
 
 
 def generate_primitives_from_problem(
     model, tokenizer,
     problem_text: str,
-    old_primitives: Optional[List[Dict[str, Any]]] = None,
+    summary: Optional[Dict[str, Any]] = None,
     analysis: Optional[Dict[str, Any]] = None
 ) -> List[Dict[str, Any]]:
     """
@@ -42,49 +73,27 @@ def generate_primitives_from_problem(
     Reuses existing primitives by name, assigns new IDs to new ones.
     """
 
-    summary, name_to_id = [], {}
-    if old_primitives:
-        for p in old_primitives:
-            summary.append({
-                "name": p.get("name", ""),
-                "description": p.get("description", "")
-            })
-            name_to_id[p.get("name", "")] = p.get("id")
 
-    if analysis:
-        analysis_copy = analysis.copy()
-        subtasks = analysis_copy.pop("subtasks", [])
-    else:
-        analysis_copy, subtasks, domain = {}, [], ""
 
     user_prompt = f"""
-                Problem:
-                {problem_text}
 
-                Problem analysis:
-                {json.dumps(analysis_copy, separators=(",", ":"), ensure_ascii=False)}
+            Problem to solve:
+            {problem_text}
 
-                Subtasks to solve:
-                {json.dumps(subtasks, separators=(",", ":"), ensure_ascii=False)}
+            Analysis context:
+            {json.dumps(analysis, indent=2)}
 
-                Relevant existing primitives:
-                {json.dumps(summary, separators=(",", ":"), ensure_ascii=False)}
+            Available Primitives:
+            {json.dumps(summary,indent=2)}
 
-                **REQUIRED JSON OUTPUT SCHEMA (PRIMITIVE MAPPING ONLY):**
-                <<START>>
-                [
-                {{
-                    "id": "<existing id if reused, else generate new>",
-                    "name": "<primitive name>",
-                    "status": "<existing|new>",
-                    "description": "<description of primitive>",
-                    "goal": "<subtask objective it covers>"
-                }}
-                ]
-                <<END>>
+            Your Task:
+            1. Decompose the given problem into a logical sequence of primitive applications needed to reach the solution.
+            2. Reuse available primitives where possible (output only id, name, and status).
+            3. If new primitives are required, define them completely with all metadata fields.
+            4. Do not perform any calculations or produce final answers — only outline the reasoning plan.
+            5. Return the response strictly following the provided JSON schema.
 
-                **GENERATE THE PRIMITIVE MAPPING JSON NOW.**
-                """
+            """
 
     print("Calling LLM to generate primitive sequence...")
 
@@ -100,39 +109,11 @@ def generate_primitives_from_problem(
     if isinstance(primitives_sequence, dict):
         primitives_sequence = [primitives_sequence]
 
-    valid_primitives = []
-    for p in primitives_sequence:
-        name = p.get("name")
-        status = p.get("status")
+   
+    return primitives_sequence 
 
-        if not name or not status:
-            print(f"Skipping invalid primitive (missing name/status): {p}")
-            continue
-
-        if status == "existing":
-            pid = name_to_id.get(name)
-            if not pid:
-                # Fallback: treat as new if name not in known set
-                status = "new"
-
-        if status == "new":
-            unique_suffix = uuid.uuid4().hex[:8]
-            pid = f"{name}_{unique_suffix}"
-
-        # Normalize output
-        prim = {
-            "id": pid,
-            "name": name,
-            "status": status,
-            "description": p.get("description", ""),
-            "goal": p.get("goal", "")
-        }
-        valid_primitives.append(prim)
-
-    return valid_primitives
 
 # Storage for primitives and their embeddings
-
 
 
 def add_primitive(primitive):
@@ -196,8 +177,6 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
         return [primitive_metadata[pid] for pid in expanded]
 
     return [primitive_metadata[pid] for pid in retrieved]
-
-
 
 
 

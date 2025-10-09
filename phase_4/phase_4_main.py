@@ -28,6 +28,7 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
 
     
     for primitive_entry in primitive_sequence:
+
         primitive_id = primitive_entry["id"]
         primitive_name = primitive_entry.get("name", "")
         description = primitive_entry.get("description", "")
@@ -91,40 +92,51 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
         else:
            # Build system and user prompts for primitive execution
             system_prompt = """
-                You are an expert reasoning assistant that applies programmatic primitives to problem states.
+               You are a structured reasoning executor that applies human-like problem-solving primitives.
 
-                **CRITICAL INSTRUCTIONS:**
-                1. Your sole purpose is to generate the next problem state after applying the given primitive.
-                2. You must output ONLY valid JSON strictly between <<START>> and <<END>> markers.
-                3. The JSON must follow this structure:
+                Your task is to transform the current problem state by applying the given primitive. 
+                Do not perform full problem solving — only apply the primitive’s transformation logic.
+
+                CRITICAL INSTRUCTIONS:
+                1. You must output ONLY valid JSON strictly between <<START>> and <<END>>.
+                2. JSON Format (no other text allowed):
                 {
-                    "result": "<updated problem state after applying the primitive>",
+                    "result": "<new problem state after applying primitive>",
+                    "primitive_applied": {
+                    "id": "<primitive_id>",
+                    "name": "<primitive_name>"
+                    },
+                    "notes": "<short reasoning for transformation>"
                 }
-                4. Do not include explanations, comments, or any text outside the <<START>> and <<END>> markers.
-                5. Apply the primitive logically to the state; do not solve unrelated subtasks.
-                6. Preserve all relevant details from the original state in the new state.
+                3. Preserve all key details from the current state.
+                4. Apply the primitive exactly as described — don’t infer new rules or solve unrelated steps.
+                5. If the primitive involves symbolic or numeric manipulation, apply that change correctly and clearly.
+                6. Never produce explanations outside JSON or markers.
+
+                You are reasoning like a human who uses structured steps (primitives) to progressively modify the problem until solved.
                 """
 
             user_prompt = f"""
-                Problem State:
-                {state_text}
 
-                Primitive to apply:
-                ID: {primitive_id}
-                Name: {primitive_name}
-                Description: {description}
+                    You are given the current state of a problem and a primitive to apply.
 
-                **REQUIRED JSON OUTPUT SCHEMA (NEXT STATE ONLY):**
-                <<START>>
-                {{
-                "result": "<updated problem state after applying the primitive>",
-                "primitive_applied": {{
-                    "id": "{primitive_id}",
-                    "name": "{primitive_name}"
-                }},
-                "notes": "<optional remarks if needed, otherwise leave empty>"
-                }}
-                <<END>>
+                    Problem State:
+                    {state_text}
+
+                    Primitive to apply:
+                    {json.dumps(primitive_entry, indent=2)}
+
+                    Now, generate the next problem state strictly following the system instructions.
+
+                    <<START>>
+                    {{
+                    "result": "...",
+                    "primitive_applied": {{
+                    "name": {primitive_name}
+                    }},
+                    "notes": "..."
+                    }}
+                    <<END>>
 
                 **GENERATE THE NEXT STATE JSON NOW.**
                 """
@@ -144,16 +156,10 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                 )
                 
             # Record this step (include pre/post state for debugging)
-            steps.append({
-                "primitive_id": primitive_id,
-                "name": primitive_name,
-                "description": description,
-                "input": state_text,
-                "output": op
-            })
+            steps.append(op)
 
             # Update the state for the next primitive
-            state_text = op
+            state_text = op["result"]
 
     return state_text, steps , feedback_entries
 
