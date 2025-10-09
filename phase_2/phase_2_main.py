@@ -66,11 +66,11 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
                 print(f"Skipping invalid primitive (missing name/status): {p}")
                 continue
 
-            if status == "existing":
+            if status == "Existing":
                 pid = name_to_id.get(name)
                 if not pid:
                     # Fallback: treat as new if name not in known set
-                    status = "new"
+                    status = "New"
 
                 else:
                     
@@ -82,7 +82,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
                     continue  # Move to next primitive in sequence
 
 
-            if status == "new":
+            if status == "New":
                 unique_suffix = uuid.uuid4().hex[:8]
                 pid = f"{name}_{unique_suffix}"
 

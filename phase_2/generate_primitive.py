@@ -106,7 +106,7 @@ def generate_primitives_from_problem(
     )["primitive_sequence"]
 
     if not primitives_sequence:
-        print("Raw op:":primitives_sequence)
+        print("Raw op:",primitives_sequence)
         raise ValueError("LLM did not return any primitives.")
     
 
