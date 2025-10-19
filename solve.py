@@ -37,22 +37,24 @@ def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, out
 
     for idx, problem in enumerate(dataset):
         print(f"Analyzing problem {idx+1}/{len(dataset)}")
-        try:
-            processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
-            entry = {
-                "id": idx,
-                "question": processed.get("question", ""),
-                "ground_truth": normalize_answer(processed.get("answer", "")),
-                "phase1_analysis": analysis
-            }
-            all_analysis.append(entry)
-        except Exception as e:
-            print(f"[ERROR] Problem {idx+1} failed: {e}")
-            all_analysis.append({
-                "id": idx,
-                "question": problem.get("question", ""),
-                "error": str(e)
-            })
+        # try:
+
+        processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
+        entry = {
+            "id": idx,
+            "question": processed.get("question", ""),
+            "ground_truth": normalize_answer(processed.get("answer", "")),
+            "phase1_analysis": analysis
+        }
+        all_analysis.append(entry)
+        
+        # except Exception as e:
+        #     print(f"[ERROR] Problem {idx+1} failed: {e}")
+        #     all_analysis.append({
+        #         "id": idx,
+        #         "question": problem.get("question", ""),
+        #         "error": str(e)
+        #     })
 
 
     with open(output_file, "w", encoding="utf-8") as f:

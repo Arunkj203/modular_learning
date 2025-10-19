@@ -134,7 +134,6 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             raw = tokenizer.decode(generated_tokens, skip_special_tokens=False)
             generated_text = raw.strip()
 
-            print(f"[INFO] Generation successful on attempt {attempt+1} with max_tokens={max_tokens}.")
 
             # generated_text = raw.decode(...) from model
             match = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", generated_text, flags=re.S)
@@ -146,7 +145,6 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
                 m = re.search(r"([\{\[][\s\S]*[\}\]])", generated_text, flags=re.S)
                 if m:
                     json_text = m.group(1).strip()
-                    print("[WARN] Used fallback JSON extraction.")
                 else:
                     raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
                 
