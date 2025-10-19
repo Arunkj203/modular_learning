@@ -81,35 +81,34 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     # steps = problem_entry.get("intermediate_steps", "")
 
     system_prompt = f"""
-    You are an expert mathematician and AI reasoning analyst. Your task is to analyze a given problem, determine its type, topics, tags, applicable methods.
+      You are an expert reasoning analyst. Your job is to analyze a math or logic problem and describe its structure, type, and relevant reasoning modules.
+      Do NOT perform any calculation or produce answers.
 
-    **CRITICAL FORMATTING INSTRUCTIONS:**
-    1. Your entire response MUST be a single, valid JSON object.
-    2. Wrap the JSON output strictly between the literal strings <<START>> and <<END>>.
-    3. DO NOT include any introductory text, concluding remarks, or any other prose outside of the JSON structure.
-    4. Select reasoning modules from the following:
-      - Default modules: {default_modules}
-      - Available modules: {compact_modules}
-    5. You do NOT need to provide the solution or calculations — only analysis.
-    """
+      Follow these strict rules:
+      1. Output ONLY a single JSON object, wrapped between the literal delimiters <<START>> and <<END>>.
+      2. Do NOT add any explanation, reasoning text, or commentary outside the JSON.
+      3. Ensure the JSON is strictly valid: no comments, no extra commas, no markdown formatting.
+      4. Select modules from:
+        - Default modules: {default_modules}
+        - Available modules: {compact_modules}
+      """
 
     user_prompt = f"""
-    **Problem to Analyze:**
-    {question}
+          Problem:
+          {question}
 
-    **REQUIRED JSON OUTPUT SCHEMA (ANALYSIS ONLY):**
-    <<START>>
-    {{
-      "problem_type": "<categorize problem type>",
-      "topics": ["<list relevant topics or domains>"],
-      "tags": ["<list relevant tags or keywords>"],
-      "selected_modules": ["<select relevant reasoning modules from default or available>"],
+          Output schema:
+          <<START>>
+          {{
+          "problem_type": "<categorize the problem type>",
+          "topics": ["<list topics>"],
+          "tags": ["<list tags>"],
+          "selected_modules": ["<list relevant modules>"]
+          }}
+          <<END>>
 
-    }}
-    <<END>>
-
-    **GENERATE THE ANALYSIS JSON NOW.**
-    """
+          Now generate ONLY the JSON analysis within the delimiters.
+          """
 
     print("\n=== Phase 1: Problem Analysis Prompt ===")
     # === dynamic token allocation ===

@@ -20,14 +20,14 @@ def run_phase1(model, tokenizer,problem=None, dataset_name="SVAMP"):
 
     # Step 1 - Data Preprocessing
     processed = preprocess_problem(problem, dataset_name=dataset_name)
-    print("\n=== Processed Problem (JSON) ===")
+    # print("\n=== Processed Problem (JSON) ===")
     # print(json.dumps(processed, indent=2))
 
     # Step 2 - Analyze the Problem
     analysis = analyze_and_decompose(model, tokenizer ,processed)
 
     
-    print("\n=== Analysis (JSON) ===")
+    # print("\n=== Analysis (JSON) ===")
     # print(json.dumps(analysis, indent=2))
 
     return processed, analysis
