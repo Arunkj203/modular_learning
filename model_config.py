@@ -23,10 +23,10 @@ except Exception:
 
 # OLD: BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 
-BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
+# BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
 
 
-# BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" # New Model
+BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" # New Model
 
 # BASE_MODEL = "HuggingFaceM4/tiny-random-LlamaForCausalLM"  # Test Model
 OUTPUT_DIR = "./results/lora_adapters"
