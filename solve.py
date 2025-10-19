@@ -8,6 +8,59 @@ from .config import *
 from datasets import load_dataset
 
 import os
+import json
+from typing import Dict, Any, List
+
+def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, output_dir="Dataset"):
+    """
+    Generate Phase 1 analysis for all problems in the dataset and store results in a JSON file.
+
+    Args:
+        dataset_name (str): Name of the dataset (e.g., 'svamp').
+        mode (str): Dataset split (e.g., 'train', 'test', 'validation').
+        model: Loaded model for Phase 1.
+        tokenizer: Tokenizer corresponding to the model.
+        output_dir (str): Directory to save JSON analysis.
+
+    Returns:
+        str: Path to the saved JSON file.
+    """
+    # Ensure log directory exists
+    full_path = os.path.join(Base_dir_path, output_dir)
+    os.makedirs(full_path, exist_ok=True)
+    output_file = os.path.join(full_path, f"{dataset_name}_{mode}_phase1_analysis.json")
+    print(f"Log saving in file:{output_file}")
+
+
+    dataset = load_dataset(dataset_path[dataset_name])[mode]
+    all_analysis: List[Dict[str, Any]] = []
+
+    for idx, problem in enumerate(dataset):
+        print(f"Analyzing problem {idx+1}/{len(dataset)}")
+        try:
+            processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
+            entry = {
+                "id": idx,
+                "question": processed.get("question", ""),
+                "ground_truth": normalize_answer(processed.get("answer", "")),
+                "phase1_analysis": analysis
+            }
+            all_analysis.append(entry)
+        except Exception as e:
+            print(f"[ERROR] Problem {idx+1} failed: {e}")
+            all_analysis.append({
+                "id": idx,
+                "question": problem.get("question", ""),
+                "error": str(e)
+            })
+
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(all_analysis, f, indent=2, ensure_ascii=False)
+
+    print(f"Phase 1 analysis saved to {output_file}")
+    # return output_file
+
 
 def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
@@ -125,6 +178,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     return acc,all_feedback
 
 
+
 def normalize_answer(text: str):
     """
     Normalize a model's final output for comparison with ground truth.
@@ -178,6 +232,7 @@ def normalize_answer(text: str):
     text = re.sub(r'[^\w\s]', '', text)
     text = re.sub(r'\s+', ' ', text)
     return text
+
 
 
 

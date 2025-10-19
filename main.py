@@ -1,11 +1,10 @@
 # Main code file
-from .solve import solve
-import sys
+from .solve import solve , generate_phase1_analysis
+
 
 from .model_config import get_model_and_tokenizer
 
 from datasets import Dataset
-import json
 
 
 def main():
@@ -19,25 +18,9 @@ def main():
     model , tokenizer = get_model_and_tokenizer()
 
     print(f"Model and tokenizer loaded for {dataset_name}.")
-
-    train_acc , train_feedback_entries = solve(dataset_name,"train","Training", model, tokenizer)
-    #test_acc , test_feedback_entries = solve(dataset_name,"test","Testing", model, tokenizer)
-
-    
-    # Save feedback entries for LoRA training
-    #tokenized_datasets = prepare_lora_dataset_by_primitive(train_feedback_entries.extend(test_feedback_entries), tokenizer)
-
-    # Save all primitive datasets together in one JSON file
-    #save_file = "./lora_dataset_all.json"
-    #with open(save_file, "w", encoding="utf-8") as f:
-    #    json.dump(tokenized_datasets, f, ensure_ascii=False, indent=2)
-
-    #print(f"Saved all primitive datasets to {save_file}")
-
-
-    print(f"Train Accuracy on {dataset_name}: {train_acc*100:.2f}%")
-    #print(f"Test Accuracy on {dataset_name}: {test_acc*100:.2f}%")
-
+    # solve(dataset_name,"train","Training", model, tokenizer)
+    # solve(dataset_name,,"Training", model, tokenizer)
+    generate_phase1_analysis(dataset_name, "train", model, tokenizer)
 
 if __name__ == "__main__":
     main()
