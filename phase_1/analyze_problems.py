@@ -111,12 +111,13 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
     **GENERATE THE ANALYSIS JSON NOW.**
     """
 
-    
+    print("\n=== Phase 1: Problem Analysis Prompt ===")
     # === dynamic token allocation ===
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
     dynamic_max_tokens = min(4096, max(400, 2 * complexity_estimate))
 
     phase1_output = generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=dynamic_max_tokens)
     
-    return phase1_output
+    print("\n=== Phase 1: Problem Analysis Output ===")
+    return phase1_output  
    
