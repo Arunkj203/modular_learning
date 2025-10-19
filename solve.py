@@ -32,7 +32,7 @@ def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, out
     print(f"Log saving in file:{output_file}")
 
 
-    dataset = load_dataset(dataset_path[dataset_name])[mode]
+    dataset = load_dataset(dataset_path[dataset_name])[mode][:20] # limit for testing
     all_analysis: List[Dict[str, Any]] = []
 
     for idx, problem in enumerate(dataset):
