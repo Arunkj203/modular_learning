@@ -28,7 +28,7 @@ def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, out
     # Ensure log directory exists
     full_path = os.path.join(Base_dir_path, output_dir)
     os.makedirs(full_path, exist_ok=True)
-    output_file = os.path.join(full_path, f"{dataset_name}_{mode}_phase1_analysis_test_2.json")
+    output_file = os.path.join(full_path, f"{dataset_name}_{mode}_phase1_analysis.json")
     print(f"Log saving in file:{output_file}")
 
 

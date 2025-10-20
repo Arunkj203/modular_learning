@@ -5,10 +5,20 @@ from ..model_config import generate_text
 import json
 
 reasoning_modules = {
-  "default_reasoning_module": {
+  "default_reasoning_module": [
+      {
     "name": "Step-by-Step Reasoning",
     "description": "Let’s think step by step to ensure logical and systematic reasoning."
   },
+  {
+      "name": "Core Problem Identification",
+      "description": "Clarify the exact question being asked and isolate the essential variables or goals."
+    },
+    {
+      "name": "Stepwise Planning",
+      "description": "Lay out an explicit sequence of steps or operations to follow in solving the problem."
+    }
+    ],
   "available_reasoning_modules": [
     # --- Tier 1: Foundational procedural modules (used for almost all problems)
     {
@@ -18,14 +28,6 @@ reasoning_modules = {
     {
       "name": "Decomposition",
       "description": "Break down the problem into smaller, sequential or parallel parts that are easier to solve individually."
-    },
-    {
-      "name": "Core Problem Identification",
-      "description": "Clarify the exact question being asked and isolate the essential variables or goals."
-    },
-    {
-      "name": "Stepwise Planning",
-      "description": "Lay out an explicit sequence of steps or operations to follow in solving the problem."
     },
 
     # --- Tier 2: Analytical and logical enhancement
@@ -84,8 +86,10 @@ problem_types = [
 ]
 
 topics = [
-  "Addition and Subtraction",
-  "Multiplication and Division",
+  "Addition " , 
+  "Subtraction",
+  "Multiplication",
+  "Division",
   "Fractions and Ratios",
   "Percentages",
   "Units and Conversions",
@@ -143,8 +147,8 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
           4. Choose only from the predefined categories below — do NOT invent new labels.
 
             • problem_type (one of): {', '.join(problem_types)}
-            • topics (select one or more): {', '.join(topics)}
-            • tags (select one or more): {', '.join(tags)}
+            • topics (select two or more): {', '.join(topics)}
+            • tags (select five or more): {', '.join(tags)}
             • selected_modules (choose from these):
               Default modules: {default_modules}
               Available modules: {compact_modules}
