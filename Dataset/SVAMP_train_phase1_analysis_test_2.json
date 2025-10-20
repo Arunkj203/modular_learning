@@ -1,0 +1,417 @@
+[
+  {
+    "id": 0,
+    "question": "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?",
+    "ground_truth": 145.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Units and Conversions"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "unit-consistency"
+      ],
+      "selected_modules": [
+        "Decomposition",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 1,
+    "question": "Marco and his dad went strawberry picking. Marco's dad's strawberries weighed 11 pounds. If together their strawberries weighed 30 pounds. How much did Marco's strawberries weigh?",
+    "ground_truth": 19.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "question": "Edward spent $ 6 to buy 2 books each book costing him the same amount of money. Now he has $ 12. How much did each book cost?",
+    "ground_truth": 3.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Multiplication and Division"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "question": "Frank was reading through his favorite book. The book had 3 chapters, each with the same number of pages. It has a total of 594 pages. It took Frank 607 days to finish the book. How many pages are in each chapter?",
+    "ground_truth": 198.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Division"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "question": "There were 78 dollars in Olivia's wallet. She spent 15 dollars at a supermarket. How much money does she have left?",
+    "ground_truth": 63.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "question": "Paul got a box of 110 crayons for his birthday. During the school year he gave 90 crayons to his friends while he lost 412 crayons. How many more crayons did he lose than those he gave to his friends?",
+    "ground_truth": 322.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Negative Numbers"
+      ],
+      "tags": [
+        "single-step",
+        "comparison",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Decomposition",
+        "Core Problem Identification",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "question": "Randy has 95 blocks. He uses 20 blocks to build a house and 50 blocks to build a tower. How many more blocks did he use to build the tower than he did to build the house?",
+    "ground_truth": 30.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction"
+      ],
+      "tags": [
+        "comparison",
+        "single-step"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "question": "After Jessie started to go jogging everyday she lost 126 kilograms. She currently weighs 66 kilograms. How much did she weigh before starting to jog?",
+    "ground_truth": 192.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "question": "At the arcade Dave had won some tickets. He used 12 tickets to buy some toys. If he still has 14 tickets left How many tickets did Dave win at the arcade?",
+    "ground_truth": 26.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "question": "Bryan took a look at his books as well. If he has 34 books distributed equally in 2 bookshelves How many books are there in each bookshelf?",
+    "ground_truth": 17.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Units and Conversions"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "question": "Dave had 15 apps on his phone. He added 71 new apps. After deleting some he had 14 left. How many more apps did he delete than he added?",
+    "ground_truth": 1.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Simple Algebra"
+      ],
+      "tags": [
+        "multi-step",
+        "comparison",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Decomposition",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "question": "Adam has 4 more apples than Jackie. Together Adam and Jackie have 14 apples. Bob has 6 apples more than Adam and Jackie together do. How many apples does Bob have?",
+    "ground_truth": 20.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Multiplication and Division",
+        "Simple Algebra"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain",
+        "symbolic"
+      ],
+      "selected_modules": [
+        "Decomposition",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "question": "You have 104 dollars. How many packs of dvds can you buy if each pack costs 26 dollars?",
+    "ground_truth": 4.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Multiplication and Division"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Decomposition",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "question": "Jerry had 7 books and 3 action figures on a shelf in his room. Later he added 2 more action figures to the shelf. How many more books than action figures were on his shelf?",
+    "ground_truth": 2.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Comparisons and Ordering"
+      ],
+      "tags": [
+        "single-step",
+        "comparison"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "question": "Melissa scored a total of 91 points in 13 games scoring the same for each game. How many points did she score in each game?",
+    "ground_truth": 7.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Multiplication and Division"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "question": "Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?",
+    "ground_truth": 70.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Multiplication and Division",
+        "Division"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Decomposition",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "question": "Each basket of peaches has 19 red peaches and 4 green peaches. If there are 15 such baskets How many peaches are in the baskets altogether?",
+    "ground_truth": 345.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Multiplication and Division"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Decomposition",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "question": "Nell collects cards. She had 309 baseball cards and 356 Ace cards. She gave some of her cards to Jeff and now has 415 baseball cards and Ace cards left. How many more baseball cards than Ace cards does Nell have?",
+    "ground_truth": 266.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction",
+        "Comparisons and Ordering"
+      ],
+      "tags": [
+        "multi-step",
+        "comparison"
+      ],
+      "selected_modules": [
+        "Decomposition",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Progress Evaluation"
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "question": "There are 270 students in a school. If the school has 5 students in each grades and each grade has the same number of students How many grades are there in total?",
+    "ground_truth": 54.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Multiplication and Division"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "question": "In a school there are 34 girls and 841 boys. How many more boys than girls does the school have?",
+    "ground_truth": 807.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition and Subtraction"
+      ],
+      "tags": [
+        "single-step",
+        "comparison"
+      ],
+      "selected_modules": [
+        "Core Problem Identification",
+        "Step-by-Step Reasoning"
+      ]
+    }
+  }
+]
