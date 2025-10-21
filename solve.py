@@ -11,6 +11,39 @@ import os
 import json
 from typing import Dict, Any, List
 
+def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Dataset"):
+    """
+    Generate Phase 2 reasoning outputs from Phase 1 analyses.
+    """
+
+    output_file = os.path.join(Base_dir_path,phase1_file)
+    print(f"Log saving in file:{output_file}")
+
+    with open(output_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    full_path = os.path.join(Base_dir_path, output_dir)
+    output2_file = os.path.join(full_path,phase1_file.replace("_phase1_", "_phase2_test_1"))
+
+    all_results = []
+    for entry in data[:20]:
+        q = entry["question"]
+        analysis = entry["phase1_analysis"]
+
+        print(f"Executing reasoning for problem {entry['id']}...")
+
+        
+        primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, q , analysis)
+        
+        entry["phase2_reasoning"] = primitive_sequence
+        all_results.append(entry)
+
+    with open(output2_file, "w", encoding="utf-8") as f:
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
+
+    print(f"Phase 2 reasoning saved to {output2_file}")
+
+
 def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, output_dir="Dataset"):
     """
     Generate Phase 1 analysis for all problems in the dataset and store results in a JSON file.
