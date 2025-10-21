@@ -164,7 +164,7 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\nRaw output:\n{debug_raw}\n")
 
             # Free memory after each failed attempt
-            del outputs if 'outputs' in locals() else None
+            del outputs if ('outputs' in locals()) else None
             torch.cuda.empty_cache()
             gc.collect()
 
