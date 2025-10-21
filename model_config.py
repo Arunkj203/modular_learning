@@ -1,10 +1,9 @@
 
 # model_config.py
-import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM ,StoppingCriteria, StoppingCriteriaList 
-import os,requests,re, json
 
-from transformers import GenerationConfig
+import torch, gc, re, json , requests , os
+from transformers import GenerationConfig, StoppingCriteriaList
 
 # Optional: load .env
 try:
@@ -86,15 +85,21 @@ class StopOnToken(StoppingCriteria):
         recent_tokens = input_ids[0, -len(self.stop_token_ids):].tolist()
         return recent_tokens == self.stop_token_ids
 
-def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=200, Retries=3, DEVICE="cuda"): # Added Retries/DEVICE for completeness
-    
+def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=200, Retries=3, DEVICE="cuda"):
+    import torch, gc, re, json
+    from transformers import GenerationConfig, StoppingCriteriaList
+
+    # Pre-clear memory to avoid fragmentation from previous runs
+    gc.collect()
+    torch.cuda.empty_cache()
+    torch.cuda.synchronize()
+
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}
     ]
     
-    # ***CRITICAL FIX 1: Use apply_chat_template for chat-tuned models (Qwen/DeepSeek)***
-    # This generates the correctly tokenized prompt string with roles.
+    # Use chat template for Qwen/DeepSeek-style models
     prompt_string = tokenizer.apply_chat_template(
         messages, 
         tokenize=False, 
@@ -103,17 +108,16 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     
     raw = None
     last_error = None
-    
-    # Tokenize the final prompt. Added attention_mask handling.
-    inputs = tokenizer(prompt_string, return_tensors="pt", add_special_tokens=True).to(DEVICE)
-    prompt_len = inputs["input_ids"].shape[-1] # Length of the prompt to ignore later
 
-    stop_criteria = StoppingCriteriaList([StopOnToken(tokenizer, "<end>")])
+    # Tokenize the prompt
+    inputs = tokenizer(prompt_string, return_tensors="pt", add_special_tokens=True).to(DEVICE)
+    prompt_len = inputs["input_ids"].shape[-1]
+
+    stop_criteria = StoppingCriteriaList([StopOnToken(tokenizer, "<<END>>")])
 
     for attempt in range(Retries):
         try:
             max_tokens = min(4096, dynamic_max_tokens * (2 ** attempt))
-
             gen_cfg = GenerationConfig(
                 max_new_tokens=max_tokens,
                 do_sample=False,
@@ -121,44 +125,53 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
                 eos_token_id=tokenizer.eos_token_id,
             )
 
+            # Clear memory again before the heaviest call
+            torch.cuda.empty_cache()
+
             with torch.no_grad():
                 outputs = model.generate(
                     **inputs,
                     generation_config=gen_cfg,
                     stopping_criteria=stop_criteria
                 )
-            
-            
-            # Only decode generated part after prompt
+
             generated_tokens = outputs[0][prompt_len:]
             raw = tokenizer.decode(generated_tokens, skip_special_tokens=False)
             generated_text = raw.strip()
 
-
-            # generated_text = raw.decode(...) from model
             match = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", generated_text, flags=re.S)
-            
             if match:
                 json_text = match.group(1).strip()
             else:
-                # Fallback: find first JSON object or array
                 m = re.search(r"([\{\[][\s\S]*[\}\]])", generated_text, flags=re.S)
                 if m:
                     json_text = m.group(1).strip()
                 else:
                     raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
-                
-            # Remove common trailing commas before } or ]
+
             json_text = re.sub(r',\s*([\]\}])', r'\1', json_text)
+
+            # Cleanup memory before returning
+            del outputs, inputs
+            torch.cuda.empty_cache()
+            gc.collect()
 
             return json.loads(json_text)
 
         except Exception as e:
             last_error = e
-            debug_raw = generated_text if generated_text else "<no raw output>"
+            debug_raw = generated_text if 'generated_text' in locals() else "<no raw output>"
             print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\nRaw output:\n{debug_raw}\n")
-    else:
-        raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
+
+            # Free memory after each failed attempt
+            del outputs if 'outputs' in locals() else None
+            torch.cuda.empty_cache()
+            gc.collect()
+
+    # Final cleanup before exiting
+    torch.cuda.empty_cache()
+    gc.collect()
+    raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
 
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
