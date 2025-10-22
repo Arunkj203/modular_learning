@@ -23,10 +23,10 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     with open(output_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    output2_file = os.path.join(full_path,phase1_file.replace("_phase1_", "_phase2_test_1"))
+    output2_file = os.path.join(full_path,phase1_file.replace("_phase1_", "_phase2_test_2_"))
 
     all_results = []
-    for entry in data:
+    for entry in data[:20]: # limit to first 20 for testing
         q = entry["question"]
         analysis = entry["phase1_analysis"]
 
