@@ -26,7 +26,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     output2_file = os.path.join(full_path,phase1_file.replace("_phase1_", "_phase2_test_1"))
 
     all_results = []
-    for entry in data[:20]:
+    for entry in data:
         q = entry["question"]
         analysis = entry["phase1_analysis"]
 
@@ -37,6 +37,8 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
         
         entry["phase2_reasoning"] = primitive_sequence
         all_results.append(entry)
+
+        break  # Remove this break to process all entries
 
     with open(output2_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
