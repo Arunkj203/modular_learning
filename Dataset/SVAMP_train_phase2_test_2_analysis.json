@@ -22,8 +22,8 @@
     },
     "phase2_reasoning": [
       {
-        "id": "Divide Total Bananas by Number of Groups_571370cb",
-        "name": "Divide Total Bananas by Number of Groups",
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
         "description": "",
         "goal": "",
         "primitive_type": "",
@@ -42,8 +42,3222 @@
         ]
       },
       {
-        "id": "Check Result Consistency_b58f04cd",
-        "name": "Check Result Consistency",
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_ae9548e9",
+        "name": "Recognize Relationship Type",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_d24afcdc",
+        "name": "Apply Division Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Determine Group Size_a00cb20b",
+        "name": "Determine Group Size",
+        "description": "Calculate the size of each group by dividing the total number of items by the number of groups.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Relevant information: 290 bananas, 2 groups",
+        "resulting_state": "Size of each banana group: 145",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "question": "Marco and his dad went strawberry picking. Marco's dad's strawberries weighed 11 pounds. If together their strawberries weighed 30 pounds. How much did Marco's strawberries weigh?",
+    "ground_truth": 19.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Subtraction",
+        "Addition"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "contextual",
+        "linguistic-parsing"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_72b1ed87",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (addition or subtraction).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: Marco's dad's strawberries = 11 pounds, Total strawberries = 30 pounds",
+        "resulting_state": "Relationship type: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "contextual",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Calculate Difference_fff07403",
+        "name": "Calculate Difference",
+        "description": "Subtract the known quantity from the total to find the unknown quantity.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total strawberries = 30 pounds, Marco's dad's strawberries = 11 pounds",
+        "resulting_state": "Marco's strawberries = 19 pounds",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "contextual",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Edward spent $ 6 to buy 2 books each book costing him the same amount of money. Now he has $ 12. How much did each book cost?",
+    "ground_truth": 3.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Subtraction",
+        "Division",
+        "Money"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "linguistic-parsing",
+        "contextual"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3825cc1b",
+        "name": "Identify Quantities",
+        "description": "Recognize all numeric quantities in the problem.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Raw problem text",
+        "resulting_state": "List of quantities: [6, 2, 12]",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_ae9548e9",
+        "name": "Recognize Relationship Type",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Calculate Initial Amount_73a09423",
+        "name": "Calculate Initial Amount",
+        "description": "Subtract the amount spent from the current amount to find the initial amount.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Current amount = 12, Amount spent = 6",
+        "resulting_state": "Initial amount = 18",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_aa17be0d",
+        "name": "Apply Division Operation",
+        "description": "Compute the cost per book by dividing the total amount spent by the number of books.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total amount spent = 6, Number of books = 2",
+        "resulting_state": "Cost per book = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Evaluate Result_ee42faba",
+        "name": "Evaluate Result",
+        "description": "Check that the final result answers the question.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Cost per book = 3",
+        "resulting_state": "Final validated answer",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Frank was reading through his favorite book. The book had 3 chapters, each with the same number of pages. It has a total of 594 pages. It took Frank 607 days to finish the book. How many pages are in each chapter?",
+    "ground_truth": 198.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Units and Conversions",
+        "Average and Mean"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain",
+        "unit-consistency",
+        "data-driven",
+        "linguistic-parsing"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Decomposition",
+        "Progress Evaluation"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_8629fc27",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (division).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "resulting_state": "Relationship type: division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_8052b79c",
+        "name": "Apply Division Operation",
+        "description": "Compute the number of pages per chapter as total pages divided by number of chapters.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total pages = 594, Number of chapters = 3",
+        "resulting_state": "Pages per chapter = 198",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "There were 78 dollars in Olivia's wallet. She spent 15 dollars at a supermarket. How much money does she have left?",
+    "ground_truth": 63.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Subtraction"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "unit-consistency"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Extract Relevant Information_f87f450f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Initial amount = 78 dollars, Amount spent = 15 dollars",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Calculate Difference_182675d4",
+        "name": "Calculate Difference",
+        "description": "Subtract the known quantity from the total to find the unknown quantity.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Initial amount = 78 dollars, Amount spent = 15 dollars",
+        "resulting_state": "Remaining amount = 63 dollars",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Paul got a box of 110 crayons for his birthday. During the school year he gave 90 crayons to his friends while he lost 412 crayons. How many more crayons did he lose than those he gave to his friends?",
+    "ground_truth": 322.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Subtraction",
+        "Negative Numbers",
+        "Comparisons and Ordering"
+      ],
+      "tags": [
+        "multi-step",
+        "comparison",
+        "arithmetic-chain",
+        "contextual"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Decomposition",
+        "Critical Thinking",
+        "Progress Evaluation"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_197a8bc0",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (subtraction).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: Initial amount = 110, Crayons given = 90, Crayons lost = 412",
+        "resulting_state": "Relationship type: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Identify Operation_3e7d06e4",
+        "name": "Identify Operation",
+        "description": "Determine which mathematical operation connects the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Operation: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Difference Given and Lost_e6705a96",
+        "name": "Calculate Difference Given and Lost",
+        "description": "Compute the difference between the number of crayons lost and given.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Crayons lost = 412, Crayons given = 90",
+        "resulting_state": "Difference = 412 - 90 = 322",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Randy has 95 blocks. He uses 20 blocks to build a house and 50 blocks to build a tower. How many more blocks did he use to build the tower than he did to build the house?",
+    "ground_truth": 30.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Subtraction",
+        "Comparisons and Ordering"
+      ],
+      "tags": [
+        "comparison",
+        "arithmetic-chain",
+        "single-step",
+        "linguistic-parsing"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3825cc1b",
+        "name": "Identify Quantities",
+        "description": "Recognize all numeric quantities in the problem.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Raw problem text",
+        "resulting_state": "List of quantities: [6, 2, 12]",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Usage Difference_c92d028d",
+        "name": "Calculate Usage Difference",
+        "description": "Subtract the number of blocks used for the house from the number of blocks used for the tower.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Blocks used for house = 20, Blocks used for tower = 50",
+        "resulting_state": "Difference in blocks used = 30",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "comparison",
+          "arithmetic-chain",
+          "single-step",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Evaluate Result_322abe28",
+        "name": "Evaluate Result",
+        "description": "Check that the final result answers the question.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Difference in blocks used = 30",
+        "resulting_state": "Final validated answer",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "comparison",
+          "arithmetic-chain",
+          "single-step",
+          "linguistic-parsing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "After Jessie started to go jogging everyday she lost 126 kilograms. She currently weighs 66 kilograms. How much did she weigh before starting to jog?",
+    "ground_truth": 192.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Subtraction",
+        "Addition",
+        "Units and Conversions"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "contextual",
+        "linguistic-parsing",
+        "data-driven"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Identify Quantities_3825cc1b",
+        "name": "Identify Quantities",
+        "description": "Recognize all numeric quantities in the problem.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Raw problem text",
+        "resulting_state": "List of quantities: [6, 2, 12]",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_5292b1af",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (subtraction).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: Weight lost = 126 kg, Current weight = 66 kg",
+        "resulting_state": "Relationship type: addition",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "contextual",
+          "linguistic-parsing",
+          "data-driven"
+        ]
+      },
+      {
+        "id": "Calculate Original Weight_2b9fe901",
+        "name": "Calculate Original Weight",
+        "description": "Add the weight lost to the current weight to find the original weight.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Weight lost = 126 kg, Current weight = 66 kg",
+        "resulting_state": "Original weight = 192 kg",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "contextual",
+          "linguistic-parsing",
+          "data-driven"
+        ]
+      },
+      {
+        "id": "Evaluate Result_ee42faba",
+        "name": "Evaluate Result",
+        "description": "Check that the final result answers the question.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Cost per book = 3",
+        "resulting_state": "Final validated answer",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "At the arcade Dave had won some tickets. He used 12 tickets to buy some toys. If he still has 14 tickets left How many tickets did Dave win at the arcade?",
+    "ground_truth": 26.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition",
+        "Subtraction"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain",
+        "contextual",
+        "linguistic-parsing"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3825cc1b",
+        "name": "Identify Quantities",
+        "description": "Recognize all numeric quantities in the problem.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Raw problem text",
+        "resulting_state": "List of quantities: [6, 2, 12]",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_5292b1af",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (subtraction).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: Weight lost = 126 kg, Current weight = 66 kg",
+        "resulting_state": "Relationship type: addition",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "contextual",
+          "linguistic-parsing",
+          "data-driven"
+        ]
+      },
+      {
+        "id": "Calculate Original Quantity_89cd7d7b",
+        "name": "Calculate Original Quantity",
+        "description": "Add the quantity used to the remaining quantity to find the original quantity.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Tickets used = 12, Tickets left = 14",
+        "resulting_state": "Original tickets = 26",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "contextual",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Evaluate Result_ee42faba",
+        "name": "Evaluate Result",
+        "description": "Check that the final result answers the question.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Cost per book = 3",
+        "resulting_state": "Final validated answer",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Bryan took a look at his books as well. If he has 34 books distributed equally in 2 bookshelves How many books are there in each bookshelf?",
+    "ground_truth": 17.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Units and Conversions"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "unit-consistency"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_9695d840",
+        "name": "Recognize Relationship Type",
+        "description": "Determine whether the relation involves addition, subtraction, multiplication, or division.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Identified relationship: division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_f71be27c",
+        "name": "Identify Operation",
+        "description": "Determine which mathematical operation connects the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and relationship type",
+        "resulting_state": "Operation: division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_0a14656a",
+        "name": "Apply Division Operation",
+        "description": "Compute the number of books per bookshelf by dividing the total number of books by the number of bookshelves.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total books = 34, Number of bookshelves = 2",
+        "resulting_state": "Books per bookshelf = 17",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Dave had 15 apps on his phone. He added 71 new apps. After deleting some he had 14 left. How many more apps did he delete than he added?",
+    "ground_truth": 1.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition",
+        "Subtraction",
+        "Counting and Combinatorics"
+      ],
+      "tags": [
+        "multi-step",
+        "comparison",
+        "arithmetic-chain",
+        "contextual"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Decomposition",
+        "Progress Evaluation"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Identify Quantities_1e3e089d",
+        "name": "Identify Quantities",
+        "description": "Recognize all numeric quantities in the problem.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information",
+        "resulting_state": "List of quantities: [15, 71, 14]",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_aeef87c9",
+        "name": "Recognize Relationship Type",
+        "description": "Determine whether the relation involves addition, subtraction, multiplication, or division.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Identified relationship: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Calculate Initial Total_212d5f9c",
+        "name": "Calculate Initial Total",
+        "description": "Compute the total number of apps after adding new ones.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Initial apps = 15, Added apps = 71",
+        "resulting_state": "Total apps after addition = 86",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Apps Deleted_4eb892c0",
+        "name": "Calculate Apps Deleted",
+        "description": "Determine the number of apps deleted by subtracting the final count from the total after addition.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total apps after addition = 86, Final apps = 14",
+        "resulting_state": "Apps deleted = 72",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Compare Added and Deleted_a1317254",
+        "name": "Compare Added and Deleted",
+        "description": "Subtract the number of added apps from the number of deleted apps to find the difference.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Apps added = 71, Apps deleted = 72",
+        "resulting_state": "Difference = 1",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Adam has 4 more apples than Jackie. Together Adam and Jackie have 14 apples. Bob has 6 apples more than Adam and Jackie together do. How many apples does Bob have?",
+    "ground_truth": 20.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition",
+        "Subtraction",
+        "Multiplication",
+        "Division",
+        "Comparisons and Ordering",
+        "Work and Rate Problems"
+      ],
+      "tags": [
+        "multi-step",
+        "comparison",
+        "arithmetic-chain",
+        "logical",
+        "contextual"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Decomposition",
+        "Progress Evaluation"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_16e95356",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (addition, subtraction, multiplication, or division).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: Adam has 4 more apples than Jackie, Together Adam and Jackie have 14 apples, Bob has 6 apples more than Adam and Jackie together",
+        "resulting_state": "Relationship type: addition and subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "logical",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Formulate Subproblem_251e85d5",
+        "name": "Formulate Subproblem",
+        "description": "Break down the main problem into smaller, manageable subproblems.",
+        "goal": "",
+        "primitive_type": "Control",
+        "applied_on_state": "Main problem",
+        "resulting_state": "Subproblems: 1) Find number of apples Jackie has, 2) Find number of apples Adam has, 3) Find number of apples Bob has",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "logical",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Solve Subproblem 1_723e7cf9",
+        "name": "Solve Subproblem 1",
+        "description": "Solve the first subproblem: Find number of apples Jackie has.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Subproblem 1",
+        "resulting_state": "Jackie has X apples",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "logical",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Solve Subproblem 2_06d85edd",
+        "name": "Solve Subproblem 2",
+        "description": "Solve the second subproblem: Find number of apples Adam has.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Subproblem 2",
+        "resulting_state": "Adam has Y apples",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "logical",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Solve Subproblem 3_dcbfb070",
+        "name": "Solve Subproblem 3",
+        "description": "Solve the third subproblem: Find number of apples Bob has.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Subproblem 3",
+        "resulting_state": "Bob has Z apples",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "logical",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "You have 104 dollars. How many packs of dvds can you buy if each pack costs 26 dollars?",
+    "ground_truth": 4.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Money and Currency"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "unit-consistency"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_525d0da9",
+        "name": "Recognize Relationship Type",
+        "description": "Determine whether the relation involves addition, subtraction, multiplication, or division.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Identified relationship: division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_f2bc5764",
+        "name": "Apply Division Operation",
+        "description": "Compute the number of packs as total money divided by cost per pack.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total money = 104, Cost per pack = 26",
+        "resulting_state": "Number of packs = 4",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Evaluate Result_f871115b",
+        "name": "Evaluate Result",
+        "description": "Check that the final result answers the question.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Number of packs = 4",
+        "resulting_state": "Final validated answer",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Jerry had 7 books and 3 action figures on a shelf in his room. Later he added 2 more action figures to the shelf. How many more books than action figures were on his shelf?",
+    "ground_truth": 2.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition",
+        "Subtraction"
+      ],
+      "tags": [
+        "multi-step",
+        "comparison",
+        "arithmetic-chain"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_e0d8641e",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (addition, subtraction, etc.).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Identified quantities and context",
+        "resulting_state": "Relationship types: addition for action figures, subtraction for comparison",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Addition Operation_a17098d5",
+        "name": "Apply Addition Operation",
+        "description": "Compute the total number of action figures after adding more.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Initial action figures = 3, Additional action figures = 2",
+        "resulting_state": "Total action figures = 5",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain"
+        ]
+      },
+      {
+        "id": "Apply Subtraction Operation_d1e448bf",
+        "name": "Apply Subtraction Operation",
+        "description": "Compute the difference between the number of books and action figures.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Books = 7, Action figures = 5",
+        "resulting_state": "Difference = 2",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain"
+        ]
+      },
+      {
+        "id": "Evaluate Result_4a93cb63",
+        "name": "Evaluate Result",
+        "description": "Check that the final result answers the question.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Difference = 2",
+        "resulting_state": "Final validated answer",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Melissa scored a total of 91 points in 13 games scoring the same for each game. How many points did she score in each game?",
+    "ground_truth": 7.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Simple Algebra"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "unit-consistency"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_23ea06a6",
+        "name": "Recognize Relationship Type",
+        "description": "Determine whether the relation involves addition, subtraction, multiplication, or division.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Identified relationship: division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_cf18aab3",
+        "name": "Apply Division Operation",
+        "description": "Compute the quotient as total points divided by number of games.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total points = 91, Number of games = 13",
+        "resulting_state": "Points per game = 7",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?",
+    "ground_truth": 70.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Multiplication",
+        "Division",
+        "Units and Conversions"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain",
+        "unit-consistency"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_2ddf763b",
+        "name": "Recognize Relationship Type",
+        "description": "Determine whether the relation involves addition, subtraction, multiplication, or division.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Identified relationship: multiplication for total pencils, division for rows",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Multiplication Operation_0c7e745f",
+        "name": "Apply Multiplication Operation",
+        "description": "Compute total pencils as packs times pencils per pack.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Packs = 35, Pencils per pack = 4",
+        "resulting_state": "Total pencils = 140",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_1cf854f5",
+        "name": "Apply Division Operation",
+        "description": "Compute rows as total pencils divided by pencils per row.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total pencils = 140, Pencils per row = 2",
+        "resulting_state": "Number of rows = 70",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "Each basket of peaches has 19 red peaches and 4 green peaches. If there are 15 such baskets How many peaches are in the baskets altogether?",
+    "ground_truth": 345.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition",
+        "Multiplication"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain",
+        "data-driven"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_1ec9fd46",
+        "name": "Recognize Relationship Type",
+        "description": "Determine whether the relation involves addition, subtraction, multiplication, or division.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Identified relationship: multiplication",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "data-driven"
+        ]
+      },
+      {
+        "id": "Formulate Subproblem_986ff65e",
+        "name": "Formulate Subproblem",
+        "description": "Break down the main problem into smaller, manageable subproblems.",
+        "goal": "",
+        "primitive_type": "Control",
+        "applied_on_state": "Main problem",
+        "resulting_state": "Subproblems: 1) Calculate total peaches per basket, 2) Calculate total peaches for all baskets",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "data-driven"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Multiplication Operation_502634c6",
+        "name": "Apply Multiplication Operation",
+        "description": "Compute the total number of peaches per basket.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Red peaches = 19, Green peaches = 4",
+        "resulting_state": "Total peaches per basket = 23",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "data-driven"
+        ]
+      },
+      {
+        "id": "Identify Operation_79c19983",
+        "name": "Identify Operation",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Apply Multiplication Operation_a859dd3e",
+        "name": "Apply Multiplication Operation",
+        "description": "Compute the total number of peaches for all baskets.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total peaches per basket = 23, Number of baskets = 15",
+        "resulting_state": "Total peaches = 345",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "data-driven"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "Nell collects cards. She had 309 baseball cards and 356 Ace cards. She gave some of her cards to Jeff and now has 415 baseball cards and Ace cards left. How many more baseball cards than Ace cards does Nell have?",
+    "ground_truth": 266.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Addition",
+        "Subtraction",
+        "Comparison"
+      ],
+      "tags": [
+        "multi-step",
+        "comparison",
+        "arithmetic-chain",
+        "contextual"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Decomposition",
+        "Critical Thinking",
+        "Progress Evaluation"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Identify Operation_3e7d06e4",
+        "name": "Identify Operation",
+        "description": "Determine which mathematical operation connects the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities and context",
+        "resulting_state": "Operation: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_197a8bc0",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of relationship between the quantities (subtraction).",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: Initial amount = 110, Crayons given = 90, Crayons lost = 412",
+        "resulting_state": "Relationship type: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Total Cards Initially_65dfbeca",
+        "name": "Calculate Total Cards Initially",
+        "description": "Sum the initial number of baseball and Ace cards.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Baseball cards = 309, Ace cards = 356",
+        "resulting_state": "Total cards initially = 665",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Total Cards After Giving_9aaabc9d",
+        "name": "Calculate Total Cards After Giving",
+        "description": "Sum the number of baseball and Ace cards after giving some to Jeff.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Baseball cards = 415, Ace cards = 0 (unknown)",
+        "resulting_state": "Total cards after giving = 415",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Cards Given Away_2f31b21c",
+        "name": "Calculate Cards Given Away",
+        "description": "Subtract the total cards after giving from the total cards initially.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total cards initially = 665, Total cards after giving = 415",
+        "resulting_state": "Cards given away = 250",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Determine Baseball and Ace Cards Given_c91d001f",
+        "name": "Determine Baseball and Ace Cards Given",
+        "description": "Determine the number of baseball and Ace cards given away based on the total cards given away.",
+        "goal": "",
+        "primitive_type": "Control",
+        "applied_on_state": "Cards given away = 250",
+        "resulting_state": "Subproblems: 1) Find number of baseball cards given, 2) Find number of Ace cards given",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Baseball Cards Given_01edb86c",
+        "name": "Calculate Baseball Cards Given",
+        "description": "Subtract the number of baseball cards left from the initial number of baseball cards.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Baseball cards initially = 309, Baseball cards left = 415 (unknown)",
+        "resulting_state": "Baseball cards given = 309 - (415 - Ace cards left)",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Ace Cards Given_c084961f",
+        "name": "Calculate Ace Cards Given",
+        "description": "Subtract the number of Ace cards left from the initial number of Ace cards.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Ace cards initially = 356, Ace cards left = 415 (unknown)",
+        "resulting_state": "Ace cards given = 356 - (415 - Baseball cards left)",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Calculate Difference Between Baseball and Ace Cards_cf97aeed",
+        "name": "Calculate Difference Between Baseball and Ace Cards",
+        "description": "Subtract the number of Ace cards left from the number of baseball cards left.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Baseball cards left = 415, Ace cards left = 415 (unknown)",
+        "resulting_state": "Difference = Baseball cards left - Ace cards left",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "There are 270 students in a school. If the school has 5 students in each grades and each grade has the same number of students How many grades are there in total?",
+    "ground_truth": 54.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Simple Algebra",
+        "Comparisons and Ordering"
+      ],
+      "tags": [
+        "multi-step",
+        "arithmetic-chain",
+        "unit-consistency",
+        "data-driven",
+        "logical"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning",
+        "Decomposition",
+        "Progress Evaluation"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Extract Relevant Information_267a8460",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: Total pages = 594, Number of chapters = 3",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "linguistic-parsing"
+        ]
+      },
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Identify Operation_9eff01a1",
+        "name": "Identify Operation",
+        "description": "Determine which mathematical operation connects the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized quantities",
+        "resulting_state": "Operation: division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "logical"
+        ]
+      },
+      {
+        "id": "Apply Division Operation_7fe42440",
+        "name": "Apply Division Operation",
+        "description": "Compute the number of grades by dividing the total number of students by the number of students per grade.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Total students = 270, Students per grade = 5",
+        "resulting_state": "Number of grades = 54",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "arithmetic-chain",
+          "unit-consistency",
+          "data-driven",
+          "logical"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "In a school there are 34 girls and 841 boys. How many more boys than girls does the school have?",
+    "ground_truth": 807.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Subtraction"
+      ],
+      "tags": [
+        "comparison",
+        "arithmetic-chain",
+        "single-step"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Identify Quantities_3f63a85d",
+        "name": "Identify Quantities",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Extract Relevant Information_2da2f92f",
+        "name": "Extract Relevant Information",
+        "description": "Identify and isolate the relevant information from the problem statement.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Problem statement",
+        "resulting_state": "Relevant information: 290 bananas, 2 groups",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Recognize Relationship Type_c0c7612a",
+        "name": "Recognize Relationship Type",
+        "description": "Determine the type of arithmetic relationship between the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Relevant information: 34 girls, 841 boys",
+        "resulting_state": "Relationship: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "comparison",
+          "arithmetic-chain",
+          "single-step"
+        ]
+      },
+      {
+        "id": "Identify Operation_63559293",
+        "name": "Identify Operation",
+        "description": "Determine which mathematical operation connects the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Recognized relationship",
+        "resulting_state": "Operation: subtraction",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "comparison",
+          "arithmetic-chain",
+          "single-step"
+        ]
+      },
+      {
+        "id": "Apply Subtraction Operation_c80a46b5",
+        "name": "Apply Subtraction Operation",
+        "description": "Compute the difference between the number of boys and girls.",
+        "goal": "",
+        "primitive_type": "Transformational",
+        "applied_on_state": "Operation: subtraction, Quantities: [841, 34]",
+        "resulting_state": "Difference = 807",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "comparison",
+          "arithmetic-chain",
+          "single-step"
+        ]
+      },
+      {
+        "id": "Evaluate Result_59e8aa39",
+        "name": "Evaluate Result",
         "description": "",
         "goal": "",
         "primitive_type": "",
