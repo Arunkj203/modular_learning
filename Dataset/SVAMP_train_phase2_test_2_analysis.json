@@ -1,0 +1,66 @@
+[
+  {
+    "id": 0,
+    "question": "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?",
+    "ground_truth": 145.0,
+    "phase1_analysis": {
+      "problem_type": "Arithmetic Reasoning",
+      "topics": [
+        "Division",
+        "Units and Conversions"
+      ],
+      "tags": [
+        "single-step",
+        "arithmetic-chain",
+        "unit-consistency"
+      ],
+      "selected_modules": [
+        "Step-by-Step Reasoning",
+        "Core Problem Identification",
+        "Stepwise Planning"
+      ]
+    },
+    "phase2_reasoning": [
+      {
+        "id": "Divide Total Bananas by Number of Groups_571370cb",
+        "name": "Divide Total Bananas by Number of Groups",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      },
+      {
+        "id": "Check Result Consistency_b58f04cd",
+        "name": "Check Result Consistency",
+        "description": "",
+        "goal": "",
+        "primitive_type": "",
+        "applied_on_state": "",
+        "resulting_state": "",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  }
+]
