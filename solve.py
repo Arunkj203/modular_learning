@@ -16,13 +16,13 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     Generate Phase 2 reasoning outputs from Phase 1 analyses.
     """
 
-    output_file = os.path.join(Base_dir_path,phase1_file)
+    full_path = os.path.join(Base_dir_path, output_dir)
+    output_file = os.path.join(full_path,phase1_file)
     print(f"Log saving in file:{output_file}")
 
     with open(output_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    full_path = os.path.join(Base_dir_path, output_dir)
     output2_file = os.path.join(full_path,phase1_file.replace("_phase1_", "_phase2_test_1"))
 
     all_results = []
@@ -32,7 +32,6 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
 
         print(f"Executing reasoning for problem {entry['id']}...")
 
-        
         primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, q , analysis)
         
         entry["phase2_reasoning"] = primitive_sequence

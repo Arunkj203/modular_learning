@@ -21,7 +21,7 @@ def main():
     # solve(dataset_name,"train","Training", model, tokenizer)
     # solve(dataset_name,,"Training", model, tokenizer)
     # generate_phase1_analysis(dataset_name, "train", model, tokenizer)
-    generate_phase2_execution("Dataset/SVAMP_train_phase1_analysis.json", model, tokenizer)
+    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer)
 
 if __name__ == "__main__":
     main()
