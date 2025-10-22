@@ -26,13 +26,19 @@ Characteristics:
   3. Control — decide sequence, subgoal, or next operation
   4. Evaluation — check progress, correctness, or termination
 
-Rules:
-- You are not solving the problem; only planning the reasoning process.
-- Each step in your plan corresponds to one primitive.
-- If a primitive is reused, list only `id`, `name`, and `"status": "Existing"`.
-- If a new primitive is introduced, define all its fields with `"status": "New"`.
-- Preserve logical step order.
-- Output strictly follows the JSON schema below.
+-----------------------------------------
+Core Generation Rules:
+-----------------------------------------
+1. You are not solving the problem; only planning the reasoning process.
+2. Each step corresponds to one primitive and must have a logical connection to the previous step:
+   - The `resulting_state` of step N must be used as the `applied_on_state` of step N+1.
+3. Each primitive `id` must appear **only once** in the entire sequence.
+4. Include at most 12 primitives (prefer 5–8 concise steps).
+5. Always end with a single Evaluation primitive (e.g., "Check Result Consistency" or "Evaluate Result").
+6. If the reasoning involves decision-making (choosing next operation, deciding subgoal, or control flow), include a Control-type primitive.
+7. Do not repeat or reintroduce identical primitives.
+8. The sequence should clearly progress from perception → transformation → control (if needed) → evaluation.
+9. Output **only valid JSON** following the schema, and conclude with `<END_OF_SEQUENCE>` (for parser detection).
 
 -----------------------------------------
 Few-shot Examples:
@@ -47,39 +53,43 @@ Analysis context: Basic addition of quantities.
 {
   "primitive_sequence": [
     {
+      "step": 1,
       "id": "P001",
       "name": "Identify Quantities",
       "description": "Recognize all numeric quantities in the problem.",
       "type": "Perceptual",
       "applied_on_state": "Raw problem text",
-      "resulting_state": "List of quantities: [3, 2]",
+      "resulting_state": "Quantities: [3, 2]",
       "status": "New"
     },
     {
+      "step": 2,
       "id": "P002",
       "name": "Identify Operation",
-      "description": "Determine which mathematical operation connects the quantities.",
+      "description": "Determine the mathematical operation connecting the quantities.",
       "type": "Perceptual",
-      "applied_on_state": "Recognized quantities",
+      "applied_on_state": "Quantities: [3, 2]",
       "resulting_state": "Operation: addition",
       "status": "New"
     },
     {
+      "step": 3,
       "id": "P003",
       "name": "Combine Quantities",
-      "description": "Apply the identified operation on quantities.",
+      "description": "Apply the identified operation on the quantities.",
       "type": "Transformational",
       "applied_on_state": "Operation: addition, Quantities: [3, 2]",
-      "resulting_state": "Intermediate result (5 apples)",
+      "resulting_state": "Intermediate result: 5 apples",
       "status": "New"
     },
     {
+      "step": 4,
       "id": "P004",
-      "name": "Evaluate Result",
-      "description": "Check that the final result answers the question.",
+      "name": "Check Result Consistency",
+      "description": "Verify that the computed quantity aligns with the question goal.",
       "type": "Evaluation",
-      "applied_on_state": "Intermediate result",
-      "resulting_state": "Final validated answer",
+      "applied_on_state": "Intermediate result: 5 apples",
+      "resulting_state": "Validated solution state",
       "status": "New"
     }
   ]
@@ -95,36 +105,41 @@ Analysis context: Division for rate calculation.
 {
   "primitive_sequence": [
     {
+      "step": 1,
       "id": "P001",
       "name": "Identify Quantities",
       "status": "Existing"
     },
     {
+      "step": 2,
       "id": "P002",
       "name": "Identify Operation",
       "status": "Existing"
     },
     {
+      "step": 3,
       "id": "P005",
       "name": "Recognize Relationship Type",
-      "description": "Determine whether the relation involves addition, subtraction, multiplication, or division.",
+      "description": "Detect that the relationship involves division (distance/time).",
       "type": "Perceptual",
       "applied_on_state": "Recognized quantities and context",
       "resulting_state": "Identified relationship: division",
       "status": "New"
     },
     {
+      "step": 4,
       "id": "P006",
       "name": "Apply Division Operation",
-      "description": "Compute rate as distance divided by time.",
+      "description": "Plan to compute rate by dividing total distance by total time.",
       "type": "Transformational",
       "applied_on_state": "Distance = 60, Time = 2",
-      "resulting_state": "Speed = 30 km/h",
+      "resulting_state": "Speed = distance/time",
       "status": "New"
     },
     {
+      "step": 5,
       "id": "P004",
-      "name": "Evaluate Result",
+      "name": "Check Result Consistency",
       "status": "Existing"
     }
   ]
@@ -138,19 +153,19 @@ Output Schema (for your problem):
 {
   "primitive_sequence": [
     {
-      // Existing primitive reuse
+      "step": 1,
       "id": "<existing_primitive_id>",
       "name": "<existing_primitive_name>",
       "status": "Existing"
     },
     {
-      // New primitive definition
+      "step": 2,
       "id": "<new_primitive_id>",
       "name": "<new_primitive_name>",
       "description": "<short description of what this skill does>",
       "type": "<Perceptual | Transformational | Control | Evaluation>",
-      "applied_on_state": "<inferred or hypothetical subgoal>",
-      "resulting_state": "<expected next subgoal or transformation>",
+      "applied_on_state": "<state or subgoal this acts on>",
+      "resulting_state": "<new subgoal or derived state>",
       "status": "New"
     }
   ]

@@ -34,8 +34,15 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
 
         primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, q , analysis)
         
-        entry["phase2_reasoning"] = primitive_sequence
-        all_results.append(entry)
+        # entry["phase2_reasoning"] = primitive_sequence
+        # all_results.append(entry)
+
+        all_results.append(
+            {
+                "question": entry["question"],
+                "phase2_reasoning": primitive_sequence
+            }
+            )
 
     with open(output2_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
