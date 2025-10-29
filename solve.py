@@ -4,6 +4,8 @@ from .phase_2.phase_2_main import run_phase2
 from .phase_3.phase_3_main import run_phase3
 from .phase_4.phase_4_main import run_phase4
 
+from .phase_2.generate_primitive import add_primitive
+
 from .config import *
 from datasets import load_dataset
 
@@ -23,31 +25,46 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     with open(output_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    output2_file = os.path.join(full_path,phase1_file.replace("_phase1_", "_phase2_test_2_"))
+    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", "phase2_execution_test_3"))
 
+    # l = len(data)
+    l = 22
+    batch_size = max(1,l // 10)
     all_results = []
-    for entry in data[:20]: # limit to first 20 for testing
-        q = entry["question"]
-        analysis = entry["phase1_analysis"]
 
-        print(f"Executing reasoning for problem {entry['id']}...")
+    for batch_start in range(0, l , batch_size):
+        batch = data[batch_start:batch_start + batch_size]
+        batch_new_primitives = []
 
-        primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, q , analysis)
-        
-        # entry["phase2_reasoning"] = primitive_sequence
-        # all_results.append(entry)
+        print(f"\nProcessing batch {batch_start // batch_size + 1}...")
 
-        all_results.append(
-            {
-                "question": entry["question"],
+        for entry in batch:
+            q = entry["question"]
+            analysis = entry["phase1_analysis"]
+
+            print(f"  Executing reasoning for problem {entry['id']}...")
+
+            primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
+            batch_new_primitives.extend(new_prims)
+
+            all_results.append({
+                "question": q,
                 "phase2_reasoning": primitive_sequence
-            }
-            )
+            })
 
+        # --- After each batch ---
+        if batch_new_primitives:
+            print(f"  Adding {len(batch_new_primitives)} new primitives from this batch...")
+            for prim in batch_new_primitives:
+                add_primitive(prim)
+
+            print(f"  Library updated. Total primitives now: {len(primitive_metadata)}")
+
+    # Save all results at the end
     with open(output2_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
-    print(f"Phase 2 reasoning saved to {output2_file}")
+    print(f"\nPhase 2 reasoning saved to {output2_file}")
 
 
 def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, output_dir="Dataset"):

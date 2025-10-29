@@ -99,7 +99,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
                     "methods": p.get("methods", analysis.get("selected_modules", [])),
                     "tags": p.get("tags", analysis.get("tags", [])),
                 }
-                add_primitive(primitive_entry)
+                # add_primitive(primitive_entry)
                 primitive_sequence.append(primitive_entry)
                 new_count += 1
 
