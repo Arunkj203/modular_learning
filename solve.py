@@ -32,6 +32,8 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     batch_size = max(1,l // 10)
     all_results = []
 
+    load_memory()
+
     for batch_start in range(0, l , batch_size):
         batch = data[batch_start:batch_start + batch_size]
         batch_new_primitives = []
@@ -64,6 +66,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     with open(output2_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
+    save_memory()
     print(f"\nPhase 2 reasoning saved to {output2_file}")
 
 

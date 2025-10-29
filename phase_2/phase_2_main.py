@@ -55,7 +55,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
     # Step 3 - Separate new primitives (to train later)
     new_primitives_to_train = []
     primitive_sequence = []
-    new_count = 0
+    # new_count = 0
 
 
     for p in sequence_primitives:
@@ -100,11 +100,11 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
                     "tags": p.get("tags", analysis.get("tags", [])),
                 }
                 # add_primitive(primitive_entry)
-                primitive_sequence.append(primitive_entry)
-                new_count += 1
+                new_primitives_to_train.append(primitive_entry)
+                primitive_sequence.append(prim_id)
+                # new_count += 1
 
 
 
-    return primitive_sequence , new_count  #new_primitives_to_train
-
+    return primitive_sequence, new_primitives_to_train # new_count
 
