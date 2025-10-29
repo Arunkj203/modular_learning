@@ -161,7 +161,8 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
         except Exception as e:
             last_error = e
             debug_raw = generated_text if 'generated_text' in locals() else "<no raw output>"
-            print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\nRaw output:\n{debug_raw}\n")
+            # print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\nRaw output:\n{debug_raw}\n")
+            print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\n")
 
             # Free memory after each failed attempt
             if 'outputs' in locals():
@@ -172,7 +173,8 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     # Final cleanup before exiting
     torch.cuda.empty_cache()
     gc.collect()
-    raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
+    # raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
+    raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}")
 
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")

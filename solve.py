@@ -31,6 +31,9 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     batch_size = max(1,l // 10)
     all_results = []
 
+    no_errors = 0
+    max_errors = int(0.3 * l)
+
     load_memory()
 
     for batch_start in range(0, l , batch_size):
@@ -43,15 +46,21 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
             q = entry["question"]
             analysis = entry["phase1_analysis"]
 
-            print(f"  Executing reasoning for problem {entry['id']}...")
+            try:
 
-            primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
-            batch_new_primitives.extend(new_prims)
+                print(f"  Executing reasoning for problem {entry['id']}...")
 
-            all_results.append({
-                "question": q,
-                "phase2_reasoning": primitive_sequence
-            })
+                primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
+                batch_new_primitives.extend(new_prims)
+
+                all_results.append({
+                    "question": q,
+                    "phase2_reasoning": primitive_sequence
+                })
+            except Exception as e:
+                no_errors += 1
+                print(f"  [ERROR] Problem {entry['id']} failed: {e}")
+        
 
         # --- After each batch ---
         if batch_new_primitives:
@@ -60,6 +69,10 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
                 add_primitive(prim)
 
             print(f"  Library updated. Total primitives now: {len(primitive_metadata)}")
+        
+        if no_errors >= max_errors:
+            print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early in batch {batch_start}.\n")
+            break
 
     # Save all results at the end
     with open(output2_file, "w", encoding="utf-8") as f:
