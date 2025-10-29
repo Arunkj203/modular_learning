@@ -101,7 +101,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
                 }
                 # add_primitive(primitive_entry)
                 new_primitives_to_train.append(primitive_entry)
-                primitive_sequence.append(prim_id)
+                primitive_sequence.append(pid)
                 # new_count += 1
 
 
