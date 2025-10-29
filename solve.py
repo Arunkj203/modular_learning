@@ -27,8 +27,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     
     output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", "phase2_execution_test_3"))
 
-    # l = len(data)
-    l = 22
+    l = len(data)
     batch_size = max(1,l // 10)
     all_results = []
 
