@@ -1,0 +1,267 @@
+[
+  {
+    "question": "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?",
+    "phase2_reasoning": [
+      "Identify Quantities_3018928a",
+      "Identify Grouping Information_b46aabfa",
+      "Determine Operation for Bananas_76428063",
+      "Perform Division Operation_abb642ff",
+      "Check Result Consistency_bbe0be64"
+    ]
+  },
+  {
+    "question": "Marco and his dad went strawberry picking. Marco's dad's strawberries weighed 11 pounds. If together their strawberries weighed 30 pounds. How much did Marco's strawberries weigh?",
+    "phase2_reasoning": [
+      "Identify Quantities_d4bbe291",
+      "Identify Relationship_9c33edd0",
+      "Determine Unknown Quantity_7fc9fa28",
+      "Formulate Equation_65e56dec",
+      "Solve Equation_22d148bb",
+      "Check Result Consistency_36ffd0b7"
+    ]
+  },
+  {
+    "question": "Edward spent $ 6 to buy 2 books each book costing him the same amount of money. Now he has $ 12. How much did each book cost?",
+    "phase2_reasoning": [
+      "Identify Quantities_ce791280",
+      "Recognize Relationship Type_61ace39e",
+      "Formulate Equation_51577828",
+      "Solve Equation_864942a3",
+      "Check Result Consistency_c4b9bd49"
+    ]
+  },
+  {
+    "question": "Frank was reading through his favorite book. The book had 3 chapters, each with the same number of pages. It has a total of 594 pages. It took Frank 607 days to finish the book. How many pages are in each chapter?",
+    "phase2_reasoning": [
+      "Identify Quantities_6b9ddc8c",
+      "Recognize Relationship Type_7aca60af",
+      "Formulate Equation_3fc32659",
+      "Solve Equation_36b7a6ce"
+    ]
+  },
+  {
+    "question": "There were 78 dollars in Olivia's wallet. She spent 15 dollars at a supermarket. How much money does she have left?",
+    "phase2_reasoning": [
+      "Identify Quantities_7e7e4d47",
+      "Identify Operation_6c5d3dfd",
+      "Apply Subtraction Operation_8172e996",
+      "Check Result Consistency_5dd6b3e6"
+    ]
+  },
+  {
+    "question": "Paul got a box of 110 crayons for his birthday. During the school year he gave 90 crayons to his friends while he lost 412 crayons. How many more crayons did he lose than those he gave to his friends?",
+    "phase2_reasoning": [
+      "Identify Quantities_3be41b17",
+      "Calculate Crayons Lost_d673b682",
+      "Compare Loss and Given Away_780403c6",
+      "Check Result Consistency_9d517c1e"
+    ]
+  },
+  {
+    "question": "Randy has 95 blocks. He uses 20 blocks to build a house and 50 blocks to build a tower. How many more blocks did he use to build the tower than he did to build the house?",
+    "phase2_reasoning": [
+      "Identify Quantities_a088e94d",
+      "Calculate Blocks Used for House_15fceb19",
+      "Calculate Blocks Used for Tower_4c144ad5",
+      "Calculate Difference in Blocks Used_d12268e4",
+      {
+        "id": "Check Result Consistency_c4b9bd49",
+        "name": "Check Result Consistency",
+        "description": "Verify that the computed quantity aligns with the question goal.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Cost per book = 3 dollars",
+        "resulting_state": "Validated solution state",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "After Jessie started to go jogging everyday she lost 126 kilograms. She currently weighs 66 kilograms. How much did she weigh before starting to jog?",
+    "phase2_reasoning": [
+      "Identify Quantities_f9d119eb",
+      "Identify Relationship_a14c9c57",
+      "Formulate Equation_2ea0818d",
+      "Solve Equation_d5e436ac",
+      "Check Result Consistency_b0248e65"
+    ]
+  },
+  {
+    "question": "At the arcade Dave had won some tickets. He used 12 tickets to buy some toys. If he still has 14 tickets left How many tickets did Dave win at the arcade?",
+    "phase2_reasoning": [
+      "Identify Quantities_54c4cb65",
+      "Identify Relationship_7d6e5911",
+      "Formulate Equation_d1c496fd",
+      "Check Result Consistency_e0004c60"
+    ]
+  },
+  {
+    "question": "Bryan took a look at his books as well. If he has 34 books distributed equally in 2 bookshelves How many books are there in each bookshelf?",
+    "phase2_reasoning": [
+      "Identify Quantities_09af0d62",
+      "Identify Operation_3379c831",
+      "Apply Division Operation_0df5b639",
+      "Check Result Consistency_53ad704e"
+    ]
+  },
+  {
+    "question": "Dave had 15 apps on his phone. He added 71 new apps. After deleting some he had 14 left. How many more apps did he delete than he added?",
+    "phase2_reasoning": [
+      "Identify Quantities_e147fd6e",
+      "Identify Operation_19986d2c",
+      "Calculate Total Apps Added_ac1ab0c7",
+      "Calculate Apps Deleted_5d1b7b6b",
+      "Calculate Difference_c57fd9b3",
+      {
+        "id": "Check Result Consistency_9d517c1e",
+        "name": "Check Result Consistency",
+        "description": "Verify that the computed difference aligns with the problem statement.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Difference: 232",
+        "resulting_state": "Validated solution state",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning",
+          "Decomposition",
+          "Critical Thinking",
+          "Progress Evaluation"
+        ],
+        "tags": [
+          "multi-step",
+          "comparison",
+          "arithmetic-chain",
+          "contextual"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Adam has 4 more apples than Jackie. Together Adam and Jackie have 14 apples. Bob has 6 apples more than Adam and Jackie together do. How many apples does Bob have?",
+    "phase2_reasoning": [
+      "Identify Quantities_c60b1d9b",
+      "Identify Relationships_dd83f589",
+      "Formulate Subgoals_8bebe918",
+      "Solve for Jackie's Apples_b63c38a7",
+      "Solve for Adam's Apples_c7c6b713",
+      "Solve for Bob's Apples_195328ad",
+      "Check Result Consistency_42170bbe"
+    ]
+  },
+  {
+    "question": "You have 104 dollars. How many packs of dvds can you buy if each pack costs 26 dollars?",
+    "phase2_reasoning": [
+      "Identify Quantities_ba8598ee",
+      "Identify Operation_01b3d93c",
+      "Apply Division Operation_92c8433c",
+      "Check Result Consistency_0ce6ca09"
+    ]
+  },
+  {
+    "question": "Jerry had 7 books and 3 action figures on a shelf in his room. Later he added 2 more action figures to the shelf. How many more books than action figures were on his shelf?",
+    "phase2_reasoning": [
+      "Identify Quantities_e80ca237",
+      "Identify Relationships_ab778c9e",
+      "Calculate Total Action Figures_f8c4f118",
+      "Identify Operation_97a0af90",
+      "Calculate Difference_45006263",
+      "Check Result Consistency_8760e9f9"
+    ]
+  },
+  {
+    "question": "Melissa scored a total of 91 points in 13 games scoring the same for each game. How many points did she score in each game?",
+    "phase2_reasoning": [
+      "Identify Quantities_698e51cc",
+      "Identify Operation_1587e70b",
+      "Apply Division Operation_63312a24",
+      "Calculate Result_116b8995",
+      "Check Result Consistency_9fce9164"
+    ]
+  },
+  {
+    "question": "Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?",
+    "phase2_reasoning": [
+      "Identify Quantities_10555c2b",
+      "Identify Operation_88ea939d",
+      "Calculate Total Pencils_4aa7f303",
+      "Calculate Rows_f5b177aa",
+      "Check Result Consistency_6002ff78"
+    ]
+  },
+  {
+    "question": "Each basket of peaches has 19 red peaches and 4 green peaches. If there are 15 such baskets How many peaches are in the baskets altogether?",
+    "phase2_reasoning": [
+      "Identify Quantities_d21d1ccb",
+      "Identify Operation_6ead8369",
+      "Calculate Total Peaches per Basket_4501f1a2",
+      "Calculate Total Peaches Across All Baskets_32f741a6",
+      "Check Result Consistency_efdd31ed"
+    ]
+  },
+  {
+    "question": "Nell collects cards. She had 309 baseball cards and 356 Ace cards. She gave some of her cards to Jeff and now has 415 baseball cards and Ace cards left. How many more baseball cards than Ace cards does Nell have?",
+    "phase2_reasoning": [
+      "Identify Quantities_600f76f7",
+      "Identify Initial Total_97f085ac",
+      "Identify Final Total_bc4ba2cc",
+      "Calculate Cards Given Away_995694f2",
+      "Identify Current Quantities_dc07136a",
+      "Calculate Baseball Cards_21f1e40d",
+      "Calculate Ace Cards_d94279e4",
+      "Calculate Difference_8b0efa7b",
+      "Simplify Difference_ae7f3ed8",
+      "Check Result Consistency_e13b8774"
+    ]
+  },
+  {
+    "question": "There are 270 students in a school. If the school has 5 students in each grades and each grade has the same number of students How many grades are there in total?",
+    "phase2_reasoning": [
+      "Identify Quantities_e248adbf",
+      "Identify Relationships_7d197407",
+      "Identify Operation_a967fb26",
+      "Apply Division Operation_a91ef78b",
+      "Check Result Consistency_06bc46ff"
+    ]
+  },
+  {
+    "question": "In a school there are 34 girls and 841 boys. How many more boys than girls does the school have?",
+    "phase2_reasoning": [
+      "Identify Quantities_9f069d65",
+      "Identify Operation_8a5123c8",
+      "Apply Subtraction Operation_0e1cc3af",
+      "Check Result Consistency_4e7a92c9"
+    ]
+  },
+  {
+    "question": "He then went to see the oranges being harvested. He found out that they harvested 54 sacks of oranges. How many days did it take to harvest them if they harvested 18 sacks of oranges per day?",
+    "phase2_reasoning": [
+      "Identify Quantities_d207e553",
+      "Identify Operation_4e5ccced",
+      "Apply Division Operation_23acaaea",
+      "Check Result Consistency_df5adf74"
+    ]
+  },
+  {
+    "question": "Zachary did 46 push-ups and 58 crunches in gym class today. David did 38 more push-ups but 62 less crunches than zachary. How many more crunches than push-ups did Zachary do?",
+    "phase2_reasoning": [
+      "Identify Quantities_da5bfa36",
+      "Identify Relationships_35208e6a",
+      "Formulate Subgoals_130531bc",
+      "Calculate Difference_bcfac492",
+      "Check Result Consistency_2f92719f"
+    ]
+  }
+]
