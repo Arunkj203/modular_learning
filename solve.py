@@ -13,6 +13,78 @@ import os
 import json
 from typing import Dict, Any, List
 
+
+def generate_phase4_execution(phase2_file: str, model, tokenizer, output_dir="Dataset", use_lora=False):
+    """
+    Generate Phase 4 execution data from Phase 2 primitive sequences.
+
+    Each entry in the Phase 2 file should contain:
+        {
+            "question": str,
+            "phase2_reasoning": [list of primitives]
+        }
+
+    This function will execute the primitive sequence step-by-step using Phase 4
+    and store the resulting state transitions for dataset preparation.
+    """
+
+    full_path = os.path.join(Base_dir_path, output_dir)
+    input_file = os.path.join(full_path, phase2_file)
+    print(f"Loading Phase 2 file: {input_file}")
+
+    with open(input_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    output4_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase4_execution"))
+    print(f"Phase 4 logs will be saved to: {output4_file}")
+
+    load_memory()
+    all_phase4_data = []
+    errors = 0
+    max_errors = int(0.3 * len(data))
+
+    for idx, entry in enumerate(data[:5]):  # limit for testing
+        question = entry.get("question", "")
+        primitive_sequence = entry.get("phase2_reasoning", [])
+
+        print(f"\n================== Problem {idx+1}/{len(data)} ==================")
+        print(f"Executing {len(primitive_sequence)} primitives...")
+
+        try:
+            final_state, steps, feedback = run_phase4(
+                model,
+                tokenizer,
+                primitive_sequence,
+                problem_text=question,
+                use_lora=use_lora
+            )
+
+            # Prepare structured record for dataset training
+            all_phase4_data.append({
+                "id": idx,
+                "question": question,
+                "primitive_sequence": primitive_sequence,
+                "execution_trace": steps,        # step-by-step transformation logs
+                "final_state": final_state,
+                "feedback": feedback
+            })
+
+            print(f"  ✅ Completed problem {idx+1} ({len(steps)} steps)")
+
+        except Exception as e:
+            errors += 1
+            print(f"  [ERROR] Problem {idx+1} failed: {e}")
+            if errors >= max_errors:
+                print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+                break
+
+    # Save the dataset
+    with open(output4_file, "w", encoding="utf-8") as f:
+        json.dump(all_phase4_data, f, indent=2, ensure_ascii=False)
+
+    print(f"\nPhase 4 execution dataset saved to: {output4_file}")
+
+
 def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Dataset"):
     """
     Generate Phase 2 reasoning outputs from Phase 1 analyses.
