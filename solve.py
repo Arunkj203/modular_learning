@@ -43,40 +43,40 @@ def generate_phase4_execution(phase2_file: str, model, tokenizer, output_dir="Da
     errors = 0
     max_errors = int(0.3 * len(data))
 
-    for idx, entry in enumerate(data[0]):  # limit for testing
+    for idx, entry in enumerate(data[:2]):  # limit for testing
         question = entry.get("question", "")
         primitive_sequence = entry.get("phase2_reasoning", [])
 
         print(f"\n================== Problem {idx+1}/{len(data)} ==================")
         print(f"Executing {len(primitive_sequence)} primitives...")
 
-        try:
-            final_state, steps, feedback = run_phase4(
-                model,
-                tokenizer,
-                primitive_sequence,
-                problem_text=question,
-                use_lora=use_lora
-            )
+        # try:
+        final_state, steps, feedback = run_phase4(
+            model,
+            tokenizer,
+            primitive_sequence,
+            problem_text=question,
+            use_lora=use_lora
+        )
 
-            # Prepare structured record for dataset training
-            all_phase4_data.append({
-                "id": idx,
-                "question": question,
-                "primitive_sequence": primitive_sequence,
-                "execution_trace": steps,        # step-by-step transformation logs
-                "final_state": final_state,
-                "feedback": feedback
-            })
+        # Prepare structured record for dataset training
+        all_phase4_data.append({
+            "id": idx,
+            "question": question,
+            "primitive_sequence": primitive_sequence,
+            "execution_trace": steps,        # step-by-step transformation logs
+            "final_state": final_state,
+            "feedback": feedback
+        })
 
-            print(f"  ✅ Completed problem {idx+1} ({len(steps)} steps)")
+        print(f"  ✅ Completed problem {idx+1} ({len(steps)} steps)")
 
-        except Exception as e:
-            errors += 1
-            print(f"  [ERROR] Problem {idx+1} failed: {e}")
-            if errors >= max_errors:
-                print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
-                break
+        # except Exception as e:
+        #     errors += 1
+        #     print(f"  [ERROR] Problem {idx+1} failed: {e}")
+        #     if errors >= max_errors:
+        #         print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+        #         break
 
     # Save the dataset
     with open(output4_file, "w", encoding="utf-8") as f:
