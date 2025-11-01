@@ -6,7 +6,7 @@ import json
 from ..model_config import generate_text
 import numpy as np
 
-import config as mem
+from .. import config as mem
 
 system_prompt = '''
 You are a reasoning model that decomposes a problem into a sequence of human-like cognitive primitives.

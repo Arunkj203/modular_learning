@@ -6,7 +6,7 @@ from .phase_4.phase_4_main import run_phase4
 
 from .phase_2.generate_primitive import add_primitive
 
-import config as mem
+from . import config as mem
 from datasets import load_dataset
 
 import os , json , re
