@@ -3,7 +3,7 @@ import torch
 import json
 from peft import PeftModel
 
-
+from ..config import *
 from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter ,generate_text
 
 def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora=False):
@@ -23,141 +23,84 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
     steps = []
     feedback_entries = []  # Collect feedback for this problem
 
-    # Cache for loaded LoRA models
-    primitive_cache = {}
-
     
-    for primitive_entry in primitive_sequence:
+    for pid in primitive_sequence:
 
-        primitive_id = primitive_entry["id"]
+        primitive_entry = primitive_metadata.get(pid, {})
+        if not primitive_entry:
+            raise ValueError(f"Primitive ID {pid} not found in metadata.")
+        
         primitive_name = primitive_entry.get("name", "")
         description = primitive_entry.get("description", "")
 
-        if use_lora :
+        # Build system and user prompts for primitive execution
+        system_prompt = """
+            You are a structured reasoning executor that applies human-like problem-solving primitives.
 
-            try:
-                # === Load or reuse LoRA adapter ===
-                if primitive_id not in primitive_cache:
-                    lora_path = f"{OUTPUT_DIR}/{primitive_id}"
-                    primitive_model = PeftModel.from_pretrained(base_model, lora_path)
-                    primitive_model.to(DEVICE)
-                    primitive_model.eval()
-                    primitive_cache[primitive_id] = primitive_model
-                model = primitive_cache[primitive_id]
-                
-                # === Inference ===
-                inputs = tokenizer(state_text, return_tensors="pt", truncation=True).to(DEVICE)
-                with torch.no_grad():
-                    outputs = model.generate(**inputs, max_new_tokens=128)
-                primitive_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+            Your task is to transform the current problem state by applying the given primitive. 
+            Do not perform full problem solving — only apply the primitive’s transformation logic.
 
-                # === Validate & correct ===
-                judge_result = llm_validate_and_correct(
-                    primitive_id,
-                    description,
-                    state_text,
-                    primitive_output
-                )
+            CRITICAL INSTRUCTIONS:
+            1. You must output ONLY valid JSON strictly between <<START>> and <<END>>.
+            2. JSON Format (no other text allowed):
+            {
+                "result": "<new problem state after applying primitive>",
+                "primitive_applied": {
+                "id": "<primitive_id>",
+                "name": "<primitive_name>"
+                },
+                "notes": "<short reasoning for transformation>"
+            }
+            3. Preserve all key details from the current state.
+            4. Apply the primitive exactly as described — don’t infer new rules or solve unrelated steps.
+            5. If the primitive involves symbolic or numeric manipulation, apply that change correctly and clearly.
+            6. Never produce explanations outside JSON or markers.
 
-                corrected_output = judge_result.get("corrected_output", primitive_output)
-                valid = judge_result.get("valid", False)
+            You are reasoning like a human who uses structured steps (primitives) to progressively modify the problem until solved.
+            """
 
-                steps.append({
-                    "primitive": primitive_name,
-                    "description": description,
-                    "input": state_text,
-                    "output": primitive_output,
-                    "valid": valid,
-                    "validation_reason": judge_result.get("reason", ""),
-                    "corrected_output": corrected_output
-                })
+        user_prompt = f"""
 
-                feedback_entries.append({
-                    "primitive_id": primitive_id,
-                    "input": state_text,
-                    "output": primitive_output,
-                    "valid": valid,
-                    "validation_reason": judge_result.get("reason", ""),
-                    "corrected_output": corrected_output
-                })
+                You are given the current state of a problem and a primitive to apply.
 
-                # === Update state for next primitive ===
-                state_text = corrected_output
+                Problem State:
+                {state_text}
 
-            except Exception as e:
-                print(f"Error applying primitive {primitive_id}: {e}")
-                return None, steps, feedback_entries
+                Primitive to apply:
+                {json.dumps(primitive_entry, indent=2)}
 
+                Now, generate the next problem state strictly following the system instructions.
 
-        else:
-           # Build system and user prompts for primitive execution
-            system_prompt = """
-               You are a structured reasoning executor that applies human-like problem-solving primitives.
+                <<START>>
+                {{
+                "result": "...",
+                "notes": "..."
+                }}
+                <<END>>
 
-                Your task is to transform the current problem state by applying the given primitive. 
-                Do not perform full problem solving — only apply the primitive’s transformation logic.
+            **GENERATE THE NEXT STATE JSON NOW.**
+            """
 
-                CRITICAL INSTRUCTIONS:
-                1. You must output ONLY valid JSON strictly between <<START>> and <<END>>.
-                2. JSON Format (no other text allowed):
-                {
-                    "result": "<new problem state after applying primitive>",
-                    "primitive_applied": {
-                    "id": "<primitive_id>",
-                    "name": "<primitive_name>"
-                    },
-                    "notes": "<short reasoning for transformation>"
-                }
-                3. Preserve all key details from the current state.
-                4. Apply the primitive exactly as described — don’t infer new rules or solve unrelated steps.
-                5. If the primitive involves symbolic or numeric manipulation, apply that change correctly and clearly.
-                6. Never produce explanations outside JSON or markers.
+        
+        # Calculate dynamic max_tokens based on complexity
+        complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
+        dynamic_max_tokens = min(4096, max(600, 2 * complexity_estimate )) 
 
-                You are reasoning like a human who uses structured steps (primitives) to progressively modify the problem until solved.
-                """
+            # Call your generate_text wrapper
+        op = generate_text(
+                model=base_model, 
+                tokenizer=tokenizer, 
+                system_prompt=system_prompt, 
+                user_prompt=user_prompt,
+                dynamic_max_tokens=dynamic_max_tokens
+            )
+        
+        print(f"Primitive {pid} output: {op}")
+        # Record this step (include pre/post state for debugging)
+        steps.append((op, pid, primitive_name, description))
 
-            user_prompt = f"""
-
-                    You are given the current state of a problem and a primitive to apply.
-
-                    Problem State:
-                    {state_text}
-
-                    Primitive to apply:
-                    {json.dumps(primitive_entry, indent=2)}
-
-                    Now, generate the next problem state strictly following the system instructions.
-
-                    <<START>>
-                    {{
-                    "result": "...",
-                    "notes": "..."
-                    }}
-                    <<END>>
-
-                **GENERATE THE NEXT STATE JSON NOW.**
-                """
-
-            
-            # Calculate dynamic max_tokens based on complexity
-            complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
-            dynamic_max_tokens = min(4096, max(600, 2 * complexity_estimate )) 
-
-                # Call your generate_text wrapper
-            op = generate_text(
-                    model=base_model, 
-                    tokenizer=tokenizer, 
-                    system_prompt=system_prompt, 
-                    user_prompt=user_prompt,
-                    dynamic_max_tokens=dynamic_max_tokens
-                )
-            
-            print(f"Primitive {primitive_id} output: {op}")
-            # Record this step (include pre/post state for debugging)
-            steps.append((op, primitive_id, primitive_name, description))
-
-            # Update the state for the next primitive
-            state_text = op["result"]
+        # Update the state for the next primitive
+        state_text = op["result"]
 
     return state_text, steps , feedback_entries
 
@@ -210,3 +153,73 @@ Respond ONLY with valid JSON in this format:
             "reason": f"LLM response unparsable: {str(e)}",
             "corrected_output": output_text
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  if use_lora :
+
+#             try:
+#                 # === Load or reuse LoRA adapter ===
+#                 if primitive_id not in primitive_cache:
+#                     lora_path = f"{OUTPUT_DIR}/{primitive_id}"
+#                     primitive_model = PeftModel.from_pretrained(base_model, lora_path)
+#                     primitive_model.to(DEVICE)
+#                     primitive_model.eval()
+#                     primitive_cache[primitive_id] = primitive_model
+#                 model = primitive_cache[primitive_id]
+                
+#                 # === Inference ===
+#                 inputs = tokenizer(state_text, return_tensors="pt", truncation=True).to(DEVICE)
+#                 with torch.no_grad():
+#                     outputs = model.generate(**inputs, max_new_tokens=128)
+#                 primitive_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+#                 # === Validate & correct ===
+#                 judge_result = llm_validate_and_correct(
+#                     primitive_id,
+#                     description,
+#                     state_text,
+#                     primitive_output
+#                 )
+
+#                 corrected_output = judge_result.get("corrected_output", primitive_output)
+#                 valid = judge_result.get("valid", False)
+
+#                 steps.append({
+#                     "primitive": primitive_name,
+#                     "description": description,
+#                     "input": state_text,
+#                     "output": primitive_output,
+#                     "valid": valid,
+#                     "validation_reason": judge_result.get("reason", ""),
+#                     "corrected_output": corrected_output
+#                 })
+
+#                 feedback_entries.append({
+#                     "primitive_id": primitive_id,
+#                     "input": state_text,
+#                     "output": primitive_output,
+#                     "valid": valid,
+#                     "validation_reason": judge_result.get("reason", ""),
+#                     "corrected_output": corrected_output
+#                 })
+
+#                 # === Update state for next primitive ===
+#                 state_text = corrected_output
+
+#             except Exception as e:
+#                 print(f"Error applying primitive {primitive_id}: {e}")
+#                 return None, steps, feedback_entries
