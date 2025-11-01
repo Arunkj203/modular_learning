@@ -44,18 +44,18 @@ def load_memory():
     # Load graph
     if os.path.exists(GRAPH_PATH):
         with open(GRAPH_PATH, 'rb') as f:
-            primitive_graph = pickle.load(f)  # Direct assignment
-        print(f"Graph loaded from {GRAPH_PATH}")
+            primitive_graph = pickle.load(f)
+        print(f"Graph loaded from {GRAPH_PATH} with {len(primitive_graph.nodes)} nodes and {len(primitive_graph.edges)} edges.")
     else:
-        primitive_graph = nx.DiGraph()  # Initialize fresh graph
+        primitive_graph = nx.DiGraph()
         print(f"{GRAPH_PATH} not found, starting with empty graph")
 
-    # Load FAISS index - FIXED: Direct assignment
+    # Load FAISS index
     if os.path.exists(FAISS_PATH):
         faiss_index = faiss.read_index(FAISS_PATH)
         print(f"FAISS index loaded from {FAISS_PATH}")
         if faiss_index.d != embedding_dim:
-            print(f"Warning: FAISS index dimension {faiss_index.d} != expected {embedding_dim}")
+            print(f"⚠️ Warning: FAISS index dimension {faiss_index.d} != expected {embedding_dim}")
     else:
         faiss_index = faiss.IndexFlatL2(embedding_dim)
         print(f"{FAISS_PATH} not found, starting with empty FAISS index (dim={embedding_dim})")
@@ -64,20 +64,25 @@ def load_memory():
     if os.path.exists(METADATA_PATH):
         with open(METADATA_PATH, "rb") as f:
             data = pickle.load(f)
-            primitive_id_map = data["id_map"]  # Direct assignment
-            primitive_metadata = data["metadata"]  # Direct assignment
+            primitive_id_map = data.get("id_map", {})
+            primitive_metadata = data.get("metadata", {})
         print(f"Metadata loaded from {METADATA_PATH}")
     else:
-        primitive_id_map = {}  # Initialize fresh
+        primitive_id_map = {}
         primitive_metadata = {}
         print(f"{METADATA_PATH} not found, starting with empty metadata")
+
+    # Summary
+    print(f"\n  Loaded {len(primitive_metadata)} primitives total.")
+    print(f"   - FAISS index entries: {faiss_index.ntotal}")
+    print(f"   - ID map entries: {len(primitive_id_map)}\n")
 
 
 # --- Save Memory Function ---
 def save_memory():
     global primitive_graph, faiss_index, primitive_id_map, primitive_metadata
 
-    # Save graph - using pickle for speed
+    # Save graph
     with open(GRAPH_PATH, 'wb') as f:
         pickle.dump(primitive_graph, f)
 
@@ -88,6 +93,8 @@ def save_memory():
     with open(METADATA_PATH, "wb") as f:
         pickle.dump({"id_map": primitive_id_map, "metadata": primitive_metadata}, f)
 
-    print("Memory saved successfully!")
-
-
+    print(f"\n  Memory saved successfully!")
+    print(f"   - Graph: {len(primitive_graph.nodes)} nodes, {len(primitive_graph.edges)} edges")
+    print(f"   - Primitives: {len(primitive_metadata)} total")
+    print(f"   - FAISS entries: {faiss_index.ntotal}")
+    print(f"   - ID map entries: {len(primitive_id_map)}\n")
