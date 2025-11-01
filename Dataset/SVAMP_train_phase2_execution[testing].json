@@ -1,0 +1,147 @@
+[
+  {
+    "question": "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?",
+    "phase2_reasoning": [
+      "Identify Quantities_93cf29d8",
+      "Identify Grouping Information_3928996c",
+      "Determine Operation for Bananas_d15fc257",
+      "Perform Division Operation_9e80a593",
+      "Check Result Consistency_93bf15e2"
+    ]
+  },
+  {
+    "question": "Marco and his dad went strawberry picking. Marco's dad's strawberries weighed 11 pounds. If together their strawberries weighed 30 pounds. How much did Marco's strawberries weigh?",
+    "phase2_reasoning": [
+      "Identify Quantities_55a57f4d",
+      "Identify Total Weight_9da69a08",
+      "Determine Marco's Strawberries Weight_cb5f832e",
+      "Perform Subtraction Operation_3ead5c76",
+      {
+        "id": "Check Result Consistency_93bf15e2",
+        "name": "Check Result Consistency",
+        "description": "Verify that the computed quantity aligns with the question goal.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Each group of bananas has 145 bananas",
+        "resulting_state": "Validated solution state",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Edward spent $ 6 to buy 2 books each book costing him the same amount of money. Now he has $ 12. How much did each book cost?",
+    "phase2_reasoning": [
+      "Identify Quantities_f45e9475",
+      "Identify Operation_d39db88d",
+      "Calculate Remaining Money_944ad1e1",
+      "Calculate Cost Per Book_beceb933",
+      "Check Result Consistency_e09b3ef3"
+    ]
+  },
+  {
+    "question": "Frank was reading through his favorite book. The book had 3 chapters, each with the same number of pages. It has a total of 594 pages. It took Frank 607 days to finish the book. How many pages are in each chapter?",
+    "phase2_reasoning": [
+      "Identify Quantities_ed94844f",
+      {
+        "id": "Identify Operation_d39db88d",
+        "name": "Identify Operation",
+        "description": "Determine the mathematical operation connecting the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Quantities: [6, 2, 12]",
+        "resulting_state": "Operations: subtraction, division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      "Calculate Pages Per Chapter_0a77ba59",
+      {
+        "id": "Check Result Consistency_93bf15e2",
+        "name": "Check Result Consistency",
+        "description": "Verify that the computed quantity aligns with the question goal.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Each group of bananas has 145 bananas",
+        "resulting_state": "Validated solution state",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "There were 78 dollars in Olivia's wallet. She spent 15 dollars at a supermarket. How much money does she have left?",
+    "phase2_reasoning": [
+      "Identify Quantities_5e69da38",
+      {
+        "id": "Identify Operation_d39db88d",
+        "name": "Identify Operation",
+        "description": "Determine the mathematical operation connecting the quantities.",
+        "goal": "",
+        "primitive_type": "Perceptual",
+        "applied_on_state": "Quantities: [6, 2, 12]",
+        "resulting_state": "Operations: subtraction, division",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "linguistic-parsing",
+          "contextual"
+        ]
+      },
+      "Apply Subtraction Operation_2a16ab17",
+      {
+        "id": "Check Result Consistency_93bf15e2",
+        "name": "Check Result Consistency",
+        "description": "Verify that the computed quantity aligns with the question goal.",
+        "goal": "",
+        "primitive_type": "Evaluation",
+        "applied_on_state": "Each group of bananas has 145 bananas",
+        "resulting_state": "Validated solution state",
+        "problem_type": "Arithmetic Reasoning",
+        "methods": [
+          "Step-by-Step Reasoning",
+          "Core Problem Identification",
+          "Stepwise Planning"
+        ],
+        "tags": [
+          "single-step",
+          "arithmetic-chain",
+          "unit-consistency"
+        ]
+      }
+    ]
+  }
+]
