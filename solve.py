@@ -97,9 +97,10 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     with open(output_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", "phase2_execution"))
+    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", "phase2_execution[testing]"))
 
-    l = len(data)
+    # l = len(data)
+    l = 5
     batch_size = max(1,l // 10)
     all_results = []
 
