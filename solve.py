@@ -6,11 +6,10 @@ from .phase_4.phase_4_main import run_phase4
 
 from .phase_2.generate_primitive import add_primitive
 
-from .config import *
+import config as mem
 from datasets import load_dataset
 
-import os
-import json , re
+import os , json , re
 from typing import Dict, Any, List
 
 
@@ -28,7 +27,7 @@ def generate_phase4_execution(phase2_file: str, model, tokenizer, output_dir="Da
     and store the resulting state transitions for dataset preparation.
     """
 
-    full_path = os.path.join(Base_dir_path, output_dir)
+    full_path = os.path.join(mem.Base_dir_path, output_dir)
     input_file = os.path.join(full_path, phase2_file)
     print(f"Loading Phase 2 file: {input_file}")
 
@@ -38,7 +37,7 @@ def generate_phase4_execution(phase2_file: str, model, tokenizer, output_dir="Da
     output4_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase4_execution"))
     print(f"Phase 4 logs will be saved to: {output4_file}")
 
-    load_memory()
+    mem.load_memory()
     all_phase4_data = []
     errors = 0
     max_errors = int(0.3 * len(data))
@@ -90,7 +89,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     Generate Phase 2 reasoning outputs from Phase 1 analyses.
     """
 
-    full_path = os.path.join(Base_dir_path, output_dir)
+    full_path = os.path.join(mem.Base_dir_path, output_dir)
     output_file = os.path.join(full_path,phase1_file)
     print(f"Log saving in file:{output_file}")
 
@@ -107,7 +106,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     no_errors = 0
     max_errors = int(0.3 * l)
 
-    load_memory()
+    mem.load_memory()
 
     for batch_start in range(0, l , batch_size):
         batch = data[batch_start:batch_start + batch_size]
@@ -141,7 +140,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
             for prim in batch_new_primitives:
                 add_primitive(prim)
 
-            print(f"  Library updated. Total primitives now: {len(primitive_metadata)}")
+            print(f"  Library updated. Total primitives now: {len(mem.primitive_metadata)}")
         
         if no_errors >= max_errors:
             print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early in batch {batch_start}.\n")
@@ -151,7 +150,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     with open(output2_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
-    save_memory()
+    mem.save_memory()
     print(f"\nPhase 2 reasoning saved to {output2_file}")
 
 
@@ -170,13 +169,13 @@ def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, out
         str: Path to the saved JSON file.
     """
     # Ensure log directory exists
-    full_path = os.path.join(Base_dir_path, output_dir)
+    full_path = os.path.join(mem.Base_dir_path, output_dir)
     os.makedirs(full_path, exist_ok=True)
     output_file = os.path.join(full_path, f"{dataset_name}_{mode}_phase1_analysis.json")
     print(f"Log saving in file:{output_file}")
 
 
-    dataset = list(load_dataset(dataset_path[dataset_name])[mode]) 
+    dataset = list(load_dataset(mem.dataset_path[dataset_name])[mode]) 
     all_analysis: List[Dict[str, Any]] = []
 
     for idx, problem in enumerate(dataset):
@@ -219,11 +218,11 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
 
     use_lora = False
-    dataset = load_dataset(dataset_path[dataset_name])
-    load_memory()
+    dataset = load_dataset(mem.dataset_path[dataset_name])
+    mem.load_memory()
 
     # Ensure log directory exists
-    full_path = os.path.join(Base_dir_path, log_dir)
+    full_path = os.path.join(mem.Base_dir_path, log_dir)
     os.makedirs(full_path, exist_ok=True)
     log_file = os.path.join(full_path, f"{dataset_name}_{mode}-09.10__10_pbs.txt")
     print(f"Log saving in file:{log_file}")
