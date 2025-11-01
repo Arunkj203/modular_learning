@@ -6,7 +6,7 @@ import json
 from ..model_config import generate_text
 import numpy as np
 
-from ..config import *
+import config as mem
 
 system_prompt = '''
 You are a reasoning model that decomposes a problem into a sequence of human-like cognitive primitives.
@@ -237,15 +237,17 @@ def add_primitive(primitive):
     """
     Add a primitive to both graph and FAISS vector index
     """
+
+
     pid = primitive["id"]
-    primitive_metadata[pid] = primitive
+    mem.primitive_metadata[pid] = primitive
 
     # Add node to graph
-    primitive_graph.add_node(pid, **primitive)
+    mem.primitive_graph.add_node(pid, **primitive)
 
     # Add edges for related primitives
     for related in primitive.get("related_primitives", []):
-        primitive_graph.add_edge(pid, related)
+        mem.primitive_graph.add_edge(pid, related)
 
     # Build embedding using all relevant fields
     text = " ".join([
@@ -257,12 +259,12 @@ def add_primitive(primitive):
         " ".join(primitive.get("tags", []))
     ])
 
-    vec = embed_model.encode(text).astype("float32")
+    vec = mem.embed_model.encode(text).astype("float32")
 
     # Add to FAISS
-    idx = faiss_index.ntotal
-    faiss_index.add(np.array([vec]))
-    primitive_id_map[idx] = pid
+    idx = mem.faiss_index.ntotal
+    mem.faiss_index.add(np.array([vec]))
+    mem.primitive_id_map[idx] = pid
 
 
 def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
@@ -273,13 +275,13 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
     query = f"{analysis['problem_type']} {' '.join(analysis['selected_modules'])} {' '.join(analysis['tags'])}"
 
     # Semantic search
-    query_vec = embed_model.encode(query).astype("float32")
-    D, I = faiss_index.search(np.array([query_vec]), top_k)
+    query_vec = mem.embed_model.encode(query).astype("float32")
+    D, I = mem.faiss_index.search(np.array([query_vec]), top_k)
 
-    if primitive_id_map is None or len(primitive_id_map) == 0:
+    if mem.primitive_id_map is None or len(mem.primitive_id_map) == 0:
         return []
 
-    retrieved = [primitive_id_map[i] for i in I[0] if i != -1]
+    retrieved = [mem.primitive_id_map[i] for i in I[0] if i != -1]
 
     # Expand using graph relationships
     if expand_related:
@@ -291,9 +293,9 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
                 next_frontier.update(primitive_graph.neighbors(pid))
             expanded.update(next_frontier)
             frontier = next_frontier
-        return [primitive_metadata[pid] for pid in expanded]
+        return [mem.primitive_metadata[pid] for pid in expanded]
 
-    return [primitive_metadata[pid] for pid in retrieved]
+    return [mem.primitive_metadata[pid] for pid in retrieved]
 
 
 
