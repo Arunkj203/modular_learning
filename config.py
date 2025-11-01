@@ -1,5 +1,5 @@
 
-import os,json ,re
+import os
 import networkx as nx
 from sentence_transformers import SentenceTransformer
 import faiss
@@ -52,13 +52,13 @@ def load_memory():
 
     # Load FAISS index - FIXED: Direct assignment
     if os.path.exists(FAISS_PATH):
-        faiss_index = faiss.read_index(FAISS_PATH)  # Direct assignment
+        faiss_index = faiss.read_index(FAISS_PATH)
         print(f"FAISS index loaded from {FAISS_PATH}")
+        if faiss_index.d != embedding_dim:
+            print(f"Warning: FAISS index dimension {faiss_index.d} != expected {embedding_dim}")
     else:
-        # Initialize new index (adjust dimensions as needed)
-        dimension = 768  # Adjust to your embedding dimension
-        faiss_index = faiss.IndexFlatL2(dimension)
-        print(f"{FAISS_PATH} not found, starting with empty FAISS index")
+        faiss_index = faiss.IndexFlatL2(embedding_dim)
+        print(f"{FAISS_PATH} not found, starting with empty FAISS index (dim={embedding_dim})")
 
     # Load metadata
     if os.path.exists(METADATA_PATH):
