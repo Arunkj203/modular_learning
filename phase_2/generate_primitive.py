@@ -290,7 +290,7 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
         for _ in range(depth):
             next_frontier = set()
             for pid in frontier:
-                next_frontier.update(primitive_graph.neighbors(pid))
+                next_frontier.update(mem.primitive_graph.neighbors(pid))
             expanded.update(next_frontier)
             frontier = next_frontier
         return [mem.primitive_metadata[pid] for pid in expanded]
