@@ -151,7 +151,8 @@ def run_phase4(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora
                     user_prompt=user_prompt,
                     dynamic_max_tokens=dynamic_max_tokens
                 )
-                
+            
+            print(f"Primitive {primitive_id} output: {op}")
             # Record this step (include pre/post state for debugging)
             steps.append((op, primitive_id, primitive_name, description))
 
