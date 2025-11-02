@@ -14,9 +14,31 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-5 new primitves generated out of 5
-
-[ERROR] Problem 1 failed: string indices must be integers, not 'str'
+12 new primitves generated out of 12
+  ID: P_new_e6626 
+, prim: {'step': 1, 'id': 'P_new_e6626', 'name': 'IDENTIFY_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ARITHMETIC_OPERATION'} 
+  ID: P_new_d2465 
+, prim: {'step': 2, 'id': 'P_new_d2465', 'name': 'IDENTIFY_UNITS_AND_CONVERSIONS', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_UNITS_AND_CONVERSIONS'} 
+  ID: P_new_b5f98 
+, prim: {'step': 3, 'id': 'P_new_b5f98', 'name': 'PLAN_ARITHMETIC_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: PLAN_ARITHMETIC_STEPS'} 
+  ID: P_new_7e36b 
+, prim: {'step': 4, 'id': 'P_new_7e36b', 'name': 'EXECUTE_ARITHMETIC_CALCULATION', 'status': 'New', 'description': 'Auto-generated primitive: EXECUTE_ARITHMETIC_CALCULATION'} 
+  ID: P_new_8090c 
+, prim: {'step': 5, 'id': 'P_new_8090c', 'name': 'VERIFY_ARITHMETIC_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_ARITHMETIC_RESULT'} 
+  ID: P_new_7b451 
+, prim: {'step': 6, 'id': 'P_new_7b451', 'name': 'CONVERT_UNITS_IF_NEEDED', 'status': 'New', 'description': 'Auto-generated primitive: CONVERT_UNITS_IF_NEEDED'} 
+  ID: P_new_e3f26 
+, prim: {'step': 7, 'id': 'P_new_e3f26', 'name': 'CHECK_CONVERSION_ACCURACY', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_CONVERSION_ACCURACY'} 
+  ID: P_new_7d0a9 
+, prim: {'step': 8, 'id': 'P_new_7d0a9', 'name': 'REVIEW_ARITHMETIC_PROCESS', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_ARITHMETIC_PROCESS'} 
+  ID: P_new_2f703 
+, prim: {'step': 9, 'id': 'P_new_2f703', 'name': 'EVALUATE_FINAL_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_FINAL_RESULT'} 
+  ID: P_new_55a40 
+, prim: {'step': 10, 'id': 'P_new_55a40', 'name': 'CONFIRM_SOLUTION_VALIDITY', 'status': 'New', 'description': 'Auto-generated primitive: CONFIRM_SOLUTION_VALIDITY'} 
+  ID: P_new_34758 
+, prim: {'step': 11, 'id': 'P_new_34758', 'name': 'REVIEW_PROBLEM_CONTEXT', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_PROBLEM_CONTEXT'} 
+  ID: P_new_478dd 
+, prim: {'step': 12, 'id': 'P_new_478dd', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
 
 ====================== Problem 2 ======================
 
@@ -31,9 +53,23 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-4 new primitves generated out of 4
-
-[ERROR] Problem 2 failed: string indices must be integers, not 'str'
+8 new primitves generated out of 8
+  ID: P_new_f261e 
+, prim: {'step': 1, 'id': 'P_new_f261e', 'name': 'IDENTIFY_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ARITHMETIC_OPERATION'} 
+  ID: P_new_7eb0c 
+, prim: {'step': 2, 'id': 'P_new_7eb0c', 'name': 'DETERMINE_OPERANDS', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_OPERANDS'} 
+  ID: P_new_ffeb0 
+, prim: {'step': 3, 'id': 'P_new_ffeb0', 'name': 'APPLY_ARITHMETIC_RULES', 'status': 'New', 'description': 'Auto-generated primitive: APPLY_ARITHMETIC_RULES'} 
+  ID: P_new_473a9 
+, prim: {'step': 4, 'id': 'P_new_473a9', 'name': 'PERFORM_CALCULATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_CALCULATION'} 
+  ID: P_new_0bb2f 
+, prim: {'step': 5, 'id': 'P_new_0bb2f', 'name': 'CHECK_CALCULATION_VALIDITY', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_CALCULATION_VALIDITY'} 
+  ID: P_new_05a4e 
+, prim: {'step': 6, 'id': 'P_new_05a4e', 'name': 'VERIFY_RESULT_AGAINST_EXPECTATIONS', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_RESULT_AGAINST_EXPECTATIONS'} 
+  ID: P_new_3d935 
+, prim: {'step': 7, 'id': 'P_new_3d935', 'name': 'REVIEW_CALCULATION_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_CALCULATION_STEPS'} 
+  ID: P_new_4c86a 
+, prim: {'step': 8, 'id': 'P_new_4c86a', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
 
 ====================== Problem 3 ======================
 
@@ -48,9 +84,23 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-5 new primitves generated out of 5
-
-[ERROR] Problem 3 failed: string indices must be integers, not 'str'
+8 new primitves generated out of 8
+  ID: P_new_c4c67 
+, prim: {'step': 1, 'id': 'P_new_c4c67', 'name': 'IDENTIFY_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ARITHMETIC_OPERATION'} 
+  ID: P_new_cbb0c 
+, prim: {'step': 2, 'id': 'P_new_cbb0c', 'name': 'DECOMPOSE_PROBLEM_INTO_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: DECOMPOSE_PROBLEM_INTO_STEPS'} 
+  ID: P_new_31923 
+, prim: {'step': 3, 'id': 'P_new_31923', 'name': 'EXECUTE_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: EXECUTE_ARITHMETIC_OPERATION'} 
+  ID: P_new_72991 
+, prim: {'step': 4, 'id': 'P_new_72991', 'name': 'COMPARE_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: COMPARE_RESULTS'} 
+  ID: P_new_909ad 
+, prim: {'step': 5, 'id': 'P_new_909ad', 'name': 'VERIFY_OPERATION_CORRECTNESS', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_OPERATION_CORRECTNESS'} 
+  ID: P_new_bf726 
+, prim: {'step': 6, 'id': 'P_new_bf726', 'name': 'CHECK_FOR_ADDITIONAL_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_FOR_ADDITIONAL_STEPS'} 
+  ID: P_new_4c4a6 
+, prim: {'step': 7, 'id': 'P_new_4c4a6', 'name': 'REVIEW_PROBLEM_STRUCTURE', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_PROBLEM_STRUCTURE'} 
+  ID: P_new_c615d 
+, prim: {'step': 8, 'id': 'P_new_c615d', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
 
 ====================== Problem 4 ======================
 
@@ -66,10 +116,227 @@ Phase 1 - Analysis:
 Phase 2 - Primitive Sequence:
 
 7 new primitves generated out of 7
+  ID: P_new_c3982 
+, prim: {'step': 1, 'id': 'P_new_c3982', 'name': 'IDENTIFY_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ARITHMETIC_OPERATION'} 
+  ID: P_new_383b3 
+, prim: {'step': 2, 'id': 'P_new_383b3', 'name': 'DECOMPOSE_PROBLEM_INTO_VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: DECOMPOSE_PROBLEM_INTO_VARIABLES'} 
+  ID: P_new_d4be5 
+, prim: {'step': 3, 'id': 'P_new_d4be5', 'name': 'APPLY_DIVISION_RULES', 'status': 'New', 'description': 'Auto-generated primitive: APPLY_DIVISION_RULES'} 
+  ID: P_new_5c822 
+, prim: {'step': 4, 'id': 'P_new_5c822', 'name': 'FORMULATE_SIMPLE_ALGEBRAIC_EXPRESSION', 'status': 'New', 'description': 'Auto-generated primitive: FORMULATE_SIMPLE_ALGEBRAIC_EXPRESSION'} 
+  ID: P_new_d5f70 
+, prim: {'step': 5, 'id': 'P_new_d5f70', 'name': 'COMPARE_AND_ORDER_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: COMPARE_AND_ORDER_RESULTS'} 
+  ID: P_new_3213e 
+, prim: {'step': 6, 'id': 'P_new_3213e', 'name': 'CHECK_FOR_SOLUTION_VALIDITY', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_FOR_SOLUTION_VALIDITY'} 
+  ID: P_new_2ca9d 
+, prim: {'step': 7, 'id': 'P_new_2ca9d', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
 
-[ERROR] Problem 4 failed: string indices must be integers, not 'str'
+====================== Problem 5 ======================
 
-[ABORT] Too many errors (4). Stopping early.
+Question:
+In a school there are 34 girls and 841 boys. How many more boys than girls does the school have?
 
+Ground Truth Answer:
+807.0
 
-=== Accuracy: 0.00 (0/0) ===
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Subtraction'], 'tags': ['comparison', 'arithmetic-chain', 'single-step'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning']}
+
+Phase 2 - Primitive Sequence:
+
+7 new primitves generated out of 7
+  ID: P_new_184b5 
+, prim: {'step': 1, 'id': 'P_new_184b5', 'name': 'IDENTIFY_INITIAL_QUANTITY', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_INITIAL_QUANTITY'} 
+  ID: P_new_126b5 
+, prim: {'step': 2, 'id': 'P_new_126b5', 'name': 'IDENTIFY_QUANTITY_TO_SUBTRACT', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_QUANTITY_TO_SUBTRACT'} 
+  ID: P_new_a1de3 
+, prim: {'step': 3, 'id': 'P_new_a1de3', 'name': 'SET_UP_SUBTRACTION_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: SET_UP_SUBTRACTION_OPERATION'} 
+  ID: P_new_12fef 
+, prim: {'step': 4, 'id': 'P_new_12fef', 'name': 'PERFORM_SUBTRACTION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_SUBTRACTION'} 
+  ID: P_new_3abfa 
+, prim: {'step': 5, 'id': 'P_new_3abfa', 'name': 'VERIFY_RESULT_REASONABLENESS', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_RESULT_REASONABLENESS'} 
+  ID: P_new_5868a 
+, prim: {'step': 6, 'id': 'P_new_5868a', 'name': 'CHECK_CALCULATION_ACCURACY', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_CALCULATION_ACCURACY'} 
+  ID: P_new_6cbd1 
+, prim: {'step': 7, 'id': 'P_new_6cbd1', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+
+====================== Problem 6 ======================
+
+Question:
+He then went to see the oranges being harvested. He found out that they harvested 54 sacks of oranges. How many days did it take to harvest them if they harvested 18 sacks of oranges per day?
+
+Ground Truth Answer:
+3.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Division', 'Time', 'Work and Rate Problems'], 'tags': ['single-step', 'proportional', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning']}
+
+Phase 2 - Primitive Sequence:
+
+12 new primitves generated out of 12
+  ID: P_new_ea298 
+, prim: {'step': 1, 'id': 'P_new_ea298', 'name': 'IDENTIFY_WORK_RATE', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_WORK_RATE'} 
+  ID: P_new_cd765 
+, prim: {'step': 2, 'id': 'P_new_cd765', 'name': 'CALCULATE_TOTAL_WORK', 'status': 'New', 'description': 'Auto-generated primitive: CALCULATE_TOTAL_WORK'} 
+  ID: P_new_90f5c 
+, prim: {'step': 3, 'id': 'P_new_90f5c', 'name': 'DETERMINE_TIME_REQUIRED', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_TIME_REQUIRED'} 
+  ID: P_new_06f05 
+, prim: {'step': 4, 'id': 'P_new_06f05', 'name': 'ACCOUNT_FOR_MULTIPLE_WORKERS', 'status': 'New', 'description': 'Auto-generated primitive: ACCOUNT_FOR_MULTIPLE_WORKERS'} 
+  ID: P_new_a16a0 
+, prim: {'step': 5, 'id': 'P_new_a16a0', 'name': 'ADJUST_FOR_PARTIAL_CONTRIBUTIONS', 'status': 'New', 'description': 'Auto-generated primitive: ADJUST_FOR_PARTIAL_CONTRIBUTIONS'} 
+  ID: P_new_2f3ae 
+, prim: {'step': 6, 'id': 'P_new_2f3ae', 'name': 'COMBINE_WORK_RATES', 'status': 'New', 'description': 'Auto-generated primitive: COMBINE_WORK_RATES'} 
+  ID: P_new_9b7b1 
+, prim: {'step': 7, 'id': 'P_new_9b7b1', 'name': 'SOLVE_FOR_UNKNOWN_VARIABLE', 'status': 'New', 'description': 'Auto-generated primitive: SOLVE_FOR_UNKNOWN_VARIABLE'} 
+  ID: P_new_c8fd1 
+, prim: {'step': 8, 'id': 'P_new_c8fd1', 'name': 'CHECK_FOR_CONSISTENCY', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_FOR_CONSISTENCY'} 
+  ID: P_new_4d0dd 
+, prim: {'step': 9, 'id': 'P_new_4d0dd', 'name': 'CONSIDER_TIME_CONSTRAINTS', 'status': 'New', 'description': 'Auto-generated primitive: CONSIDER_TIME_CONSTRAINTS'} 
+  ID: P_new_eed26 
+, prim: {'step': 10, 'id': 'P_new_eed26', 'name': 'EVALUATE_RATE_EFFECTIVENESS', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RATE_EFFECTIVENESS'} 
+  ID: P_new_70420 
+, prim: {'step': 11, 'id': 'P_new_70420', 'name': 'REVIEW_PROBLEM_STRUCTURE', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_PROBLEM_STRUCTURE'} 
+  ID: P_new_00ee3 
+, prim: {'step': 12, 'id': 'P_new_00ee3', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+
+====================== Problem 7 ======================
+
+Question:
+Zachary did 46 push-ups and 58 crunches in gym class today. David did 38 more push-ups but 62 less crunches than zachary. How many more crunches than push-ups did Zachary do?
+
+Ground Truth Answer:
+12.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction', 'Comparisons and Ordering'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'contextual'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning', 'Decomposition', 'Progress Evaluation']}
+
+Phase 2 - Primitive Sequence:
+
+12 new primitves generated out of 12
+  ID: P_new_3a182 
+, prim: {'step': 1, 'id': 'P_new_3a182', 'name': 'IDENTIFY_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ARITHMETIC_OPERATION'} 
+  ID: P_new_202d6 
+, prim: {'step': 2, 'id': 'P_new_202d6', 'name': 'DECOMPOSE_PROBLEM_INTO_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: DECOMPOSE_PROBLEM_INTO_STEPS'} 
+  ID: P_new_12235 
+, prim: {'step': 3, 'id': 'P_new_12235', 'name': 'EXECUTE_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: EXECUTE_ARITHMETIC_OPERATION'} 
+  ID: P_new_a9fe3 
+, prim: {'step': 4, 'id': 'P_new_a9fe3', 'name': 'COMPARE_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: COMPARE_RESULTS'} 
+  ID: P_new_d2c74 
+, prim: {'step': 5, 'id': 'P_new_d2c74', 'name': 'ORDER_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: ORDER_RESULTS'} 
+  ID: P_new_1cea9 
+, prim: {'step': 6, 'id': 'P_new_1cea9', 'name': 'CHECK_FOR_ADDITIONAL_OPERATIONS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_FOR_ADDITIONAL_OPERATIONS'} 
+  ID: P_new_f7a46 
+, prim: {'step': 7, 'id': 'P_new_f7a46', 'name': 'REVIEW_PROBLEM_STRUCTURE', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_PROBLEM_STRUCTURE'} 
+  ID: P_new_dcd7d 
+, prim: {'step': 8, 'id': 'P_new_dcd7d', 'name': 'VERIFY_ARITHMETIC_CORRECTNESS', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_ARITHMETIC_CORRECTNESS'} 
+  ID: P_new_0c6c5 
+, prim: {'step': 9, 'id': 'P_new_0c6c5', 'name': 'EVALUATE_FINAL_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_FINAL_RESULT'} 
+  ID: P_new_bb0ab 
+, prim: {'step': 10, 'id': 'P_new_bb0ab', 'name': 'IDENTIFY_MISSING_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_MISSING_STEPS'} 
+  ID: P_new_7900a 
+, prim: {'step': 11, 'id': 'P_new_7900a', 'name': 'REVISIT_ARITHMETIC_LOGIC', 'status': 'New', 'description': 'Auto-generated primitive: REVISIT_ARITHMETIC_LOGIC'} 
+  ID: P_new_2190b 
+, prim: {'step': 12, 'id': 'P_new_2190b', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+
+====================== Problem 8 ======================
+
+Question:
+After a typhoon, 13 trees in Haley's backyard died. If she had grown 3 trees initially How many more trees died in the typhoon than those that survived?
+
+Ground Truth Answer:
+23.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Subtraction', 'Comparisons and Ordering'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'contextual'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning', 'Decomposition', 'Progress Evaluation']}
+
+Phase 2 - Primitive Sequence:
+
+12 new primitves generated out of 12
+  ID: P_new_80565 
+, prim: {'step': 1, 'id': 'P_new_80565', 'name': 'IDENTIFY_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ARITHMETIC_OPERATION'} 
+  ID: P_new_12dda 
+, prim: {'step': 2, 'id': 'P_new_12dda', 'name': 'DECOMPOSE_PROBLEM_INTO_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: DECOMPOSE_PROBLEM_INTO_STEPS'} 
+  ID: P_new_c20c1 
+, prim: {'step': 3, 'id': 'P_new_c20c1', 'name': 'EXECUTE_ARITHMETIC_SUBTRACTION', 'status': 'New', 'description': 'Auto-generated primitive: EXECUTE_ARITHMETIC_SUBTRACTION'} 
+  ID: P_new_6a560 
+, prim: {'step': 4, 'id': 'P_new_6a560', 'name': 'COMPARE_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: COMPARE_RESULTS'} 
+  ID: P_new_d2cf3 
+, prim: {'step': 5, 'id': 'P_new_d2cf3', 'name': 'ORDER_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: ORDER_RESULTS'} 
+  ID: P_new_fcebd 
+, prim: {'step': 6, 'id': 'P_new_fcebd', 'name': 'VERIFY_ORDERING_AGAINST_EXPECTATIONS', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_ORDERING_AGAINST_EXPECTATIONS'} 
+  ID: P_new_fcabc 
+, prim: {'step': 7, 'id': 'P_new_fcabc', 'name': 'CHECK_FOR_REASONABLENESS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_FOR_REASONABLENESS'} 
+  ID: P_new_9e9bb 
+, prim: {'step': 8, 'id': 'P_new_9e9bb', 'name': 'REVIEW_CALCULATION_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_CALCULATION_STEPS'} 
+  ID: P_new_75902 
+, prim: {'step': 9, 'id': 'P_new_75902', 'name': 'IDENTIFY_ANY_MISTAKES_IN_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ANY_MISTAKES_IN_STEPS'} 
+  ID: P_new_95695 
+, prim: {'step': 10, 'id': 'P_new_95695', 'name': 'CORRECT_MISTAKES_IN_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: CORRECT_MISTAKES_IN_STEPS'} 
+  ID: P_new_763d4 
+, prim: {'step': 11, 'id': 'P_new_763d4', 'name': 'RECALCULATE_IF_NECESSARY', 'status': 'New', 'description': 'Auto-generated primitive: RECALCULATE_IF_NECESSARY'} 
+  ID: P_new_566d1 
+, prim: {'step': 12, 'id': 'P_new_566d1', 'name': 'EVALUATE_FINAL_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_FINAL_RESULT'} 
+
+====================== Problem 9 ======================
+
+Question:
+A book has 2 chapters. The second chapter is 36 pages long. If there are a total of 67 pages in the book How many pages are in the first chapter?
+
+Ground Truth Answer:
+31.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Subtraction', 'Units and Conversions'], 'tags': ['single-step', 'arithmetic-chain', 'contextual', 'unit-consistency'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning']}
+
+Phase 2 - Primitive Sequence:
+
+10 new primitves generated out of 10
+  ID: P_new_c57af 
+, prim: {'step': 1, 'id': 'P_new_c57af', 'name': 'IDENTIFY_INITIAL_QUANTITY', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_INITIAL_QUANTITY'} 
+  ID: P_new_50c83 
+, prim: {'step': 2, 'id': 'P_new_50c83', 'name': 'IDENTIFY_FINAL_QUANTITY', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_FINAL_QUANTITY'} 
+  ID: P_new_59a27 
+, prim: {'step': 3, 'id': 'P_new_59a27', 'name': 'DETERMINE_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_OPERATION'} 
+  ID: P_new_d3d97 
+, prim: {'step': 4, 'id': 'P_new_d3d97', 'name': 'CONVERT_UNITS_IF_NEEDED', 'status': 'New', 'description': 'Auto-generated primitive: CONVERT_UNITS_IF_NEEDED'} 
+  ID: P_new_941ec 
+, prim: {'step': 5, 'id': 'P_new_941ec', 'name': 'PERFORM_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ARITHMETIC_OPERATION'} 
+  ID: P_new_6a6f8 
+, prim: {'step': 6, 'id': 'P_new_6a6f8', 'name': 'CHECK_FOR_REASONABLENESS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_FOR_REASONABLENESS'} 
+  ID: P_new_df55b 
+, prim: {'step': 7, 'id': 'P_new_df55b', 'name': 'FORMULATE_ANSWER', 'status': 'New', 'description': 'Auto-generated primitive: FORMULATE_ANSWER'} 
+  ID: P_new_ccc61 
+, prim: {'step': 8, 'id': 'P_new_ccc61', 'name': 'VERIFY_UNITS', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_UNITS'} 
+  ID: P_new_e79a1 
+, prim: {'step': 9, 'id': 'P_new_e79a1', 'name': 'REVIEW_STEPS', 'status': 'New', 'description': 'Auto-generated primitive: REVIEW_STEPS'} 
+  ID: P_new_2480b 
+, prim: {'step': 10, 'id': 'P_new_2480b', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+
+====================== Problem 10 ======================
+
+Question:
+During summer break 610769 kids from Lawrence county go to camp and the other 590796 kids stay home. An additional 22 kids from outside the county attended the camp. About how many kids are in Lawrence county?
+
+Ground Truth Answer:
+1201565.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction', 'Units and Conversions'], 'tags': ['multi-step', 'arithmetic-chain', 'contextual', 'data-driven'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning']}
+
+Phase 2 - Primitive Sequence:
+
+7 new primitves generated out of 7
+  ID: P_new_cf3d1 
+, prim: {'step': 1, 'id': 'P_new_cf3d1', 'name': 'IDENTIFY_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_ARITHMETIC_OPERATION'} 
+  ID: P_new_975d3 
+, prim: {'step': 2, 'id': 'P_new_975d3', 'name': 'PARSE_UNITS_AND_CONVERSIONS', 'status': 'New', 'description': 'Auto-generated primitive: PARSE_UNITS_AND_CONVERSIONS'} 
+  ID: P_new_c5504 
+, prim: {'step': 3, 'id': 'P_new_c5504', 'name': 'SET_UP_ARITHMETIC_EXPRESSION', 'status': 'New', 'description': 'Auto-generated primitive: SET_UP_ARITHMETIC_EXPRESSION'} 
+  ID: P_new_a04cb 
+, prim: {'step': 4, 'id': 'P_new_a04cb', 'name': 'PERFORM_ARITHMETIC_CALCULATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ARITHMETIC_CALCULATION'} 
+  ID: P_new_a3fea 
+, prim: {'step': 5, 'id': 'P_new_a3fea', 'name': 'CHECK_CONVERSION_ACCURACY', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_CONVERSION_ACCURACY'} 
+  ID: P_new_80438 
+, prim: {'step': 6, 'id': 'P_new_80438', 'name': 'VERIFY_ARITHMETIC_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_ARITHMETIC_RESULT'} 
+  ID: P_new_3fae2 
+, prim: {'step': 7, 'id': 'P_new_3fae2', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
