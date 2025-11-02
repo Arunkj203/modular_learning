@@ -22,7 +22,9 @@ except Exception:
 
 # OLD: BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 
-BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
+# BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
+
+BASE_MODEL = "meta-llama/Meta-Llama-3-70B-Instruct" # For phase 2 - Synthesis
 
 
 # BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" # New Model
@@ -53,11 +55,11 @@ def get_model_and_tokenizer():
     print(f"Loading tokenizer for {BASE_MODEL}...")
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL,token=HUGGINGFACEHUB_API_TOKEN)
 
-    print(f"Loading model {BASE_MODEL} on {DEVICE} (FP16)...")
+    print(f"Loading model {BASE_MODEL} on {DEVICE} (BFP16)...")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         device_map="auto",
-        dtype=torch.float16,
+        dtype=torch.bfloat16,
         token = HUGGINGFACEHUB_API_TOKEN
     )
 
