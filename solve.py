@@ -1,8 +1,7 @@
 
 from .phase_1.phase_1_main import run_phase1
 from .phase_2.phase_2_main import run_phase2
-from .phase_3.phase_3_main import run_phase3
-from .phase_4.phase_4_main import run_phase4
+from .phase_3.phase_3_main import run_phase4
 
 from .phase_2.generate_primitive import add_primitive
 
@@ -13,7 +12,7 @@ import os , json , re
 from typing import Dict, Any, List
 
 
-def generate_phase4_execution(phase2_file: str, model, tokenizer, output_dir="Dataset", use_lora=False):
+def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Dataset", use_lora=False):
     """
     Generate Phase 4 execution data from Phase 2 primitive sequences.
 
@@ -224,7 +223,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     # Ensure log directory exists
     full_path = os.path.join(mem.Base_dir_path, log_dir)
     os.makedirs(full_path, exist_ok=True)
-    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-09.10__10_pbs.txt")
+    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-02.11__10_pbs.txt")
     print(f"Log saving in file:{log_file}")
 
     with open(log_file, "w", encoding="utf-8") as f:
@@ -253,34 +252,23 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
                 primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
                 f.write("\nPhase 2 - Primitive Sequence:\n")
-                f.write(f"\n{new_primitives_to_train} new primitves generated out of {len(primitive_sequence)}\n")
+                f.write(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
 
                 for prim in primitive_sequence:
                     f.write(f"  ID: {prim['id']} \n, prim: {prim} \n")
 
-                print(f"\n{new_primitives_to_train} new primitves generated out of {len(primitive_sequence)}\n")
+                print(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
                 
-                # Optional Phase 3: Training
-                if use_lora:
-                    status = run_phase3(model, tokenizer, new_primitives_to_train)
-                    if not status:
-                        f.write("\nPhase 3 failed. Exiting.\n")
-                        exit(1)
-                    f.write(f"\nPhase 3 completed. Trained {len(new_primitives_to_train)} new primitives.\n")
-                    # Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
                 
-                else:
-                    print("\nPhase 3 Skipped...\n")
-
                 # Phase 4: Problem Solving
-                print("\nPhase 4 -  Solving...\n")
+                print("\nPhase 3 -  Solving...\n")
 
                 solution, steps, feedback_entries = run_phase4(
                     model, tokenizer, primitive_sequence, problem_text=processed["question"]
                 )
                 pred = normalize_answer(solution)
 
-                f.write("\nPhase 4 - Execution Steps:\n")
+                f.write("\nPhase 3 - Execution Steps:\n")
                 for step in steps:
                     f.write(f"  Primitive name :{step[2]}:\n")
                     f.write(f"    Output: {step[0]}\n")
@@ -317,7 +305,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
         f.write(f"\n\n=== Accuracy: {acc:.2f} ({correct}/{total}) ===\n")
 
         # Save memory
-        #save_memory()
+        mem.save_memory()
 
 
     return acc,all_feedback
