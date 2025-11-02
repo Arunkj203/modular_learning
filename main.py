@@ -15,12 +15,12 @@ def main():
     dataset_name = "SVAMP"
 
     # Load model and tokenizer
-    # model , tokenizer = get_model_and_tokenizer()
+    model , tokenizer = get_model_and_tokenizer()
 
     print(f"Model and tokenizer loaded for {dataset_name}.")
-
+    
+    solve(dataset_name,"train","Training", model, tokenizer)
     # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer)
-    mem.load_memory()
 
     print(f"\nTotal primitives in memory: {len(mem.primitive_metadata)}")
     for i, (pid, meta) in enumerate(mem.primitive_metadata.items()):
