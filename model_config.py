@@ -49,33 +49,36 @@ Retries = 3
 # Singleton loader
 # -----------------------------
 
-
 def get_model_and_tokenizer():
     print(f"Loading tokenizer for {BASE_MODEL}...")
     tokenizer = AutoTokenizer.from_pretrained(
         BASE_MODEL,
-        token=HUGGINGFACEHUB_API_TOKEN,
-        use_fast=True
+        use_fast=True,
+        local_files_only=True  # avoid re-downloading if already cached
     )
 
-    print(f"Preparing 8-bit quantization config for {BASE_MODEL}...")
+    print(f"Loading model {BASE_MODEL} in 4-bit mode on GPU...")
+
+    # 4-bit quantization config (QLoRA style)
     bnb_config = BitsAndBytesConfig(
-        load_in_8bit=True,               # use 8-bit linear layers
-        llm_int8_threshold=6.0,          # keep higher-magnitude weights in fp16
-        llm_int8_has_fp16_weight=False,  # saves memory
-        bnb_8bit_compute_dtype=torch.bfloat16,  # compute in bf16 for stability
-        llm_int8_skip_modules=None       # or list of modules to skip if needed
+        load_in_4bit=True,
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.bfloat16
     )
 
-    print(f"Loading {BASE_MODEL} in 8-bit on {DEVICE}...")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
-        quantization_config=bnb_config,  # ← explicit bitsandbytes config
+        quantization_config=bnb_config,
         device_map="auto",
+        torch_dtype=torch.bfloat16,
         low_cpu_mem_usage=True,
-        offload_folder="offload_cache",  # optional temp swap space
-        token=HUGGINGFACEHUB_API_TOKEN
-    ).eval()
+        local_files_only=True
+    )
+
+    # optional: faster generation tweaks
+    model.eval()
+    model.config.use_cache = True
 
     return model, tokenizer
 
