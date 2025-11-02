@@ -1,22 +1,16 @@
 # phase_2/generate_primitive.py
+# --------------------------------------------------------------
+# Generates an abstract sequence of cognitive primitives (Phase 2)
+# --------------------------------------------------------------
 
 from typing import Dict, Any, List, Optional
-import json
+import json , re , uuid
 
 from ..model_config import generate_text
 import numpy as np
 
 from .. import config as mem
 
-# phase_2/generate_primitive.py
-# --------------------------------------------------------------
-# Generates an abstract sequence of cognitive primitives (Phase 2)
-# --------------------------------------------------------------
-
-import json, re, uuid
-from typing import Any, Dict, List, Optional
-import numpy as np
-import config as mem  # your memory store (faiss, graph, embeddings)
 
 # ---------------------------------------------------------------------
 # SYSTEM PROMPT: abstract planner, not solver
@@ -96,30 +90,15 @@ this type of problem.  Do NOT include concrete values or story content.
     # --------------------------------------------------------------
     # Call model (ensure generate_text returns raw text)
     # --------------------------------------------------------------
-    raw_output = mem.generate_text(
+    primitives_sequence = generate_text(
         model, tokenizer, system_prompt, user_prompt,
-        dynamic_max_tokens=dynamic_max_tokens,
-    )
+        dynamic_max_tokens=dynamic_max_tokens
+    )["primitive_sequence"]
 
-    if isinstance(raw_output, dict) and "text" in raw_output:
-        raw_output = raw_output["text"]
-
-    # --------------------------------------------------------------
-    # Extract JSON
-    # --------------------------------------------------------------
-    match = re.search(r"\{[\s\S]*?\}", raw_output)
-    if not match:
-        raise ValueError("No JSON found in model output:\n" + raw_output[:300])
-    json_str = match.group(0)
-
-    try:
-        parsed = json.loads(json_str)
-        primitives_sequence = parsed.get("primitive_sequence", [])
-    except json.JSONDecodeError as e:
-        print("JSON parsing failed:", e)
-        print("Raw output snippet:", raw_output[:500])
-        primitives_sequence = []
-
+    if not primitives_sequence:
+        print("Raw op:",primitives_sequence)
+        raise ValueError("LLM did not return any primitives.")
+    
     # --------------------------------------------------------------
     # Validate and clean up
     # --------------------------------------------------------------
