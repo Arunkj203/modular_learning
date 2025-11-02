@@ -49,7 +49,7 @@ def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Da
         print(f"Executing {len(primitive_sequence)} primitives...")
 
         # try:
-        final_state, steps, feedback = run_phase4(
+        final_state, steps, feedback = run_phase3(
             model,
             tokenizer,
             primitive_sequence,
