@@ -1,7 +1,7 @@
 
 from .phase_1.phase_1_main import run_phase1
 from .phase_2.phase_2_main import run_phase2
-from .phase_3.phase_3_main import run_phase4
+from .phase_3.phase_3_main import run_phase3
 
 from .phase_2.generate_primitive import add_primitive
 
@@ -260,21 +260,21 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                 print(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
                 
                 
-                # Phase 4: Problem Solving
-                print("\nPhase 3 -  Solving...\n")
+                # # Phase 4: Problem Solving
+                # print("\nPhase 3 -  Solving...\n")
 
-                solution, steps, feedback_entries = run_phase4(
-                    model, tokenizer, primitive_sequence, problem_text=processed["question"]
-                )
-                pred = normalize_answer(solution)
+                # solution, steps, feedback_entries = run_phase3(
+                #     model, tokenizer, primitive_sequence, problem_text=processed["question"]
+                # )
+                # pred = normalize_answer(solution)
 
-                f.write("\nPhase 3 - Execution Steps:\n")
-                for step in steps:
-                    f.write(f"  Primitive name :{step[2]}:\n")
-                    f.write(f"    Output: {step[0]}\n")
+                # f.write("\nPhase 3 - Execution Steps:\n")
+                # for step in steps:
+                #     f.write(f"  Primitive name :{step[2]}:\n")
+                #     f.write(f"    Output: {step[0]}\n")
                 
                 
-                f.write(f"\nFinal Solution:  {solution}\nNormalized solution:{pred}\n")
+                # f.write(f"\nFinal Solution:  {solution}\nNormalized solution:{pred}\n")
                 
                 print(f"\n====================== Problem {idx+1} Solved ======================\n")
 
@@ -285,9 +285,9 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
                 # Track accuracy
                 
-                if pred == gt:
-                    correct += 1
-                total += 1
+                # if pred == gt:
+                #     correct += 1
+                # total += 1
 
             except Exception as e:
                 errors += 1
@@ -300,15 +300,15 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
                     print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
                     break
 
-        # Write accuracy at the end
-        acc = correct / total if total > 0 else 0
-        f.write(f"\n\n=== Accuracy: {acc:.2f} ({correct}/{total}) ===\n")
+        # # Write accuracy at the end
+        # acc = correct / total if total > 0 else 0
+        # f.write(f"\n\n=== Accuracy: {acc:.2f} ({correct}/{total}) ===\n")
 
         # Save memory
         mem.save_memory()
 
 
-    return acc,all_feedback
+    return 0,all_feedback
 
 
 

@@ -130,7 +130,7 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
             new_primitives_to_train.append(primitive_entry)
             primitive_sequence.append(pid)
 
-
+            add_primitive(primitive_entry)  # register in memory
 
     return primitive_sequence, new_primitives_to_train # new_count
 
