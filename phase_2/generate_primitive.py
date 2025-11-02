@@ -70,11 +70,13 @@ def generate_primitives_from_problem(
         if isinstance(p, dict) and "id" in p and "name" in p
     ]
     available_str = json.dumps(dict(existing_prims), indent=2)
+    modules = analysis.get('selected_modules', [])
+    modules_str = '; '.join([f"{m['name']}: {m['description']}" for m in modules])
 
     user_prompt = f"""
 Problem Type: {analysis.get('problem_type', 'Unknown')}
 Topics: {', '.join(analysis.get('topics', []))}
-Modules: {', '.join(analysis.get('selected_modules', []))}
+Modules: {modules_str}
 
 AVAILABLE_PRIMITIVES = {available_str}
 
@@ -159,10 +161,13 @@ def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1, min_si
         print("No primitives in memory index yet.")
         return []
 
+    modules = analysis.get('selected_modules', [])
+    modules_str = '; '.join([f"{m['name']}: {m['description']}" for m in modules])
+
     query_parts = [
         analysis.get("problem_type", ""),
         " ".join(analysis.get("topics", [])),
-        " ".join(analysis.get("selected_modules", [])),
+        " ".join(modules_str),
         " ".join(analysis.get("tags", [])),
     ]
     query = " ".join(query_parts).strip()
