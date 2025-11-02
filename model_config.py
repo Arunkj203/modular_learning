@@ -71,7 +71,7 @@ def get_model_and_tokenizer():
         BASE_MODEL,
         quantization_config=bnb_config,
         device_map="auto",
-        torch_dtype=torch.bfloat16,
+        dtype=torch.bfloat16,
         low_cpu_mem_usage=True,
         local_files_only=True
     )

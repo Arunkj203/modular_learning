@@ -101,6 +101,7 @@ this type of problem.  Do NOT include concrete values or story content.
         print("Raw op:",primitives_sequence)
         raise ValueError("LLM did not return any primitives.")
     
+    print("seq:",primitives_sequence)
 # --------------------------------------------------------------
     # Validate and clean up
     # --------------------------------------------------------------

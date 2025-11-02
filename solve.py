@@ -235,70 +235,70 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
 
             f.write(f"\n====================== Problem {idx+1} ======================\n")
             
-            try:
+            # try:
 
-                # Phase 1: Problem Analysis
-                print(f"\nPhase 1 - Analysing...\n")
+            # Phase 1: Problem Analysis
+            print(f"\nPhase 1 - Analysing...\n")
 
-                processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
-                gt = normalize_answer(processed["answer"])
-                f.write(f"\nQuestion:\n{processed['question']}\n")
-                f.write(f"\nGround Truth Answer:\n{gt}\n")
-                f.write(f"\nPhase 1 - Analysis:\n{analysis}\n")
+            processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
+            gt = normalize_answer(processed["answer"])
+            f.write(f"\nQuestion:\n{processed['question']}\n")
+            f.write(f"\nGround Truth Answer:\n{gt}\n")
+            f.write(f"\nPhase 1 - Analysis:\n{analysis}\n")
+            
+
+            # Phase 2: Primitive Generation
+            print(f"\nPhase 2 - Primitive Sequence Generating...\n")
+
+            primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
+            f.write("\nPhase 2 - Primitive Sequence:\n")
+            f.write(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
+
+            for prim in primitive_sequence:
+                f.write(f"  ID: {prim['id']} \n, prim: {prim} \n")
+
+            print(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
+            
+            
+            # # Phase 4: Problem Solving
+            # print("\nPhase 3 -  Solving...\n")
+
+            # solution, steps, feedback_entries = run_phase3(
+            #     model, tokenizer, primitive_sequence, problem_text=processed["question"]
+            # )
+            # pred = normalize_answer(solution)
+
+            # f.write("\nPhase 3 - Execution Steps:\n")
+            # for step in steps:
+            #     f.write(f"  Primitive name :{step[2]}:\n")
+            #     f.write(f"    Output: {step[0]}\n")
+            
+            
+            # f.write(f"\nFinal Solution:  {solution}\nNormalized solution:{pred}\n")
+            
+            print(f"\n====================== Problem {idx+1} Solved ======================\n")
+
+            # Collect all feedback
+            # all_feedback.extend(feedback_entries) 
+            # Changes need to be made in phase 4 (return feedback entries)
+
+
+            # Track accuracy
+            
+            # if pred == gt:
+            #     correct += 1
+            # total += 1
+
+            # except Exception as e:
+            #     errors += 1
+            #     f.write(f"\n[ERROR] Problem {idx+1} failed: {e}\n")
                 
+            #     print(f"\n[ERROR] Problem {idx+1} failed: {e}\n")
 
-                # Phase 2: Primitive Generation
-                print(f"\nPhase 2 - Primitive Sequence Generating...\n")
-
-                primitive_sequence, new_primitives_to_train = run_phase2(model, tokenizer, processed["question"], analysis)
-                f.write("\nPhase 2 - Primitive Sequence:\n")
-                f.write(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
-
-                for prim in primitive_sequence:
-                    f.write(f"  ID: {prim['id']} \n, prim: {prim} \n")
-
-                print(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
-                
-                
-                # # Phase 4: Problem Solving
-                # print("\nPhase 3 -  Solving...\n")
-
-                # solution, steps, feedback_entries = run_phase3(
-                #     model, tokenizer, primitive_sequence, problem_text=processed["question"]
-                # )
-                # pred = normalize_answer(solution)
-
-                # f.write("\nPhase 3 - Execution Steps:\n")
-                # for step in steps:
-                #     f.write(f"  Primitive name :{step[2]}:\n")
-                #     f.write(f"    Output: {step[0]}\n")
-                
-                
-                # f.write(f"\nFinal Solution:  {solution}\nNormalized solution:{pred}\n")
-                
-                print(f"\n====================== Problem {idx+1} Solved ======================\n")
-
-                # Collect all feedback
-                # all_feedback.extend(feedback_entries) 
-                # Changes need to be made in phase 4 (return feedback entries)
-
-
-                # Track accuracy
-                
-                # if pred == gt:
-                #     correct += 1
-                # total += 1
-
-            except Exception as e:
-                errors += 1
-                f.write(f"\n[ERROR] Problem {idx+1} failed: {e}\n")
-                
-                print(f"\n[ERROR] Problem {idx+1} failed: {e}\n")
-
-                if errors >= max_errors:
-                    f.write(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
-                    print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
-                    break
+            #     if errors >= max_errors:
+            #         f.write(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+            #         print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+            #         break
 
         # # Write accuracy at the end
         # acc = correct / total if total > 0 else 0
