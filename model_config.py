@@ -3,7 +3,7 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM ,StoppingCriteria, StoppingCriteriaList 
 
 import torch, gc, re, json , requests , os
-from transformers import GenerationConfig, StoppingCriteriaList
+from transformers import GenerationConfig , BitsAndBytesConfig
 
 # Optional: load .env
 try:
@@ -51,19 +51,33 @@ Retries = 3
 
 
 def get_model_and_tokenizer():
-
     print(f"Loading tokenizer for {BASE_MODEL}...")
-    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL,token=HUGGINGFACEHUB_API_TOKEN)
-
-    print(f"Loading model {BASE_MODEL} on {DEVICE} (BFP16)...")
-    model = AutoModelForCausalLM.from_pretrained(
+    tokenizer = AutoTokenizer.from_pretrained(
         BASE_MODEL,
-        device_map="auto",
-        dtype=torch.bfloat16,
-        token = HUGGINGFACEHUB_API_TOKEN
+        token=HUGGINGFACEHUB_API_TOKEN,
+        use_fast=True
     )
 
-    return model , tokenizer
+    print(f"Preparing 8-bit quantization config for {BASE_MODEL}...")
+    bnb_config = BitsAndBytesConfig(
+        load_in_8bit=True,               # use 8-bit linear layers
+        llm_int8_threshold=6.0,          # keep higher-magnitude weights in fp16
+        llm_int8_has_fp16_weight=False,  # saves memory
+        bnb_8bit_compute_dtype=torch.bfloat16,  # compute in bf16 for stability
+        llm_int8_skip_modules=None       # or list of modules to skip if needed
+    )
+
+    print(f"Loading {BASE_MODEL} in 8-bit on {DEVICE}...")
+    model = AutoModelForCausalLM.from_pretrained(
+        BASE_MODEL,
+        quantization_config=bnb_config,  # ← explicit bitsandbytes config
+        device_map="auto",
+        low_cpu_mem_usage=True,
+        offload_folder="offload_cache",  # optional temp swap space
+        token=HUGGINGFACEHUB_API_TOKEN
+    ).eval()
+
+    return model, tokenizer
 
 # -----------------------------
 # Helper function for generation
