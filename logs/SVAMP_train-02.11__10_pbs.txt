@@ -1,0 +1,75 @@
+=== Training on SVAMP ===
+
+
+====================== Problem 1 ======================
+
+Question:
+Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?
+
+Ground Truth Answer:
+70.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Multiplication', 'Division', 'Units and Conversions'], 'tags': ['multi-step', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning']}
+
+Phase 2 - Primitive Sequence:
+
+5 new primitves generated out of 5
+
+[ERROR] Problem 1 failed: string indices must be integers, not 'str'
+
+====================== Problem 2 ======================
+
+Question:
+Each basket of peaches has 19 red peaches and 4 green peaches. If there are 15 such baskets How many peaches are in the baskets altogether?
+
+Ground Truth Answer:
+345.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Multiplication'], 'tags': ['multi-step', 'arithmetic-chain', 'data-driven'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning']}
+
+Phase 2 - Primitive Sequence:
+
+4 new primitves generated out of 4
+
+[ERROR] Problem 2 failed: string indices must be integers, not 'str'
+
+====================== Problem 3 ======================
+
+Question:
+Nell collects cards. She had 309 baseball cards and 356 Ace cards. She gave some of her cards to Jeff and now has 415 baseball cards and Ace cards left. How many more baseball cards than Ace cards does Nell have?
+
+Ground Truth Answer:
+266.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction', 'Comparison'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'contextual'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning', 'Decomposition', 'Critical Thinking', 'Progress Evaluation']}
+
+Phase 2 - Primitive Sequence:
+
+5 new primitves generated out of 5
+
+[ERROR] Problem 3 failed: string indices must be integers, not 'str'
+
+====================== Problem 4 ======================
+
+Question:
+There are 270 students in a school. If the school has 5 students in each grades and each grade has the same number of students How many grades are there in total?
+
+Ground Truth Answer:
+54.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Division', 'Simple Algebra', 'Comparisons and Ordering'], 'tags': ['multi-step', 'arithmetic-chain', 'unit-consistency', 'data-driven', 'logical'], 'selected_modules': ['Step-by-Step Reasoning', 'Core Problem Identification', 'Stepwise Planning', 'Decomposition', 'Progress Evaluation']}
+
+Phase 2 - Primitive Sequence:
+
+7 new primitves generated out of 7
+
+[ERROR] Problem 4 failed: string indices must be integers, not 'str'
+
+[ABORT] Too many errors (4). Stopping early.
+
+
+=== Accuracy: 0.00 (0/0) ===
