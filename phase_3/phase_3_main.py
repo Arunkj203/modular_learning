@@ -1,152 +1,225 @@
-from .synthetic_data import generate_synthetic_data_for_primitive
-from .lora_training import evaluate_lora
-
-import os
+# phase_4_main.py
 import torch
-from peft import LoraConfig
-from trl import SFTTrainer, SFTConfig
-from ..model_config import OUTPUT_DIR
+import json
+from peft import PeftModel
 
-from datasets import Dataset, DatasetDict
-import random
+from ..config import *
+from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter ,generate_text
 
+def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora=False):
 
-# ==================================================
-# CONFIG
-# ==================================================
-LORA_R = 8
-LORA_ALPHA = 16
-LORA_DROPOUT = 0.05
-NUM_EPOCHS = 3
-BATCH_SIZE = 4
-LR = 2e-4
-
-
-def run_phase3(model, tokenizer, new_primitives_to_train, metric_threshold=0.8):
     """
-    Train and validate LoRA adapters per primitive.
-    Save only adapters that pass the threshold.
+    Phase 4: Problem solving using a sequence of primitives (dicts with id, description).
+    
+    Args:
+        primitive_sequence (list): List of dicts, each containing 'id' and 'description'.
+        problem_text (str): Problem text to solve.
+    
+    Returns:
+        final_solution (str), steps (list of dicts): Each dict has 'primitive_id', 'description', 'output'.
     """
 
-    base_model = model  # frozen model loaded once onto GPU
+    state_text = problem_text
+    steps = []
+    feedback_entries = []  # Collect feedback for this problem
 
-    for primitive in new_primitives_to_train:
-        primitive_id = primitive["id"]
-        name = primitive["name"]
-        print(f"\n=== Training primitive: {name} ===")
+    
+    for pid in primitive_sequence:
 
-        # --------------------------------------------------
-        # 1. Dataset for this primitive
-        # --------------------------------------------------
-        examples  = generate_synthetic_data_for_primitive(base_model, tokenizer, primitive)
+        primitive_entry = primitive_metadata.get(pid, {})
+        if not primitive_entry:
+            raise ValueError(f"Primitive ID {pid} not found in metadata.")
+        
+        primitive_name = primitive_entry.get("name", "")
+        description = primitive_entry.get("description", "")
 
-        #  Change later : split based on formats
+        # Build system and user prompts for primitive execution
+        system_prompt = """
+            You are a structured reasoning executor that applies human-like problem-solving primitives.
 
-        # Split into train/val/test
-        dataset = prepare_datasets(examples, test_size=0.1, val_size=0.1)
+            Your task is to transform the current problem state by applying the given primitive. 
+            Do not perform full problem solving — only apply the primitive’s transformation logic.
 
+            CRITICAL INSTRUCTIONS:
+            1. You must output ONLY valid JSON strictly between <<START>> and <<END>>.
+            2. JSON Format (no other text allowed):
+            {
+                "result": "<new problem state after applying primitive>",
+                "primitive_applied": {
+                "id": "<primitive_id>",
+                "name": "<primitive_name>"
+                },
+                "notes": "<short reasoning for transformation>"
+            }
+            3. Preserve all key details from the current state.
+            4. Apply the primitive exactly as described — don’t infer new rules or solve unrelated steps.
+            5. If the primitive involves symbolic or numeric manipulation, apply that change correctly and clearly.
+            6. Never produce explanations outside JSON or markers.
 
+            You are reasoning like a human who uses structured steps (primitives) to progressively modify the problem until solved.
+            """
 
-        # --------------------------------------------------
-        # 2. LoRA config (fresh for every primitive)
-        # --------------------------------------------------
-        peft_config = LoraConfig(
-            r=LORA_R,
-            lora_alpha=LORA_ALPHA,
-            lora_dropout=LORA_DROPOUT,
-            bias="none",
-            task_type="CAUSAL_LM"
-        )
+        user_prompt = f"""
 
-        # --------------------------------------------------
-        # 3. Training arguments
-        # --------------------------------------------------
-        sft_config = SFTConfig(
-            max_length=64,
-            output_dir=os.path.join(OUTPUT_DIR, primitive_id),
-            overwrite_output_dir=True,
-            per_device_train_batch_size=BATCH_SIZE,
-            num_train_epochs=NUM_EPOCHS,
-            learning_rate=LR,
-            logging_steps=10,
-            eval_strategy="epoch",  
-            save_strategy="epoch",
-            save_total_limit=1,
-            fp16=torch.cuda.is_available(),
-            report_to="none",
-            dataset_text_field="text",
-        )
+                You are given the current state of a problem and a primitive to apply.
 
-        # --------------------------------------------------
-        # 4. Trainer with LoRA adapter
-        # --------------------------------------------------
-        trainer = SFTTrainer(
-            model=base_model,
-            train_dataset=dataset["train"],
-            eval_dataset=dataset["val"],
-            processing_class=tokenizer,       
-            args=sft_config,
-            peft_config=peft_config,
-        )
+                Problem State:
+                {state_text}
 
-        # --------------------------------------------------
-        # 5. Train
-        # --------------------------------------------------
-        print(f"Training LoRA adapter for primitive '{primitive_id}'...")
-        trainer.train()
-        print("Training completed.")
+                Primitive to apply:
+                {json.dumps(primitive_entry, indent=2)}
 
-        # --------------------------------------------------
-        # 6. Evaluate
-        # --------------------------------------------------
-        trained_model = trainer.model
-        accuracy = evaluate_lora(trained_model, tokenizer, dataset["test"])
+                Now, generate the next problem state strictly following the system instructions.
 
-        # --------------------------------------------------
-        # 7. Save adapter only if it meets the threshold
-        # --------------------------------------------------
-        '''
-        if accuracy >= metric_threshold:
-            adapter_path = os.path.join(OUTPUT_DIR, primitive_id)
-            trained_model.save_pretrained(adapter_path)  # saves only adapter weights
-            print(f"Saved adapter for {name} at {adapter_path}")
-        else:
-            print(f"Adapter for {name} did not meet the threshold ({accuracy:.2f}). Skipping save.")
-            return False
-        '''
+                <<START>>
+                {{
+                "result": "...",
+                "notes": "..."
+                }}
+                <<END>>
 
-        adapter_path = os.path.join(OUTPUT_DIR, primitive_id)
-        trained_model.save_pretrained(adapter_path)  # saves only adapter weights
-        print(f"Saved adapter for {name} at {adapter_path}")
+            **GENERATE THE NEXT STATE JSON NOW.**
+            """
 
         
-        # --------------------------------------------------
-        # 8. Cleanup to free memory
-        # --------------------------------------------------
-        del trainer, trained_model
-        torch.cuda.empty_cache()
+        # Calculate dynamic max_tokens based on complexity
+        complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
+        dynamic_max_tokens = min(4096, max(600, 2 * complexity_estimate )) 
 
-    return True
+            # Call your generate_text wrapper
+        op = generate_text(
+                model=base_model, 
+                tokenizer=tokenizer, 
+                system_prompt=system_prompt, 
+                user_prompt=user_prompt,
+                dynamic_max_tokens=dynamic_max_tokens
+            )
+        
+        print(f"Primitive {pid} output: {op}")
+        # Record this step (include pre/post state for debugging)
+        steps.append((op, pid, primitive_name, description))
+
+        # Update the state for the next primitive
+        state_text = op["result"]
+
+    return state_text, steps , feedback_entries
 
 
-
-def prepare_datasets(examples, test_size=0.1, val_size=0.1, seed=42):
+def llm_validate_and_correct(primitive_name, description, input_text, output_text):
     """
-    Split a list of examples into train/val/test DatasetDict.
+    Validate a primitive output and optionally correct it using an external judge model.
+
+    Returns:
+        dict: {
+            "valid": True/False/None,
+            "reason": "short explanation",
+            "corrected_output": <corrected output if invalid, or original output if valid>
+        }
     """
-    random.seed(seed)
-    random.shuffle(examples)
+    system_prompt = "You are a strict JSON-only judge for validating primitive outputs."
+    user_prompt = f"""
+Primitive Name: {primitive_name}
+Description: {description}
+Input: {input_text}
+Output: {output_text}
 
-    n_total = len(examples)
-    n_test = int(n_total * test_size)
-    n_val = int(n_total * val_size)
+Question: Is the output correct? If not, provide the corrected output.
 
-    test_data = examples[:n_test]
-    val_data = examples[n_test:n_test + n_val]
-    train_data = examples[n_test + n_val:]
+Respond ONLY with valid JSON in this format:
+{{
+    "valid": true/false,
+    "reason": "short explanation",
+    "corrected_output": "..."
+}}
+"""
 
-    return DatasetDict({
-        "train": Dataset.from_list(train_data),
-        "val": Dataset.from_list(val_data),
-        "test": Dataset.from_list(test_data),
-    })
+    try:
+        # Call OpenRouter judge
+        response_text = call_openrouter(system_prompt, user_prompt, max_tokens=200)
+
+        # Parse JSON response
+        result = json.loads(response_text)
+
+        # Ensure corrected_output is present
+        if not result.get("corrected_output"):
+            result["corrected_output"] = output_text
+
+        return result
+
+    except Exception as e:
+        # Fallback if parsing fails
+        return {
+            "valid": None,
+            "reason": f"LLM response unparsable: {str(e)}",
+            "corrected_output": output_text
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  if use_lora :
+
+#             try:
+#                 # === Load or reuse LoRA adapter ===
+#                 if primitive_id not in primitive_cache:
+#                     lora_path = f"{OUTPUT_DIR}/{primitive_id}"
+#                     primitive_model = PeftModel.from_pretrained(base_model, lora_path)
+#                     primitive_model.to(DEVICE)
+#                     primitive_model.eval()
+#                     primitive_cache[primitive_id] = primitive_model
+#                 model = primitive_cache[primitive_id]
+                
+#                 # === Inference ===
+#                 inputs = tokenizer(state_text, return_tensors="pt", truncation=True).to(DEVICE)
+#                 with torch.no_grad():
+#                     outputs = model.generate(**inputs, max_new_tokens=128)
+#                 primitive_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+#                 # === Validate & correct ===
+#                 judge_result = llm_validate_and_correct(
+#                     primitive_id,
+#                     description,
+#                     state_text,
+#                     primitive_output
+#                 )
+
+#                 corrected_output = judge_result.get("corrected_output", primitive_output)
+#                 valid = judge_result.get("valid", False)
+
+#                 steps.append({
+#                     "primitive": primitive_name,
+#                     "description": description,
+#                     "input": state_text,
+#                     "output": primitive_output,
+#                     "valid": valid,
+#                     "validation_reason": judge_result.get("reason", ""),
+#                     "corrected_output": corrected_output
+#                 })
+
+#                 feedback_entries.append({
+#                     "primitive_id": primitive_id,
+#                     "input": state_text,
+#                     "output": primitive_output,
+#                     "valid": valid,
+#                     "validation_reason": judge_result.get("reason", ""),
+#                     "corrected_output": corrected_output
+#                 })
+
+#                 # === Update state for next primitive ===
+#                 state_text = corrected_output
+
+#             except Exception as e:
+#                 print(f"Error applying primitive {primitive_id}: {e}")
+#                 return None, steps, feedback_entries

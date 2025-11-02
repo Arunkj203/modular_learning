@@ -7,7 +7,6 @@ from ..config import *
 import uuid
 
 
-
 def run_phase2(model, tokenizer ,problem_text, analysis):
 
     """
@@ -36,8 +35,6 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
                 "description": p.get("description", ""),
                 "goal": p.get("goal", ""),
                 "type": p.get("primitive_type", ""),
-                "applied_on_state": f"{p.get('applied_on_state', '')}",
-                "resulting_state": f"{p.get('resulting_state', '')}"
             })
             name_to_id[p.get("name", "")] = p.get("id")
 

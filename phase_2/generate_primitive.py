@@ -8,226 +8,216 @@ import numpy as np
 
 import config as mem
 
-system_prompt = '''
-You are a reasoning model that decomposes a problem into a sequence of human-like cognitive primitives.
+# phase_2/generate_primitive.py
+# --------------------------------------------------------------
+# Generates an abstract sequence of cognitive primitives (Phase 2)
+# --------------------------------------------------------------
 
-Definition:
-A *primitive* is a minimal, reusable cognitive operation that transforms a problem state toward its solution. 
-It represents a human-level skill — interpretable, composable, and generalizable.
+import json, re, uuid
+from typing import Any, Dict, List, Optional
+import numpy as np
+import config as mem  # your memory store (faiss, graph, embeddings)
 
-Characteristics:
-- Minimal cognitive transformation (atomic reasoning skill)
-- Human-interpretable (clearly states the skill being applied)
-- Reusable across problems (identified by ID and name)
-- Composable into higher-level reasoning procedures
-- One of four types:
-  1. Perceptual — recognize or extract structure
-  2. Transformational — modify a symbolic or numeric representation
-  3. Control — decide sequence, subgoal, or next operation
-  4. Evaluation — check progress, correctness, or termination
+# ---------------------------------------------------------------------
+# SYSTEM PROMPT: abstract planner, not solver
+# ---------------------------------------------------------------------
+system_prompt = """
+You are a reasoning planner that constructs an abstract sequence of reusable cognitive primitives.
 
------------------------------------------
-Core Generation Rules:
------------------------------------------
-1. You are not solving the problem; only planning the reasoning process.
-2. Each step corresponds to one primitive and must have a logical connection to the previous step:
-   - The `resulting_state` of step N must be used as the `applied_on_state` of step N+1.
-3. Each primitive `id` must appear **only once** in the entire sequence.
-4. Include at most 12 primitives (prefer 5–8 concise steps).
-5. Always end with a single Evaluation primitive (e.g., "Check Result Consistency" or "Evaluate Result").
-6. If the reasoning involves decision-making (choosing next operation, deciding subgoal, or control flow), include a Control-type primitive.
-7. Do not repeat or reintroduce identical primitives.
-8. The sequence should clearly progress from perception → transformation → control (if needed) → evaluation.
-9. Output **only valid JSON** following the schema, and conclude with `<END_OF_SEQUENCE>` (for parser detection).
+Goal:
+- Produce a high-level reasoning plan (no numbers, names, or story content).
+- Each primitive represents a general mental operation.
+- You may reuse existing primitives listed in AVAILABLE_PRIMITIVES.
+- If no suitable primitive exists, define ONE new abstract primitive.
 
------------------------------------------
-Few-shot Examples:
------------------------------------------
+Rules:
+1. Re-use primitives whenever possible; copy IDs exactly as listed.
+2. If a new one is required, assign an ID 'P_new###', keep it general, and mark "status": "New".
+3. Do not mention concrete values or entities.
+4. End with an Evaluation primitive.
+5. Output valid JSON only in this schema:
 
-Example 1:
-Problem: "John has 3 apples and buys 2 more. How many apples does he have?"
-Available Primitives: []
-Analysis context: Basic addition of quantities.
-
-<<START>>
 {
   "primitive_sequence": [
-    {
-      "step": 1,
-      "id": "P001",
-      "name": "Identify Quantities",
-      "description": "Recognize all numeric quantities in the problem.",
-      "type": "Perceptual",
-      "applied_on_state": "Raw problem text",
-      "resulting_state": "Quantities: [3, 2]",
-      "status": "New"
-    },
-    {
-      "step": 2,
-      "id": "P002",
-      "name": "Identify Operation",
-      "description": "Determine the mathematical operation connecting the quantities.",
-      "type": "Perceptual",
-      "applied_on_state": "Quantities: [3, 2]",
-      "resulting_state": "Operation: addition",
-      "status": "New"
-    },
-    {
-      "step": 3,
-      "id": "P003",
-      "name": "Combine Quantities",
-      "description": "Apply the identified operation on the quantities.",
-      "type": "Transformational",
-      "applied_on_state": "Operation: addition, Quantities: [3, 2]",
-      "resulting_state": "Intermediate result: 5 apples",
-      "status": "New"
-    },
-    {
-      "step": 4,
-      "id": "P004",
-      "name": "Check Result Consistency",
-      "description": "Verify that the computed quantity aligns with the question goal.",
-      "type": "Evaluation",
-      "applied_on_state": "Intermediate result: 5 apples",
-      "resulting_state": "Validated solution state",
-      "status": "New"
-    }
+    {"step": 1, "id": "P001", "name": "IDENTIFY_QUANTITIES", "status": "Existing"},
+    {"step": 2, "id": "P002", "name": "IDENTIFY_OPERATION", "status": "Existing"},
+    {"step": 3, "id": "P_new001", "name": "COMPARE_RATIOS", "status": "New"},
+    {"step": 4, "id": "P004", "name": "EVALUATE_RESULT", "status": "Existing"}
   ]
 }
-<<END>>
-
-Example 2:
-Problem: "A train travels 60 km in 2 hours. What is its speed?"
-Available Primitives: [P001, P002, P003, P004]
-Analysis context: Division for rate calculation.
-
-<<START>>
-{
-  "primitive_sequence": [
-    {
-      "step": 1,
-      "id": "P001",
-      "name": "Identify Quantities",
-      "status": "Existing"
-    },
-    {
-      "step": 2,
-      "id": "P002",
-      "name": "Identify Operation",
-      "status": "Existing"
-    },
-    {
-      "step": 3,
-      "id": "P005",
-      "name": "Recognize Relationship Type",
-      "description": "Detect that the relationship involves division (distance/time).",
-      "type": "Perceptual",
-      "applied_on_state": "Recognized quantities and context",
-      "resulting_state": "Identified relationship: division",
-      "status": "New"
-    },
-    {
-      "step": 4,
-      "id": "P006",
-      "name": "Apply Division Operation",
-      "description": "Plan to compute rate by dividing total distance by total time.",
-      "type": "Transformational",
-      "applied_on_state": "Distance = 60, Time = 2",
-      "resulting_state": "Speed = distance/time",
-      "status": "New"
-    },
-    {
-      "step": 5,
-      "id": "P004",
-      "name": "Check Result Consistency",
-      "status": "Existing"
-    }
-  ]
-}
-<<END>>
-
------------------------------------------
-Output Schema (for your problem):
------------------------------------------
-<<START>>
-{
-  "primitive_sequence": [
-    {
-      "step": 1,
-      "id": "<existing_primitive_id>",
-      "name": "<existing_primitive_name>",
-      "status": "Existing"
-    },
-    {
-      "step": 2,
-      "id": "<new_primitive_id>",
-      "name": "<new_primitive_name>",
-      "description": "<short description of what this skill does>",
-      "type": "<Perceptual | Transformational | Control | Evaluation>",
-      "applied_on_state": "<state or subgoal this acts on>",
-      "resulting_state": "<new subgoal or derived state>",
-      "status": "New"
-    }
-  ]
-}
-<<END>>
-'''
+<END_OF_SEQUENCE>
+"""
 
 MAX_PRIMITIVES = 12
 
 
-
+# ---------------------------------------------------------------------
+# MAIN GENERATOR
+# ---------------------------------------------------------------------
 def generate_primitives_from_problem(
-    model, tokenizer,
+    model,
+    tokenizer,
     problem_text: str,
-    summary: Optional[Dict[str, Any]] = None,
-    analysis: Optional[Dict[str, Any]] = None
+    summary: Optional[List[Dict[str, Any]]] = None,
+    analysis: Optional[Dict[str, Any]] = None,
 ) -> List[Dict[str, Any]]:
     """
-    Generate a sequence of primitives to solve the given problem.
-    Reuses existing primitives by name, assigns new IDs to new ones.
+    Generate an ordered sequence of primitive IDs/names describing
+    a reasoning plan for the given problem type.
     """
 
-
+    # --------------------------------------------------------------
+    # Build concise user prompt
+    # --------------------------------------------------------------
+    existing_prims = [
+        (p["id"], p["name"]) for p in (summary or [])
+        if isinstance(p, dict) and "id" in p and "name" in p
+    ]
+    available_str = json.dumps(dict(existing_prims), indent=2)
 
     user_prompt = f"""
-        Problem to solve:
-        {problem_text}
+Problem Type: {analysis.get('problem_type', 'Unknown')}
+Topics: {', '.join(analysis.get('topics', []))}
+Modules: {', '.join(analysis.get('selected_modules', []))}
 
-        Analysis context:
-        {json.dumps(analysis or {}, indent=2)}
+AVAILABLE_PRIMITIVES = {available_str}
 
-        Available Primitives summary:
-        {json.dumps(summary or {}, indent=2)}
+Task:
+Plan an ordered sequence (≤ {MAX_PRIMITIVES}) of primitives that can solve
+this type of problem.  Do NOT include concrete values or story content.
+"""
 
-        Your Task:
-        1) Decompose the problem into an ordered sequence of **unique** primitives (<= {MAX_PRIMITIVES}).
-        2) Reuse available primitives where possible (only include id/name/status for reuses).
-        3) Define new primitives fully (all fields required).
-        4) Always include a final Evaluation primitive to terminate.
-        5) Output strictly the JSON schema and finish with the token <END_OF_SEQUENCE>.
-        """
-    
-    print("Calling LLM to generate primitive sequence...")
+    print("Calling model to generate primitive plan...")
 
-    complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
+    # Estimate safe max tokens
+    complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
     dynamic_max_tokens = min(4096, max(1500, 2 * complexity_estimate))
 
-    primitives_sequence = generate_text(
+    # --------------------------------------------------------------
+    # Call model (ensure generate_text returns raw text)
+    # --------------------------------------------------------------
+    raw_output = mem.generate_text(
         model, tokenizer, system_prompt, user_prompt,
-        dynamic_max_tokens=dynamic_max_tokens
-    )["primitive_sequence"]
+        dynamic_max_tokens=dynamic_max_tokens,
+    )
 
-    if not primitives_sequence:
-        print("Raw op:",primitives_sequence)
-        raise ValueError("LLM did not return any primitives.")
-    
+    if isinstance(raw_output, dict) and "text" in raw_output:
+        raw_output = raw_output["text"]
 
-    # Ensure output is a list
-    #if isinstance(primitives_sequence, dict):
-    #    primitives_sequence = [primitives_sequence]
+    # --------------------------------------------------------------
+    # Extract JSON
+    # --------------------------------------------------------------
+    match = re.search(r"\{[\s\S]*?\}", raw_output)
+    if not match:
+        raise ValueError("No JSON found in model output:\n" + raw_output[:300])
+    json_str = match.group(0)
 
-    return primitives_sequence
+    try:
+        parsed = json.loads(json_str)
+        primitives_sequence = parsed.get("primitive_sequence", [])
+    except json.JSONDecodeError as e:
+        print("JSON parsing failed:", e)
+        print("Raw output snippet:", raw_output[:500])
+        primitives_sequence = []
+
+    # --------------------------------------------------------------
+    # Validate and clean up
+    # --------------------------------------------------------------
+    valid_ids = set(mem.primitive_metadata.keys())
+    seen = set()
+    clean_seq = []
+
+    for p in primitives_sequence:
+        pid = p.get("id")
+        name = p.get("name", "").strip()
+
+        if not pid or not name:
+            continue
+
+        # Deduplicate
+        if pid in seen:
+            continue
+        seen.add(pid)
+
+        # Check validity
+        if pid in valid_ids:
+            p["status"] = "Existing"
+        else:
+            # If model claims "Existing" but ID unknown -> fix
+            if p.get("status") == "Existing":
+                print(f"[WARN] Primitive {pid} not in ontology; relabeling as New.")
+            p["id"] = f"P_new_{uuid.uuid4().hex[:5]}"
+            p["status"] = "New"
+
+        clean_seq.append(p)
+
+    # --------------------------------------------------------------
+    # Enforce at least one Evaluation primitive at end
+    # --------------------------------------------------------------
+    if not any("EVALUATE" in p["name"].upper() for p in clean_seq):
+        eval_pid = (
+            [pid for pid, prim in mem.primitive_metadata.items()
+             if "EVALUATE" in prim["name"].upper()] or ["P004"]
+        )[0]
+        clean_seq.append({
+            "step": len(clean_seq) + 1,
+            "id": eval_pid,
+            "name": "EVALUATE_RESULT",
+            "status": "Existing"
+        })
+
+    print("Generated primitives:", [p["name"] for p in clean_seq])
+    return clean_seq
+
+
+# ---------------------------------------------------------------------
+# Example retrieval helper (unchanged except for small fix)
+# ---------------------------------------------------------------------
+def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1, min_similarity=0.5):
+    if mem.faiss_index is None or mem.faiss_index.ntotal == 0:
+        print("No primitives in memory index yet.")
+        return []
+
+    query_parts = [
+        analysis.get("problem_type", ""),
+        " ".join(analysis.get("topics", [])),
+        " ".join(analysis.get("selected_modules", [])),
+        " ".join(analysis.get("tags", [])),
+    ]
+    query = " ".join(query_parts).strip()
+    query_vec = mem.embed_model.encode(query).astype("float32")
+    D, I = mem.faiss_index.search(np.array([query_vec]), top_k)
+
+    retrieved = []
+    for dist, idx in zip(D[0], I[0]):
+        if idx == -1:
+            continue
+        pid = mem.primitive_id_map.get(idx)
+        if pid and pid in mem.primitive_metadata:
+            sim_score = float(dist) if dist <= 1 else 1 / (1 + dist)
+            if sim_score >= min_similarity:
+                prim = mem.primitive_metadata[pid]
+                prim["similarity_score"] = sim_score
+                retrieved.append(prim)
+
+    if expand_related and retrieved:
+        expanded = set(p["id"] for p in retrieved)
+        frontier = set(expanded)
+        for _ in range(depth):
+            next_frontier = set()
+            for pid in frontier:
+                next_frontier.update(mem.primitive_graph.neighbors(pid))
+            expanded.update(next_frontier)
+            frontier = next_frontier
+
+        retrieved += [
+            mem.primitive_metadata[pid]
+            for pid in expanded
+            if pid not in [p["id"] for p in retrieved]
+        ]
+
+    retrieved.sort(key=lambda x: -x.get("similarity_score", 0.0))
+    return retrieved
 
 
 # Storage for primitives and their embeddings
@@ -266,36 +256,6 @@ def add_primitive(primitive):
     mem.faiss_index.add(np.array([vec]))
     mem.primitive_id_map[idx] = pid
 
-
-def retrieve_primitives(analysis, top_k=10, expand_related=True, depth=1):
-    """
-    Retrieve primitives based on query and optionally expand via related primitives graph
-    """
-
-    query = f"{analysis['problem_type']} {' '.join(analysis['selected_modules'])} {' '.join(analysis['tags'])}"
-
-    # Semantic search
-    query_vec = mem.embed_model.encode(query).astype("float32")
-    D, I = mem.faiss_index.search(np.array([query_vec]), top_k)
-
-    if mem.primitive_id_map is None or len(mem.primitive_id_map) == 0:
-        return []
-
-    retrieved = [mem.primitive_id_map[i] for i in I[0] if i != -1]
-
-    # Expand using graph relationships
-    if expand_related:
-        expanded = set(retrieved)
-        frontier = set(retrieved)
-        for _ in range(depth):
-            next_frontier = set()
-            for pid in frontier:
-                next_frontier.update(mem.primitive_graph.neighbors(pid))
-            expanded.update(next_frontier)
-            frontier = next_frontier
-        return [mem.primitive_metadata[pid] for pid in expanded]
-
-    return [mem.primitive_metadata[pid] for pid in retrieved]
 
 
 

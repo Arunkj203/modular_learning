@@ -5,7 +5,7 @@ from .solve import *
 from .model_config import get_model_and_tokenizer
 
 from datasets import Dataset
-from .config import *
+from . import config as mem
 
 def main():
 
@@ -20,10 +20,10 @@ def main():
     print(f"Model and tokenizer loaded for {dataset_name}.")
 
     # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer)
-    load_memory()
+    mem.load_memory()
 
-    print(f"\nTotal primitives in memory: {len(primitive_metadata)}")
-    for i, (pid, meta) in enumerate(primitive_metadata.items()):
+    print(f"\nTotal primitives in memory: {len(mem.primitive_metadata)}")
+    for i, (pid, meta) in enumerate(mem.primitive_metadata.items()):
         print(f"{i+1:03d}. {pid}  →  {meta.get('name', '')}")
         if i >= 30:  # show only the first 30 to avoid flooding
             break

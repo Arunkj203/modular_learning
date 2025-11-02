@@ -1,7 +1,6 @@
 from .phase_1.phase_1_main import run_phase1
 from .phase_2.phase_2_main import run_phase2
 from .phase_3.phase_3_main import run_phase3
-from .phase_4.phase_4_main import run_phase4
 
 from .config import *
 from .model_config import get_model_and_tokenizer
@@ -68,7 +67,7 @@ with the sequence of primitives generated in phase 2,solve the problem
 '''
 print(f"\nPhase 4 - Solving...\n")
 
-solution, steps, feedback_entries = run_phase4(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
+solution, steps, feedback_entries = run_phase3(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
 
 print("Phase 4 : Problem Solved")
 
