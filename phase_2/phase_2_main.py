@@ -49,88 +49,42 @@ def run_phase2(model, tokenizer ,problem_text, analysis):
     # print(f"LLM returned {len(sequence_primitives)} primitives in sequence.")
 
 
-    # Step 3 - Separate new primitives (to train later)
+    # --------------------------------------------------------------
+    # Step 3 -  Separate new vs existing primitives
+    # --------------------------------------------------------------
+    new_prims = [p for p in sequence_primitives if p["status"] == "New"]
 
-    new_primitives_to_train = []
-    primitive_sequence = []
+    # Optionally, register new primitives immediately in memory
+    for p in new_prims:
+        if "description" not in p:
+            p["description"] = f"Auto-generated primitive: {p['name']}"
+        try:
+            add_primitive(p)   # safely add to memory / FAISS index
+            print(f"[INFO] Added new primitive to memory: {p['id']} -> {p['name']}")
+        except Exception as e:
+            print(f"[ERROR] Failed to add primitive {p['id']}: {e}")
 
+    # --------------------------------------------------------------
+    # Debug summary
+    # --------------------------------------------------------------
+    print("\nGenerated Primitive Sequence:")
     for p in sequence_primitives:
-        name = p.get("name")
-        status = p.get("status")
+        print(f"  Step {p.get('step', '?')}: {p['id']} ({p['status']}) - {p['name']}")
 
-        if not name or not status:
-            print(f"Skipping invalid primitive (missing name/status): {p}")
-            continue
+    print(f"\nSummary: {len(new_prims)} / {len(sequence_primitives)} new primitives.\n")
 
-        existing_pid = name_to_id.get(name)  # canonical id if known
-        if status == "Existing":
-            if existing_pid:
-                prim_entry = primitive_metadata.get(existing_pid)
-                if prim_entry:
-                    # Use the canonical primitive object (dict) for execution
-                    primitive_sequence.append(prim_entry)
-                else:
-                    # name->id mapping exists but metadata missing: warn and skip
-                    print(f"Warning: name_to_id mapped {name} -> {existing_pid} but metadata missing for that id. Skipping.")
-            else:
-                # LLM said 'Existing' but the name isn't in the library
-                print(f"Warning: LLM marked primitive '{name}' as Existing but no canonical id found. Skipping for now.")
-            continue
+    return sequence_primitives, new_prims # new_count
 
-        # status == "New"
-        if existing_pid:
-            # LLM thinks it's new, but we already have a canonical primitive.
-            # Use the existing primitive for execution (no retrain).
-            prim_entry = primitive_metadata.get(existing_pid)
-            if prim_entry:
-                primitive_sequence.append(prim_entry)
-            else:
-                # weird case: mapping exists but metadata missing
-                print(f"Warning: name_to_id mapped {name} -> {existing_pid} but metadata missing. Treating as new.")
-                # fallthrough to create a new primitive below
-        else:
-            # Truly new primitive: create unique id, register minimal entry (but don't call add_primitive here)
-            unique_suffix = uuid.uuid4().hex[:8]
-            pid = f"{name}_{unique_suffix}"
 
-            primitive_entry = {
-                "id": pid,
-                "name": name,
-                "description": p.get("description", ""),
-                "goal": p.get("goal", ""),
-                "primitive_type": p.get("type", ""),
-                "applied_on_state": p.get("applied_on_state", ""),
-                "resulting_state": p.get("resulting_state", ""),
-                "problem_type": p.get("problem_type", analysis.get("problem_type", "")),
-                "methods": p.get("methods", analysis.get("selected_modules", [])),
-                "tags": p.get("tags", analysis.get("tags", [])),
-            }
-
-            new_primitives_to_train.append(primitive_entry)
-            primitive_sequence.append(pid)  # append id so later expansion can fetch full entry
-            continue
-
-        # If we reached here it means name->id existed but metadata missing and we fell through:
-        # create new primitive entry as fallback
-        if 'pid' not in locals() and existing_pid and not primitive_metadata.get(existing_pid):
-            unique_suffix = uuid.uuid4().hex[:8]
-            pid = f"{name}_{unique_suffix}"
-            primitive_entry = {
-                "id": pid,
-                "name": name,
-                "description": p.get("description", ""),
-                "goal": p.get("goal", ""),
-                "primitive_type": p.get("type", ""),
-                "applied_on_state": p.get("applied_on_state", ""),
-                "resulting_state": p.get("resulting_state", ""),
-                "problem_type": p.get("problem_type", analysis.get("problem_type", "")),
-                "methods": p.get("methods", analysis.get("selected_modules", [])),
-                "tags": p.get("tags", analysis.get("tags", [])),
-            }
-            new_primitives_to_train.append(primitive_entry)
-            primitive_sequence.append(pid)
-
-            add_primitive(primitive_entry)  # register in memory
-
-    return primitive_sequence, new_primitives_to_train # new_count
-
+# primitive_entry = {
+#                 "id": pid,
+#                 "name": name,
+#                 "description": p.get("description", ""),
+#                 "goal": p.get("goal", ""),
+#                 "primitive_type": p.get("type", ""),
+#                 "applied_on_state": p.get("applied_on_state", ""),
+#                 "resulting_state": p.get("resulting_state", ""),
+#                 "problem_type": p.get("problem_type", analysis.get("problem_type", "")),
+#                 "methods": p.get("methods", analysis.get("selected_modules", [])),
+#                 "tags": p.get("tags", analysis.get("tags", [])),
+#             }

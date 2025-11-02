@@ -25,18 +25,20 @@ Goal:
 - If no suitable primitive exists, define ONE new abstract primitive.
 
 Rules:
-1. Re-use primitives whenever possible; copy IDs exactly as listed.
-2. If a new one is required, assign an ID 'P_new###', keep it general, and mark "status": "New".
+1. Re-use primitives whenever possible; copy IDs exactly as listed in AVAILABLE_PRIMITIVES.
+2. If a new one is required, assign an ID like 'P_new###', keep it general, and mark "status": "New".
 3. Do not mention concrete values or entities.
-4. End with an Evaluation primitive.
-5. Output valid JSON only in this schema:
+4. Always end with an Evaluation primitive.
+5. Output must be valid JSON following the example format below.
+   (The following JSON is an EXAMPLE SCHEMA — not actual data.)
 
+Example format:
 {
   "primitive_sequence": [
-    {"step": 1, "id": "P001", "name": "IDENTIFY_QUANTITIES", "status": "Existing"},
-    {"step": 2, "id": "P002", "name": "IDENTIFY_OPERATION", "status": "Existing"},
-    {"step": 3, "id": "P_new001", "name": "COMPARE_RATIOS", "status": "New"},
-    {"step": 4, "id": "P004", "name": "EVALUATE_RESULT", "status": "Existing"}
+    {"step": 1, "id": "<Existing ID>", "name": "<Existing primitive name>", "status": "Existing"},
+    {"step": 2, "id": "<Existing ID>", "name": "<Existing primitive name>", "status": "Existing"},
+    {"step": 3, "id": "P_new###", "name": "<New primitive name>", "status": "New"},
+    {"step": 4, "id": "<Existing ID>", "name": "EVALUATE_RESULT", "status": "Existing"}
   ]
 }
 <END_OF_SEQUENCE>
@@ -99,7 +101,7 @@ this type of problem.  Do NOT include concrete values or story content.
         print("Raw op:",primitives_sequence)
         raise ValueError("LLM did not return any primitives.")
     
-    # --------------------------------------------------------------
+# --------------------------------------------------------------
     # Validate and clean up
     # --------------------------------------------------------------
     valid_ids = set(mem.primitive_metadata.keys())
@@ -128,6 +130,8 @@ this type of problem.  Do NOT include concrete values or story content.
             p["id"] = f"P_new_{uuid.uuid4().hex[:5]}"
             p["status"] = "New"
 
+            add_primitive(p)  # register in memory
+
         clean_seq.append(p)
 
     # --------------------------------------------------------------
@@ -136,7 +140,7 @@ this type of problem.  Do NOT include concrete values or story content.
     if not any("EVALUATE" in p["name"].upper() for p in clean_seq):
         eval_pid = (
             [pid for pid, prim in mem.primitive_metadata.items()
-             if "EVALUATE" in prim["name"].upper()] or ["P004"]
+             if "EVALUATE" in prim["name"].upper()] or ["P001"]
         )[0]
         clean_seq.append({
             "step": len(clean_seq) + 1,
@@ -144,10 +148,7 @@ this type of problem.  Do NOT include concrete values or story content.
             "name": "EVALUATE_RESULT",
             "status": "Existing"
         })
-
-    print("Generated primitives:", [p["name"] for p in clean_seq])
-    return clean_seq
-
+    return clean_seq    
 
 # ---------------------------------------------------------------------
 # Example retrieval helper (unchanged except for small fix)
@@ -206,7 +207,6 @@ def add_primitive(primitive):
     """
     Add a primitive to both graph and FAISS vector index
     """
-
 
     pid = primitive["id"]
     mem.primitive_metadata[pid] = primitive
