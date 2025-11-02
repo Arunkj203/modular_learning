@@ -246,7 +246,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
             f.write(f"\nGround Truth Answer:\n{gt}\n")
             f.write(f"\nPhase 1 - Analysis:\n{analysis}\n")
             
-
+            print(analysis)
             # Phase 2: Primitive Generation
             print(f"\nPhase 2 - Primitive Sequence Generating...\n")
 
