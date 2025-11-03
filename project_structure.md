@@ -27,11 +27,11 @@ modular_learning/
 │   ├── analyze_problems.py
 │   ├── phase_1_main.py
 │   └── preprocess.py
-├── phase_2/
-│   ├── __init__.py
-│   ├── generate_primitive.py
-│   ├── phase_2_main.py
-│   └── utils.py
+├── Phase 2: Reflective Primitive Planning
+    ├── Step 1: Retrieve primitives
+    ├── Step 2: Evaluate sufficiency  ← meta-reasoning
+    ├── Step 3: Generate missing + sequence  ← repair & planning
+    └── Step 4: Register new primitives
 ├── phase_3/
 │   ├── __init__.py
 │   ├── lora_training.py

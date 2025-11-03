@@ -4,76 +4,100 @@ from .utils import *
 from .generate_primitive import *
 
 from ..config import *
-import uuid
 
 
-def run_phase2(model, tokenizer ,problem_text, analysis):
-
+def run_phase2(model, tokenizer, problem_text, analysis):
     """
-    Phase 2: Generate a sequence of primitives to solve the problem.
+    Phase 2: Reflective primitive planning pipeline.
+
+    Steps:
+      1. Retrieve relevant primitives from the library.
+      2. Evaluate whether retrieved primitives are sufficient to solve the problem.
+      3. If not sufficient, generate new primitives and produce a final ordered sequence.
 
     Args:
-        problem_text (str): Original problem/question text
-        analysis (dict): Analysis output from Phase 1
+        model, tokenizer: LLM interface.
+        problem_text (str): The original problem text.
+        analysis (dict): Structured problem analysis (topics, tags, etc.)
 
     Returns:
-        dict: {
-            "primitive_sequence": list of primitives (input/output/description),
-            "new_primitives_to_train": list of new primitives (minimal schema)
-        }
+        tuple: (final_sequence, new_primitives)
     """
 
-    # Step 1 - Retrieve relevant primitives from library
-    existing_primitives = retrieve_primitives(analysis)
-    # print(f"Retrieved {len(existing_primitives)} relevant primitives.")
+    print("\n================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================")
 
-    summary, name_to_id = [], {}
-    if existing_primitives:
-        for p in existing_primitives:
-            summary.append({
-                "name": p.get("name", ""),
-                "description": p.get("description", ""),
-                "goal": p.get("goal", ""),
-                "type": p.get("primitive_type", ""),
-            })
-            name_to_id[p.get("name", "")] = p.get("id")
+    # --------------------------------------------------------------
+    # Step 1 — Retrieval
+    # --------------------------------------------------------------
+    print("\n[1] Retrieving relevant primitives...")
+    retrieved_primitives = retrieve_primitives(analysis)
 
+    if not retrieved_primitives:
+        print("⚠️ No primitives retrieved from memory; starting from scratch.")
+    else:
+        print(f"✅ Retrieved {len(retrieved_primitives)} candidate primitives.")
 
-    # Step 2 - Ask LLM to generate a sequence using old primitives or new ones
-    sequence_primitives = generate_primitives_from_problem(
-        model, tokenizer ,
+    # --------------------------------------------------------------
+    # Step 2 — Evaluate sufficiency of retrieved primitives
+    # --------------------------------------------------------------
+    print("\n[2] Evaluating sufficiency of retrieved primitives...")
+    sufficiency_result = evaluate_primitive_sufficiency(
+        model=model,
+        tokenizer=tokenizer,
         problem_text=problem_text,
-        summary=summary,
-        analysis=analysis
+        analysis=analysis,
+        retrieved=retrieved_primitives,
     )
-    # print(f"LLM returned {len(sequence_primitives)} primitives in sequence.")
 
+    # reuse_ids = sufficiency_result.get("reuse", [])
+    missing_caps = sufficiency_result.get("missing_capabilities", [])
+
+    if not missing_caps:
+        print(f"✅ Retrieved primitives appear sufficient.")
+    else:
+        print(f"🧠 Missing conceptual capabilities identified: {missing_caps}")
 
     # --------------------------------------------------------------
-    # Step 3 -  Separate new vs existing primitives
+    # Step 3 — Generate final sequence (reuse + new primitives)
     # --------------------------------------------------------------
-    new_prims = [p for p in sequence_primitives if p["status"] == "New"]
+    print("\n[3] Generating reasoning sequence...")
+    final_sequence = generate_primitives_with_reflection(
+        model=model,
+        tokenizer=tokenizer,
+        problem_text=problem_text,
+        analysis=analysis,
+        retrieved=retrieved_primitives,
+        sufficiency_result=sufficiency_result
+    )
 
-    # Optionally, register new primitives immediately in memory
-    for p in new_prims:
-        if "description" not in p:
-            p["description"] = f"Auto-generated primitive: {p['name']}"
-        try:
-            add_primitive(p)   # safely add to memory / FAISS index
-            print(f"[INFO] Added new primitive to memory: {p['id']} -> {p['name']}")
-        except Exception as e:
-            print(f"[ERROR] Failed to add primitive {p['id']}: {e}")
+    # --------------------------------------------------------------
+    # Step 4 — Separate and register new primitives
+    # --------------------------------------------------------------
+    new_prims = [p for p in final_sequence if p["status"] == "New"]
+
+    if new_prims:
+        print(f"Registering {len(new_prims)} new primitives into memory...")
+        for p in new_prims:
+            if "description" not in p:
+                p["description"] = f"Auto-generated primitive: {p['name']}"
+            try:
+                add_primitive(p)
+                print(f"[INFO] Added new primitive: {p['id']} — {p['name']}")
+            except Exception as e:
+                print(f"[ERROR] Could not add primitive {p['id']}: {e}")
+    else:
+        print("✅ No new primitives created.")
 
     # --------------------------------------------------------------
     # Debug summary
     # --------------------------------------------------------------
-    print("\nGenerated Primitive Sequence:")
-    for p in sequence_primitives:
-        print(f"  Step {p.get('step', '?')}: {p['id']} ({p['status']}) - {p['name']}")
+    print("\n────────────────────── Generated Reasoning Sequence ──────────────────────")
+    for p in final_sequence:
+        print(f"  Step {p.get('step', '?')}: {p['id']} ({p['status']}) — {p['name']}")
+    print(f"─────────────────────────────────────────────────────────────────────────\n")
+    print(f"Summary: {len(new_prims)} new / {len(final_sequence)} total primitives.\n")
 
-    print(f"\nSummary: {len(new_prims)} / {len(sequence_primitives)} new primitives.\n")
-
-    return sequence_primitives, new_prims # new_count
+    return final_sequence, new_prims
 
 
 # primitive_entry = {

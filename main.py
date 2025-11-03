@@ -25,8 +25,8 @@ def main():
     print(f"\nTotal primitives in memory: {len(mem.primitive_metadata)}")
     for i, (pid, meta) in enumerate(mem.primitive_metadata.items()):
         print(f"{i+1:03d}. {pid}  →  {meta.get('name', '')}")
-        if i >= 30:  # show only the first 30 to avoid flooding
-            break
+        # if i >= 30:  # show only the first 30 to avoid flooding
+        #     break
 
 
     # solve(dataset_name,"train","Training", model, tokenizer)
