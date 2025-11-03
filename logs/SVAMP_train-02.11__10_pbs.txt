@@ -14,31 +14,25 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-12 new primitves generated out of 12
-  ID: P_new_9d450 
-, prim: {'step': 1, 'id': 'P_new_9d450', 'name': 'CORE PROBLEM IDENTIFICATION', 'status': 'New', 'description': 'Auto-generated primitive: CORE PROBLEM IDENTIFICATION'} 
-  ID: P_new_5430b 
-, prim: {'step': 2, 'id': 'P_new_5430b', 'name': 'SIMPLIFICATION', 'status': 'New', 'description': 'Auto-generated primitive: SIMPLIFICATION'} 
-  ID: P_new_bebcc 
-, prim: {'step': 3, 'id': 'P_new_bebcc', 'name': 'DETERMINE OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE OPERATION'} 
-  ID: P_new_41308 
-, prim: {'step': 4, 'id': 'P_new_41308', 'name': 'IDENTIFY VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY VARIABLES'} 
-  ID: P_new_c2b7f 
-, prim: {'step': 5, 'id': 'P_new_c2b7f', 'name': 'ESTABLISH RELATIONSHIP', 'status': 'New', 'description': 'Auto-generated primitive: ESTABLISH RELATIONSHIP'} 
-  ID: P_new_4cdd9 
-, prim: {'step': 6, 'id': 'P_new_4cdd9', 'name': 'PERFORM OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM OPERATION'} 
-  ID: P_new_0c255 
-, prim: {'step': 7, 'id': 'P_new_0c255', 'name': 'CHECK UNITS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK UNITS'} 
-  ID: P_new_79064 
-, prim: {'step': 8, 'id': 'P_new_79064', 'name': 'EVALUATE INTERMEDIATE', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE INTERMEDIATE'} 
-  ID: P_new_75ef4 
-, prim: {'step': 9, 'id': 'P_new_75ef4', 'name': 'REPEAT IF NEEDED', 'status': 'New', 'description': 'Auto-generated primitive: REPEAT IF NEEDED'} 
-  ID: P_new_ecb96 
-, prim: {'step': 10, 'id': 'P_new_ecb96', 'name': 'SIMPLIFY RESULT', 'status': 'New', 'description': 'Auto-generated primitive: SIMPLIFY RESULT'} 
-  ID: P_new_7c741 
-, prim: {'step': 11, 'id': 'P_new_7c741', 'name': 'CHECK ANSWER', 'status': 'New', 'description': 'Auto-generated primitive: CHECK ANSWER'} 
-  ID: P_new_268a2 
-, prim: {'step': 12, 'id': 'P_new_268a2', 'name': 'EVALUATE RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE RESULT'} 
+8 new primitves generated out of 9
+  ID: P_new_8aaa2 
+, prim: {'step': 1, 'id': 'P_new_8aaa2', 'name': 'Core Problem Identification', 'status': 'New', 'description': 'Auto-generated primitive: Core Problem Identification'} 
+  ID: P_new_65976 
+, prim: {'step': 2, 'id': 'P_new_65976', 'name': 'Simplification', 'status': 'New', 'description': 'Auto-generated primitive: Simplification'} 
+  ID: P_new_4c28f 
+, prim: {'step': 3, 'id': 'P_new_4c28f', 'name': 'Stepwise Planning', 'status': 'New', 'description': 'Auto-generated primitive: Stepwise Planning'} 
+  ID: P_new_26063 
+, prim: {'step': 4, 'id': 'P_new_26063', 'name': 'Operation Selection', 'status': 'New', 'description': 'Auto-generated primitive: Operation Selection'} 
+  ID: P_new_92dd9 
+, prim: {'step': 5, 'id': 'P_new_92dd9', 'name': 'Quantity Identification', 'status': 'New', 'description': 'Auto-generated primitive: Quantity Identification'} 
+  ID: P_new_3f8f7 
+, prim: {'step': 6, 'id': 'P_new_3f8f7', 'name': 'Operation Execution', 'status': 'New', 'description': 'Auto-generated primitive: Operation Execution'} 
+  ID: P_new_e4d4e 
+, prim: {'step': 7, 'id': 'P_new_e4d4e', 'name': 'Result Interpretation', 'status': 'New', 'description': 'Auto-generated primitive: Result Interpretation'} 
+  ID: P_new_6bceb 
+, prim: {'step': 8, 'id': 'P_new_6bceb', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
+  ID: P001 
+, prim: {'step': 9, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
 
 ====================== Problem 2 ======================
 
@@ -53,27 +47,31 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-10 new primitves generated out of 10
-  ID: P_new_eaf5b 
-, prim: {'step': 1, 'id': 'P_new_eaf5b', 'name': 'READ_PROBLEM_STATEMENT', 'status': 'New', 'description': 'Auto-generated primitive: READ_PROBLEM_STATEMENT'} 
-  ID: P_new_0ceec 
-, prim: {'step': 2, 'id': 'P_new_0ceec', 'name': 'IDENTIFY_REQUIRED_OPERATIONS', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_REQUIRED_OPERATIONS'} 
-  ID: P_new_5abf7 
-, prim: {'step': 3, 'id': 'P_new_5abf7', 'name': 'DETERMINE_OPERATION_ORDER', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_OPERATION_ORDER'} 
-  ID: P_new_a97b2 
-, prim: {'step': 4, 'id': 'P_new_a97b2', 'name': 'PERFORM_MULTIPLICATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_MULTIPLICATION'} 
-  ID: P_new_ee8b3 
-, prim: {'step': 5, 'id': 'P_new_ee8b3', 'name': 'PERFORM_ADDITION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ADDITION'} 
-  ID: P_new_b75a4 
-, prim: {'step': 6, 'id': 'P_new_b75a4', 'name': 'STORE_INTERMEDIATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: STORE_INTERMEDIATE_RESULT'} 
-  ID: P_new_a051b 
-, prim: {'step': 7, 'id': 'P_new_a051b', 'name': 'CHECK_IF_NEXT_OPERATION_REQUIRED', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_IF_NEXT_OPERATION_REQUIRED'} 
-  ID: P_new_7a6b2 
-, prim: {'step': 8, 'id': 'P_new_7a6b2', 'name': 'REPEAT_OPERATIONS_AS_NEEDED', 'status': 'New', 'description': 'Auto-generated primitive: REPEAT_OPERATIONS_AS_NEEDED'} 
-  ID: P_new_3aeba 
-, prim: {'step': 9, 'id': 'P_new_3aeba', 'name': 'FINALIZE_FINAL_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: FINALIZE_FINAL_RESULT'} 
-  ID: P_new_db543 
-, prim: {'step': 10, 'id': 'P_new_db543', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+11 new primitves generated out of 12
+  ID: P_new_4c28f 
+, prim: {'step': 1, 'id': 'P_new_4c28f', 'name': 'Stepwise Planning', 'status': 'Existing'} 
+  ID: P_new_29cd6 
+, prim: {'step': 2, 'id': 'P_new_29cd6', 'name': 'Identify Operation', 'status': 'New', 'description': 'Auto-generated primitive: Identify Operation'} 
+  ID: P_new_5bd7a 
+, prim: {'step': 3, 'id': 'P_new_5bd7a', 'name': 'Retrieve Relevant Information', 'status': 'New', 'description': 'Auto-generated primitive: Retrieve Relevant Information'} 
+  ID: P_new_331d6 
+, prim: {'step': 4, 'id': 'P_new_331d6', 'name': 'Perform Multiplication', 'status': 'New', 'description': 'Auto-generated primitive: Perform Multiplication'} 
+  ID: P_new_b73f6 
+, prim: {'step': 5, 'id': 'P_new_b73f6', 'name': 'Perform Addition', 'status': 'New', 'description': 'Auto-generated primitive: Perform Addition'} 
+  ID: P_new_0470c 
+, prim: {'step': 6, 'id': 'P_new_0470c', 'name': 'Combine Results', 'status': 'New', 'description': 'Auto-generated primitive: Combine Results'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 7, 'id': 'P_new_d8a8b', 'name': 'Evaluate Intermediate Result', 'status': 'New', 'description': 'Auto-generated primitive: Evaluate Intermediate Result'} 
+  ID: P_new_a58c1 
+, prim: {'step': 8, 'id': 'P_new_a58c1', 'name': 'Repeat Operations', 'status': 'New', 'description': 'Auto-generated primitive: Repeat Operations'} 
+  ID: P_new_9a17f 
+, prim: {'step': 9, 'id': 'P_new_9a17f', 'name': 'Finalize Result', 'status': 'New', 'description': 'Auto-generated primitive: Finalize Result'} 
+  ID: P_new_3390d 
+, prim: {'step': 10, 'id': 'P_new_3390d', 'name': 'Evaluate Final Result', 'status': 'New', 'description': 'Auto-generated primitive: Evaluate Final Result'} 
+  ID: P_new_af6fe 
+, prim: {'step': 11, 'id': 'P_new_af6fe', 'name': 'Check Consistency', 'status': 'New', 'description': 'Auto-generated primitive: Check Consistency'} 
+  ID: P_new_b5f58 
+, prim: {'step': 12, 'id': 'P_new_b5f58', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
 
 ====================== Problem 3 ======================
 
@@ -88,31 +86,23 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-12 new primitves generated out of 12
-  ID: P_new_07fa7 
-, prim: {'step': 1, 'id': 'P_new_07fa7', 'name': 'READ_PROBLEM_STATEMENT', 'status': 'New', 'description': 'Auto-generated primitive: READ_PROBLEM_STATEMENT'} 
-  ID: P_new_205e0 
-, prim: {'step': 2, 'id': 'P_new_205e0', 'name': 'IDENTIFY_GOAL_VARIABLE', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_GOAL_VARIABLE'} 
-  ID: P_new_35d5f 
-, prim: {'step': 3, 'id': 'P_new_35d5f', 'name': 'DECOMPOSE_PROBLEM', 'status': 'New', 'description': 'Auto-generated primitive: DECOMPOSE_PROBLEM'} 
-  ID: P_new_99414 
-, prim: {'step': 4, 'id': 'P_new_99414', 'name': 'EXTRACT_OPERANDS', 'status': 'New', 'description': 'Auto-generated primitive: EXTRACT_OPERANDS'} 
-  ID: P_new_4623b 
-, prim: {'step': 5, 'id': 'P_new_4623b', 'name': 'DETERMINE_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_OPERATION'} 
-  ID: P_new_4cd87 
-, prim: {'step': 6, 'id': 'P_new_4cd87', 'name': 'PERFORM_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ARITHMETIC_OPERATION'} 
-  ID: P_new_794c2 
-, prim: {'step': 7, 'id': 'P_new_794c2', 'name': 'COMBINE_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: COMBINE_RESULTS'} 
-  ID: P_new_d8ac8 
-, prim: {'step': 8, 'id': 'P_new_d8ac8', 'name': 'EVALUATE_INTERMEDIATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_INTERMEDIATE_RESULT'} 
-  ID: P_new_f484c 
-, prim: {'step': 9, 'id': 'P_new_f484c', 'name': 'CHECK_CONSTRAINTS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_CONSTRAINTS'} 
-  ID: P_new_6dccc 
-, prim: {'step': 10, 'id': 'P_new_6dccc', 'name': 'REFINE_SOLUTION', 'status': 'New', 'description': 'Auto-generated primitive: REFINE_SOLUTION'} 
-  ID: P_new_b181c 
-, prim: {'step': 11, 'id': 'P_new_b181c', 'name': 'VALIDATE_ANSWER', 'status': 'New', 'description': 'Auto-generated primitive: VALIDATE_ANSWER'} 
-  ID: P_new_bdbeb 
-, prim: {'step': 12, 'id': 'P_new_bdbeb', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+5 new primitves generated out of 8
+  ID: P_new_8aaa2 
+, prim: {'step': 1, 'id': 'P_new_8aaa2', 'name': 'Core Problem Identification', 'status': 'Existing'} 
+  ID: P_new_92dd9 
+, prim: {'step': 2, 'id': 'P_new_92dd9', 'name': 'Quantity Identification', 'status': 'Existing'} 
+  ID: P_new_a6578 
+, prim: {'step': 3, 'id': 'P_new_a6578', 'name': 'Operation Selection', 'status': 'New', 'description': 'Auto-generated primitive: Operation Selection'} 
+  ID: P_new_52234 
+, prim: {'step': 4, 'id': 'P_new_52234', 'name': 'Magnitude Comparison', 'status': 'New', 'description': 'Auto-generated primitive: Magnitude Comparison'} 
+  ID: P_new_307d9 
+, prim: {'step': 5, 'id': 'P_new_307d9', 'name': 'Result Generation', 'status': 'New', 'description': 'Auto-generated primitive: Result Generation'} 
+  ID: P_new_c25bc 
+, prim: {'step': 6, 'id': 'P_new_c25bc', 'name': 'Result Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Result Evaluation'} 
+  ID: P_new_659f0 
+, prim: {'step': 7, 'id': 'P_new_659f0', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 8, 'id': 'P_new_d8a8b', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
 
 ====================== Problem 4 ======================
 
@@ -127,31 +117,15 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-12 new primitves generated out of 12
-  ID: P_new_a31d5 
-, prim: {'step': 1, 'id': 'P_new_a31d5', 'name': 'IDENTIFY_GOAL', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_GOAL'} 
-  ID: P_new_eb446 
-, prim: {'step': 2, 'id': 'P_new_eb446', 'name': 'DEFINE_VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: DEFINE_VARIABLES'} 
-  ID: P_new_af3f8 
-, prim: {'step': 3, 'id': 'P_new_af3f8', 'name': 'DETERMINE_UNITS', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_UNITS'} 
-  ID: P_new_87ac2 
-, prim: {'step': 4, 'id': 'P_new_87ac2', 'name': 'CONVERT_UNITS', 'status': 'New', 'description': 'Auto-generated primitive: CONVERT_UNITS'} 
-  ID: P_new_5a48b 
-, prim: {'step': 5, 'id': 'P_new_5a48b', 'name': 'IDENTIFY_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_OPERATION'} 
-  ID: P_new_e1905 
-, prim: {'step': 6, 'id': 'P_new_e1905', 'name': 'SET_UP_EQUATION', 'status': 'New', 'description': 'Auto-generated primitive: SET_UP_EQUATION'} 
-  ID: P_new_8f0df 
-, prim: {'step': 7, 'id': 'P_new_8f0df', 'name': 'PERFORM_ARITHMETIC', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ARITHMETIC'} 
-  ID: P_new_11b08 
-, prim: {'step': 8, 'id': 'P_new_11b08', 'name': 'CHECK_UNITS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_UNITS'} 
-  ID: P_new_c9dc7 
-, prim: {'step': 9, 'id': 'P_new_c9dc7', 'name': 'INTERPRET_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: INTERPRET_RESULT'} 
-  ID: P_new_cad92 
-, prim: {'step': 10, 'id': 'P_new_cad92', 'name': 'EVALUATE_REASONABLENESS', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_REASONABLENESS'} 
-  ID: P_new_1082d 
-, prim: {'step': 11, 'id': 'P_new_1082d', 'name': 'REFINE_ANSWER', 'status': 'New', 'description': 'Auto-generated primitive: REFINE_ANSWER'} 
-  ID: P_new_facf5 
-, prim: {'step': 12, 'id': 'P_new_facf5', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+1 new primitves generated out of 4
+  ID: P_new_92dd9 
+, prim: {'step': 1, 'id': 'P_new_92dd9', 'name': 'Quantity Identification', 'status': 'Existing'} 
+  ID: P_new_4c28f 
+, prim: {'step': 2, 'id': 'P_new_4c28f', 'name': 'Stepwise Planning', 'status': 'Existing'} 
+  ID: P_new_3267d 
+, prim: {'step': 3, 'id': 'P_new_3267d', 'name': 'Unit Analysis', 'status': 'New', 'description': 'Auto-generated primitive: Unit Analysis'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 4, 'id': 'P_new_d8a8b', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
 
 ====================== Problem 5 ======================
 
@@ -166,31 +140,25 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-12 new primitves generated out of 12
-  ID: P_new_dd5e7 
-, prim: {'step': 1, 'id': 'P_new_dd5e7', 'name': 'READ_PROBLEM_STATEMENT', 'status': 'New', 'description': 'Auto-generated primitive: READ_PROBLEM_STATEMENT'} 
-  ID: P_new_f2f01 
-, prim: {'step': 2, 'id': 'P_new_f2f01', 'name': 'IDENTIFY_GOAL_VARIABLE', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_GOAL_VARIABLE'} 
-  ID: P_new_a2051 
-, prim: {'step': 3, 'id': 'P_new_a2051', 'name': 'ISOLATE_RELEVANT_VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: ISOLATE_RELEVANT_VARIABLES'} 
-  ID: P_new_58089 
-, prim: {'step': 4, 'id': 'P_new_58089', 'name': 'DETERMINE_REQUIRED_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_REQUIRED_OPERATION'} 
-  ID: P_new_f8bde 
-, prim: {'step': 5, 'id': 'P_new_f8bde', 'name': 'SELECT_SUBTRACTION_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: SELECT_SUBTRACTION_OPERATION'} 
-  ID: P_new_634e4 
-, prim: {'step': 6, 'id': 'P_new_634e4', 'name': 'IDENTIFY_MINUEND', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_MINUEND'} 
-  ID: P_new_190b0 
-, prim: {'step': 7, 'id': 'P_new_190b0', 'name': 'IDENTIFY_SUBTRAHEND', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_SUBTRAHEND'} 
-  ID: P_new_80d39 
-, prim: {'step': 8, 'id': 'P_new_80d39', 'name': 'PERFORM_SUBTRACTION_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_SUBTRACTION_OPERATION'} 
-  ID: P_new_4757e 
-, prim: {'step': 9, 'id': 'P_new_4757e', 'name': 'INTERPRET_RESULT_IN_CONTEXT', 'status': 'New', 'description': 'Auto-generated primitive: INTERPRET_RESULT_IN_CONTEXT'} 
-  ID: P_new_8f690 
-, prim: {'step': 10, 'id': 'P_new_8f690', 'name': 'CHECK_REASONABLENESS_OF_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_REASONABLENESS_OF_RESULT'} 
-  ID: P_new_9ac65 
-, prim: {'step': 11, 'id': 'P_new_9ac65', 'name': 'REFINE_ANSWER_IF_NEEDED', 'status': 'New', 'description': 'Auto-generated primitive: REFINE_ANSWER_IF_NEEDED'} 
-  ID: P_new_97fe4 
-, prim: {'step': 12, 'id': 'P_new_97fe4', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+8 new primitves generated out of 9
+  ID: P_new_b1c78 
+, prim: {'step': 1, 'id': 'P_new_b1c78', 'name': 'Core Problem Identification', 'status': 'New', 'description': 'Auto-generated primitive: Core Problem Identification'} 
+  ID: P_new_d665b 
+, prim: {'step': 2, 'id': 'P_new_d665b', 'name': 'Isolate Essential Variables', 'status': 'New', 'description': 'Auto-generated primitive: Isolate Essential Variables'} 
+  ID: P_new_ae592 
+, prim: {'step': 3, 'id': 'P_new_ae592', 'name': 'Define Goal State', 'status': 'New', 'description': 'Auto-generated primitive: Define Goal State'} 
+  ID: P_new_957ae 
+, prim: {'step': 4, 'id': 'P_new_957ae', 'name': 'Determine Current State', 'status': 'New', 'description': 'Auto-generated primitive: Determine Current State'} 
+  ID: P_new_714ca 
+, prim: {'step': 5, 'id': 'P_new_714ca', 'name': 'Analyze Gap Between States', 'status': 'New', 'description': 'Auto-generated primitive: Analyze Gap Between States'} 
+  ID: P_new_b8b02 
+, prim: {'step': 6, 'id': 'P_new_b8b02', 'name': 'Perform Subtraction', 'status': 'New', 'description': 'Auto-generated primitive: Perform Subtraction'} 
+  ID: P_new_2f081 
+, prim: {'step': 7, 'id': 'P_new_2f081', 'name': 'Interpret Result', 'status': 'New', 'description': 'Auto-generated primitive: Interpret Result'} 
+  ID: P_new_a0d53 
+, prim: {'step': 8, 'id': 'P_new_a0d53', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 9, 'id': 'P_new_d8a8b', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
 
 ====================== Problem 6 ======================
 
@@ -205,31 +173,15 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-12 new primitves generated out of 12
-  ID: P_new_3c656 
-, prim: {'step': 1, 'id': 'P_new_3c656', 'name': 'IDENTIFY_GOAL', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_GOAL'} 
-  ID: P_new_a26b2 
-, prim: {'step': 2, 'id': 'P_new_a26b2', 'name': 'DEFINE_VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: DEFINE_VARIABLES'} 
-  ID: P_new_f94a7 
-, prim: {'step': 3, 'id': 'P_new_f94a7', 'name': 'DETERMINE_UNITS', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_UNITS'} 
-  ID: P_new_77399 
-, prim: {'step': 4, 'id': 'P_new_77399', 'name': 'CONVERT_UNITS', 'status': 'New', 'description': 'Auto-generated primitive: CONVERT_UNITS'} 
-  ID: P_new_17d19 
-, prim: {'step': 5, 'id': 'P_new_17d19', 'name': 'IDENTIFY_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_OPERATION'} 
-  ID: P_new_e652d 
-, prim: {'step': 6, 'id': 'P_new_e652d', 'name': 'SET_UP_EQUATION', 'status': 'New', 'description': 'Auto-generated primitive: SET_UP_EQUATION'} 
-  ID: P_new_2318a 
-, prim: {'step': 7, 'id': 'P_new_2318a', 'name': 'PERFORM_ARITHMETIC', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ARITHMETIC'} 
-  ID: P_new_e135f 
-, prim: {'step': 8, 'id': 'P_new_e135f', 'name': 'CHECK_UNITS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_UNITS'} 
-  ID: P_new_27750 
-, prim: {'step': 9, 'id': 'P_new_27750', 'name': 'INTERPRET_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: INTERPRET_RESULT'} 
-  ID: P_new_52968 
-, prim: {'step': 10, 'id': 'P_new_52968', 'name': 'EVALUATE_REASONABLENESS', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_REASONABLENESS'} 
-  ID: P_new_374b7 
-, prim: {'step': 11, 'id': 'P_new_374b7', 'name': 'REFINE_ANSWER', 'status': 'New', 'description': 'Auto-generated primitive: REFINE_ANSWER'} 
-  ID: P_new_c03f1 
-, prim: {'step': 12, 'id': 'P_new_c03f1', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+1 new primitves generated out of 4
+  ID: P_new_92dd9 
+, prim: {'step': 1, 'id': 'P_new_92dd9', 'name': 'Quantity Identification', 'status': 'Existing'} 
+  ID: P_new_4c28f 
+, prim: {'step': 2, 'id': 'P_new_4c28f', 'name': 'Stepwise Planning', 'status': 'Existing'} 
+  ID: P_new_bc5b7 
+, prim: {'step': 3, 'id': 'P_new_bc5b7', 'name': 'Unit Analysis', 'status': 'New', 'description': 'Auto-generated primitive: Unit Analysis'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 4, 'id': 'P_new_d8a8b', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
 
 ====================== Problem 7 ======================
 
@@ -244,31 +196,21 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-12 new primitves generated out of 12
-  ID: P_new_af765 
-, prim: {'step': 1, 'id': 'P_new_af765', 'name': 'CORE_PROBLEM_IDENTIFICATION', 'status': 'New', 'description': 'Auto-generated primitive: CORE_PROBLEM_IDENTIFICATION'} 
-  ID: P_new_201cf 
-, prim: {'step': 2, 'id': 'P_new_201cf', 'name': 'DEFINE_GOAL_STATE', 'status': 'New', 'description': 'Auto-generated primitive: DEFINE_GOAL_STATE'} 
-  ID: P_new_ab69b 
-, prim: {'step': 3, 'id': 'P_new_ab69b', 'name': 'EXTRACT_RELEVANT_VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: EXTRACT_RELEVANT_VARIABLES'} 
-  ID: P_new_b7b5c 
-, prim: {'step': 4, 'id': 'P_new_b7b5c', 'name': 'STEPWISE_PLANNING', 'status': 'New', 'description': 'Auto-generated primitive: STEPWISE_PLANNING'} 
-  ID: P_new_c8b3d 
-, prim: {'step': 5, 'id': 'P_new_c8b3d', 'name': 'PERFORM_ADDITION_SUBTRACTION_OPERATIONS', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ADDITION_SUBTRACTION_OPERATIONS'} 
-  ID: P_new_a8414 
-, prim: {'step': 6, 'id': 'P_new_a8414', 'name': 'EVALUATE_INTERMEDIATE_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_INTERMEDIATE_RESULTS'} 
-  ID: P_new_77722 
-, prim: {'step': 7, 'id': 'P_new_77722', 'name': 'CHECK_CONSISTENCY_OF_RESULTS', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_CONSISTENCY_OF_RESULTS'} 
-  ID: P_new_78c0d 
-, prim: {'step': 8, 'id': 'P_new_78c0d', 'name': 'VERIFY_PROGRESS_TOWARD_CORRECTNESS', 'status': 'New', 'description': 'Auto-generated primitive: VERIFY_PROGRESS_TOWARD_CORRECTNESS'} 
-  ID: P_new_fdac4 
-, prim: {'step': 9, 'id': 'P_new_fdac4', 'name': 'REPEAT_STEPS_IF_NEEDED', 'status': 'New', 'description': 'Auto-generated primitive: REPEAT_STEPS_IF_NEEDED'} 
-  ID: P_new_2c490 
-, prim: {'step': 10, 'id': 'P_new_2c490', 'name': 'FINAL_EVALUATION_OF_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: FINAL_EVALUATION_OF_RESULT'} 
-  ID: P_new_ee2fb 
-, prim: {'step': 11, 'id': 'P_new_ee2fb', 'name': 'ERROR_CHECKING_AND_DEBUGGING', 'status': 'New', 'description': 'Auto-generated primitive: ERROR_CHECKING_AND_DEBUGGING'} 
-  ID: P_new_59eeb 
-, prim: {'step': 12, 'id': 'P_new_59eeb', 'name': 'EVALUATE_FINAL_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_FINAL_RESULT'} 
+4 new primitves generated out of 7
+  ID: P_new_4c28f 
+, prim: {'step': 1, 'id': 'P_new_4c28f', 'name': 'Stepwise Planning', 'status': 'Existing'} 
+  ID: P_new_72039 
+, prim: {'step': 2, 'id': 'P_new_72039', 'name': 'Core Problem Identification', 'status': 'New', 'description': 'Auto-generated primitive: Core Problem Identification'} 
+  ID: P_new_b8b02 
+, prim: {'step': 3, 'id': 'P_new_b8b02', 'name': 'Perform Subtraction', 'status': 'Existing'} 
+  ID: P_new_0c7ef 
+, prim: {'step': 5, 'id': 'P_new_0c7ef', 'name': 'Perform Addition', 'status': 'New', 'description': 'Auto-generated primitive: Perform Addition'} 
+  ID: P_new_c0595 
+, prim: {'step': 7, 'id': 'P_new_c0595', 'name': 'Progress Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Progress Evaluation'} 
+  ID: P_new_2fe90 
+, prim: {'step': 12, 'id': 'P_new_2fe90', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 7, 'id': 'P_new_d8a8b', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
 
 ====================== Problem 8 ======================
 
@@ -283,23 +225,31 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-8 new primitves generated out of 8
-  ID: P_new_feb69 
-, prim: {'step': 1, 'id': 'P_new_feb69', 'name': 'CORE_PROBLEM_IDENTIFICATION', 'status': 'New', 'description': 'Auto-generated primitive: CORE_PROBLEM_IDENTIFICATION'} 
-  ID: P_new_80b70 
-, prim: {'step': 2, 'id': 'P_new_80b70', 'name': 'DEFINE_GOAL_STATE', 'status': 'New', 'description': 'Auto-generated primitive: DEFINE_GOAL_STATE'} 
-  ID: P_new_9a0c6 
-, prim: {'step': 3, 'id': 'P_new_9a0c6', 'name': 'EXTRACT_RELEVANT_VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: EXTRACT_RELEVANT_VARIABLES'} 
-  ID: P_new_2f312 
-, prim: {'step': 4, 'id': 'P_new_2f312', 'name': 'DETERMINE_REQUIRED_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_REQUIRED_OPERATION'} 
-  ID: P_new_568c7 
-, prim: {'step': 5, 'id': 'P_new_568c7', 'name': 'PERFORM_SUBTRACTION_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_SUBTRACTION_OPERATION'} 
-  ID: P_new_082ba 
-, prim: {'step': 6, 'id': 'P_new_082ba', 'name': 'COMPARE_RESULTS_TO_GOAL', 'status': 'New', 'description': 'Auto-generated primitive: COMPARE_RESULTS_TO_GOAL'} 
-  ID: P_new_b1b42 
-, prim: {'step': 7, 'id': 'P_new_b1b42', 'name': 'ORDER_RESULTS_IF_NECESSARY', 'status': 'New', 'description': 'Auto-generated primitive: ORDER_RESULTS_IF_NECESSARY'} 
-  ID: P_new_b99b6 
-, prim: {'step': 8, 'id': 'P_new_b99b6', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+11 new primitves generated out of 12
+  ID: P_new_4c28f 
+, prim: {'step': 1, 'id': 'P_new_4c28f', 'name': 'Stepwise Planning', 'status': 'Existing'} 
+  ID: P_new_4687d 
+, prim: {'step': 2, 'id': 'P_new_4687d', 'name': 'Identify Goal', 'status': 'New', 'description': 'Auto-generated primitive: Identify Goal'} 
+  ID: P_new_e7f38 
+, prim: {'step': 3, 'id': 'P_new_e7f38', 'name': 'Extract Relevant Information', 'status': 'New', 'description': 'Auto-generated primitive: Extract Relevant Information'} 
+  ID: P_new_07681 
+, prim: {'step': 4, 'id': 'P_new_07681', 'name': 'Determine Operation', 'status': 'New', 'description': 'Auto-generated primitive: Determine Operation'} 
+  ID: P_new_3e3e0 
+, prim: {'step': 5, 'id': 'P_new_3e3e0', 'name': 'Perform Subtraction', 'status': 'New', 'description': 'Auto-generated primitive: Perform Subtraction'} 
+  ID: P_new_cd155 
+, prim: {'step': 6, 'id': 'P_new_cd155', 'name': 'Compare Results', 'status': 'New', 'description': 'Auto-generated primitive: Compare Results'} 
+  ID: P_new_c7f2f 
+, prim: {'step': 7, 'id': 'P_new_c7f2f', 'name': 'Determine Ordering', 'status': 'New', 'description': 'Auto-generated primitive: Determine Ordering'} 
+  ID: P_new_0ab69 
+, prim: {'step': 8, 'id': 'P_new_0ab69', 'name': 'Evaluate Comparison', 'status': 'New', 'description': 'Auto-generated primitive: Evaluate Comparison'} 
+  ID: P_new_9e632 
+, prim: {'step': 9, 'id': 'P_new_9e632', 'name': 'Refine Ordering', 'status': 'New', 'description': 'Auto-generated primitive: Refine Ordering'} 
+  ID: P_new_bcab0 
+, prim: {'step': 10, 'id': 'P_new_bcab0', 'name': 'Verify Solution', 'status': 'New', 'description': 'Auto-generated primitive: Verify Solution'} 
+  ID: P_new_ddf76 
+, prim: {'step': 11, 'id': 'P_new_ddf76', 'name': 'Evaluate Solution', 'status': 'New', 'description': 'Auto-generated primitive: Evaluate Solution'} 
+  ID: P_new_96087 
+, prim: {'step': 12, 'id': 'P_new_96087', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
 
 ====================== Problem 9 ======================
 
@@ -314,25 +264,19 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-9 new primitves generated out of 9
-  ID: P_new_f3d59 
-, prim: {'step': 1, 'id': 'P_new_f3d59', 'name': 'READ_PROBLEM_STATEMENT', 'status': 'New', 'description': 'Auto-generated primitive: READ_PROBLEM_STATEMENT'} 
-  ID: P_new_02cdb 
-, prim: {'step': 2, 'id': 'P_new_02cdb', 'name': 'IDENTIFY_GOAL_VARIABLE', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_GOAL_VARIABLE'} 
-  ID: P_new_0a573 
-, prim: {'step': 3, 'id': 'P_new_0a573', 'name': 'EXTRACT_RELEVANT_INFORMATION', 'status': 'New', 'description': 'Auto-generated primitive: EXTRACT_RELEVANT_INFORMATION'} 
-  ID: P_new_dd4d3 
-, prim: {'step': 4, 'id': 'P_new_dd4d3', 'name': 'DEFINE_REQUIRED_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: DEFINE_REQUIRED_ARITHMETIC_OPERATION'} 
-  ID: P_new_42311 
-, prim: {'step': 5, 'id': 'P_new_42311', 'name': 'DETERMINE_INVOLVED_VALUES', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_INVOLVED_VALUES'} 
-  ID: P_new_a62bf 
-, prim: {'step': 6, 'id': 'P_new_a62bf', 'name': 'PERFORM_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ARITHMETIC_OPERATION'} 
-  ID: P_new_bbef6 
-, prim: {'step': 7, 'id': 'P_new_bbef6', 'name': 'CHECK_INTERMEDIATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_INTERMEDIATE_RESULT'} 
-  ID: P_new_5bbc6 
-, prim: {'step': 8, 'id': 'P_new_5bbc6', 'name': 'REFINE_RESULT_IF_NEEDED', 'status': 'New', 'description': 'Auto-generated primitive: REFINE_RESULT_IF_NEEDED'} 
-  ID: P_new_191b9 
-, prim: {'step': 9, 'id': 'P_new_191b9', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+3 new primitves generated out of 6
+  ID: P_new_4c28f 
+, prim: {'step': 1, 'id': 'P_new_4c28f', 'name': 'Stepwise Planning', 'status': 'Existing'} 
+  ID: P_new_1edc3 
+, prim: {'step': 2, 'id': 'P_new_1edc3', 'name': 'Core Problem Identification', 'status': 'New', 'description': 'Auto-generated primitive: Core Problem Identification'} 
+  ID: P_new_a6788 
+, prim: {'step': 4, 'id': 'P_new_a6788', 'name': 'Perform Addition', 'status': 'New', 'description': 'Auto-generated primitive: Perform Addition'} 
+  ID: P_new_b8b02 
+, prim: {'step': 5, 'id': 'P_new_b8b02', 'name': 'Perform Subtraction', 'status': 'Existing'} 
+  ID: P_new_99f8d 
+, prim: {'step': 7, 'id': 'P_new_99f8d', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 6, 'id': 'P_new_d8a8b', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
 
 ====================== Problem 10 ======================
 
@@ -347,24 +291,20 @@ Phase 1 - Analysis:
 
 Phase 2 - Primitive Sequence:
 
-10 new primitves generated out of 10
-  ID: P_new_d25b0 
-, prim: {'step': 1, 'id': 'P_new_d25b0', 'name': 'READ_PROBLEM_STATEMENT', 'status': 'New', 'description': 'Auto-generated primitive: READ_PROBLEM_STATEMENT'} 
-  ID: P_new_6ada6 
-, prim: {'step': 2, 'id': 'P_new_6ada6', 'name': 'IDENTIFY_GOAL_VARIABLE', 'status': 'New', 'description': 'Auto-generated primitive: IDENTIFY_GOAL_VARIABLE'} 
-  ID: P_new_c5d05 
-, prim: {'step': 3, 'id': 'P_new_c5d05', 'name': 'ISOLATE_ESSENTIAL_VARIABLES', 'status': 'New', 'description': 'Auto-generated primitive: ISOLATE_ESSENTIAL_VARIABLES'} 
-  ID: P_new_8bd88 
-, prim: {'step': 4, 'id': 'P_new_8bd88', 'name': 'SIMPLIFY_PROBLEM_STATEMENT', 'status': 'New', 'description': 'Auto-generated primitive: SIMPLIFY_PROBLEM_STATEMENT'} 
-  ID: P_new_b0b81 
-, prim: {'step': 5, 'id': 'P_new_b0b81', 'name': 'DETERMINE_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: DETERMINE_ARITHMETIC_OPERATION'} 
-  ID: P_new_e13c6 
-, prim: {'step': 6, 'id': 'P_new_e13c6', 'name': 'BREAK_DOWN_NUMBERS_IF_NECESSARY', 'status': 'New', 'description': 'Auto-generated primitive: BREAK_DOWN_NUMBERS_IF_NECESSARY'} 
-  ID: P_new_085bd 
-, prim: {'step': 7, 'id': 'P_new_085bd', 'name': 'PERFORM_ARITHMETIC_OPERATION', 'status': 'New', 'description': 'Auto-generated primitive: PERFORM_ARITHMETIC_OPERATION'} 
-  ID: P_new_2efc1 
-, prim: {'step': 8, 'id': 'P_new_2efc1', 'name': 'CHECK_INTERMEDIATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: CHECK_INTERMEDIATE_RESULT'} 
-  ID: P_new_84edf 
-, prim: {'step': 9, 'id': 'P_new_84edf', 'name': 'COMBINE_RESULTS_IF_NECESSARY', 'status': 'New', 'description': 'Auto-generated primitive: COMBINE_RESULTS_IF_NECESSARY'} 
-  ID: P_new_c2d20 
-, prim: {'step': 10, 'id': 'P_new_c2d20', 'name': 'EVALUATE_RESULT', 'status': 'New', 'description': 'Auto-generated primitive: EVALUATE_RESULT'} 
+0 new primitves generated out of 8
+  ID: P_new_92dd9 
+, prim: {'step': 1, 'id': 'P_new_92dd9', 'name': 'Quantity Identification', 'status': 'Existing'} 
+  ID: P_new_65976 
+, prim: {'step': 2, 'id': 'P_new_65976', 'name': 'Simplification', 'status': 'Existing'} 
+  ID: P_new_b73f6 
+, prim: {'step': 3, 'id': 'P_new_b73f6', 'name': 'Perform Addition', 'status': 'Existing'} 
+  ID: P_new_b8b02 
+, prim: {'step': 4, 'id': 'P_new_b8b02', 'name': 'Perform Subtraction', 'status': 'Existing'} 
+  ID: P_new_a6788 
+, prim: {'step': 5, 'id': 'P_new_a6788', 'name': 'Perform Addition', 'status': 'Existing'} 
+  ID: P_new_0c7ef 
+, prim: {'step': 6, 'id': 'P_new_0c7ef', 'name': 'Perform Addition', 'status': 'Existing'} 
+  ID: P_new_3e3e0 
+, prim: {'step': 7, 'id': 'P_new_3e3e0', 'name': 'Perform Subtraction', 'status': 'Existing'} 
+  ID: P_new_d8a8b 
+, prim: {'step': 8, 'id': 'P_new_d8a8b', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
