@@ -1,0 +1,238 @@
+=== Training on SVAMP ===
+
+
+====================== Problem 1 ======================
+
+Question:
+Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?
+
+Ground Truth Answer:
+70.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Multiplication', 'Division'], 'tags': ['multi-step', 'proportional', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}, {'name': 'Simplification', 'description': 'Rephrase or reduce the problem into an easier equivalent form while preserving meaning.'}]}
+
+Phase 2 - Primitive Sequence:
+
+6 new primitves generated out of 7
+  ID: P_new_f6a7e 
+, prim: {'step': 1, 'id': 'P_new_f6a7e', 'name': 'Core Problem Identification', 'status': 'New', 'description': 'Auto-generated primitive: Core Problem Identification'} 
+  ID: P_new_d8b31 
+, prim: {'step': 2, 'id': 'P_new_d8b31', 'name': 'Simplification', 'status': 'New', 'description': 'Auto-generated primitive: Simplification'} 
+  ID: P_new_b1d9c 
+, prim: {'step': 3, 'id': 'P_new_b1d9c', 'name': 'Basic Arithmetic Operations (Multiplication, Division)', 'status': 'New', 'description': 'Auto-generated primitive: Basic Arithmetic Operations (Multiplication, Division)'} 
+  ID: P_new_8cc90 
+, prim: {'step': 4, 'id': 'P_new_8cc90', 'name': 'Stepwise Planning', 'status': 'New', 'description': 'Auto-generated primitive: Stepwise Planning'} 
+  ID: P_new_f3505 
+, prim: {'step': 5, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'New', 'description': 'Auto-generated primitive: Step-by-Step Reasoning'} 
+  ID: P_new_81186 
+, prim: {'step': 6, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'New', 'description': 'Auto-generated primitive: Evaluation'} 
+  ID: P001 
+, prim: {'step': 7, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 2 ======================
+
+Question:
+Each basket of peaches has 19 red peaches and 4 green peaches. If there are 15 such baskets How many peaches are in the baskets altogether?
+
+Ground Truth Answer:
+345.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Multiplication', 'Addition'], 'tags': ['multi-step', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 5
+  ID: P_new_8cc90 
+, prim: {'step': 1, 'id': 'P_new_8cc90', 'name': 'Stepwise Planning', 'status': 'Existing'} 
+  ID: P_new_f3505 
+, prim: {'step': 2, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_b1d9c 
+, prim: {'step': 3, 'id': 'P_new_b1d9c', 'name': 'Basic Arithmetic Operations (Multiplication, Division)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 4, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 5, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 3 ======================
+
+Question:
+Nell collects cards. She had 309 baseball cards and 356 Ace cards. She gave some of her cards to Jeff and now has 415 baseball cards and Ace cards left. How many more baseball cards than Ace cards does Nell have?
+
+Ground Truth Answer:
+266.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Decomposition', 'description': 'Break down the problem into smaller, sequential or parallel parts that are easier to solve individually.'}]}
+
+Phase 2 - Primitive Sequence:
+
+1 new primitves generated out of 4
+  ID: P_new_f3505 
+, prim: {'step': 1, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_bd7f7 
+, prim: {'step': 2, 'id': 'P_new_bd7f7', 'name': 'Basic Arithmetic Operations (Addition, Subtraction)', 'status': 'New', 'description': 'Auto-generated primitive: Basic Arithmetic Operations (Addition, Subtraction)', 'related_primitives': ['P_new_b1d9c']} 
+  ID: P_new_81186 
+, prim: {'step': 3, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 4, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 4 ======================
+
+Question:
+There are 270 students in a school. If the school has 5 students in each grades and each grade has the same number of students How many grades are there in total?
+
+Ground Truth Answer:
+54.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Division', 'Units and Conversions'], 'tags': ['single-step', 'proportional', 'symbolic', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 4
+  ID: P_new_f3505 
+, prim: {'step': 1, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_b1d9c 
+, prim: {'step': 2, 'id': 'P_new_b1d9c', 'name': 'Basic Arithmetic Operations (Multiplication, Division)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 3, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 4, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 5 ======================
+
+Question:
+In a school there are 34 girls and 841 boys. How many more boys than girls does the school have?
+
+Ground Truth Answer:
+807.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Subtraction'], 'tags': ['single-step', 'comparison', 'arithmetic-chain'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 4
+  ID: P_new_f3505 
+, prim: {'step': 1, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_bd7f7 
+, prim: {'step': 2, 'id': 'P_new_bd7f7', 'name': 'Basic Arithmetic Operations (Addition, Subtraction)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 3, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 4, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 6 ======================
+
+Question:
+He then went to see the oranges being harvested. He found out that they harvested 54 sacks of oranges. How many days did it take to harvest them if they harvested 18 sacks of oranges per day?
+
+Ground Truth Answer:
+3.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Division', 'Units and Conversions'], 'tags': ['single-step', 'proportional', 'symbolic', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 4
+  ID: P_new_f3505 
+, prim: {'step': 1, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_b1d9c 
+, prim: {'step': 2, 'id': 'P_new_b1d9c', 'name': 'Basic Arithmetic Operations (Multiplication, Division)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 3, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 4, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 7 ======================
+
+Question:
+Zachary did 46 push-ups and 58 crunches in gym class today. David did 38 more push-ups but 62 less crunches than zachary. How many more crunches than push-ups did Zachary do?
+
+Ground Truth Answer:
+12.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}, {'name': 'Progress Evaluation', 'description': 'Monitor intermediate results, check for consistency, and verify whether the solution is converging toward correctness.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 4
+  ID: P_new_f3505 
+, prim: {'step': 1, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_bd7f7 
+, prim: {'step': 2, 'id': 'P_new_bd7f7', 'name': 'Basic Arithmetic Operations (Addition, Subtraction)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 3, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 4, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 8 ======================
+
+Question:
+After a typhoon, 13 trees in Haley's backyard died. If she had grown 3 trees initially How many more trees died in the typhoon than those that survived?
+
+Ground Truth Answer:
+23.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Subtraction', 'Comparisons and Ordering'], 'tags': ['single-step', 'comparison', 'arithmetic-chain', 'contextual'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 4
+  ID: P_new_f3505 
+, prim: {'step': 1, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_bd7f7 
+, prim: {'step': 2, 'id': 'P_new_bd7f7', 'name': 'Basic Arithmetic Operations (Addition, Subtraction)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 3, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 4, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 9 ======================
+
+Question:
+A book has 2 chapters. The second chapter is 36 pages long. If there are a total of 67 pages in the book How many pages are in the first chapter?
+
+Ground Truth Answer:
+31.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['single-step', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 4
+  ID: P_new_f3505 
+, prim: {'step': 1, 'id': 'P_new_f3505', 'name': 'Step-by-Step Reasoning', 'status': 'Existing'} 
+  ID: P_new_bd7f7 
+, prim: {'step': 2, 'id': 'P_new_bd7f7', 'name': 'Basic Arithmetic Operations (Addition, Subtraction)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 3, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 4, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
+
+====================== Problem 10 ======================
+
+Question:
+During summer break 610769 kids from Lawrence county go to camp and the other 590796 kids stay home. An additional 22 kids from outside the county attended the camp. About how many kids are in Lawrence county?
+
+Ground Truth Answer:
+1201565.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'unit-consistency', 'estimation'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Simplification', 'description': 'Rephrase or reduce the problem into an easier equivalent form while preserving meaning.'}]}
+
+Phase 2 - Primitive Sequence:
+
+0 new primitves generated out of 3
+  ID: P_new_bd7f7 
+, prim: {'step': 1, 'id': 'P_new_bd7f7', 'name': 'Basic Arithmetic Operations (Addition, Subtraction)', 'status': 'Existing'} 
+  ID: P_new_81186 
+, prim: {'step': 2, 'id': 'P_new_81186', 'name': 'Evaluation', 'status': 'Existing'} 
+  ID: P001 
+, prim: {'step': 3, 'id': 'P001', 'name': 'EVALUATE_RESULT', 'status': 'Existing'} 
