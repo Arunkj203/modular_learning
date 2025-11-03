@@ -1,0 +1,429 @@
+Loading tokenizer for meta-llama/Meta-Llama-3-70B-Instruct...
+Loading model meta-llama/Meta-Llama-3-70B-Instruct in 4-bit mode on GPU...
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [01:52<00:00,  3.73s/it]
+Model and tokenizer loaded for SVAMP.
+/home/arunkumar/mtp-project/modular_learning/primitve_storage/primitive_graph.gpickle not found, starting with empty graph
+/home/arunkumar/mtp-project/modular_learning/primitve_storage/primitive_vectors.index not found, starting with empty FAISS index (dim=384)
+/home/arunkumar/mtp-project/modular_learning/primitve_storage/primitive_maps.pkl not found, starting with empty metadata
+
+  Loaded 0 primitives total.
+   - FAISS index entries: 0
+   - ID map entries: 0
+
+Log saving in file:/home/arunkumar/mtp-project/modular_learning/logs/SVAMP_train-03.11__10_pbs[Test 1].txt
+====================== Problem 1 ======================
+
+Phase 1 - Analysing...
+
+`generation_config` default values have been modified to match model-specific defaults: {'bos_token_id': 128000}. If this is not desired, please set these values explicitly.
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Multiplication', 'Division'], 'tags': ['multi-step', 'proportional', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}, {'name': 'Simplification', 'description': 'Rephrase or reduce the problem into an easier equivalent form while preserving meaning.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+No primitives in memory index yet.
+No primitives retrieved from memory; starting from scratch.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Missing conceptual capabilities identified: ['Basic Arithmetic Operations (Multiplication, Division)']
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+[NEW] Added new primitive: P_new_f6a7e — Core Problem Identification
+[NEW] Added new primitive: P_new_d8b31 — Simplification
+[NEW] Added new primitive: P_new_b1d9c — Basic Arithmetic Operations (Multiplication, Division)
+[NEW] Added new primitive: P_new_8cc90 — Stepwise Planning
+[NEW] Added new primitive: P_new_f3505 — Step-by-Step Reasoning
+[NEW] Added new primitive: P_new_81186 — Evaluation
+Registering 6 new primitives into memory...
+[INFO] Added new primitive: P_new_f6a7e — Core Problem Identification
+[INFO] Added new primitive: P_new_d8b31 — Simplification
+[INFO] Added new primitive: P_new_b1d9c — Basic Arithmetic Operations (Multiplication, Division)
+[INFO] Added new primitive: P_new_8cc90 — Stepwise Planning
+[INFO] Added new primitive: P_new_f3505 — Step-by-Step Reasoning
+[INFO] Added new primitive: P_new_81186 — Evaluation
+[GRAPH] Added 6 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f6a7e (New) — Core Problem Identification
+  Step 2: P_new_d8b31 (New) — Simplification
+  Step 3: P_new_b1d9c (New) — Basic Arithmetic Operations (Multiplication, Division)
+  Step 4: P_new_8cc90 (New) — Stepwise Planning
+  Step 5: P_new_f3505 (New) — Step-by-Step Reasoning
+  Step 6: P_new_81186 (New) — Evaluation
+  Step 7: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 6 new / 7 total primitives.
+
+
+6 new primitves generated out of 7
+
+
+====================== Problem 1 Solved ======================
+
+====================== Problem 2 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Multiplication', 'Addition'], 'tags': ['multi-step', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 4 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 4 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_8cc90 (Existing) — Stepwise Planning
+  Step 2: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 3: P_new_b1d9c (Existing) — Basic Arithmetic Operations (Multiplication, Division)
+  Step 4: P_new_81186 (Existing) — Evaluation
+  Step 5: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 5 total primitives.
+
+
+0 new primitves generated out of 5
+
+
+====================== Problem 2 Solved ======================
+
+====================== Problem 3 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Decomposition', 'description': 'Break down the problem into smaller, sequential or parallel parts that are easier to solve individually.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 3 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Missing conceptual capabilities identified: ['Basic Arithmetic Operations (Addition, Subtraction)']
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+[NEW] Added new primitive: P_new_bd7f7 — Basic Arithmetic Operations (Addition, Subtraction)
+Registering 1 new primitives into memory...
+[LINK] P_new_bd7f7 semantically linked to 1 primitives.
+[INFO] Added new primitive: P_new_bd7f7 — Basic Arithmetic Operations (Addition, Subtraction)
+[GRAPH] Added 3 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 2: P_new_bd7f7 (New) — Basic Arithmetic Operations (Addition, Subtraction)
+  Step 3: P_new_81186 (Existing) — Evaluation
+  Step 4: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 1 new / 4 total primitives.
+
+
+1 new primitves generated out of 4
+
+
+====================== Problem 3 Solved ======================
+
+====================== Problem 4 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Division', 'Units and Conversions'], 'tags': ['single-step', 'proportional', 'symbolic', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 4 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 3 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 2: P_new_b1d9c (Existing) — Basic Arithmetic Operations (Multiplication, Division)
+  Step 3: P_new_81186 (Existing) — Evaluation
+  Step 4: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 4 total primitives.
+
+
+0 new primitves generated out of 4
+
+
+====================== Problem 4 Solved ======================
+
+====================== Problem 5 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Subtraction'], 'tags': ['single-step', 'comparison', 'arithmetic-chain'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 4 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 3 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 2: P_new_bd7f7 (Existing) — Basic Arithmetic Operations (Addition, Subtraction)
+  Step 3: P_new_81186 (Existing) — Evaluation
+  Step 4: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 4 total primitives.
+
+
+0 new primitves generated out of 4
+
+
+====================== Problem 5 Solved ======================
+
+====================== Problem 6 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Division', 'Units and Conversions'], 'tags': ['single-step', 'proportional', 'symbolic', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 4 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 3 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 2: P_new_b1d9c (Existing) — Basic Arithmetic Operations (Multiplication, Division)
+  Step 3: P_new_81186 (Existing) — Evaluation
+  Step 4: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 4 total primitives.
+
+
+0 new primitves generated out of 4
+
+
+====================== Problem 6 Solved ======================
+
+====================== Problem 7 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}, {'name': 'Progress Evaluation', 'description': 'Monitor intermediate results, check for consistency, and verify whether the solution is converging toward correctness.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 4 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 3 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 2: P_new_bd7f7 (Existing) — Basic Arithmetic Operations (Addition, Subtraction)
+  Step 3: P_new_81186 (Existing) — Evaluation
+  Step 4: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 4 total primitives.
+
+
+0 new primitves generated out of 4
+
+
+====================== Problem 7 Solved ======================
+
+====================== Problem 8 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Subtraction', 'Comparisons and Ordering'], 'tags': ['single-step', 'comparison', 'arithmetic-chain', 'contextual'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 4 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 3 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 2: P_new_bd7f7 (Existing) — Basic Arithmetic Operations (Addition, Subtraction)
+  Step 3: P_new_81186 (Existing) — Evaluation
+  Step 4: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 4 total primitives.
+
+
+0 new primitves generated out of 4
+
+
+====================== Problem 8 Solved ======================
+
+====================== Problem 9 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['single-step', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 4 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 3 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_f3505 (Existing) — Step-by-Step Reasoning
+  Step 2: P_new_bd7f7 (Existing) — Basic Arithmetic Operations (Addition, Subtraction)
+  Step 3: P_new_81186 (Existing) — Evaluation
+  Step 4: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 4 total primitives.
+
+
+0 new primitves generated out of 4
+
+
+====================== Problem 9 Solved ======================
+
+====================== Problem 10 ======================
+
+Phase 1 - Analysing...
+
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Addition', 'Subtraction'], 'tags': ['multi-step', 'comparison', 'arithmetic-chain', 'unit-consistency', 'estimation'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Simplification', 'description': 'Rephrase or reduce the problem into an easier equivalent form while preserving meaning.'}]}
+
+Phase 2 - Primitive Sequence Generating...
+
+
+================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================
+
+[1] Retrieving relevant primitives...
+Retrieved 3 candidate primitives.
+
+[2] Evaluating sufficiency of retrieved primitives...
+🔎 Evaluating sufficiency of retrieved primitives...
+Retrieved primitives appear sufficient.
+
+[3] Generating reasoning sequence...
+Generating final primitive plan...
+No new primitives created.
+[GRAPH] Added 2 procedural edges from current sequence.
+
+────────────────────── Generated Reasoning Sequence ──────────────────────
+  Step 1: P_new_bd7f7 (Existing) — Basic Arithmetic Operations (Addition, Subtraction)
+  Step 2: P_new_81186 (Existing) — Evaluation
+  Step 3: P001 (Existing) — EVALUATE_RESULT
+─────────────────────────────────────────────────────────────────────────
+
+Summary: 0 new / 3 total primitives.
+
+
+0 new primitves generated out of 3
+
+
+====================== Problem 10 Solved ======================
+
+
+  Memory saved successfully!
+   - Graph: 8 nodes, 12 edges
+   - Primitives: 7 total
+   - FAISS entries: 7
+   - ID map entries: 7
+
+
+Total primitives in memory: 7
+001. P_new_f6a7e  →  Core Problem Identification
+002. P_new_d8b31  →  Simplification
+003. P_new_b1d9c  →  Basic Arithmetic Operations (Multiplication, Division)
+004. P_new_8cc90  →  Stepwise Planning
+005. P_new_f3505  →  Step-by-Step Reasoning
+006. P_new_81186  →  Evaluation
+007. P_new_bd7f7  →  Basic Arithmetic Operations (Addition, Subtraction)
