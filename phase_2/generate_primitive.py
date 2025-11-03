@@ -41,7 +41,7 @@ def retrieve_primitives(
 
     # --- Safety check ---
     if mem.faiss_index is None or mem.faiss_index.ntotal == 0:
-        print("⚠️ No primitives in memory index yet.")
+        print("No primitives in memory index yet.")
         return []
 
     # --- Step 1: Build a semantically rich query embedding ---
@@ -71,7 +71,7 @@ def retrieve_primitives(
         weights.append(1.5)
 
     if not embeddings:
-        print("⚠️ Empty analysis; cannot retrieve primitives.")
+        print("Empty analysis; cannot retrieve primitives.")
         return []
 
     # Weighted average embedding (normalized)
@@ -196,7 +196,7 @@ Problem Summary:
 
     print("🔎 Evaluating sufficiency of retrieved primitives...")
 
-    raw = generate_text(
+    result = generate_text(
         model,
         tokenizer,
         system_prompt,
@@ -204,14 +204,7 @@ Problem Summary:
         dynamic_max_tokens=1000
     )
 
-    try:
-        result = json.loads(raw)
-    except Exception:
-        print("⚠️ Could not parse LLM output, fallback to empty evaluation.")
-        result = {"reuse": [], "missing_capabilities": []}
-
     return result
-
 
 # ===============================================================
 # STEP 3 — Generate missing primitives & final sequence
@@ -284,50 +277,112 @@ Use the missing capabilities only to justify new primitives.
 Do NOT mention concrete values or story details.
 """
 
-    print("🧩 Generating final primitive plan...")
+    print("Generating final primitive plan...")
 
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
     dynamic_max_tokens = min(4096, max(1500, 2 * complexity_estimate))
 
-    result = generate_text(
+    primitives_sequence = generate_text(
         model,
         tokenizer,
         system_prompt,
         user_prompt,
         dynamic_max_tokens=dynamic_max_tokens
-    )
+    )["primitive_sequence"]
 
-    try:
-        primitives_sequence = result["primitive_sequence"]
-    except Exception:
-        raise ValueError("LLM did not return valid primitive_sequence JSON.")
+    return clean_and_register_primitives(primitives_sequence)
 
-    # -------------------------------
-    # Clean & register new primitives
-    # -------------------------------
+def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9):
+    """
+    Deduplicate, merge, and register primitives from a generated sequence.
+
+    - Reuses existing primitives if semantically similar.
+    - Assigns new IDs only when no close match exists.
+    - Guarantees a final EVALUATE primitive.
+
+    Args:
+        primitives_sequence (list[dict]): Raw LLM-generated primitive list.
+        similarity_threshold (float): Cosine similarity threshold for merging.
+
+    Returns:
+        list[dict]: Cleaned and finalized primitive sequence.
+    """
+
+    if not primitives_sequence:
+        print("No primitives provided to clean_and_register_primitives.")
+        return []
+
     valid_ids = set(mem.primitive_metadata.keys())
     clean_seq, seen = [], set()
 
     for p in primitives_sequence:
         pid = p.get("id")
         name = p.get("name", "").strip()
+
         if not pid or not name or pid in seen:
             continue
         seen.add(pid)
 
+        # ------------------------------------------------------------------
+        # STEP 1 — Check if primitive already exists by ID
+        # ------------------------------------------------------------------
         if pid in valid_ids:
             p["status"] = "Existing"
-        else:
-            # If model thinks it's existing but we don't have it
-            if p.get("status") == "Existing":
-                print(f"[WARN] Primitive {pid} not found; marking as New.")
-            p["id"] = f"P_new_{uuid.uuid4().hex[:5]}"
-            p["status"] = "New"
-            add_primitive(p)
+            clean_seq.append(p)
+            continue
+
+        # ------------------------------------------------------------------
+        # STEP 2 — Semantic deduplication (find nearest existing primitive)
+        # ------------------------------------------------------------------
+        text_repr = f"{name}. {p.get('description', '')}"
+        new_vec = mem.embed_model.encode(text_repr).astype("float32")
+        new_vec /= np.linalg.norm(new_vec) + 1e-8
+
+        # Retrieve top-k closest existing primitives
+        if mem.faiss_index and mem.faiss_index.ntotal > 0:
+            D, I = mem.faiss_index.search(np.array([new_vec]), k=5)
+            best_match = None
+            best_score = -1
+
+            for dist, idx in zip(D[0], I[0]):
+                if idx == -1:
+                    continue
+                eid = mem.primitive_id_map.get(idx)
+                if not eid or eid not in mem.primitive_metadata:
+                    continue
+                existing_prim = mem.primitive_metadata[eid]
+
+                # Convert FAISS distance → cosine similarity
+                sim = 1 - (dist / 2)
+                if sim > best_score:
+                    best_score = sim
+                    best_match = existing_prim
+
+            if best_match and best_score >= similarity_threshold:
+                # Merge with existing primitive
+                p["id"] = best_match["id"]
+                p["name"] = best_match["name"]
+                p["status"] = "Existing"
+                p["merged_from"] = name
+                print(f"[MERGE] '{name}' → existing primitive '{best_match['name']}' (sim={best_score:.2f})")
+                clean_seq.append(p)
+                continue
+
+        # ------------------------------------------------------------------
+        # STEP 3 — If no close match, register as a new primitive
+        # ------------------------------------------------------------------
+        p["id"] = f"P_new_{uuid.uuid4().hex[:5]}"
+        p["status"] = "New"
+
+        if "description" not in p or not p["description"]:
+            p["description"] = f"Auto-generated primitive: {name}"
 
         clean_seq.append(p)
+        print(f"[NEW] Added new primitive: {p['id']} — {name}")
 
-    # Guarantee an evaluation step at the end
+    # ----------------------------------------------------------------------
+    # STEP 4 — Guarantee at least one Evaluation primitive at end
+    # ----------------------------------------------------------------------
     if not any("EVALUATE" in p["name"].upper() for p in clean_seq):
         eval_pid = (
             [pid for pid, prim in mem.primitive_metadata.items() if "EVALUATE" in prim["name"].upper()] or ["P001"]
@@ -339,30 +394,25 @@ Do NOT mention concrete values or story details.
             "status": "Existing"
         })
 
+    # ----------------------------------------------------------------------
+    # STEP 5 — Return cleaned sequence
+    # ----------------------------------------------------------------------
+    for i, p in enumerate(clean_seq, start=1):
+        p["step"] = i  # Ensure sequential numbering
+
     return clean_seq
 
 
-
-
-# Storage for primitives and their embeddings
-
-
-def add_primitive(primitive):
+def add_primitive(primitive, semantic_threshold=0.8, top_k=5):
     """
-    Add a primitive to both graph and FAISS vector index
+    Add a primitive to memory, graph, and FAISS index.
+    Builds semantic edges to similar primitives automatically.
     """
 
     pid = primitive["id"]
     mem.primitive_metadata[pid] = primitive
 
-    # Add node to graph
-    mem.primitive_graph.add_node(pid, **primitive)
-
-    # Add edges for related primitives
-    for related in primitive.get("related_primitives", []):
-        mem.primitive_graph.add_edge(pid, related)
-
-    # Build embedding using all relevant fields
+    # Build embedding from descriptive fields
     text = " ".join([
         primitive.get("name", ""),
         primitive.get("description", ""),
@@ -370,16 +420,74 @@ def add_primitive(primitive):
         primitive.get("problem_type", ""),
         " ".join(primitive.get("methods", [])),
         " ".join(primitive.get("tags", []))
-    ])
+    ]).strip()
 
     vec = mem.embed_model.encode(text).astype("float32")
+    vec /= np.linalg.norm(vec) + 1e-8  # normalize for cosine similarity
 
-    # Add to FAISS
+    # Add node to graph
+    mem.primitive_graph.add_node(pid, **primitive)
+
+    # --- Optional: Semantic linking to similar primitives ---
+    if mem.faiss_index and mem.faiss_index.ntotal > 0:
+        D, I = mem.faiss_index.search(np.array([vec]), top_k)
+        related = []
+
+        for dist, idx in zip(D[0], I[0]):
+            if idx == -1:
+                continue
+            sim = 1 - (dist / 2)  # convert FAISS L2 to cosine approx
+            if sim < semantic_threshold:
+                continue
+
+            existing_pid = mem.primitive_id_map.get(idx)
+            if existing_pid and existing_pid != pid:
+                mem.primitive_graph.add_edge(
+                    pid, existing_pid,
+                    weight=sim,
+                    relation="semantic"
+                )
+                mem.primitive_graph.add_edge(
+                    existing_pid, pid,
+                    weight=sim,
+                    relation="semantic"
+                )
+                related.append(existing_pid)
+
+        if related:
+            primitive["related_primitives"] = related
+            print(f"[LINK] {pid} semantically linked to {len(related)} primitives.")
+
+    # Add to FAISS index
     idx = mem.faiss_index.ntotal
     mem.faiss_index.add(np.array([vec]))
     mem.primitive_id_map[idx] = pid
 
+    return pid
 
+
+def update_primitive_graph_from_sequence(sequence):
+    """
+    Create procedural edges between consecutive primitives in a reasoning sequence.
+    """
+
+    if not sequence or len(sequence) < 2:
+        return
+
+    for i in range(len(sequence) - 1):
+        src = sequence[i]["id"]
+        tgt = sequence[i + 1]["id"]
+
+        if mem.primitive_graph.has_edge(src, tgt):
+            mem.primitive_graph[src][tgt]["weight"] += 1
+        else:
+            mem.primitive_graph.add_edge(
+                src, tgt,
+                weight=1,
+                relation="procedural"
+            )
+
+    print(f"[GRAPH] Added {len(sequence) - 1} procedural edges from current sequence.")
 
 
 

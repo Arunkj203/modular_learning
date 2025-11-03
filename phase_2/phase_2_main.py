@@ -33,9 +33,9 @@ def run_phase2(model, tokenizer, problem_text, analysis):
     retrieved_primitives = retrieve_primitives(analysis)
 
     if not retrieved_primitives:
-        print("⚠️ No primitives retrieved from memory; starting from scratch.")
+        print("No primitives retrieved from memory; starting from scratch.")
     else:
-        print(f"✅ Retrieved {len(retrieved_primitives)} candidate primitives.")
+        print(f"Retrieved {len(retrieved_primitives)} candidate primitives.")
 
     # --------------------------------------------------------------
     # Step 2 — Evaluate sufficiency of retrieved primitives
@@ -53,9 +53,9 @@ def run_phase2(model, tokenizer, problem_text, analysis):
     missing_caps = sufficiency_result.get("missing_capabilities", [])
 
     if not missing_caps:
-        print(f"✅ Retrieved primitives appear sufficient.")
+        print(f"Retrieved primitives appear sufficient.")
     else:
-        print(f"🧠 Missing conceptual capabilities identified: {missing_caps}")
+        print(f"Missing conceptual capabilities identified: {missing_caps}")
 
     # --------------------------------------------------------------
     # Step 3 — Generate final sequence (reuse + new primitives)
@@ -86,7 +86,10 @@ def run_phase2(model, tokenizer, problem_text, analysis):
             except Exception as e:
                 print(f"[ERROR] Could not add primitive {p['id']}: {e}")
     else:
-        print("✅ No new primitives created.")
+        print("No new primitives created.")
+
+
+    update_primitive_graph_from_sequence(final_sequence)
 
     # --------------------------------------------------------------
     # Debug summary
