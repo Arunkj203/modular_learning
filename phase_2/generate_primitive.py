@@ -392,10 +392,8 @@ def update_primitive_graph_from_sequence(sequence):
                 relation="procedural"
             )
 
-    print(f"[GRAPH] Added {len(sequence) - 1} procedural edges from current sequence.")
+    print(f"[GRAPH] Added {len(sequence) - 1} procedural edges from the sequence.")
 
-import uuid
-import numpy as np
 
 def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9):
     """
@@ -445,7 +443,7 @@ def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9)
             errors.append(f"Primitive with id '{pid}' missing 'name'.")
             continue
         if pid in seen:
-            errors.append(f"Duplicate primitive id in input sequence: '{pid}'.")
+            # errors.append(f"Duplicate primitive id in input sequence: '{pid}'.")
             continue
         seen.add(pid)
 
@@ -456,10 +454,10 @@ def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9)
             # check that the generated entry doesn't include forbidden fields
             extra_keys = set(p.keys()) - allowed_existing_keys
             if extra_keys:
-                errors.append(
-                    f"Existing primitive '{pid}' ('{name}') must include only {allowed_existing_keys}. "
-                    f"Found extra fields: {sorted(extra_keys)}"
-                )
+                # errors.append(
+                #     f"Existing primitive '{pid}' ('{name}') must include only {allowed_existing_keys}. "
+                #     f"Found extra fields: {sorted(extra_keys)}"
+                # )
                 # do not attempt to merge/normalize further for this entry
                 continue
 

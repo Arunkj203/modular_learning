@@ -13,27 +13,62 @@ def main():
 
     # Load dataset
     dataset_name = "SVAMP"
+    # dataset_name = "GSM8K"
 
     # Load model and tokenizer
     model , tokenizer = get_model_and_tokenizer()
 
     print(f"Model and tokenizer loaded for {dataset_name}.")
+
+    # Testing 
     
-    solve(dataset_name,"train","Training", model, tokenizer)
+    # solve(dataset_name,"train","Training", model, tokenizer)    
+
+    #  # For generating phase analyses and executions - SVAMP
 
     # generate_phase1_analysis(dataset_name, "train", model, tokenizer)
 
-    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer)
-    # generate_phase3_execution("SVAMP_train_phase2_execution.json", model, tokenizer)
+# -------------------- Current Execution ------------------------------------------------------
+    # Total - 10 batches of 70 each for SVAMP train set (700 problems)
+    # Total batch generated till now - 0
+
+    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=1, batch_size=70) 
+    # # update bacth_no and batch_size as needed
+# --------------------------------------------------------------------------
 
 
 
-# print(f"\nTotal primitives in memory: {len(mem.primitive_metadata)}")
-# for i, (pid, meta) in enumerate(mem.primitive_metadata.items()):
-#     print(f"{i+1:03d}. {pid}  →  {meta.get('name', '')}")
-#     # if i >= 30:  # show only the first 30 to avoid flooding
-#     #     break
+    # # generate_phase3_execution("SVAMP_train_phase2_execution.json", model, tokenizer)--> Subject to change later
+
+    # # For generating phase analyses and executions - GSM8K
+
+    # generate_phase1_analysis("GSM8K", "train", model, tokenizer)
+    # generate_phase2_execution("GSM8K_train_phase1_analysis.json", model, tokenizer, batch_no=1, batch_size=300)
+    # generate_phase3_execution("GSM8K_train_phase2_execution.json", model, tokenizer)
+
+
+
+    print(f"\nTotal primitives in memory: {len(mem.primitive_metadata)}")
+    for i, (pid, meta) in enumerate(mem.primitive_metadata.items()):
+        print(f"{i+1:03d}. {pid}  →  {meta.get('name', '')}")
+        # if i >= 30:  # show only the first 30 to avoid flooding
+        #     break
 
 if __name__ == "__main__":
     main()
 
+
+'''
+In gsm8k datastet,
+
+# Load the GSM8K dataset
+dataset = load_dataset("openai/gsm8k", "main")
+
+# Get the number of problems in train and test splits
+train_count = len(dataset["train"])
+test_count = len(dataset["test"])
+Number of problems in train set: 7473 
+Number of problems in test set: 1319
+Total number of problems: 8792
+
+'''

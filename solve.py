@@ -83,7 +83,7 @@ def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Da
     print(f"\nPhase 4 execution dataset saved to: {output4_file}")
 
 
-def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no, output_dir="Dataset"):
+def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_size, output_dir="Dataset"):
     """
     Generate Phase 2 reasoning outputs from Phase 1 analyses.
     """
@@ -94,23 +94,22 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no, outpu
     with open(output_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution[batch {batch_no}]"))
-
-    l = len(data)
-    
+    ll = (batch_no-1)*batch_size
+    ul = batch_no*batch_size
+    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution[batch {batch_no}-[{ll+1}:{ul}]]"))
 
     # all_results = []
 
     no_errors = 0
-    max_errors = int(0.3 * 70)
+    max_errors = int(0.3 * batch_size)
 
     mem.load_memory()
 
-    batch = data[(batch_no-1)*70 : batch_no*70 - 1]
+    batch = data[ll:ul]
     batch_new_primitives = []
     all_results = []
 
-    print(f"\nProcessing batch {batch_no}...")
+    print(f"\nProcessing batch {batch_no} with Batch Size - {batch_size}...")
 
     for entry in batch:
         q = entry["question"]
@@ -127,6 +126,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no, outpu
                 "question": q,
                 "phase2_reasoning": primitive_sequence
             })
+            
         except Exception as e:
             no_errors += 1
             print(f"  [ERROR] Problem {entry['id']} failed: {e}")
@@ -144,7 +144,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no, outpu
         update_primitive_graph_from_sequence(i["phase2_reasoning"])
 
             
-    print(f"  Library updated. Total primitives now: {len(mem.primitive_metadata)}")
+    print(f"Library updated. Total primitives now: {len(mem.primitive_metadata)}")
     
     # Save all results at the end
     with open(output2_file, "w", encoding="utf-8") as f:
@@ -175,7 +175,15 @@ def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, out
     print(f"Log saving in file:{output_file}")
 
 
-    dataset = list(load_dataset(mem.dataset_path[dataset_name])[mode]) 
+    dataset = list(load_dataset(mem.dataset_path[dataset_name])[mode])
+
+    # Split datastet for gms8k dataset
+    if dataset_name.lower() == "gsm8k":
+        l = 6000
+        # Split train - 70 , test - 30
+        dataset = dataset[ :l]
+
+
     all_analysis: List[Dict[str, Any]] = []
 
     for idx, problem in enumerate(dataset):

@@ -75,21 +75,21 @@ def run_phase2(model, tokenizer, problem_text, analysis):
     # --------------------------------------------------------------
     new_prims = [p for p in final_sequence if p["status"] == "New"]
 
-    if new_prims:
-        print(f"Registering {len(new_prims)} new primitives into memory...")
-        for p in new_prims:
-            if "description" not in p:
-                p["description"] = f"Auto-generated primitive: {p['name']}"
-            try:
-                add_primitive(p)
-                print(f"[INFO] Added new primitive: {p['id']} — {p['name']}")
-            except Exception as e:
-                print(f"[ERROR] Could not add primitive {p['id']}: {e}")
-    else:
-        print("No new primitives created.")
+    # if new_prims:
+    #     print(f"Registering {len(new_prims)} new primitives into memory...")
+    #     for p in new_prims:
+    #         if "description" not in p:
+    #             p["description"] = f"Auto-generated primitive: {p['name']}"
+    #         try:
+    #             add_primitive(p)
+    #             print(f"[INFO] Added new primitive: {p['id']} — {p['name']}")
+    #         except Exception as e:
+    #             print(f"[ERROR] Could not add primitive {p['id']}: {e}")
+    # else:
+    #     print("No new primitives created.")
 
 
-    update_primitive_graph_from_sequence(final_sequence)
+    # update_primitive_graph_from_sequence(final_sequence)
 
     # --------------------------------------------------------------
     # Debug summary
