@@ -19,9 +19,9 @@ def main():
 
     print(f"Model and tokenizer loaded for {dataset_name}.")
     
-    # solve(dataset_name,"train","Training", model, tokenizer)
+    solve(dataset_name,"train","Training", model, tokenizer)
 
-    generate_phase1_analysis(dataset_name, "train", model, tokenizer)
+    # generate_phase1_analysis(dataset_name, "train", model, tokenizer)
 
     # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer)
     # generate_phase3_execution("SVAMP_train_phase2_execution.json", model, tokenizer)

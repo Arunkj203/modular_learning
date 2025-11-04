@@ -3,7 +3,7 @@ from .phase_1.phase_1_main import run_phase1
 from .phase_2.phase_2_main import run_phase2
 from .phase_3.phase_3_main import run_phase3
 
-from .phase_2.generate_primitive import add_primitive
+from .phase_2.generate_primitive import add_primitive, update_primitive_graph_from_sequence
 
 from . import config as mem
 from datasets import load_dataset
@@ -83,68 +83,69 @@ def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Da
     print(f"\nPhase 4 execution dataset saved to: {output4_file}")
 
 
-def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Dataset"):
+def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no, output_dir="Dataset"):
     """
     Generate Phase 2 reasoning outputs from Phase 1 analyses.
     """
 
     full_path = os.path.join(mem.Base_dir_path, output_dir)
     output_file = os.path.join(full_path,phase1_file)
-    print(f"Log saving in file:{output_file}")
-
+    print(f"Loading Phase 1 file: {output_file}")
     with open(output_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", "phase2_execution[testing]"))
+    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution[batch {batch_no}]"))
 
-    # l = len(data)
-    l = 3
-    batch_size = max(1,l // 10)
-    all_results = []
+    l = len(data)
+    
+
+    # all_results = []
 
     no_errors = 0
-    max_errors = int(0.3 * l)
+    max_errors = int(0.3 * 70)
 
     mem.load_memory()
 
-    for batch_start in range(0, l , batch_size):
-        batch = data[batch_start:batch_start + batch_size]
-        batch_new_primitives = []
+    batch = data[(batch_no-1)*70 : batch_no*70 - 1]
+    batch_new_primitives = []
+    all_results = []
 
-        print(f"\nProcessing batch {batch_start // batch_size + 1}...")
+    print(f"\nProcessing batch {batch_no}...")
 
-        for entry in batch:
-            q = entry["question"]
-            analysis = entry["phase1_analysis"]
+    for entry in batch:
+        q = entry["question"]
+        analysis = entry["phase1_analysis"]
 
-            try:
+        try:
 
-                print(f"  Executing reasoning for problem {entry['id']}...")
+            print(f"  Executing reasoning for problem {entry['id']}...")
 
-                primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
-                batch_new_primitives.extend(new_prims)
+            primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
+            batch_new_primitives.extend(new_prims)
 
-                all_results.append({
-                    "question": q,
-                    "phase2_reasoning": primitive_sequence
-                })
-            except Exception as e:
-                no_errors += 1
-                print(f"  [ERROR] Problem {entry['id']} failed: {e}")
-        
+            all_results.append({
+                "question": q,
+                "phase2_reasoning": primitive_sequence
+            })
+        except Exception as e:
+            no_errors += 1
+            print(f"  [ERROR] Problem {entry['id']} failed: {e}")
+            if no_errors >= max_errors:
+                print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early.\n")
+                break
 
-        # --- After each batch ---
-        if batch_new_primitives:
-            print(f"  Adding {len(batch_new_primitives)} new primitives from this batch...")
-            for prim in batch_new_primitives:
-                add_primitive(prim)
+    # --- After each batch ---
+    if batch_new_primitives:
+        print(f"  Adding {len(batch_new_primitives)} new primitives from this batch...")
+        for prim in batch_new_primitives:
+            add_primitive(prim)
 
-            print(f"  Library updated. Total primitives now: {len(mem.primitive_metadata)}")
-        
-        if no_errors >= max_errors:
-            print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early in batch {batch_start}.\n")
-            break
+    for i in all_results:
+        update_primitive_graph_from_sequence(i["phase2_reasoning"])
 
+            
+    print(f"  Library updated. Total primitives now: {len(mem.primitive_metadata)}")
+    
     # Save all results at the end
     with open(output2_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
@@ -223,7 +224,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     # Ensure log directory exists
     full_path = os.path.join(mem.Base_dir_path, log_dir)
     os.makedirs(full_path, exist_ok=True)
-    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-03.11__10_pbs[Test 1].txt")
+    log_file = os.path.join(full_path, f"{dataset_name}_{mode}-04.11__10_pbs[Test 1].txt")
     print(f"Log saving in file:{log_file}")
 
     with open(log_file, "w", encoding="utf-8") as f:
@@ -255,7 +256,7 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
             f.write(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
 
             for prim in primitive_sequence:
-                f.write(f"  ID: {prim['id']} \n, prim: {prim} \n")
+                f.write(f"Primitive: {prim}\n")
 
             print(f"\n{len(new_primitives_to_train)} new primitves generated out of {len(primitive_sequence)}\n")
             

@@ -228,19 +228,32 @@ def generate_primitives_with_reflection(
     system_prompt = """
 You are a reasoning planner that constructs an abstract sequence of reusable cognitive primitives.
 
+Each primitive represents a general mental operation used to reason, transform, or evaluate information.
+
 Rules:
-1. Reuse existing primitives whenever possible.
+1. Reuse existing primitives whenever possible (match by conceptual function).
 2. Only create new primitives if the sufficiency analysis identified missing capabilities.
-3. Each primitive represents a general mental operation.
-4. No numbers, names, or domain entities.
-5. Always end with an Evaluation primitive.
-6. Output valid JSON using this format:
+3. Avoid specific numbers, names, or story content.
+4. Output valid JSON strictly in this format:
 
 {
   "primitive_sequence": [
-    {"step": 1, "id": "<Existing ID>", "name": "<Primitive Name>", "status": "Existing"},
-    {"step": 2, "id": "P_new###", "name": "<New Primitive>", "status": "New"},
-    ...
+    {
+      "step": 1,
+      "id": "<Existing ID>",
+      "name": "<Existing Primitive Name>",
+      "status": "Existing"
+    },
+    {
+      "step": 2,
+      "id": "P_new###",
+      "name": "<New Primitive Name>",
+      "status": "New",
+      "description": "<Conceptual role>",
+      "input_types": ["<type1>", "<type2>"],
+      "output_types": ["<type1>"],
+      "category": "<Category>"
+    }
   ]
 }
 <END_OF_SEQUENCE>
@@ -272,8 +285,10 @@ Conceptual capabilities missing:
 {missing_str}
 
 Task:
-Plan an ordered sequence (≤ {max_primitives}) of primitives to solve the problem.
-Use the missing capabilities only to justify new primitives.
+Plan an ordered sequence (≤ {max_primitives}) of cognitive primitives to solve the problem.
+Only create new primitives if they address a missing capability.
+For existing primitives, include only id, name, and status.
+For new primitives, include full metadata: description, input/output types, and category.
 Do NOT mention concrete values or story details.
 """
 
@@ -291,116 +306,6 @@ Do NOT mention concrete values or story details.
     )["primitive_sequence"]
 
     return clean_and_register_primitives(primitives_sequence)
-
-def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9):
-    """
-    Deduplicate, merge, and register primitives from a generated sequence.
-
-    - Reuses existing primitives if semantically similar.
-    - Assigns new IDs only when no close match exists.
-    - Guarantees a final EVALUATE primitive.
-
-    Args:
-        primitives_sequence (list[dict]): Raw LLM-generated primitive list.
-        similarity_threshold (float): Cosine similarity threshold for merging.
-
-    Returns:
-        list[dict]: Cleaned and finalized primitive sequence.
-    """
-
-    if not primitives_sequence:
-        print("No primitives provided to clean_and_register_primitives.")
-        return []
-
-    valid_ids = set(mem.primitive_metadata.keys())
-    clean_seq, seen = [], set()
-
-    for p in primitives_sequence:
-        pid = p.get("id")
-        name = p.get("name", "").strip()
-
-        if not pid or not name or pid in seen:
-            continue
-        seen.add(pid)
-
-        # ------------------------------------------------------------------
-        # STEP 1 — Check if primitive already exists by ID
-        # ------------------------------------------------------------------
-        if pid in valid_ids:
-            p["status"] = "Existing"
-            clean_seq.append(p)
-            continue
-
-        # ------------------------------------------------------------------
-        # STEP 2 — Semantic deduplication (find nearest existing primitive)
-        # ------------------------------------------------------------------
-        text_repr = f"{name}. {p.get('description', '')}"
-        new_vec = mem.embed_model.encode(text_repr).astype("float32")
-        new_vec /= np.linalg.norm(new_vec) + 1e-8
-
-        # Retrieve top-k closest existing primitives
-        if mem.faiss_index and mem.faiss_index.ntotal > 0:
-            D, I = mem.faiss_index.search(np.array([new_vec]), k=5)
-            best_match = None
-            best_score = -1
-
-            for dist, idx in zip(D[0], I[0]):
-                if idx == -1:
-                    continue
-                eid = mem.primitive_id_map.get(idx)
-                if not eid or eid not in mem.primitive_metadata:
-                    continue
-                existing_prim = mem.primitive_metadata[eid]
-
-                # Convert FAISS distance → cosine similarity
-                sim = 1 - (dist / 2)
-                if sim > best_score:
-                    best_score = sim
-                    best_match = existing_prim
-
-            if best_match and best_score >= similarity_threshold:
-                # Merge with existing primitive
-                p["id"] = best_match["id"]
-                p["name"] = best_match["name"]
-                p["status"] = "Existing"
-                p["merged_from"] = name
-                print(f"[MERGE] '{name}' → existing primitive '{best_match['name']}' (sim={best_score:.2f})")
-                clean_seq.append(p)
-                continue
-
-        # ------------------------------------------------------------------
-        # STEP 3 — If no close match, register as a new primitive
-        # ------------------------------------------------------------------
-        p["id"] = f"P_new_{uuid.uuid4().hex[:5]}"
-        p["status"] = "New"
-
-        if "description" not in p or not p["description"]:
-            p["description"] = f"Auto-generated primitive: {name}"
-
-        clean_seq.append(p)
-        print(f"[NEW] Added new primitive: {p['id']} — {name}")
-
-    # ----------------------------------------------------------------------
-    # STEP 4 — Guarantee at least one Evaluation primitive at end
-    # ----------------------------------------------------------------------
-    if not any("EVALUATE" in p["name"].upper() for p in clean_seq):
-        eval_pid = (
-            [pid for pid, prim in mem.primitive_metadata.items() if "EVALUATE" in prim["name"].upper()] or ["P001"]
-        )[0]
-        clean_seq.append({
-            "step": len(clean_seq) + 1,
-            "id": eval_pid,
-            "name": "EVALUATE_RESULT",
-            "status": "Existing"
-        })
-
-    # ----------------------------------------------------------------------
-    # STEP 5 — Return cleaned sequence
-    # ----------------------------------------------------------------------
-    for i, p in enumerate(clean_seq, start=1):
-        p["step"] = i  # Ensure sequential numbering
-
-    return clean_seq
 
 
 def add_primitive(primitive, semantic_threshold=0.8, top_k=5):
@@ -489,6 +394,208 @@ def update_primitive_graph_from_sequence(sequence):
 
     print(f"[GRAPH] Added {len(sequence) - 1} procedural edges from current sequence.")
 
+import uuid
+import numpy as np
+
+def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9):
+    """
+    Deduplicate, merge, validate, and register primitives from a generated sequence.
+
+    Rules enforced:
+      - Existing primitives in the LLM output must include ONLY: id, name, status.
+      - New primitives must include: id (or placeholder), name, status, description,
+          input_types, output_types, category.
+      - Semantic similarity uses name + description.
+      - Merge into closest existing primitive when sim >= similarity_threshold.
+      - Register truly new primitives via register_primitive(p).
+
+    Raises:
+      ValueError: if the sequence contains invalid entries (missing or forbidden fields).
+    Returns:
+      list[dict]: cleaned, sequential primitive list.
+    """
+
+    if not primitives_sequence:
+        print("No primitives provided to clean_and_register_primitives.")
+        return []
+
+    # memory helpers (assumed available in your environment)
+    valid_ids = set(mem.primitive_metadata.keys())
+    clean_seq = []
+    seen = set()
+    errors = []
+
+    # helper sets
+    allowed_existing_keys = {"id", "name", "status", "merged_from", "step"}
+    required_new_keys = {"description", "input_types", "output_types", "category"}
+
+    for raw_p in primitives_sequence:
+        # shallow copy to avoid mutating caller's data
+        p = dict(raw_p)
+
+        pid = p.get("id")
+        name = (p.get("name") or "").strip()
+        status = (p.get("status") or "").strip()
+
+        # basic sanity checks
+        if not pid:
+            errors.append(f"Primitive with name '{name}' missing 'id'.")
+            continue
+        if not name:
+            errors.append(f"Primitive with id '{pid}' missing 'name'.")
+            continue
+        if pid in seen:
+            errors.append(f"Duplicate primitive id in input sequence: '{pid}'.")
+            continue
+        seen.add(pid)
+
+        # ---------------------------
+        # Case A: It's an existing primitive (id present in memory)
+        # ---------------------------
+        if pid in valid_ids:
+            # check that the generated entry doesn't include forbidden fields
+            extra_keys = set(p.keys()) - allowed_existing_keys
+            if extra_keys:
+                errors.append(
+                    f"Existing primitive '{pid}' ('{name}') must include only {allowed_existing_keys}. "
+                    f"Found extra fields: {sorted(extra_keys)}"
+                )
+                # do not attempt to merge/normalize further for this entry
+                continue
+
+            # Use canonical metadata from memory
+            meta = mem.primitive_metadata[pid]
+            merged_entry = {
+                "id": pid,
+                "name": meta.get("name", name),
+                "status": "Existing",
+                # keep description empty in sequence to respect the user's rule (existing entries are lightweight)
+            }
+            clean_seq.append(merged_entry)
+            continue
+
+        # ---------------------------
+        # Case B: It's a candidate new primitive (not in memory)
+        # ---------------------------
+        # Validate required fields for new primitives
+        missing_new = [k for k in required_new_keys if not p.get(k)]
+        if missing_new:
+            errors.append(f"New primitive '{name}' (id={pid}) missing required fields: {missing_new}")
+            continue
+
+        # Normalize category string
+        p["category"] = str(p["category"]).strip().capitalize()
+
+        # Build text representation for semantic matching (name + description)
+        text_repr = f"{name}. {p.get('description', '')}"
+        try:
+            new_vec = mem.embed_model.encode(text_repr).astype("float32")
+            new_vec /= np.linalg.norm(new_vec) + 1e-8
+        except Exception as e:
+            errors.append(f"Embedding failure for '{name}': {e}")
+            continue
+
+        # semantic search against memory
+        best_match = None
+        best_score = -1.0
+        if getattr(mem, "faiss_index", None) and mem.faiss_index.ntotal > 0:
+            D, I = mem.faiss_index.search(np.array([new_vec]), k=5)
+            for dist, idx in zip(D[0], I[0]):
+                if idx == -1:
+                    continue
+                eid = mem.primitive_id_map.get(idx)
+                if not eid or eid not in mem.primitive_metadata:
+                    continue
+                existing_prim = mem.primitive_metadata[eid]
+                sim = 1 - (dist / 2)  # convert FAISS distance to approximate cosine similarity
+                if sim > best_score:
+                    best_score = sim
+                    best_match = existing_prim
+
+        # If similar enough, merge as existing (but produced sequence must remain lightweight)
+        if best_match and best_score >= similarity_threshold:
+            merged = {
+                "id": best_match["id"],
+                "name": best_match.get("name", name),
+                "status": "Existing",
+                "merged_from": name
+            }
+            print(f"[MERGE] '{name}' → existing primitive '{best_match['name']}' (sim={best_score:.2f})")
+            clean_seq.append(merged)
+            continue
+
+        # Otherwise, register as truly new primitive
+        # If model provided an id that collides with memory or isn't following P_new pattern, reassign a unique id
+        new_pid = pid
+        if new_pid in valid_ids or not str(new_pid).startswith("P_new"):
+            new_pid = f"P_new_{uuid.uuid4().hex[:8]}"
+        p["id"] = new_pid
+        p["status"] = "New"
+
+        # Ensure types are lists
+        if not isinstance(p.get("input_types"), list):
+            p["input_types"] = [p["input_types"]]
+        if not isinstance(p.get("output_types"), list):
+            p["output_types"] = [p["output_types"]]
+
+        
+        clean_seq.append({
+            "id": p["id"],
+            "name": p["name"],
+            "status": "New",
+            # keep full metadata for new primitives in the returned sequence
+            "description": p["description"],
+            "input_types": p["input_types"],
+            "output_types": p["output_types"],
+            "category": p["category"]
+        })
+
+    # If any validation/registration errors occurred, raise a consolidated error
+    if errors:
+        raise ValueError("Primitive sequence validation/registration failed:\n" + "\n".join(errors))
+
+    # Guarantee at least one Evaluation primitive at the end.
+    def _is_evaluation(prim):
+        # prim can be existing (lightweight) or new (has category)
+        if prim.get("status") == "New":
+            return prim.get("category", "").lower() == "evaluation"
+        pid = prim.get("id")
+        if pid in mem.primitive_metadata:
+            return mem.primitive_metadata[pid].get("category", "").lower() == "evaluation" \
+                   or "EVALUATE" in mem.primitive_metadata[pid].get("name", "").upper()
+        return False
+
+    if not any(_is_evaluation(p) for p in clean_seq):
+        # find an existing evaluation primitive in memory
+        eval_candidates = [pid for pid, meta in mem.primitive_metadata.items()
+                           if meta.get("category", "").lower() == "evaluation" or "EVALUATE" in meta.get("name", "").upper()]
+        eval_pid = eval_candidates[0] if eval_candidates else None
+        if eval_pid:
+            clean_seq.append({
+                "id": eval_pid,
+                "name": mem.primitive_metadata[eval_pid].get("name", "EVALUATE_RESULT"),
+                "status": "Existing"
+            })
+        else:
+            # if no evaluation primitive exists in memory, create a minimal new evaluation primitive and register it
+            eval_pid = f"P_new_{uuid.uuid4().hex[:8]}"
+            clean_seq.append({
+                "id": eval_pid,
+                "name": "EVALUATE_RESULT",
+                "status": "New",
+                "description": "Assess overall result for correctness and coherence.",
+                "input_types": ["reasoning_trace"],
+                "output_types": ["evaluation_score", "feedback"],
+                "category": "Evaluation"
+            })
+            
+            print(f"[NEW] Auto-registered evaluation primitive: {eval_pid}")
+
+    # Re-index steps
+    for i, prim in enumerate(clean_seq, start=1):
+        prim["step"] = i
+
+    return clean_seq
 
 
 

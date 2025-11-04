@@ -96,7 +96,7 @@ def run_phase2(model, tokenizer, problem_text, analysis):
     # --------------------------------------------------------------
     print("\n────────────────────── Generated Reasoning Sequence ──────────────────────")
     for p in final_sequence:
-        print(f"  Step {p.get('step', '?')}: {p['id']} ({p['status']}) — {p['name']}")
+        print(f"  Step {p.get('step', '?')}: {p['id']} ({p['status']}) — {p}")
     print(f"─────────────────────────────────────────────────────────────────────────\n")
     print(f"Summary: {len(new_prims)} new / {len(final_sequence)} total primitives.\n")
 
