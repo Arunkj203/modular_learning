@@ -194,7 +194,7 @@ Problem Summary:
 {problem_text}
 """
 
-    print("🔎 Evaluating sufficiency of retrieved primitives...")
+    # print("🔎 Evaluating sufficiency of retrieved primitives...")
 
     result = generate_text(
         model,
@@ -292,7 +292,7 @@ For new primitives, include full metadata: description, input/output types, and 
 Do NOT mention concrete values or story details.
 """
 
-    print("Generating final primitive plan...")
+    # print("Generating final primitive plan...")
 
     complexity_estimate = len(tokenizer(system_prompt + user_prompt)["input_ids"])
     dynamic_max_tokens = min(4096, max(1500, 2 * complexity_estimate))
@@ -414,7 +414,7 @@ def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9)
     """
 
     if not primitives_sequence:
-        print("No primitives provided to clean_and_register_primitives.")
+        # print("No primitives provided to clean_and_register_primitives.")
         return []
 
     # memory helpers (assumed available in your environment)
@@ -587,7 +587,7 @@ def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9)
                 "category": "Evaluation"
             })
             
-            print(f"[NEW] Auto-registered evaluation primitive: {eval_pid}")
+            # print(f"[NEW] Auto-registered evaluation primitive: {eval_pid}")
 
     # Re-index steps
     for i, prim in enumerate(clean_seq, start=1):

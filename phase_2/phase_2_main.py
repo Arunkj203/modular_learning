@@ -24,23 +24,23 @@ def run_phase2(model, tokenizer, problem_text, analysis):
         tuple: (final_sequence, new_primitives)
     """
 
-    print("\n================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================")
+    # print("\n================= PHASE 2: REFLECTIVE PRIMITIVE PLANNING =================")
 
     # --------------------------------------------------------------
     # Step 1 — Retrieval
     # --------------------------------------------------------------
-    print("\n[1] Retrieving relevant primitives...")
+    # print("\n[1] Retrieving relevant primitives...")
     retrieved_primitives = retrieve_primitives(analysis)
 
-    if not retrieved_primitives:
-        print("No primitives retrieved from memory; starting from scratch.")
-    else:
-        print(f"Retrieved {len(retrieved_primitives)} candidate primitives.")
+    # if not retrieved_primitives:
+    #     print("No primitives retrieved from memory; starting from scratch.")
+    # else:
+    #     print(f"Retrieved {len(retrieved_primitives)} candidate primitives.")
 
     # --------------------------------------------------------------
     # Step 2 — Evaluate sufficiency of retrieved primitives
     # --------------------------------------------------------------
-    print("\n[2] Evaluating sufficiency of retrieved primitives...")
+    # print("\n[2] Evaluating sufficiency of retrieved primitives...")
     sufficiency_result = evaluate_primitive_sufficiency(
         model=model,
         tokenizer=tokenizer,
@@ -52,15 +52,15 @@ def run_phase2(model, tokenizer, problem_text, analysis):
     # reuse_ids = sufficiency_result.get("reuse", [])
     missing_caps = sufficiency_result.get("missing_capabilities", [])
 
-    if not missing_caps:
-        print(f"Retrieved primitives appear sufficient.")
-    else:
-        print(f"Missing conceptual capabilities identified: {missing_caps}")
+    # if not missing_caps:
+    #     print(f"Retrieved primitives appear sufficient.")
+    # else:
+    #     print(f"Missing conceptual capabilities identified: {missing_caps}")
 
     # --------------------------------------------------------------
     # Step 3 — Generate final sequence (reuse + new primitives)
     # --------------------------------------------------------------
-    print("\n[3] Generating reasoning sequence...")
+    # print("\n[3] Generating reasoning sequence...")
     final_sequence = generate_primitives_with_reflection(
         model=model,
         tokenizer=tokenizer,
@@ -94,11 +94,11 @@ def run_phase2(model, tokenizer, problem_text, analysis):
     # --------------------------------------------------------------
     # Debug summary
     # --------------------------------------------------------------
-    print("\n────────────────────── Generated Reasoning Sequence ──────────────────────")
-    for p in final_sequence:
-        print(f"  Step {p.get('step', '?')}: {p['id']} ({p['status']}) — {p}")
-    print(f"─────────────────────────────────────────────────────────────────────────\n")
-    print(f"Summary: {len(new_prims)} new / {len(final_sequence)} total primitives.\n")
+    # print("\n────────────────────── Generated Reasoning Sequence ──────────────────────")
+    # for p in final_sequence:
+    #     print(f"  Step {p.get('step', '?')}: {p['id']} ({p['status']}) — {p}")
+    # print(f"─────────────────────────────────────────────────────────────────────────\n")
+    # print(f"Summary: {len(new_prims)} new / {len(final_sequence)} total primitives.\n")
 
     return final_sequence, new_prims
 
