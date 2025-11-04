@@ -1,0 +1,13 @@
+=== Training on SVAMP ===
+
+
+====================== Problem 1 ======================
+
+Question:
+Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?
+
+Ground Truth Answer:
+70.0
+
+Phase 1 - Analysis:
+{'problem_type': 'Arithmetic Reasoning', 'topics': ['Multiplication', 'Division'], 'tags': ['multi-step', 'proportional', 'arithmetic-chain', 'unit-consistency'], 'selected_modules': [{'name': 'Step-by-Step Reasoning', 'description': 'Let’s think step by step to ensure logical and systematic reasoning.'}, {'name': 'Core Problem Identification', 'description': 'Clarify the exact question being asked and isolate the essential variables or goals.'}, {'name': 'Stepwise Planning', 'description': 'Lay out an explicit sequence of steps or operations to follow in solving the problem.'}, {'name': 'Simplification', 'description': 'Rephrase or reduce the problem into an easier equivalent form while preserving meaning.'}]}

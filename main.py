@@ -22,7 +22,7 @@ def main():
 
     # Testing 
     
-    # solve(dataset_name,"train","Training", model, tokenizer)    
+    solve(dataset_name,"train","Training", model, tokenizer)    
 
     #  # For generating phase analyses and executions - SVAMP
 
@@ -32,7 +32,7 @@ def main():
     # Total - 10 batches of 70 each for SVAMP train set (700 problems)
     # Total batch generated till now - 0
 
-    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=1, batch_size=70) 
+    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=1, batch_size=70) 
     # # update bacth_no and batch_size as needed
 # --------------------------------------------------------------------------
 
