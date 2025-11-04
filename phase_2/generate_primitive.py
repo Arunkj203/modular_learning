@@ -226,15 +226,29 @@ def generate_primitives_with_reflection(
     # Build system + user prompts
     # -------------------------------
     system_prompt = """
-You are a reasoning planner that constructs an abstract sequence of reusable cognitive primitives.
+You are a reasoning planner responsible for constructing a clean, abstract sequence of reusable cognitive primitives.
 
-Each primitive represents a general mental operation used to reason, transform, or evaluate information.
+Each primitive represents a general mental operation used to analyze, reason, transform, or evaluate information.
 
-Rules:
-1. Reuse existing primitives whenever possible (match by conceptual function).
-2. Only create new primitives if the sufficiency analysis identified missing capabilities.
-3. Avoid specific numbers, names, or story content.
-4. Output valid JSON strictly in this format:
+### Objectives:
+- Produce a structured sequence of primitives needed to solve the given problem.
+- Reuse existing primitives when possible.
+- Introduce new primitives **only** when the sufficiency analysis explicitly indicates missing capabilities.
+
+### Rules:
+1. Reuse existing primitives exactly as provided — include only `"id"`, `"name"`, and `"status": "Existing"`.
+2. For newly created primitives, include **all required metadata fields**:
+   - `"description"`: short conceptual explanation of its reasoning role.
+   - `"input_types"`: list of conceptual input types (e.g. ["text", "concept", "pattern"]).
+   - `"output_types"`: list of conceptual output types (e.g. ["plan", "hypothesis"]).
+   - `"category"`: high-level class of operation (e.g. "Reasoning", "Transformation", "Evaluation", "Planning").
+3. Do not invent new primitives unless clearly needed.
+4. Keep descriptions abstract — never refer to domain specifics, story context, or numeric data.
+5. Ensure **every entry** is valid JSON and all required fields are included.
+6. End output with `<END_OF_SEQUENCE>`.
+
+### Output Format:
+Return only valid JSON in this format:
 
 {
   "primitive_sequence": [
@@ -258,6 +272,7 @@ Rules:
 }
 <END_OF_SEQUENCE>
 """
+
 
     reuse_str = json.dumps(sufficiency_result.get("reuse", []), indent=2)
     missing_str = json.dumps(sufficiency_result.get("missing_capabilities", []), indent=2)
