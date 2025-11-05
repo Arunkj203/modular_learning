@@ -32,11 +32,13 @@ def main():
     # Total - 10 batches of 70 each for SVAMP train set (700 problems)
     # Total batch generated till now - 0
 
-    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=1, batch_size=70)
-    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=2, batch_size=70) 
-    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=3, batch_size=70) 
-    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=4, batch_size=70) 
-    generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=5, batch_size=70)  
+    for i in range(1, 11):
+        generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
+    
+    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=2, batch_size=70) 
+    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=3, batch_size=70) 
+    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=4, batch_size=70) 
+    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=5, batch_size=70)  
     # # update bacth_no and batch_size as needed
 # --------------------------------------------------------------------------
 
