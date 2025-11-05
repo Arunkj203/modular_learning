@@ -22,9 +22,9 @@ except Exception:
 
 # OLD: BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 
-BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
+# BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
 
-# BASE_MODEL = "meta-llama/Meta-Llama-3-70B-Instruct" # For phase 2 - Synthesis
+BASE_MODEL = "meta-llama/Meta-Llama-3-70B-Instruct" # For phase 2 - Synthesis
 
 
 # BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" # New Model
