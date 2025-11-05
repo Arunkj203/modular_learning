@@ -234,17 +234,19 @@ Rules:
 3. Each primitive represents a general mental operation.
 4. No numbers, names, or domain entities.
 5. Always end with an Evaluation primitive.
-6. Output valid JSON using this format:
+6. For new primitives, include a brief description explaining their cognitive role or reasoning function.
+7. Output valid JSON using this format:
 
 {
   "primitive_sequence": [
     {"step": 1, "id": "<Existing ID>", "name": "<Primitive Name>", "status": "Existing"},
-    {"step": 2, "id": "P_new###", "name": "<New Primitive>", "status": "New"},
+    {"step": 2, "id": "P_new###", "name": "<New Primitive>", "description": "<What this new primitive does>", "status": "New"},
     ...
   ]
 }
 <END_OF_SEQUENCE>
 """
+
 
     reuse_str = json.dumps(sufficiency_result.get("reuse", []), indent=2)
     missing_str = json.dumps(sufficiency_result.get("missing_capabilities", []), indent=2)
@@ -363,6 +365,7 @@ def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9)
                 # Merge with existing primitive
                 p["id"] = best_match["id"]
                 p["name"] = best_match["name"]
+                p["description"] = best_match.get("description", "")
                 p["status"] = "Existing"
                 p["merged_from"] = name
                 print(f"[MERGE] '{name}' → existing primitive '{best_match['name']}' (sim={best_score:.2f})")

@@ -35,6 +35,7 @@ def main():
     for i in range(1, 11):
         generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
     
+    
     # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=2, batch_size=70) 
     # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=3, batch_size=70) 
     # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=4, batch_size=70) 
