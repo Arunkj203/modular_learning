@@ -276,7 +276,7 @@ Return only valid JSON in this format:
 
     reuse_str = json.dumps(sufficiency_result.get("reuse", []), indent=2)
     missing_str = json.dumps(sufficiency_result.get("missing_capabilities", []), indent=2)
-
+    print("Reuse:",reuse_str)
     available_str = json.dumps(
         [{"id": p["id"], "name": p["name"], "desc": p["description"]} for p in retrieved],
         indent=2
@@ -320,6 +320,7 @@ Do NOT mention concrete values or story details.
         dynamic_max_tokens=dynamic_max_tokens
     )["primitive_sequence"]
 
+    print(primitives_sequence)
     return clean_and_register_primitives(primitives_sequence)
 
 
