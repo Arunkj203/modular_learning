@@ -1,0 +1,5980 @@
+[
+  {
+    "question": "There are 87 oranges and 290 bananas in Philip's collection. If the bananas are organized into 2 groups and oranges are organized into 93 groups How big is each group of bananas?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_9fa48",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification"
+      },
+      {
+        "step": 2,
+        "id": "P_new_d79f0",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification"
+      },
+      {
+        "step": 3,
+        "id": "P_new_68946",
+        "name": "Unit Analysis",
+        "description": "Identify and analyze the units involved in the problem to facilitate conversions",
+        "status": "New"
+      },
+      {
+        "step": 4,
+        "id": "P_new_9d1ec",
+        "name": "Division",
+        "description": "Perform division operation to solve the problem",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_e9c5e",
+        "name": "Unit Conversion",
+        "description": "Convert units to a common base to facilitate further operations",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_28d7a",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation"
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Marco and his dad went strawberry picking. Marco's dad's strawberries weighed 11 pounds. If together their strawberries weighed 30 pounds. How much did Marco's strawberries weigh?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_34dc6",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_cc236",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning"
+      },
+      {
+        "step": 3,
+        "id": "P_new_8195d",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning"
+      },
+      {
+        "step": 4,
+        "id": "P_new_0cfb1",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b0b32",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Edward spent $ 6 to buy 2 books each book costing him the same amount of money. Now he has $ 12. How much did each book cost?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_d442f",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_605bd",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_1706d",
+        "name": "Basic Arithmetic Operations (Division)",
+        "description": "Perform division operation to find the quotient",
+        "status": "New",
+        "related_primitives": [
+          "P_new_9d1ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_eb34e",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Frank was reading through his favorite book. The book had 3 chapters, each with the same number of pages. It has a total of 594 pages. It took Frank 607 days to finish the book. How many pages are in each chapter?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_9a00d",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_b887c",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_7d822",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_3552f",
+        "name": "Division Operation",
+        "description": "Perform division to separate a quantity into equal parts or groups",
+        "status": "New",
+        "related_primitives": [
+          "P_new_9d1ec"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_3efc2",
+        "name": "Multiplication Operation",
+        "description": "Combine equal groups or sets to form a product",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_b0d04",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "There were 78 dollars in Olivia's wallet. She spent 15 dollars at a supermarket. How much money does she have left?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_2e893",
+        "name": "Identify Goal",
+        "description": "Determine the objective of the problem",
+        "status": "New"
+      },
+      {
+        "step": 2,
+        "id": "P_new_51461",
+        "name": "Isolate Variables",
+        "description": "Extract relevant information and variables from the problem",
+        "status": "New"
+      },
+      {
+        "step": 3,
+        "id": "P_new_d2830",
+        "name": "Determine Operation",
+        "description": "Identify the required arithmetic operation to achieve the goal",
+        "status": "New"
+      },
+      {
+        "step": 4,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "description": "Execute the subtraction operation to find the result",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_db37b",
+        "name": "Evaluate Result",
+        "description": "Assess the outcome of the subtraction operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_791e8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_129a4",
+        "name": "Evaluation",
+        "description": "Determine if the result meets the problem's requirements",
+        "status": "New"
+      }
+    ]
+  },
+  {
+    "question": "Paul got a box of 110 crayons for his birthday. During the school year he gave 90 crayons to his friends while he lost 412 crayons. How many more crayons did he lose than those he gave to his friends?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_d7b09",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_a3efc",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_69e72",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, specifically subtraction, to manipulate numerical values.",
+        "status": "New"
+      },
+      {
+        "step": 4,
+        "id": "P_new_14693",
+        "name": "Comparison",
+        "description": "Compare values to determine their relative magnitude or equality.",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_f9770",
+        "name": "Ordering",
+        "description": "Arrange values in a specific order based on their relative magnitude or other criteria.",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_4adc3",
+        "name": "Progress Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Progress Evaluation"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e79b8",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Randy has 95 blocks. He uses 20 blocks to build a house and 50 blocks to build a tower. How many more blocks did he use to build the tower than he did to build the house?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_62126",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_e5d97",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_446ec",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, including subtraction, to manipulate numerical values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_69e72"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_12f2e",
+        "name": "Comparison",
+        "description": "Compare values to determine their relative magnitude or equality",
+        "status": "New",
+        "related_primitives": [
+          "P_new_14693"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_d4617",
+        "name": "Ordering",
+        "description": "Arrange values in a specific order based on their magnitude or other criteria",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f9770"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_39c56",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "After Jessie started to go jogging everyday she lost 126 kilograms. She currently weighs 66 kilograms. How much did she weigh before starting to jog?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_5112c",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_70249",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_08be4",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, including subtraction, to manipulate quantities.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_69e72",
+          "P_new_446ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_437a1",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement to ensure consistency and comparability.",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5251f",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_f1a63",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "At the arcade Dave had won some tickets. He used 12 tickets to buy some toys. If he still has 14 tickets left How many tickets did Dave win at the arcade?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_ee3ff",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_475b0",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_22de1",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, specifically subtraction, to manipulate quantities.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_08be4",
+          "P_new_69e72",
+          "P_new_446ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_ade60",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement to ensure consistency and comparability.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_437a1"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_edc9a",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Bryan took a look at his books as well. If he has 34 books distributed equally in 2 bookshelves How many books are there in each bookshelf?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_68643",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_0703f",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_99532",
+        "name": "Basic Arithmetic Operations (Division)",
+        "description": "Perform division operation to find the quotient",
+        "status": "New",
+        "related_primitives": [
+          "P_new_1706d",
+          "P_new_9d1ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_26d12",
+        "name": "Unit Conversion",
+        "description": "Convert between different units to ensure consistency",
+        "status": "New",
+        "related_primitives": [
+          "P_new_437a1",
+          "P_new_ade60"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_29164",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Dave had 15 apps on his phone. He added 71 new apps. After deleting some he had 14 left. How many more apps did he delete than he added?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_c75af",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_6b5be",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "description": "Select the appropriate arithmetic operation (addition or subtraction) based on the problem context",
+        "status": "New"
+      },
+      {
+        "step": 4,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "description": "Perform the selected arithmetic operation",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7f448",
+        "name": "Progress Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Progress Evaluation",
+        "related_primitives": [
+          "P_new_4adc3"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_f400c",
+        "name": "Result Verification",
+        "description": "Verify the correctness of the intermediate result",
+        "status": "New"
+      },
+      {
+        "step": 8,
+        "id": "P_new_cde7c",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 9,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Adam has 4 more apples than Jackie. Together Adam and Jackie have 14 apples. Bob has 6 apples more than Adam and Jackie together do. How many apples does Bob have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_5d38e",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_db66f",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_65fd6",
+        "name": "Basic Arithmetic Operation Selection",
+        "description": "Select the appropriate arithmetic operation (addition or subtraction) based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a9af8"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_e4b97",
+        "name": "Arithmetic Operation Execution",
+        "description": "Perform the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_454bd"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_6d044",
+        "name": "Progress Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Progress Evaluation",
+        "related_primitives": [
+          "P_new_4adc3",
+          "P_new_7f448"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_61217",
+        "name": "Result Verification",
+        "description": "Verify the correctness of the intermediate result",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f400c"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P_new_0b30b",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 9,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "You have 104 dollars. How many packs of dvds can you buy if each pack costs 26 dollars?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_759e3",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_a3be0",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_67baf",
+        "name": "Basic Arithmetic Operations (Division)",
+        "description": "Perform division operation to find the quotient",
+        "status": "New",
+        "related_primitives": [
+          "P_new_1706d",
+          "P_new_99532",
+          "P_new_9d1ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_4a32f",
+        "name": "Unit Conversion",
+        "description": "Convert between different units to ensure consistency",
+        "status": "New",
+        "related_primitives": [
+          "P_new_26d12",
+          "P_new_437a1",
+          "P_new_ade60"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_f6754",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jerry had 7 books and 3 action figures on a shelf in his room. Later he added 2 more action figures to the shelf. How many more books than action figures were on his shelf?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_7d1e5",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_d4e2a",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "description": "Perform basic arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_08be4",
+          "P_new_22de1",
+          "P_new_446ec",
+          "P_new_69e72",
+          "P_new_0cfb1"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "description": "Determine which arithmetic operation to apply based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a9af8",
+          "P_new_65fd6",
+          "P_new_d2830",
+          "P_new_454bd",
+          "P_new_e4b97"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_efcb0",
+        "name": "Operation Execution",
+        "description": "Execute the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_454bd",
+          "P_new_e4b97"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_454bd",
+          "P_new_e4b97"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_aacd6",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Melissa scored a total of 91 points in 13 games scoring the same for each game. How many points did she score in each game?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_fc101",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_97073",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_f98e3",
+        "name": "Division Operation",
+        "description": "Perform division to find the quotient of two quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_1706d",
+          "P_new_99532",
+          "P_new_67baf",
+          "P_new_9d1ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_5567b",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement",
+        "status": "New",
+        "related_primitives": [
+          "P_new_26d12",
+          "P_new_4a32f",
+          "P_new_437a1",
+          "P_new_ade60"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_f81e7",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Faye had 35 packs of pencils each one having 4 pencils. She was placing her pencils into rows with 2 pencils in each row. How many rows could she make?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_b5cf3",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_cc785",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_8e251",
+        "name": "Basic Arithmetic Operations (Multiplication, Division)",
+        "description": "Perform basic arithmetic operations of multiplication and division to manipulate quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_22de1",
+          "P_new_08be4",
+          "P_new_446ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_dd3ef",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_f1075",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_23497",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Each basket of peaches has 19 red peaches and 4 green peaches. If there are 15 such baskets How many peaches are in the baskets altogether?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_15fd9",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_458a1",
+        "name": "Retrieve Multiplication",
+        "description": "Access and apply multiplication operation",
+        "status": "New"
+      },
+      {
+        "step": 3,
+        "id": "P_new_bf0ac",
+        "name": "Retrieve Addition",
+        "description": "Access and apply addition operation",
+        "status": "New"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a816b",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_49933",
+        "name": "Apply Multiplication",
+        "description": "Perform multiplication operation on relevant elements",
+        "status": "New",
+        "related_primitives": [
+          "P_new_458a1"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_00cb4",
+        "name": "Apply Addition",
+        "description": "Perform addition operation on relevant elements",
+        "status": "New",
+        "related_primitives": [
+          "P_new_bf0ac"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_66522",
+        "name": "Integrate Results",
+        "description": "Combine results from multiplication and addition operations",
+        "status": "New"
+      },
+      {
+        "step": 8,
+        "id": "P_new_3db5f",
+        "name": "Evaluate Intermediate",
+        "description": "Assess the intermediate result for correctness",
+        "status": "New"
+      },
+      {
+        "step": 9,
+        "id": "P_new_0dbaa",
+        "name": "Refine Solution",
+        "description": "Refine the solution based on intermediate evaluation",
+        "status": "New"
+      },
+      {
+        "step": 10,
+        "id": "P_new_19552",
+        "name": "Finalize Result",
+        "description": "Determine the final answer",
+        "status": "New"
+      },
+      {
+        "step": 11,
+        "id": "P_new_39ce5",
+        "name": "Verify Solution",
+        "description": "Check the final answer for accuracy",
+        "status": "New"
+      },
+      {
+        "step": 12,
+        "id": "P_new_9cadf",
+        "name": "Evaluation",
+        "description": "Make a final judgment on the solution",
+        "status": "New"
+      }
+    ]
+  },
+  {
+    "question": "Nell collects cards. She had 309 baseball cards and 356 Ace cards. She gave some of her cards to Jeff and now has 415 baseball cards and Ace cards left. How many more baseball cards than Ace cards does Nell have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_8947d",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_25c1d",
+        "name": "Decomposition",
+        "status": "New",
+        "description": "Auto-generated primitive: Decomposition"
+      },
+      {
+        "step": 3,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "description": "Identify the specific arithmetic operation required (addition or subtraction)",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_d2830",
+          "P_new_a9af8",
+          "P_new_65fd6"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "description": "Extract the operands (numbers) involved in the operation",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "description": "Perform the identified arithmetic operation (addition or subtraction) on the extracted operands",
+        "status": "New",
+        "related_primitives": [
+          "P_new_21911",
+          "P_new_87549",
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_0cfb1"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_09a95",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_60696",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "There are 270 students in a school. If the school has 5 students in each grades and each grade has the same number of students How many grades are there in total?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_0e7af",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_4f252",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_d96f1",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_4cd2e",
+        "name": "Division Operation",
+        "description": "Perform division to obtain a quotient",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f98e3",
+          "P_new_1706d",
+          "P_new_99532",
+          "P_new_67baf",
+          "P_new_9d1ec"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_dd121",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement",
+        "status": "New",
+        "related_primitives": [
+          "P_new_5567b",
+          "P_new_26d12",
+          "P_new_4a32f",
+          "P_new_437a1",
+          "P_new_ade60"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_3e3cd",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "In a school there are 34 girls and 841 boys. How many more boys than girls does the school have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_ef3f0",
+        "name": "Identify Goal",
+        "description": "Determine the objective of the problem",
+        "status": "New",
+        "related_primitives": [
+          "P_new_2e893"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_991e6",
+        "name": "Extract Variables",
+        "description": "Isolate the essential variables involved in the problem",
+        "status": "New",
+        "related_primitives": [
+          "P_new_51461"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_b2f55",
+        "name": "Perform Subtraction",
+        "description": "Execute the basic arithmetic operation of subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_791e8",
+          "P_new_446ec",
+          "P_new_87549",
+          "P_new_08be4",
+          "P_new_69e72"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_a41f5",
+        "name": "Compare Result",
+        "description": "Evaluate the outcome of the subtraction operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_db37b",
+          "P_new_791e8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_10166",
+        "name": "Evaluation",
+        "description": "Assess the solution and determine its validity",
+        "status": "New",
+        "related_primitives": [
+          "P_new_9cadf"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "He then went to see the oranges being harvested. He found out that they harvested 54 sacks of oranges. How many days did it take to harvest them if they harvested 18 sacks of oranges per day?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_33c2a",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_6dc1e",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_68b05",
+        "name": "Division Operation",
+        "description": "Perform division to find the quotient of two quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f98e3",
+          "P_new_4cd2e",
+          "P_new_1706d",
+          "P_new_99532",
+          "P_new_67baf"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_1b824",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement",
+        "status": "New",
+        "related_primitives": [
+          "P_new_5567b",
+          "P_new_dd121",
+          "P_new_26d12",
+          "P_new_4a32f",
+          "P_new_437a1"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_dc4fe",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_a80e4",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Zachary did 46 push-ups and 58 crunches in gym class today. David did 38 more push-ups but 62 less crunches than zachary. How many more crunches than push-ups did Zachary do?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_4cd93",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_6a654",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_51416",
+        "name": "Basic Arithmetic Operation Selection",
+        "description": "Select the appropriate arithmetic operation (addition or subtraction) based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a9af8",
+          "P_new_65fd6",
+          "P_new_b4ce4",
+          "P_new_21911"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_1e5b6",
+        "name": "Arithmetic Operation Execution",
+        "description": "Perform the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_efcb0",
+          "P_new_5031f",
+          "P_new_a4a48"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_2df0a",
+        "name": "Progress Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Progress Evaluation",
+        "related_primitives": [
+          "P_new_4adc3",
+          "P_new_7f448",
+          "P_new_6d044"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_b027c",
+        "name": "Result Verification",
+        "description": "Verify the correctness of the intermediate result",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f400c",
+          "P_new_61217"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P_new_aca59",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 9,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "After a typhoon, 13 trees in Haley's backyard died. If she had grown 3 trees initially How many more trees died in the typhoon than those that survived?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_9cac1",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_6001d",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_4b71c",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, specifically subtraction, to manipulate numerical values.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_69e72",
+          "P_new_446ec",
+          "P_new_22de1",
+          "P_new_08be4",
+          "P_new_87549"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "description": "Compare the results of arithmetic operations to determine relationships between values.",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "description": "Arrange values in a specific order based on their relationships.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f9770",
+          "P_new_d4617"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_ee0ce",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_c1e5a",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "A book has 2 chapters. The second chapter is 36 pages long. If there are a total of 67 pages in the book How many pages are in the first chapter?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_72270",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_9bafb",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_9b91d",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_c8755",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_87549",
+          "P_new_5031f"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_52918",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "During summer break 610769 kids from Lawrence county go to camp and the other 590796 kids stay home. An additional 22 kids from outside the county attended the camp. About how many kids are in Lawrence county?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_d7735",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_e84a5",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_88b32",
+        "name": "Basic Arithmetic Operation",
+        "description": "Perform basic arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_08be4",
+          "P_new_22de1",
+          "P_new_446ec",
+          "P_new_69e72"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_3dce4",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_8164f",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Lewis earns $ 2 every week during the harvest. If he earns a total of $ 178 How many weeks did the harvest last?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_6af93",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_558a8",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_24c5e",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_b1604",
+        "name": "Division Operation",
+        "description": "Perform division to find the quotient of two values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f98e3",
+          "P_new_68b05",
+          "P_new_4cd2e",
+          "P_new_1706d",
+          "P_new_99532"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_6e23a",
+        "name": "Result Interpretation",
+        "description": "Analyze and understand the outcome of the division operation",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_c82cf",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Next on his checklist is wax to stick the feathers together. If he has 557 g of wax and right now he just needs 17 g Total how many grams of wax do the feathers require?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_3f028",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_dbf99",
+        "name": "Goal Isolation",
+        "status": "New",
+        "description": "Auto-generated primitive: Goal Isolation"
+      },
+      {
+        "step": 3,
+        "id": "P_new_63c83",
+        "name": "Subtraction Operation",
+        "description": "Perform subtraction operation to find the difference between two numbers",
+        "status": "New",
+        "related_primitives": [
+          "P_new_b2f55",
+          "P_new_791e8"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_fa4b1",
+        "name": "Arithmetic Fact Retrieval",
+        "description": "Retrieve basic arithmetic facts, such as subtracting a smaller number from a larger one",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_d2e01",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_85bcb",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "For the walls of the house he would use 8 large planks of wood. If each plank of wood needs 74 pieces of nails to be secured How many planks does John need for the house wall?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a23cd",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "description": "Recognize the need for numerical manipulation to solve the problem",
+        "status": "New"
+      },
+      {
+        "step": 3,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "description": "Perform multiplication to combine quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_49933"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_b1c53",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_47c08",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Zachary did 44 push-ups in gym class today. David did 58 more push-ups than zachary. How many push-ups did Zachary and David do altogether?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_37967",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_bbdbc",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_807d2",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_5031f"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_67b48",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_3cd70",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Mary is baking a cake. The recipe calls for 9 cups of sugar 14 cups of flour and 40 cups of salt. She already put in 4 cups of flour. How many more cups of flour than cups of sugar does she need to add now?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_0bdb0",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_a03a6",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_ff89b",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785",
+          "P_new_e84a5"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_04f01",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_87549",
+          "P_new_88b32"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_5885e",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_7b426",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Paco had 8 sweet cookies and 6 salty cookies. He ate 20 sweet cookies and 34 salty cookies. How many more salty cookies than sweet cookies did he eat?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_d4c89",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_fdc73",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_2ca36",
+        "name": "Basic Arithmetic Operations",
+        "description": "Perform basic arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_22de1",
+          "P_new_08be4",
+          "P_new_69e72"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_b7d0f",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_e1dd1",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The Ferris wheel in paradise park has some seats. Each seat can hold 9 people. If 18 people can ride the wheel at the same time How many seats does the Ferris wheel have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_76df1",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_d91a7",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785",
+          "P_new_e84a5"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_5a315",
+        "name": "Factorization",
+        "description": "Break down a complex quantity into its constituent factors",
+        "status": "New"
+      },
+      {
+        "step": 4,
+        "id": "P_new_25eac",
+        "name": "Inverse Operation",
+        "description": "Identify the operation that reverses the effect of another operation",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_c7fac",
+        "name": "Quotient Determination",
+        "description": "Determine the result of a division operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_4cd2e",
+          "P_new_f98e3",
+          "P_new_68b05",
+          "P_new_b1604",
+          "P_new_1706d"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_430d2",
+        "name": "Product Formation",
+        "description": "Combine factors to form a product",
+        "status": "New"
+      },
+      {
+        "step": 7,
+        "id": "P_new_aaa18",
+        "name": "Equivalence Check",
+        "description": "Verify that two expressions are equal in value",
+        "status": "New"
+      },
+      {
+        "step": 8,
+        "id": "P_new_f5c3c",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 9,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "A mailman gives 2 junk mails to each house in a block. If the mailman has to give 14 pieces of junk mail to each block. How many houses are there in a block?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5d42",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_1da10",
+        "name": "Decomposition",
+        "status": "New",
+        "description": "Auto-generated primitive: Decomposition",
+        "related_primitives": [
+          "P_new_25c1d"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "description": "Select the appropriate arithmetic operation (Multiplication or Division) based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a9af8",
+          "P_new_65fd6",
+          "P_new_51416",
+          "P_new_b4ce4"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "description": "Perform the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_1e5b6",
+          "P_new_efcb0",
+          "P_new_5031f"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_13adc",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_63e78",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Danny collects bottle caps and wrappers. He found 71 bottle caps and 24 wrappers at the park. Now he has 28 bottle caps and 16 wrappers in his collection. How many more bottle caps than wrappers does danny have now?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_7d889",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_aac90",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "description": "Perform basic arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_2ca36",
+          "P_new_08be4",
+          "P_new_22de1"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_21e87",
+        "name": "Operation Selection",
+        "description": "Determine which arithmetic operation to apply based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_b4ce4",
+          "P_new_848c1",
+          "P_new_a9af8",
+          "P_new_65fd6",
+          "P_new_51416"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_ed38d",
+        "name": "Operation Execution",
+        "description": "Execute the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_efcb0",
+          "P_new_d463c",
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_1e5b6"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_bb450",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a4a48",
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_1e5b6"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_e3c0f",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "There are many different books in the ' crazy silly school ' series. If you have read 13 of the books and are yet to read 8 books How many books are there in the ' crazy silly school ' series?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_49359",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_203ac",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_a0fa6",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01",
+          "P_new_87549"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_b8b8b",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Edward spent $ 17. Then he received $ 10 from his friend. Now he has $ 7. How much did Edward have before he spent his money?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_91b88",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_28487",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_9b8e9",
+        "name": "Arithmetic Operation Identification",
+        "description": "Identify the specific arithmetic operation required (addition or subtraction)",
+        "status": "New",
+        "related_primitives": [
+          "P_new_21911",
+          "P_new_5031f",
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_10cbf"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "description": "Perform the identified arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_d463c",
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_1e5b6",
+          "P_new_5031f"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_6723f",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the operation",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_1507b",
+        "name": "Reflective Thinking",
+        "status": "New",
+        "description": "Auto-generated primitive: Reflective Thinking"
+      },
+      {
+        "step": 7,
+        "id": "P_new_90340",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jesse's room is 7 feet wide. If she needs a carpet of size 14 square feet What is the length of her room?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a8106",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_ce857",
+        "name": "Basic Arithmetic Operations",
+        "description": "Perform basic arithmetic operations such as multiplication",
+        "status": "New",
+        "related_primitives": [
+          "P_new_2ca36",
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_10cbf",
+          "P_new_8e251"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_d7abc",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785",
+          "P_new_e84a5"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_f071a",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement",
+        "status": "New",
+        "related_primitives": [
+          "P_new_5567b",
+          "P_new_dd121",
+          "P_new_1b824",
+          "P_new_26d12",
+          "P_new_4a32f"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_b3d1a",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jessie weighed 71 kilograms. After she started to go jogging everyday she lost 20 kilograms. How much does she weigh now?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_15f28",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_e54a9",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_9f4c7",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform subtraction operation to find the difference between two quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_63c83",
+          "P_new_b2f55",
+          "P_new_446ec",
+          "P_new_08be4",
+          "P_new_87549"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_35896",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Frank put 11 pieces of candy in each bag. If he had 22 pieces of candy How many bags would he have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_381ad",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_945af",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_f0d42",
+        "name": "Division Operation",
+        "description": "Perform division to find the quotient of two quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f98e3",
+          "P_new_68b05",
+          "P_new_b1604",
+          "P_new_4cd2e",
+          "P_new_1706d"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_147c0",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement",
+        "status": "New",
+        "related_primitives": [
+          "P_new_5567b",
+          "P_new_dd121",
+          "P_new_1b824",
+          "P_new_f071a",
+          "P_new_26d12"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_e4466",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Matthew had 29 crackers and 30 cakes. If Matthew gave equal numbers of crackers and cakes to his 2 friends How many cakes did each person eat?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_b8cb1",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_8d9d8",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_7b885",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785",
+          "P_new_e84a5"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_bfaae",
+        "name": "Basic Arithmetic Operations (Division)",
+        "description": "Perform division operation to solve the problem",
+        "status": "New",
+        "related_primitives": [
+          "P_new_9d1ec",
+          "P_new_1706d",
+          "P_new_99532",
+          "P_new_67baf",
+          "P_new_b1604"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_a6f02",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_fabe6",
+        "name": "Unit Conversion",
+        "description": "Convert between different units to ensure consistency",
+        "status": "New",
+        "related_primitives": [
+          "P_new_26d12",
+          "P_new_4a32f",
+          "P_new_437a1",
+          "P_new_ade60",
+          "P_new_5567b"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_893d1",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "5 red peaches, 14 yellow peaches and 6 green peaches are in the basket. How many green and yellow peaches are in the basket?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_5b6ac",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_bb328",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_cd8ec",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic arithmetic operations, such as addition, to manipulate numerical values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01",
+          "P_new_a0fa6"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_e6075",
+        "name": "Counting",
+        "description": "Enumerate and track quantities to determine the total count",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_d2cd1",
+        "name": "Combinatorial Analysis",
+        "description": "Analyze and generate possible combinations of elements to identify relationships",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_0cea7",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Every day Ryan spends 7 hours on learning english, 2 hours on learning chinese and 4 hours on learning spanish. How many more hours does he spend on learning english than he does on learning spanish?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1648c",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_db298",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_38340",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, specifically subtraction, to manipulate numerical values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_446ec",
+          "P_new_69e72",
+          "P_new_4b71c",
+          "P_new_22de1",
+          "P_new_08be4"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_d5906",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 10 emails and 12 letters in the morning. He then received 3 emails and 44 letters in the afternoon. How many more emails did Jack receive in the morning than in the afternoon?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_9b729",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_e205c",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_83eb2",
+        "name": "Basic Arithmetic Operation",
+        "description": "Perform basic arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_10cbf",
+          "P_new_2ca36",
+          "P_new_ce857"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "description": "Determine which arithmetic operation to apply based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_b4ce4",
+          "P_new_21e87",
+          "P_new_848c1",
+          "P_new_a9af8",
+          "P_new_65fd6"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_e0d6b",
+        "name": "Operation Execution",
+        "description": "Execute the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_efcb0",
+          "P_new_ed38d",
+          "P_new_d463c",
+          "P_new_454bd",
+          "P_new_e4b97"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_0c94a",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a4a48",
+          "P_new_bb450",
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_1e5b6"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_db085",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Kelly has 106 nintendo games. How many will she have left if she gives away 64 games?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_02c1a",
+        "name": "Identify Goal",
+        "description": "Determine the objective of the problem",
+        "status": "New",
+        "related_primitives": [
+          "P_new_2e893",
+          "P_new_ef3f0"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_dc065",
+        "name": "Isolate Variables",
+        "description": "Extract relevant information and variables from the problem",
+        "status": "New",
+        "related_primitives": [
+          "P_new_51461",
+          "P_new_991e6"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "description": "Identify the required arithmetic operation to achieve the goal",
+        "status": "New",
+        "related_primitives": [
+          "P_new_d2830",
+          "P_new_21911",
+          "P_new_9b8e9",
+          "P_new_b4ce4",
+          "P_new_21e87"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_196ea",
+        "name": "Perform Subtraction",
+        "description": "Execute the subtraction operation to find the result",
+        "status": "New",
+        "related_primitives": [
+          "P_new_791e8",
+          "P_new_b2f55",
+          "P_new_db37b",
+          "P_new_a41f5",
+          "P_new_63c83"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_9c292",
+        "name": "Evaluate Result",
+        "description": "Assess the outcome of the subtraction operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_db37b",
+          "P_new_a41f5",
+          "P_new_791e8",
+          "P_new_196ea"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_d792c",
+        "name": "Evaluation",
+        "description": "Determine if the result meets the problem's requirements",
+        "status": "New",
+        "related_primitives": [
+          "P_new_129a4"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "The ring toss game at the carnival made 382 dollars in the first 44 days and 374 dollars in the remaining 10 days. How much did they make in all?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_63513",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_0f7fe",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_1f280",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic arithmetic operations, such as addition, to manipulate numerical values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_cd8ec",
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_1916a",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement to ensure consistency and accuracy",
+        "status": "New",
+        "related_primitives": [
+          "P_new_437a1",
+          "P_new_ade60",
+          "P_new_26d12",
+          "P_new_4a32f",
+          "P_new_fabe6"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_d9f9f",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_05520",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Winter is almost here and most animals are migrating to warmer countries. There are 8 bird families living near the mountain. If 42 bird families flew away to africa and 31 bird families flew away to asia How many more bird families flew away to africa than those that flew away to asia?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_e214f",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_03f8f",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_2db78",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, including subtraction, to manipulate quantities.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_08be4",
+          "P_new_22de1",
+          "P_new_69e72",
+          "P_new_4b71c",
+          "P_new_446ec"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "description": "Compare two or more quantities to determine their relative values.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_14693",
+          "P_new_12f2e",
+          "P_new_ff484"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_9d8e8",
+        "name": "Ordering",
+        "description": "Arrange quantities in a specific order based on their relative values.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f9770",
+          "P_new_d4617",
+          "P_new_afa2d"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_5fadf",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jake has 3 fewer peaches than Steven who has 8 more peaches than Jill. Steven has 5 peaches. How many more peaches does Jake have than Jill?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_0b93d",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_b83f7",
+        "name": "Decomposition",
+        "status": "New",
+        "description": "Auto-generated primitive: Decomposition",
+        "related_primitives": [
+          "P_new_25c1d",
+          "P_new_1da10"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_1fcfc",
+        "name": "Arithmetic Operation",
+        "description": "Perform arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_10cbf",
+          "P_new_83eb2",
+          "P_new_2ca36"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "description": "Make comparisons and determine ordering relationships",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_7f450",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_8bf64",
+        "name": "Quantitative Comparison",
+        "description": "Compare quantities to determine equality, greater than, or less than relationships",
+        "status": "New"
+      },
+      {
+        "step": 7,
+        "id": "P_new_3ab22",
+        "name": "Ordering",
+        "description": "Determine the correct order of quantities based on comparisons",
+        "status": "New"
+      },
+      {
+        "step": 8,
+        "id": "P_new_0432a",
+        "name": "Inference",
+        "description": "Draw conclusions based on comparisons and ordering",
+        "status": "New"
+      },
+      {
+        "step": 9,
+        "id": "P_new_a6452",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 10,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "After resting they decided to go for a swim. The depth of the water is 2 times Dean's height. Dean is 8 feet shorter than Ron. If Ron stands at 14 feet How deep was the water?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_c70bc",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_db62b",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785",
+          "P_new_e84a5"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_4f13a",
+        "name": "Multiplication",
+        "description": "Perform multiplication operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_ce57e",
+          "P_new_49933",
+          "P_new_458a1"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_97ef0",
+        "name": "Subtraction",
+        "description": "Perform subtraction operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_63c83",
+          "P_new_b2f55",
+          "P_new_9f4c7",
+          "P_new_791e8",
+          "P_new_196ea"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_5b412",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_d0b21",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_7ea54",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Every day Ryan spends 6 hours on learning english and 7 hours on learning chinese. If he learns for 5 days How many hours does he spend on learning english and chinese in all?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_94514",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_6a246",
+        "name": "Time Unit Identification",
+        "description": "Identify the unit of time relevant to the problem",
+        "status": "New"
+      },
+      {
+        "step": 3,
+        "id": "P_new_c233e",
+        "name": "Multiplication Operation",
+        "description": "Perform multiplication to combine time units",
+        "status": "New",
+        "related_primitives": [
+          "P_new_ce57e",
+          "P_new_4f13a"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_f042b",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_49b94",
+        "name": "Time Calculation",
+        "description": "Perform calculations involving time units",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_6dae2",
+        "name": "Result Interpretation",
+        "description": "Understand the meaning of the calculated result",
+        "status": "New"
+      },
+      {
+        "step": 7,
+        "id": "P_new_0f6c8",
+        "name": "Evaluation",
+        "description": "Assess the correctness of the solution",
+        "status": "New",
+        "related_primitives": [
+          "P_new_10166",
+          "P_new_9cadf"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 10 emails in the morning, 5 emails in the afternoon and 4 emails in the evening. How many more emails did Jack receive in the afternoon than in the evening?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_94456",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_b559a",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_0a13f",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "status": "New",
+        "description": "Auto-generated primitive: Basic Arithmetic Operations (Addition)",
+        "related_primitives": [
+          "P_new_cd8ec",
+          "P_new_1f280",
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_43d79",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform subtraction operation to find the difference between two values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_9f4c7",
+          "P_new_63c83",
+          "P_new_b2f55",
+          "P_new_446ec",
+          "P_new_97ef0"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_093a2",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Frank was reading through his favorite book. The book had 555 pages equally distributed over 5 chapters. It took Frank 220 days to finish the book. How many pages are in each chapter?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_e41ed",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_42f5d",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785",
+          "P_new_e84a5"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_d60dd",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_40bb1",
+        "name": "Division Operation",
+        "description": "Perform division to obtain a quotient",
+        "status": "New",
+        "related_primitives": [
+          "P_new_4cd2e",
+          "P_new_f98e3",
+          "P_new_68b05",
+          "P_new_f0d42",
+          "P_new_b1604"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_0eccb",
+        "name": "Unit Conversion",
+        "description": "Convert between different units of measurement",
+        "status": "New",
+        "related_primitives": [
+          "P_new_5567b",
+          "P_new_dd121",
+          "P_new_1b824",
+          "P_new_f071a",
+          "P_new_147c0"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_75be2",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "A chef had 40 apples and 54 peaches. After making some pies, he had 39 apples left. How many apples did he use?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_cbfa7",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_e38b2",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_a8cdb",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform subtraction operation to find the difference between two quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_9f4c7",
+          "P_new_43d79",
+          "P_new_63c83",
+          "P_new_b2f55",
+          "P_new_97ef0"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_61250",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Danny collects bottle caps and wrappers. He found 22 bottle caps and 30 wrappers at the park. Now he has 17 bottle caps and 57 wrappers in his collection. How many wrappers did danny have at first?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_215c5",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_7b998",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_4f1eb",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2036",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, including subtraction, to manipulate numerical values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_446ec",
+          "P_new_38340",
+          "P_new_69e72",
+          "P_new_4b71c",
+          "P_new_22de1"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_b6006",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 6 emails in the morning and 2 emails in the afternoon. How many more emails did Jack receive in the morning than in the afternoon?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_4f16c",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_1bd8b",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_c694d",
+        "name": "Basic Arithmetic Operation",
+        "description": "Perform basic arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_10cbf",
+          "P_new_83eb2",
+          "P_new_2ca36"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "description": "Determine which arithmetic operation to apply based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_b4ce4",
+          "P_new_21e87",
+          "P_new_cd837",
+          "P_new_848c1",
+          "P_new_a9af8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_69d6e",
+        "name": "Operation Execution",
+        "description": "Execute the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_efcb0",
+          "P_new_ed38d",
+          "P_new_e0d6b",
+          "P_new_d463c",
+          "P_new_454bd"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c03e",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a4a48",
+          "P_new_bb450",
+          "P_new_0c94a",
+          "P_new_454bd",
+          "P_new_e4b97"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_54975",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Danny collects bottle caps and wrappers. He found 11 bottle caps and 28 wrappers at the park. Now he has 68 bottle caps and 51 wrappers in his collection. How many more wrappers than bottle caps did danny find at the park?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_e1afc",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_6638b",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_e5739",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01",
+          "P_new_a0fa6"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_8fd7f",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic subtraction operations to find the difference between values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_43d79",
+          "P_new_9f4c7",
+          "P_new_a8cdb",
+          "P_new_63c83",
+          "P_new_446ec"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_890b3",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 5 emails and 6 letters in the morning. He then received 9 emails and 7 letters in the afternoon. How many letters did jack receive in the day?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_03f80",
+        "name": "Identify Goal",
+        "description": "Determine the objective of the problem",
+        "status": "New",
+        "related_primitives": [
+          "P_new_2e893",
+          "P_new_ef3f0",
+          "P_new_02c1a"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_b65f1",
+        "name": "Extract Variables",
+        "description": "Isolate the essential variables or data points",
+        "status": "New",
+        "related_primitives": [
+          "P_new_991e6",
+          "P_new_51461",
+          "P_new_dc065"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_33bfa",
+        "name": "Perform Basic Arithmetic Operation",
+        "description": "Execute a fundamental arithmetic operation (e.g., addition)",
+        "status": "New",
+        "related_primitives": [
+          "P_new_cd8ec",
+          "P_new_1f280"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_2715d",
+        "name": "Aggregate Data",
+        "description": "Combine data points to form a unified result",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b456e",
+        "name": "Evaluate Result",
+        "description": "Assess the outcome of the arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a4a48",
+          "P_new_bb450",
+          "P_new_0c94a",
+          "P_new_7c03e"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_504ae",
+        "name": "Evaluation",
+        "description": "Determine the correctness or accuracy of the result",
+        "status": "New"
+      }
+    ]
+  },
+  {
+    "question": "Jerry had 4 action figures and 22 books on a shelf in his room. Later he added 6 more action figures to the shelf. How many action figures were on his shelf in all?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_f649a",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "description": "Determine the values or quantities involved in the arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_5031f",
+          "P_new_21911",
+          "P_new_9b8e9"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "description": "Execute the basic arithmetic operation of addition",
+        "status": "New",
+        "related_primitives": [
+          "P_new_33bfa",
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_d1148",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_6a88c",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Paul got a box of 267 crayons for his birthday. During the school year he lost 231 crayons while he gave away 308 crayons to his friends. How many more crayons did he give to his friends than those he lost?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_3e4ee",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_59e2c",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_f84ca",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, specifically subtraction, to manipulate numerical values.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_69e72",
+          "P_new_4b71c",
+          "P_new_446ec",
+          "P_new_e2036",
+          "P_new_38340"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_96274",
+        "name": "Comparison",
+        "description": "Compare the results of arithmetic operations to determine relationships between values.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_ff484",
+          "P_new_4b70f"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "description": "Arrange values in a specific order based on their relationships.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_afa2d",
+          "P_new_f9770",
+          "P_new_d4617",
+          "P_new_9d8e8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_b6e20",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_f9479",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The Razorback t-shirt shop makes $ 78 dollars off each t-shirt sold. During the Arkansas game and the Texas tech game they sold a total of 186 t-shirts. If they sold 172 t-shirts during the Arkansas game How much money did they make from selling the t-shirts during the Texas tech game?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_9630b",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_3b62c",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_c85da",
+        "name": "Multiplication",
+        "description": "Perform multiplication operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_4f13a",
+          "P_new_ce57e",
+          "P_new_49933",
+          "P_new_458a1",
+          "P_new_c233e"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_20959",
+        "name": "Subtraction",
+        "description": "Perform subtraction operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_97ef0",
+          "P_new_63c83",
+          "P_new_b2f55",
+          "P_new_9f4c7",
+          "P_new_a8cdb"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_47118",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_8bacd",
+        "name": "Progress Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Progress Evaluation",
+        "related_primitives": [
+          "P_new_4adc3",
+          "P_new_7f448",
+          "P_new_6d044",
+          "P_new_2df0a"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_af58c",
+        "name": "Result Verification",
+        "description": "Verify the correctness of the result",
+        "status": "New",
+        "related_primitives": [
+          "P_new_f400c",
+          "P_new_61217",
+          "P_new_b027c"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P_new_53ede",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 9,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "21 children were riding on the bus. At the bus stop 10 children got off the bus while some more got on the bus. Then there were 16 children altogether on the bus. How many children got on the bus at the bus stop?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_ffeec",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_09b84",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_6bca8",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_2ab73",
+        "name": "Basic Arithmetic Operation Selection",
+        "description": "Select the appropriate arithmetic operation (addition or subtraction) based on the problem context",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a9af8",
+          "P_new_65fd6",
+          "P_new_51416",
+          "P_new_848c1",
+          "P_new_b4ce4"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "description": "Perform the selected arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_454bd",
+          "P_new_e4b97",
+          "P_new_1e5b6",
+          "P_new_d463c",
+          "P_new_efcb0"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_74072",
+        "name": "Result Interpretation",
+        "description": "Understand and interpret the result of the arithmetic operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_a4a48",
+          "P_new_bb450",
+          "P_new_0c94a",
+          "P_new_7c03e"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_e4dc9",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Every day Ryan spends 5 hours on learning chinese and some more hours on learning english. If he spends 2 hours more on learning english than on learning chinese How many hours does he spend on learning english?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_67a62",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_04b3c",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_1e15f",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01",
+          "P_new_a0fa6"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_4be66",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The grasshopper, the frog and the mouse had a jumping contest. The grasshopper jumped 25 inches. The frog jumped 18 inches farther than the grasshopper and the mouse jumped 2 inches farther than the frog. How far did the mouse jump?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_e9186",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_ea969",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_e5a94",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01",
+          "P_new_a0fa6"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_4805d",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_0542e",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 4 emails and sent 2 letters in the morning. He then received 6 emails and sent 8 letters in the afternoon. How many emails did Jack send in the day?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_e36e8",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_b646d",
+        "name": "Basic Arithmetic Operations",
+        "description": "Perform basic arithmetic operations such as addition and subtraction",
+        "status": "New",
+        "related_primitives": [
+          "P_new_2ca36",
+          "P_new_87549",
+          "P_new_88b32",
+          "P_new_10cbf",
+          "P_new_83eb2"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_bc6d6",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_68ef0",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Emily is making bead necklaces for her 44 friends. She made 26 necklaces and each necklace takes 2 beads. How many beads did Emily have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_f1759",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_1e30b",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_40111",
+        "name": "Basic Arithmetic Operations",
+        "description": "Perform basic arithmetic operations such as multiplication and division",
+        "status": "New",
+        "related_primitives": [
+          "P_new_ce857",
+          "P_new_2ca36",
+          "P_new_b646d",
+          "P_new_87549",
+          "P_new_88b32"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_cf289",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_3471a",
+        "name": "Progress Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Progress Evaluation",
+        "related_primitives": [
+          "P_new_4adc3",
+          "P_new_7f448",
+          "P_new_6d044",
+          "P_new_2df0a",
+          "P_new_8bacd"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_69bbc",
+        "name": "Result Verification",
+        "description": "Verify the correctness of the result by checking for consistency and logical coherence",
+        "status": "New"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7aafa",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Rachel picked 7 ripe apples from her tree. Now the tree has 5 apples still on it. If 3 of those are ripe and the rest are unripe How many unripe apples does the tree have now?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_37e77",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_9d97f",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_2d618",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, including subtraction, to manipulate quantities.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_08be4",
+          "P_new_2db78",
+          "P_new_22de1",
+          "P_new_69e72",
+          "P_new_4b71c"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_6e1ac",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_18bd0",
+        "name": "Counting",
+        "description": "Systematically count or enumerate items or quantities to determine a total or result.",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_01545",
+        "name": "Combinatorial Analysis",
+        "description": "Analyze and manipulate combinations of items or quantities to identify patterns or relationships.",
+        "status": "New"
+      },
+      {
+        "step": 7,
+        "id": "P_new_25a3c",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Marco and his dad went strawberry picking. Marco's strawberries weighed 10 pounds. If together their strawberries weighed 26 pounds. How much more did his dad's strawberries weigh than his?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_23288",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_d00a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_c23a1",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform basic arithmetic operations, specifically subtraction, to manipulate numerical values.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_69e72",
+          "P_new_4b71c",
+          "P_new_f84ca",
+          "P_new_446ec",
+          "P_new_e2036"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "description": "Compare the results of arithmetic operations to determine relationships between values.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_ff484",
+          "P_new_96274",
+          "P_new_4b70f"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "description": "Arrange values in a specific order based on their relationships.",
+        "status": "New",
+        "related_primitives": [
+          "P_new_afa2d",
+          "P_new_508bb",
+          "P_new_f9770",
+          "P_new_d4617",
+          "P_new_9d8e8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_75b94",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P_new_817db",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Rachel had to complete 5 pages of math homework, 10 pages of reading homework and 6 more pages of biology homework. How many pages of reading and biology homework did she have to complete?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_4329f",
+        "name": "Variable Identification",
+        "description": "Identify and isolate the essential variables or goals in the problem",
+        "status": "New"
+      },
+      {
+        "step": 2,
+        "id": "P_new_3f73e",
+        "name": "Basic Arithmetic Operations",
+        "description": "Perform basic arithmetic operations such as addition",
+        "status": "New",
+        "related_primitives": [
+          "P_new_2ca36",
+          "P_new_b646d",
+          "P_new_ce857",
+          "P_new_87549",
+          "P_new_88b32"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_a394c",
+        "name": "Unit Analysis",
+        "description": "Analyze and convert between different units",
+        "status": "New",
+        "related_primitives": [
+          "P_new_68946"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "description": "Break down the problem into smaller, manageable steps",
+        "status": "New"
+      },
+      {
+        "step": 5,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "description": "Clarify the exact question being asked",
+        "status": "New"
+      },
+      {
+        "step": 6,
+        "id": "P_new_27c1a",
+        "name": "Evaluation",
+        "description": "Evaluate the solution and check for accuracy",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0f6c8",
+          "P_new_10166",
+          "P_new_504ae"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "In a school there are 697 girls and the rest are boys. If there are 228 more girls than boys How many boys are there in that school?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_f05f9",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_c5118",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_09787",
+        "name": "Simplification",
+        "status": "New",
+        "description": "Auto-generated primitive: Simplification",
+        "related_primitives": [
+          "P_new_d79f0",
+          "P_new_b887c",
+          "P_new_97073",
+          "P_new_cc785",
+          "P_new_e84a5"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_9de37",
+        "name": "Basic Arithmetic Operations (Addition)",
+        "description": "Perform basic addition operations to combine values",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0cfb1",
+          "P_new_c8755",
+          "P_new_807d2",
+          "P_new_04f01",
+          "P_new_a0fa6"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_255dc",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_5759e",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 7,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Frank was reading through his favorite book. He read 22 pages per day and it took him 569 days to finish the book. How many pages are there in the book?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_648cc",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_17453",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_9adc7",
+        "name": "Basic Arithmetic Operations",
+        "description": "Perform basic arithmetic operations such as multiplication and division",
+        "status": "New",
+        "related_primitives": [
+          "P_new_40111",
+          "P_new_ce857",
+          "P_new_3f73e",
+          "P_new_2ca36",
+          "P_new_b646d"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_345a6",
+        "name": "Stepwise Planning",
+        "status": "New",
+        "description": "Auto-generated primitive: Stepwise Planning",
+        "related_primitives": [
+          "P_new_8195d",
+          "P_new_5251f",
+          "P_new_7c23d",
+          "P_new_3671b",
+          "P_new_dd3ef"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P_new_936d5",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Dan had $ 3 left with him after he bought a candy bar. If he had $ 4 at the start How much did the candy bar cost?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_634e8",
+        "name": "Core Problem Identification",
+        "status": "New",
+        "description": "Auto-generated primitive: Core Problem Identification",
+        "related_primitives": [
+          "P_new_9fa48",
+          "P_new_34dc6",
+          "P_new_d442f",
+          "P_new_9a00d",
+          "P_new_d7b09"
+        ]
+      },
+      {
+        "step": 2,
+        "id": "P_new_43598",
+        "name": "Step-by-Step Reasoning",
+        "status": "New",
+        "description": "Auto-generated primitive: Step-by-Step Reasoning",
+        "related_primitives": [
+          "P_new_cc236",
+          "P_new_605bd",
+          "P_new_7d822",
+          "P_new_a3efc",
+          "P_new_e5d97"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_dee86",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "description": "Perform subtraction operation to find the difference between two quantities",
+        "status": "New",
+        "related_primitives": [
+          "P_new_9f4c7",
+          "P_new_a8cdb",
+          "P_new_43d79",
+          "P_new_8fd7f",
+          "P_new_63c83"
+        ]
+      },
+      {
+        "step": 4,
+        "id": "P_new_64dc2",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_28d7a",
+          "P_new_b0b32",
+          "P_new_eb34e",
+          "P_new_b0d04",
+          "P_new_e79b8"
+        ]
+      },
+      {
+        "step": 5,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  }
+]

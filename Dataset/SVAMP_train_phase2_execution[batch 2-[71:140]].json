@@ -1,0 +1,5402 @@
+[
+  {
+    "question": "There are 142 bananas and 356 oranges in Philip's collection. If the bananas are organized into 47 groups and oranges are organized into 178 groups How big is each group of oranges?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_196ea",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Helen the hippo and her friends are preparing for thanksgiving at Helen's house. Helen baked 197 chocolate chip cookies and 46 raisin cookies yesterday. And she baked 75 raisin cookies and 66 chocolate chip cookies this morning. How many more chocolate chip cookies did Helen bake yesterday compared to today?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_10cbf",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Paul had 51 books and 106 pens. After selling some books and pens in a garage sale he had 82 books and 14 pens left. How many pens did he sell in the garage sale?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_479d4",
+        "name": "Evaluation",
+        "description": "Verify the correctness of the solution",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0f6c8",
+          "P_new_27c1a"
+        ]
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Robin has 28 packages of gum and 14 packages of candy. There are 6 pieces in each package. How many pieces does Robin have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_efcb0",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_e4b97",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Randy has 97 blocks. He uses some blocks to build a tower. If there are 72 blocks left How many blocks did he use to build the tower?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_08be4",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b2f55",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_4b71c",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing",
+        "evaluation": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "7 red peaches, 71 yellow peaches and 8 green peaches are in the basket. How many more green peaches than red peaches are in the basket?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Rachel had to complete 2 pages of reading homework and 4 pages of math homework. How many more pages of math homework than reading homework did she have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 15,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 16,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 17,
+        "id": "P_new_7f450",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 18,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 19,
+        "id": "P_new_21e87",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 20,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 21,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 22,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 23,
+        "id": "P_new_96274",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 24,
+        "id": "P_new_51416",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 25,
+        "id": "P_new_65fd6",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 26,
+        "id": "P_new_2ab73",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 27,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Baker made 157 cakes and 169 pastries. If he sold 158 cakes and 147 pastries How many more cakes than pastries did baker sell?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 15,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 16,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 17,
+        "id": "P_new_7f450",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 18,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 19,
+        "id": "P_new_21e87",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 20,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 21,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 22,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 23,
+        "id": "P_new_96274",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 24,
+        "id": "P_new_51416",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 25,
+        "id": "P_new_65fd6",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 26,
+        "id": "P_new_2ab73",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 27,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Rachel had to complete 2 pages of math homework, 3 pages of reading homework and 10 more pages of biology homework. How many pages did she have to complete in all?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_93694",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Julia played tag with 5 kids on monday, 9 kids on tuesday and 15 kids on wednesday. How many kids did she play with on monday and wednesday?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e54a9",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_e205c",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The Razorback t-shirt shop makes $ 98 dollars off each t-shirt sold. During the Arkansas game and the Texas tech game they sold a total of 163 t-shirts. If they sold 89 t-shirts during the Arkansas game How much money did they make from selling the t-shirts during the arkansas game?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_bab70",
+        "name": "Evaluation",
+        "description": "Verify the correctness of the solution",
+        "status": "New",
+        "related_primitives": [
+          "P_new_479d4",
+          "P_new_0f6c8",
+          "P_new_27c1a"
+        ]
+      },
+      {
+        "step": 6,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The school is planning a field trip. The school has 24 classrooms. There are 120 students in the school with each classroom having the same number of students. There are 84 seats on each school bus. How many students are in each class?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_68946",
+        "name": "Unit Analysis",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d2830",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_9d1ec",
+        "name": "Division",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "A grocery store had 4 bottles of diet soda. If they had 79 more bottles of regular soda than diet soda How many bottles of regular soda did they have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b2f55",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_9f4c7",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "There are 203 bananas and 63 oranges in Philip's collection. If the bananas are organized into 7 groups and oranges are organized into 95 groups How big is each group of bananas?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 8,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The grasshopper, the frog and the mouse had a jumping contest. The grasshopper jumped 36 inches. The frog jumped 17 inches farther than the grasshopper and the mouse jumped 15 inches farther than the frog. How far did the frog jump?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Every day Ryan spends 6 hours on learning english 3 hours on learning chinese and 58 hours on learning spanish. How many more hours does he spend on learning english than he does on learning chinese?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_9f4c7",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_97ef0",
+        "name": "Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_64dc2",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Josh had some marbles in his collection. He lost 21 marbles. If he has 12 marbles now How many marbles did he have in his collection?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_08be4",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b2f55",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_4b71c",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing",
+        "evaluation": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jerry had 3 action figures on a shelf in his room. Later he added 4 more action figures to the shelf and removed some of the old ones. If there are 6 action figures on his shelf now How many action figures did he remove from the shelf?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "He has 9 apples more than Adam and Jackie together do. Adam and Jackie have 7 apples between them. How many apples does He have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_1fcfc",
+        "name": "Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_97ef0",
+        "name": "Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_35896",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Baker made 170 cakes. He sold 78 of them and bought 31 new cakes. How many more cakes did baker sell than those he bought?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_1fcfc",
+        "name": "Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The Razorback t-shirt shop sells each t-shirt for $ 51 dollars. During the Arkansas and Texas tech game they offered a discount of $ 8 per t-shirt and sold 130 t-shirts. How much money did they make from selling the t-shirts?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_baa3b",
+        "name": "Perform Multiplication",
+        "description": "Execute the multiplication operation to find the result",
+        "status": "New",
+        "related_primitives": [
+          "P_new_4f13a",
+          "P_new_c85da",
+          "P_new_458a1",
+          "P_new_49933",
+          "P_new_ce57e"
+        ]
+      },
+      {
+        "step": 12,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 3 emails in the afternoon, 6 emails in the morning and some more in the evening. If he received a total of 10 emails in the day How many emails did jack receive in the evening?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_10cbf",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 6 emails in the morning, 3 emails in the afternoon and some more in the evening. If he received a total of 10 emails in the day How many emails did Jack receive in the afternoon?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_1fcfc",
+        "name": "Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_9f4c7",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_35896",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "They decided to hold the party in their backyard. They have 10 sets of tables and each set has 6 chairs. If there are 11 people sitting on chairs How many chairs are left unoccupied?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_10cbf",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Marco and his dad went strawberry picking. Together their strawberries weighed 35 pounds. Marco's strawberries weighed 13 pounds. How much more did his dad's strawberries weigh than his?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_e4b97",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Baker made 126 cakes and 48 pastries. If he sold 115 cakes and 81 pastries How many more cakes than pastries did baker make?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Julia played tag with 17 kids on monday, 15 kids on tuesday and 2 kids on wednesday. How many kids did she play with altogether?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_93694",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "After a typhoon, 2 trees in Haley's backyard died. If she had grown 11 trees initially How many more trees survived the typhoon than those that died?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing",
+        "evaluation": "Evaluation"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Baker made 54 cakes and 143 pastries. If he sold 68 cakes and 92 pastries How many more pastries than cakes did baker sell?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 15,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 16,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 17,
+        "id": "P_new_7f450",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 18,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 19,
+        "id": "P_new_21e87",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 20,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 21,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 22,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 23,
+        "id": "P_new_96274",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 24,
+        "id": "P_new_51416",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 25,
+        "id": "P_new_65fd6",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 26,
+        "id": "P_new_2ab73",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 27,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "There were 5 roses and 3 orchids in the vase. Jessica cut some more roses and orchids from her flower garden. There are now 12 roses and 2 orchids in the vase. How many more roses than orchids are there in the vase now?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_eab06",
+        "name": "Evaluation",
+        "description": "Verify the correctness of the solution",
+        "status": "New",
+        "related_primitives": [
+          "P_new_479d4",
+          "P_new_bab70",
+          "P_new_0f6c8",
+          "P_new_27c1a"
+        ]
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Every day Ryan spends 4 hours on learning english and 6 hours on learning chinese. If he learns for 86 days How many hours does he spend on learning english and chinese each day?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_efcb0",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_196ea",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_e4b97",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Being his favorite, he saved checking on the grapevines for his last stop. He was told by 94 of the pickers that they fill 90 drums of grapes in 6 days. How many drums of grapes would be filled per day?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_4329f",
+        "name": "Variable Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_dc065",
+        "name": "Isolate Variables",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_129a4",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Bryan took a look at his books and magazines. If he has 27 books and 80 magazines in each of his 23 bookshelves How many books does he have in total?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_aac90",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_1706d",
+        "name": "Basic Arithmetic Operations (Division)",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e205c",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_09b84",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_f1075",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_db66f",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_a03a6",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_e54a9",
+        "name": "Evaluation",
+        "status": "Existing",
+        "description": "Evaluate the result of the multiplication operation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Allan and Jake brought 3 balloons to the park. If Allan brought 2 balloons How many balloons did Jake bring to the park?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jack received 9 emails in the morning, 10 emails in the afternoon and 7 emails in the evening. How many more emails did Jack receive in the morning than in the evening?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_b2f55",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Luke played a trivia game and scored 154 points. If he gained the 11 points in each round How many rounds did he play?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_68946",
+        "name": "Unit Analysis",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d2830",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_9d1ec",
+        "name": "Division",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Matthew gave equal numbers of crackers and cakes to his 4 friends. If he had 32 crackers and 98 cakes initially How many crackers did each person eat?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 8,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "For the walls of the house he would use 4 nails in all to secure large planks of wood. If each plank of wood needs 2 pieces of nails to be secured How many planks does John need for the house wall?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing",
+        "evaluation": "Evaluation"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Rachel had to complete 8 pages of math homework. If she had to complete 6 more pages of reading homework than math homework How many pages of reading homework did she have to complete?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_3dce4",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "A grocery store had 49 bottles of regular soda, 40 bottles of diet soda and 6 bottles of lite soda. How many bottles of regular soda and diet soda did they have altogether?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_10cbf",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Randy has 37 blocks. He uses 33 blocks to build a tower and 13 blocks to build a house. How many more blocks did he use to build the tower than he did to build the house?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_e4b97",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Julia played tag with 5 kids on tuesday. She had played tag with 6 kids on monday. How many more kids did she play with on monday than on tuesday?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Every day Ryan spends 6 hours on learning english 7 hours on learning chinese and 3 hours on learning spanish. How many hours does he spend on learning english, chinese and spanish in all?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_21e87",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_196ea",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 15,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 16,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 17,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 18,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 19,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 20,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 21,
+        "id": "P_new_88b32",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 22,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 23,
+        "id": "P_new_d2830",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 24,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 25,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 26,
+        "id": "P_new_51416",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 27,
+        "id": "P_new_2ab73",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 28,
+        "id": "P_new_65fd6",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 29,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 30,
+        "id": "P_new_9b8e9",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 31,
+        "id": "P_new_b456e",
+        "name": "Evaluate Result",
+        "status": "Existing",
+        "description": "Assess the outcome of the arithmetic operation",
+        "merged_from": "Evaluation"
+      }
+    ]
+  },
+  {
+    "question": "A grocery store had 81 bottles of regular soda, 60 bottles of diet soda and 60 bottles of lite soda. How many more bottles of regular soda did they have than diet soda?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "There are a total of 16 peaches in a basket. If there are 13 red peaches and some more green peaches in the basket. How many green peaches are in the basket?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_db37b",
+        "name": "Evaluate Result",
+        "description": "Assess the outcome of the subtraction operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      }
+    ]
+  },
+  {
+    "question": "4 birds and 3 storks were sitting on the fence. 6 more storks came to join them. How many more storks than birds are sitting on the fence?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_0432a",
+        "name": "Inference",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_aac90",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_a6452",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Allan brought 7 balloons and 5 balls while Jake brought 6 balloons and 4 balls to the park. How many balls did Allan and Jake have in the park?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_efcb0",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_e4b97",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Faye was placing her pencils and crayons into 19 rows with 4 pencils and 27 crayons in each row. How many pencils does she have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 9,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Julia played tag with 2 kids on monday, 14 kids on tuesday and 16 kids on wednesday. How many kids did she play with on tuesday and wednesday?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_e54a9",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_7b998",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_d0b21",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_475b0",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_e205c",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing",
+        "evaluation": "Evaluation"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Bryan took a look at his books as well. Each bookshelf contains 2 books. If he has a total of 38 books How many bookshelves does he have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 9,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Matthew gave equal numbers of crackers to his 18 friends. If he had 36 crackers How many crackers did each person eat?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The grasshopper and the frog had a jumping contest. The frog jumped 39 inches and the grasshopper jumped 17 inches. How much farther did the frog jump than the grasshopper?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_a41f5",
+        "name": "Compare Result",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_8bf64",
+        "name": "Quantitative Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_0432a",
+        "name": "Inference",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_10166",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "There were some roses in the vase. Jessica cut 16 more roses from her flower garden and put them in the vase. There are now 23 roses in the vase. How many roses were there in the vase at the beginning?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_10cbf",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Faye was placing her pencils into rows with 16 pencils in each row. She had 28 packs of pencils each one having 24 pencils. How many rows could she make?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_3a0fd",
+        "name": "Evaluation",
+        "description": "Verify the correctness of the solution",
+        "status": "New",
+        "related_primitives": [
+          "P_new_479d4",
+          "P_new_bab70",
+          "P_new_eab06",
+          "P_new_0f6c8",
+          "P_new_27c1a"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Last week Fred had 60 dollars and Jason had 19 dollars. Jason washed cars over the weekend and now has 33 dollars. How much money did Jason make washing cars?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b2f55",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_9f4c7",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Because of the decision Sofia asked 288 students to suggest specific types of food. 264 students suggested adding bacon while others suggested adding mashed potatoes to the menu. How many students suggested mashed potatoes?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_08be4",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_b2f55",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_4b71c",
+        "name": "Basic Arithmetic Operations (Subtraction)",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing",
+        "evaluation": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Matthew had 31 crackers. He has 23 crackers left after he gave equal numbers of crackers to his 5 friends. How many crackers did Matthew give to his friends?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_a2448",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Jake has 9 fewer peaches than Steven and 18 more peaches than Jill. Steven has 16 peaches. How many more peaches does Steven have than Jill?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a5ce8",
+        "name": "Quantitative Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_0432a",
+        "name": "Inference",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_27c1a",
+        "name": "Evaluation",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "The grasshopper, the frog and the mouse had a jumping contest. The grasshopper jumped 25 inches. The frog jumped 32 inches farther than the grasshopper and the mouse jumped 26 inches lesser than the frog. How far did the mouse jump?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_10cbf",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Allan brought 5 balloons and Jake brought 3 balloons to the park. How many more balloons did Allan have than Jake in the park?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_ff484",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_d6e2a",
+        "name": "Relational Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_afa2d",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_4b70f",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_508bb",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_7b7fd",
+        "name": "Ordering",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_b2d45",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_cba86",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 14,
+        "id": "P_new_21911",
+        "name": "Arithmetic Operation Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 15,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 16,
+        "id": "P_new_cd837",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 17,
+        "id": "P_new_7f450",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 18,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 19,
+        "id": "P_new_21e87",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 20,
+        "id": "P_new_3671b",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 21,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 22,
+        "id": "P_new_a953c",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 23,
+        "id": "P_new_96274",
+        "name": "Comparison",
+        "status": "Existing"
+      },
+      {
+        "step": 24,
+        "id": "P_new_51416",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 25,
+        "id": "P_new_65fd6",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 26,
+        "id": "P_new_2ab73",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 27,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "An industrial machine made 9 shirts yesterday and 8 shirts today. It can make 2 shirts a minute. How many minutes did the machine work today?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_b4ce4",
+        "name": "Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_791e8",
+        "name": "Perform Subtraction",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_9675e",
+        "name": "Perform Addition",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_2ab73",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 13,
+        "id": "P_new_ece36",
+        "name": "Evaluation",
+        "description": "Assess the solution for correctness and reasonableness",
+        "status": "New",
+        "related_primitives": [
+          "P_new_0f6c8"
+        ]
+      },
+      {
+        "step": 14,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Adam could fit 10 action figures on each shelf in his room. His room has could hold 8 action figures. How many total shelves did his room have?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_848c1",
+        "name": "Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_ce57e",
+        "name": "Multiplication Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_d463c",
+        "name": "Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_6afb7",
+        "name": "Evaluation",
+        "description": "Assess the result of the multiplication operation",
+        "status": "New",
+        "related_primitives": [
+          "P_new_4f13a",
+          "P_new_c85da",
+          "P_new_a4a48",
+          "P_new_bb450",
+          "P_new_0c94a"
+        ]
+      },
+      {
+        "step": 8,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "question": "Dan has $ 2. He bought a candy bar for $ 6 and a chocolate for $ 3. How much money did he spend to buy candy bar than he did to buy chocolate?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_a5c7d",
+        "name": "Core Problem Identification",
+        "status": "Existing"
+      },
+      {
+        "step": 2,
+        "id": "P_new_83933",
+        "name": "Identify Operands",
+        "status": "Existing"
+      },
+      {
+        "step": 3,
+        "id": "P_new_e2298",
+        "name": "Operand Extraction",
+        "status": "Existing"
+      },
+      {
+        "step": 4,
+        "id": "P_new_a9af8",
+        "name": "Basic Arithmetic Operation Selection",
+        "status": "Existing"
+      },
+      {
+        "step": 5,
+        "id": "P_new_87549",
+        "name": "Basic Arithmetic Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 6,
+        "id": "P_new_7c23d",
+        "name": "Stepwise Planning",
+        "status": "Existing"
+      },
+      {
+        "step": 7,
+        "id": "P_new_454bd",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 8,
+        "id": "P_new_5031f",
+        "name": "Basic Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 9,
+        "id": "P_new_93694",
+        "name": "Determine Operation",
+        "status": "Existing"
+      },
+      {
+        "step": 10,
+        "id": "P_new_44b8f",
+        "name": "Arithmetic Operation Execution",
+        "status": "Existing"
+      },
+      {
+        "step": 11,
+        "id": "P_new_1c7a1",
+        "name": "Step-by-Step Reasoning",
+        "status": "Existing"
+      },
+      {
+        "step": 12,
+        "id": "P_new_a4a48",
+        "name": "Result Evaluation",
+        "description": "Assess the result of the arithmetic operation",
+        "status": "Existing",
+        "merged_from": "Evaluation"
+      },
+      {
+        "step": 13,
+        "id": "P_new_db37b",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  }
+]
