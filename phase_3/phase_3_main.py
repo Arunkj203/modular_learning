@@ -23,8 +23,9 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
     steps = []
 
     
-    for pid in primitive_sequence:
+    for prims in primitive_sequence:
 
+        pid = prims['id']
         primitive_entry = primitive_metadata.get(pid, {})
         if not primitive_entry:
             raise ValueError(f"Primitive ID {pid} not found in metadata.")
