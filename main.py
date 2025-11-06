@@ -36,6 +36,7 @@ def main():
     #     generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
     
     for i in range(1,6):
+        print(f"\nProcessing batch {i} with Batch Size - 70...")
         generate_phase3_execution(f"SVAMP_train_phase2_execution_batch{i}_{i*70}.json" , model, tokenizer)
 
     # # update bacth_no and batch_size as needed

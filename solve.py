@@ -42,6 +42,8 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
     errors = 0
     max_errors = int(0.3 * len(data))
 
+   
+
     for idx, entry in enumerate(data):  # limit for testing
         question = entry.get("question", "")
         primitive_sequence = entry.get("phase2_reasoning", [])
