@@ -250,7 +250,7 @@ Rules:
 
     reuse_str = json.dumps(sufficiency_result.get("reuse", []), indent=2)
     missing_str = json.dumps(sufficiency_result.get("missing_capabilities", []), indent=2)
-    print("Reuse:",reuse_str)
+    # print("Reuse:",reuse_str)
     available_str = json.dumps(
         [{"id": p["id"], "name": p["name"], "desc": p["description"]} for p in retrieved],
         indent=2
@@ -382,7 +382,7 @@ def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9)
             p["description"] = f"Auto-generated primitive: {name}"
 
         clean_seq.append(p)
-        print(f"[NEW] Added new primitive: {p['id']} — {name}")
+        # print(f"[NEW] Added new primitive: {p['id']} — {name}")
 
     # ----------------------------------------------------------------------
     # STEP 4 — Guarantee at least one Evaluation primitive at end

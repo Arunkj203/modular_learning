@@ -6,7 +6,7 @@ from peft import PeftModel
 from ..config import *
 from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter ,generate_text
 
-def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text,use_lora=False):
+def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
 
     """
     Phase 4: Problem solving using a sequence of primitives (dicts with id, description).

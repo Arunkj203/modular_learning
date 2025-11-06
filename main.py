@@ -36,14 +36,11 @@ def main():
         generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
     
     
-    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=2, batch_size=70) 
-    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=3, batch_size=70) 
-    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=4, batch_size=70) 
-    # generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=5, batch_size=70)  
+    
     # # update bacth_no and batch_size as needed
 # --------------------------------------------------------------------------
 
-
+    
 
     # # generate_phase3_execution("SVAMP_train_phase2_execution.json", model, tokenizer)--> Subject to change later
 

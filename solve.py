@@ -33,8 +33,8 @@ def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Da
     with open(input_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    output4_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase4_execution"))
-    print(f"Phase 4 logs will be saved to: {output4_file}")
+    output4_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase3_execution"))
+    print(f"Phase 3 logs will be saved to: {output4_file}")
 
     mem.load_memory()
     all_phase4_data = []
@@ -54,7 +54,6 @@ def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Da
             tokenizer,
             primitive_sequence,
             problem_text=question,
-            use_lora=use_lora
         )
 
         # Prepare structured record for dataset training
