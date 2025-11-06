@@ -32,16 +32,14 @@ def main():
     # Total - 10 batches of 70 each for SVAMP train set (700 problems)
     # Total batch generated till now - 0
 
-    for i in range(1, 11):
+    for i in range(5, 11):
         generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
     
-    generate_phase3_execution(model, tokenizer)
+    for i in range(1,11):
+        generate_phase3_execution(f"SVAMP_train_phase2_execution[batch {i}-[{(i-1)*70+1}:{i*70}]].json" , model, tokenizer)
 
-    
     # # update bacth_no and batch_size as needed
 # --------------------------------------------------------------------------
-
-
 
 
     # # For generating phase analyses and executions - GSM8K

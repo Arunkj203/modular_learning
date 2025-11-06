@@ -12,7 +12,8 @@ import os , json , re
 from typing import Dict, Any, List
 
 
-def generate_phase3_execution(model, tokenizer, output_dir="Dataset"):
+
+def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="Dataset"):
     """
     Generate Phase 4 execution data from Phase 2 primitive sequences.
 
@@ -22,48 +23,30 @@ def generate_phase3_execution(model, tokenizer, output_dir="Dataset"):
             "phase2_reasoning": [list of primitives]
         }
 
-    This function will execute the primitive sequence step-by-step using Phase 4
+    This function will execute the primitive sequence step-by-step using Phase 3
     and store the resulting state transitions for dataset preparation.
     """
 
     full_path = os.path.join(mem.Base_dir_path, output_dir)
+    input_file = os.path.join(full_path, phase2_file)
+    print(f"Loading Phase 2 file: {input_file}")
 
-    phase2_files = [
-        f"SVAMP_train_phase2_execution[batch {i}-[{(i-1)*70+1}:{i*70}]].json"
-        for i in range(1, 11)
-    ]
+    with open(input_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-    print(f"Aggregating {len(phase2_files)} Phase 2 batch files...")
-    all_phase2_data = []
-
-    for file in phase2_files:
-        file_path = os.path.join(full_path, file)
-        if not os.path.exists(file_path):
-            print(f"Skipping missing file: {file_path}")
-            continue
-        with open(file_path, "r", encoding="utf-8") as f:
-            batch_data = json.load(f)
-            all_phase2_data.extend(batch_data)
-
-    combined_file = os.path.join(full_path, "SVAMP_train_phase2_execution_combined.json")
-    with open(combined_file, "w", encoding="utf-8") as f:
-        json.dump(all_phase2_data, f, indent=2, ensure_ascii=False)
-
-    print(f"\n✅ Combined {len(all_phase2_data)} problems into {combined_file}")
-
-    output3_file = os.path.join(full_path, combined_file.replace("phase2_execution", "phase3_execution"))
+    output3_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase3_execution"))
     print(f"Phase 3 logs will be saved to: {output3_file}")
 
     mem.load_memory()
     all_phase3_data = []
     errors = 0
-    max_errors = int(0.3 * len(all_phase2_data))
+    max_errors = int(0.3 * len(data))
 
-    for idx, entry in enumerate(all_phase2_data):  # limit for testing
+    for idx, entry in enumerate(data):  # limit for testing
         question = entry.get("question", "")
         primitive_sequence = entry.get("phase2_reasoning", [])
 
-        print(f"\n================== Problem {idx+1}/{len(all_phase2_data)} ==================")
+        print(f"\n================== Problem {idx+1}/{len(data)} ==================")
         print(f"Executing {len(primitive_sequence)} primitives...")
 
         try:
@@ -84,6 +67,7 @@ def generate_phase3_execution(model, tokenizer, output_dir="Dataset"):
             })
 
             print(f"Completed problem {idx+1} ({len(steps)} steps)")
+            print("------------------------------------------------------------")
 
         except Exception as e:
             errors += 1
@@ -95,6 +79,7 @@ def generate_phase3_execution(model, tokenizer, output_dir="Dataset"):
     # Save the dataset
     with open(output3_file, "w", encoding="utf-8") as f:
         json.dump(all_phase3_data, f, indent=2, ensure_ascii=False)
+
 
     mem.save_memory()
     print(f"\nPhase 3 execution dataset saved to: {output3_file}")
@@ -143,7 +128,9 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_
                 "question": q,
                 "phase2_reasoning": primitive_sequence
             })
-            
+
+            print(f"Generated {len(primitive_sequence)} primitives, {len(new_prims)} new.")
+            print("----------------------------------------------------------------------")
         except Exception as e:
             no_errors += 1
             print(f"  [ERROR] Problem {entry['id']} failed: {e}")
