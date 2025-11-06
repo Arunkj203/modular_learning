@@ -35,14 +35,14 @@ def main():
     for i in range(1, 11):
         generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
     
-    
+    generate_phase3_execution(model, tokenizer)
+
     
     # # update bacth_no and batch_size as needed
 # --------------------------------------------------------------------------
 
-    
 
-    # # generate_phase3_execution("SVAMP_train_phase2_execution.json", model, tokenizer)--> Subject to change later
+
 
     # # For generating phase analyses and executions - GSM8K
 
