@@ -21,7 +21,6 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
 
     state_text = problem_text
     steps = []
-    feedback_entries = []  # Collect feedback for this problem
 
     
     for pid in primitive_sequence:
@@ -95,14 +94,13 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
                 dynamic_max_tokens=dynamic_max_tokens
             )
         
-        print(f"Primitive {pid} output: {op}")
         # Record this step (include pre/post state for debugging)
         steps.append((op, pid, primitive_name, description))
 
         # Update the state for the next primitive
         state_text = op["result"]
 
-    return state_text, steps , feedback_entries
+    return state_text, steps 
 
 
 def llm_validate_and_correct(primitive_name, description, input_text, output_text):

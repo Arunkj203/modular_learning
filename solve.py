@@ -12,7 +12,8 @@ import os , json , re
 from typing import Dict, Any, List
 
 
-def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Dataset", use_lora=False):
+
+def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="Dataset"):
     """
     Generate Phase 4 execution data from Phase 2 primitive sequences.
 
@@ -22,7 +23,7 @@ def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Da
             "phase2_reasoning": [list of primitives]
         }
 
-    This function will execute the primitive sequence step-by-step using Phase 4
+    This function will execute the primitive sequence step-by-step using Phase 3
     and store the resulting state transitions for dataset preparation.
     """
 
@@ -33,53 +34,55 @@ def generate_phase3_execution(phase2_file: str, model, tokenizer, output_dir="Da
     with open(input_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    output4_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase3_execution"))
-    print(f"Phase 3 logs will be saved to: {output4_file}")
+    output3_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase3_execution"))
+    print(f"Phase 3 logs will be saved to: {output3_file}")
 
     mem.load_memory()
-    all_phase4_data = []
+    all_phase3_data = []
     errors = 0
     max_errors = int(0.3 * len(data))
 
-    for idx, entry in enumerate(data[:2]):  # limit for testing
+    for idx, entry in enumerate(data):  # limit for testing
         question = entry.get("question", "")
         primitive_sequence = entry.get("phase2_reasoning", [])
 
         print(f"\n================== Problem {idx+1}/{len(data)} ==================")
         print(f"Executing {len(primitive_sequence)} primitives...")
 
-        # try:
-        final_state, steps, feedback = run_phase3(
-            model,
-            tokenizer,
-            primitive_sequence,
-            problem_text=question,
-        )
+        try:
+            final_state, steps = run_phase3(
+                model,
+                tokenizer,
+                primitive_sequence,
+                problem_text=question,
+            )
 
-        # Prepare structured record for dataset training
-        all_phase4_data.append({
-            "id": idx,
-            "question": question,
-            "primitive_sequence": primitive_sequence,
-            "execution_trace": steps,        # step-by-step transformation logs
-            "final_state": final_state,
-            "feedback": feedback
-        })
+            # Prepare structured record for dataset training
+            all_phase3_data.append({
+                "id": idx,
+                "question": question,
+                "primitive_sequence": primitive_sequence,
+                "execution_trace": steps,        # step-by-step transformation logs
+                "final_state": final_state,
+            })
 
-        print(f"  ✅ Completed problem {idx+1} ({len(steps)} steps)")
+            print(f"Completed problem {idx+1} ({len(steps)} steps)")
+            print("------------------------------------------------------------")
 
-        # except Exception as e:
-        #     errors += 1
-        #     print(f"  [ERROR] Problem {idx+1} failed: {e}")
-        #     if errors >= max_errors:
-        #         print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
-        #         break
+        except Exception as e:
+            errors += 1
+            print(f"  [ERROR] Problem {idx+1} failed: {e}")
+            if errors >= max_errors:
+                print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+                break
 
     # Save the dataset
-    with open(output4_file, "w", encoding="utf-8") as f:
-        json.dump(all_phase4_data, f, indent=2, ensure_ascii=False)
+    with open(output3_file, "w", encoding="utf-8") as f:
+        json.dump(all_phase3_data, f, indent=2, ensure_ascii=False)
 
-    print(f"\nPhase 4 execution dataset saved to: {output4_file}")
+
+    mem.save_memory()
+    print(f"\nPhase 3 execution dataset saved to: {output3_file}")
 
 
 def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_size, output_dir="Dataset"):
@@ -125,7 +128,9 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_
                 "question": q,
                 "phase2_reasoning": primitive_sequence
             })
-            
+
+            print(f"Generated {len(primitive_sequence)} primitives, {len(new_prims)} new.")
+            print("----------------------------------------------------------------------")
         except Exception as e:
             no_errors += 1
             print(f"  [ERROR] Problem {entry['id']} failed: {e}")

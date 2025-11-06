@@ -292,7 +292,7 @@ Do NOT mention concrete values or story details.
         dynamic_max_tokens=dynamic_max_tokens
     )["primitive_sequence"]
 
-    print(primitives_sequence)
+    # print(primitives_sequence)
     return clean_and_register_primitives(primitives_sequence)
 
 def clean_and_register_primitives(primitives_sequence, similarity_threshold=0.9):
