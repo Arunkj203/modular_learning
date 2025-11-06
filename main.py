@@ -32,11 +32,11 @@ def main():
     # Total - 10 batches of 70 each for SVAMP train set (700 problems)
     # Total batch generated till now - 0
 
-    for i in range(5, 11):
-        generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
+    # for i in range(5, 11):
+    #     generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
     
-    for i in range(1,11):
-        generate_phase3_execution(f"SVAMP_train_phase2_execution[batch {i}-[{(i-1)*70+1}:{i*70}]].json" , model, tokenizer)
+    for i in range(1,6):
+        generate_phase3_execution(f"SVAMP_train_phase2_execution_batch{i}_{i*70}.json" , model, tokenizer)
 
     # # update bacth_no and batch_size as needed
 # --------------------------------------------------------------------------
@@ -49,12 +49,6 @@ def main():
     # generate_phase3_execution("GSM8K_train_phase2_execution.json", model, tokenizer)
 
 
-
-    print(f"\nTotal primitives in memory: {len(mem.primitive_metadata)}")
-    for i, (pid, meta) in enumerate(mem.primitive_metadata.items()):
-        print(f"{i+1:03d}. {pid}  →  {meta.get('name', '')}")
-        # if i >= 30:  # show only the first 30 to avoid flooding
-        #     break
 
 if __name__ == "__main__":
     main()

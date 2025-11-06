@@ -98,7 +98,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_
     
     ll = (batch_no-1)*batch_size
     ul = batch_no*batch_size
-    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution[batch {batch_no}-[{ll+1}:{ul}]]"))
+    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution_batch{batch_no}_{ul}"))
 
     # all_results = []
 
