@@ -87,7 +87,7 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
     print(f"\nPhase 3 execution dataset saved to: {output3_file}")
 
 
-def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_size, output_dir="Dataset"):
+def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Dataset"):
     """
     Generate Phase 2 reasoning outputs from Phase 1 analyses.
     """
@@ -98,24 +98,21 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_
     with open(output_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    ll = (batch_no-1)*batch_size
-    ul = batch_no*batch_size
-    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution_batch{batch_no}_{ul}"))
+
+    output2_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution"))
 
     # all_results = []
 
     no_errors = 0
-    max_errors = int(0.3 * batch_size)
+    max_errors = int(0.3 * 200)
 
     mem.load_memory()
 
-    batch = data[ll:ul]
+
     batch_new_primitives = []
     all_results = []
 
-    print(f"\nProcessing batch {batch_no} with Batch Size - {batch_size}...")
-
-    for entry in batch:
+    for entry in data:
         q = entry["question"]
         analysis = entry["phase1_analysis"]
 
