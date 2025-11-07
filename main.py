@@ -35,17 +35,26 @@ def main():
     # for i in range(5, 11):
     #     generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
     
-    for i in range(1,6):
-        print(f"\nProcessing batch {i} with Batch Size - 70...\n")
-        generate_phase3_execution(f"SVAMP_train_phase2_execution_batch{i}_{i*70}.json" , model, tokenizer)
+    # for i in range(1,6):
+    #     print(f"\nProcessing batch {i} with Batch Size - 70...\n")
+    #     generate_phase3_execution(f"SVAMP_train_phase2_execution_batch{i}_{i*70}.json" , model, tokenizer)
 
     # # update bacth_no and batch_size as needed
 # --------------------------------------------------------------------------
 
 
-    # # For generating phase analyses and executions - GSM8K
+    # For generating phase analyses and executions - GSM8K
 
-    # generate_phase1_analysis("GSM8K", "train", model, tokenizer)
+    print("\nGenerating Phase 1 Analysis for GSM8K Train Set...\n")
+    generate_phase1_analysis("GSM8K", "train", model, tokenizer)
+    
+    # for i in range(5, 11):
+    #     generate_phase2_execution("SVAMP_train_phase1_analysis.json", model, tokenizer, batch_no=i, batch_size=70)
+    
+    # for i in range(1,6):
+    #     print(f"\nProcessing batch {i} with Batch Size - 70...\n")
+    #     generate_phase3_execution(f"SVAMP_train_phase2_execution_batch{i}_{i*70}.json" , model, tokenizer)
+
     # generate_phase2_execution("GSM8K_train_phase1_analysis.json", model, tokenizer, batch_no=1, batch_size=300)
     # generate_phase3_execution("GSM8K_train_phase2_execution.json", model, tokenizer)
 

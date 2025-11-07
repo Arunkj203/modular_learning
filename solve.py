@@ -160,65 +160,78 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer,batch_no,batch_
     print(f"\nPhase 2 reasoning saved to {output2_file}")
 
 
-def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, output_dir="Dataset"):
+import os
+import json
+from typing import List, Dict, Any
+from datasets import load_dataset
+
+def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, output_dir="Dataset", batch_size=200):
     """
-    Generate Phase 1 analysis for all problems in the dataset and store results in a JSON file.
+    Generate Phase 1 analysis for all problems in the dataset in batches.
 
     Args:
-        dataset_name (str): Name of the dataset (e.g., 'svamp').
+        dataset_name (str): Dataset name (e.g., 'svamp').
         mode (str): Dataset split (e.g., 'train', 'test', 'validation').
         model: Loaded model for Phase 1.
         tokenizer: Tokenizer corresponding to the model.
-        output_dir (str): Directory to save JSON analysis.
-
-    Returns:
-        str: Path to the saved JSON file.
+        output_dir (str): Directory to save JSON batch results.
+        batch_size (int): Number of problems per batch.
     """
-    # Ensure log directory exists
+    # Ensure output directory exists
     full_path = os.path.join(mem.Base_dir_path, output_dir)
     os.makedirs(full_path, exist_ok=True)
-    output_file = os.path.join(full_path, f"{dataset_name}_{mode}_phase1_analysis.json")
-    print(f"Log saving in file:{output_file}")
 
+    # Load dataset
+    dataset = list(load_dataset(mem.dataset_path[dataset_name], "main")[mode])
 
-    dataset = list(load_dataset(mem.dataset_path[dataset_name])[mode])
+    # Optional truncation for development
+    total_len = min(2000, len(dataset))
+    dataset = dataset[:total_len]
+    total_batches = (len(dataset) + batch_size - 1) // batch_size
 
-    # Split datastet for gms8k dataset
-    if dataset_name.lower() == "gsm8k":
-        l = 6000
-        # Split train - 70 , test - 30
-        dataset = dataset[ :l]
+    print(f"Total {len(dataset)} problems. Processing in {total_batches} batches of {batch_size} each.\n")
 
+    for batch_no in range(total_batches):
+        start_idx = batch_no * batch_size
+        end_idx = min((batch_no + 1) * batch_size, len(dataset))
+        batch_data = dataset[start_idx:end_idx]
 
-    all_analysis: List[Dict[str, Any]] = []
+        batch_results: List[Dict[str, Any]] = []
 
-    for idx, problem in enumerate(dataset):
-        print(f"Analyzing problem {idx+1}/{len(dataset)}")
-        # try:
-
-        processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
-        entry = {
-            "id": idx,
-            "question": processed.get("question", ""),
-            "ground_truth": normalize_answer(processed.get("answer", "")),
-            "phase1_analysis": analysis
-        }
-        all_analysis.append(entry)
+        print(f"\n=== Processing Batch {batch_no+1}/{total_batches} [{start_idx+1}:{end_idx}] ===")
         
-        # except Exception as e:
-        #     print(f"[ERROR] Problem {idx+1} failed: {e}")
-        #     all_analysis.append({
-        #         "id": idx,
-        #         "question": problem.get("question", ""),
-        #         "error": str(e)
-        #     })
+        for idx, problem in enumerate(batch_data, start=start_idx):
+            print(f"Analyzing problem {idx+1}/{len(dataset)}")
+            try:
+                processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
+                entry = {
+                    "id": idx,
+                    "question": processed.get("question", ""),
+                    "ground_truth": normalize_answer(processed.get("answer", "")),
+                    "phase1_analysis": analysis
+                }
+                batch_results.append(entry)
+            except Exception as e:
+                print(f"[ERROR] Problem {idx+1} failed: {e}")
+                batch_results.append({
+                    "id": idx,
+                    "question": problem.get("question", ""),
+                    "error": str(e)
+                })
 
+        # Save batch to file
+        output_file = os.path.join(
+            full_path,
+            f"{dataset_name}_{mode}_phase1_analysis_batch{batch_no+1}_{end_idx}.json"
+        )
 
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(all_analysis, f, indent=2, ensure_ascii=False)
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(batch_results, f, indent=2, ensure_ascii=False)
 
-    print(f"Phase 1 analysis saved to {output_file}")
-    # return output_file
+        print(f"\n{len(batch_results)} analyses generated for Batch {batch_no+1}.")
+        print(f"✅ Batch {batch_no+1} saved to {output_file}")
+
+    print(f"\n🎯 All batches completed and saved in '{full_path}'.")
 
 
 def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):

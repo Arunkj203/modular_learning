@@ -15,7 +15,7 @@ dataset_path = {
     "SVAMP": "ChilleD/SVAMP",
     "ASDIV": "asdiv",   
     "MATH23K": "math23k",
-    "GSM8K": "gsm8k"
+    "GSM8K": "openai/gsm8k"
 }
 
 
