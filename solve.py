@@ -186,11 +186,12 @@ def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, out
     # Optional truncation for development
     total_len = min(2000, len(dataset))
     dataset = dataset[:total_len]
-    total_batches = (len(dataset) + batch_size - 1) // batch_size
+    # total_batches = (len(dataset) + batch_size - 1) // batch_size
+    total_batches = 10
 
     print(f"Total {len(dataset)} problems. Processing in {total_batches} batches of {batch_size} each.\n")
 
-    for batch_no in range(total_batches):
+    for batch_no in range(9,total_batches):
         start_idx = batch_no * batch_size
         end_idx = min((batch_no + 1) * batch_size, len(dataset))
         batch_data = dataset[start_idx:end_idx]
