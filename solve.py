@@ -77,7 +77,8 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
             if errors >= max_errors:
                 print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
                 break
-
+    
+    print(f"\n{len(all_phase3_data)} problems executed for Phase 3.")
     # Save the dataset
     with open(output3_file, "w", encoding="utf-8") as f:
         json.dump(all_phase3_data, f, indent=2, ensure_ascii=False)
@@ -149,6 +150,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
             
     print(f"Library updated. Total primitives now: {len(mem.primitive_metadata)}")
     
+    print(f"\n{len(all_results)} problems executed for this Batch.")
     # Save all results at the end
     with open(output2_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
