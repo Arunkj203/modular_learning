@@ -48,11 +48,11 @@ def main():
     print("\nGenerating Phase 1 Analysis for GSM8K Train Set...\n")
     generate_phase1_analysis("GSM8K", "train", model, tokenizer)
     
-    for i in range(1,9):
+    for i in range(4,5):
         print(f"\nProcessing batch {i} with Batch Size - 200...")
         generate_phase2_execution(f"GSM8K_train_phase1_analysis_batch{i}_{i*200}.json", model, tokenizer)
     
-    for i in range(1,9):
+    for i in range(1,5):
         print(f"\nProcessing batch {i} with Batch Size - 200...\n")
         generate_phase3_execution(f"GSM8K_train_phase2_execution_batch{i}_{i*200}.json" , model, tokenizer)
 
