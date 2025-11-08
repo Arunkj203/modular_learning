@@ -45,8 +45,8 @@ def main():
 
     # For generating phase analyses and executions - GSM8K
 
-    print("\nGenerating Phase 1 Analysis for GSM8K Train Set...\n")
-    generate_phase1_analysis("GSM8K", "train", model, tokenizer)
+    # print("\nGenerating Phase 1 Analysis for GSM8K Train Set...\n")
+    # generate_phase1_analysis("GSM8K", "train", model, tokenizer)
     
     for i in range(4,5):
         print(f"\nProcessing batch {i} with Batch Size - 200...")
