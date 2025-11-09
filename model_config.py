@@ -24,7 +24,10 @@ except Exception:
 
 # BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
 
-BASE_MODEL = "meta-llama/Meta-Llama-3-70B-Instruct" # For phase 2 - Synthesis
+# BASE_MODEL = "meta-llama/Meta-Llama-3-70B-Instruct" # For phase 2 - Synthesis
+
+BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct" # For phase 3 - Execution
+
 
 
 # BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" # New Model
@@ -51,20 +54,42 @@ Retries = 3
 
 def get_model_and_tokenizer():
     print(f"Loading tokenizer for {BASE_MODEL}...")
+    # tokenizer = AutoTokenizer.from_pretrained(
+    #     BASE_MODEL,
+    #     use_fast=True,
+    #     local_files_only=True  # avoid re-downloading if already cached
+    # )
+
     tokenizer = AutoTokenizer.from_pretrained(
-        BASE_MODEL,
-        use_fast=True,
-        local_files_only=True  # avoid re-downloading if already cached
-    )
+    BASE_MODEL,
+    use_fast=True,
+    local_files_only=False,  # allow fetching updated tokenizer if missing
+    trust_remote_code=True   # needed for new chat template logic
+)
+
 
     print(f"Loading model {BASE_MODEL} in 4-bit mode on GPU...")
 
-    # 4-bit quantization config (QLoRA style)
+    # # 4-bit quantization config (QLoRA style)
+    # bnb_config = BitsAndBytesConfig(
+    #     load_in_4bit=True,
+    #     bnb_4bit_use_double_quant=True,
+    #     bnb_4bit_quant_type="nf4",
+    #     bnb_4bit_compute_dtype=torch.bfloat16
+    # )
+
+    # model = AutoModelForCausalLM.from_pretrained(
+    #     BASE_MODEL,
+    #     quantization_config=bnb_config,
+    #     device_map="auto",
+    #     low_cpu_mem_usage=True,
+    #     local_files_only=True
+    # )
+
     bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_use_double_quant=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16
+        load_in_8bit=True,                # <-- switch from 4-bit to 8-bit
+        llm_int8_threshold=6.0,           # auto-determine outlier handling
+        llm_int8_has_fp16_weight=False,   # recommended for inference
     )
 
     model = AutoModelForCausalLM.from_pretrained(
@@ -73,13 +98,14 @@ def get_model_and_tokenizer():
         device_map="auto",
         dtype=torch.bfloat16,
         low_cpu_mem_usage=True,
-        local_files_only=True
+        trust_remote_code=True
     )
 
     # optional: faster generation tweaks
     model.eval()
     model.config.use_cache = True
-
+    model.config.pretraining_tp = 1
+    
     return model, tokenizer
 
 # -----------------------------
