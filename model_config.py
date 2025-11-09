@@ -62,6 +62,7 @@ def get_model_and_tokenizer():
 
     tokenizer = AutoTokenizer.from_pretrained(
     BASE_MODEL,
+    token=HUGGINGFACEHUB_API_TOKEN,
     use_fast=True,
     local_files_only=False,  # allow fetching updated tokenizer if missing
     trust_remote_code=True   # needed for new chat template logic
@@ -98,7 +99,8 @@ def get_model_and_tokenizer():
         device_map="auto",
         dtype=torch.bfloat16,
         low_cpu_mem_usage=True,
-        trust_remote_code=True
+        trust_remote_code=True,
+        token=HUGGINGFACEHUB_API_TOKEN
     )
 
     # optional: faster generation tweaks
