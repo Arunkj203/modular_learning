@@ -97,7 +97,7 @@ def get_model_and_tokenizer():
         BASE_MODEL,
         quantization_config=bnb_config,
         device_map="auto",
-        dtype=torch.bfloat16,
+        dtype=torch.float16,
         low_cpu_mem_usage=True,
         trust_remote_code=True,
         token=HUGGINGFACEHUB_API_TOKEN
@@ -156,14 +156,15 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     raw = None
     last_error = None
 
-    # Tokenize the prompt
-    inputs = tokenizer(prompt_string, return_tensors="pt", add_special_tokens=True).to(DEVICE)
-    prompt_len = inputs["input_ids"].shape[-1]
-
+    
     stop_criteria = StoppingCriteriaList([StopOnToken(tokenizer, "<<END>>")])
 
     for attempt in range(Retries):
         try:
+            # Tokenize the prompt
+            inputs = tokenizer(prompt_string, return_tensors="pt", add_special_tokens=True).to(DEVICE)
+            prompt_len = inputs["input_ids"].shape[-1]
+
             max_tokens = min(4096, dynamic_max_tokens * (2 ** attempt))
             gen_cfg = GenerationConfig(
                 max_new_tokens=max_tokens,
@@ -203,7 +204,7 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             torch.cuda.empty_cache()
             gc.collect()
 
-            return json.loads(json_text)
+            return safe_json_parse(json_text)
 
         except Exception as e:
             last_error = e
@@ -223,6 +224,15 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     # raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
     raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}")
 
+
+def safe_json_parse(text):
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as e:
+        # Attempt a simple cleanup of stray commas or quotes
+        fixed = re.sub(r",\s*([}\]])", r"\1", text)
+        fixed = re.sub(r"([{,])\s*'([^']+)'\s*:", r'\1"\2":', fixed)  # convert single quotes
+        return json.loads(fixed)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
