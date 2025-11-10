@@ -71,12 +71,7 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
             print(f"Completed problem {idx+1} ({len(steps)} steps)")
             print("------------------------------------------------------------")
 
-            if idx > 9:
-                break
-            else:
-                pass
-                # print(f"\nQn:{question}\nprimitive_sequence:{primitive_sequence}\nProblem steps:\n{steps}\nState:{final_state}")
-
+            
         except Exception as e:
             errors += 1
             print(f"  [ERROR] Problem {idx+1} failed: {e}")
@@ -85,9 +80,10 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
                 break
     
     print(f"\n{len(all_phase3_data)} problems executed for Phase 3.")
+    
     # Save the dataset
-    # with open(output3_file, "w", encoding="utf-8") as f:
-    #     json.dump(all_phase3_data, f, indent=2, ensure_ascii=False)
+    with open(output3_file, "w", encoding="utf-8") as f:
+        json.dump(all_phase3_data, f, indent=2, ensure_ascii=False)
 
 
     mem.save_memory()

@@ -55,10 +55,7 @@ def main():
     for i in range(2,5):
         print(f"\nProcessing batch {i} with Batch Size - 200...\n")
         generate_phase3_execution(f"GSM8K_train_phase2_execution_batch{i}_{i*200}.json" , model, tokenizer)
-        break
 
-    # generate_phase2_execution("GSM8K_train_phase1_analysis.json", model, tokenizer, batch_no=1, batch_size=300)
-    # generate_phase3_execution("GSM8K_train_phase2_execution.json", model, tokenizer)
 
 
 
