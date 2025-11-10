@@ -25,6 +25,11 @@ CRITICAL INSTRUCTIONS:
 4. Apply the primitive exactly as described — don’t infer new rules or solve unrelated steps.
 5. If the primitive involves symbolic or numeric manipulation, apply that change correctly and clearly.
 6. Never produce explanations outside JSON or markers.
+7.When representing any calculation, always place expressions in double quotes as strings.
+For example:
+"Total": "5 + 3"
+NOT
+"Total": 5 + 3
 
 You are reasoning like a human who uses structured steps (primitives) to progressively modify the problem until solved.
 """

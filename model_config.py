@@ -184,27 +184,16 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
                 )
 
             generated_tokens = outputs[0][prompt_len:]
-            raw = tokenizer.decode(generated_tokens, skip_special_tokens=False)
-            generated_text = raw.strip()
+            generated_text = tokenizer.decode(generated_tokens, skip_special_tokens=False).strip()
 
-            match = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", generated_text, flags=re.S)
-            if match:
-                json_text = match.group(1).strip()
-            else:
-                m = re.search(r"([\{\[][\s\S]*[\}\]])", generated_text, flags=re.S)
-                if m:
-                    json_text = m.group(1).strip()
-                else:
-                    raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
-
-            json_text = re.sub(r',\s*([\]\}])', r'\1', json_text)
-
+            
+            json_op = extract_and_clean_json(generated_text)
             # Cleanup memory before returning
             del outputs, inputs
             torch.cuda.empty_cache()
             gc.collect()
 
-            return safe_json_parse(json_text)
+            return json_op
 
         except Exception as e:
             last_error = e
@@ -225,14 +214,47 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}")
 
 
-def safe_json_parse(text):
+def extract_and_clean_json(generated_text: str):
+    """
+    Extracts the JSON object from a model's raw output (between <<START>> and <<END>> if present),
+    sanitizes it (fixing quotes, trailing commas, invalid tokens),
+    and returns a valid Python object (dict/list).
+    """
+
+    # --- 1. Extract JSON substring ---
+    match = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", generated_text, flags=re.S)
+    if match:
+        json_text = match.group(1).strip()
+    else:
+        m = re.search(r"([\{\[][\s\S]*[\}\]])", generated_text, flags=re.S)
+        if m:
+            json_text = m.group(1).strip()
+        else:
+            raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
+
+    # --- 2. Sanitize malformed tokens ---
+    json_text = re.sub(r"<\|.*?\|>", "", json_text)         # remove artifacts like <|eot_id|>
+    json_text = re.sub(r",\s*([\]}])", r"\1", json_text)    # remove trailing commas
+    json_text = re.sub(r"(?<!\\)'", '"', json_text)         # convert single to double quotes safely
+    json_text = re.sub(r"([{,])\s*\"([^\"]+)\"\s*:\s*'([^']*)'", r'\1"\2": "\3"', json_text)  # fix hybrid quoting
+    json_text = re.sub(r'\\(["\'])', r'\1', json_text)      # unescape stray slashes
+
+    # --- 3. Attempt safe parsing ---
     try:
-        return json.loads(text)
-    except json.JSONDecodeError as e:
-        # Attempt a simple cleanup of stray commas or quotes
-        fixed = re.sub(r",\s*([}\]])", r"\1", text)
-        fixed = re.sub(r"([{,])\s*'([^']+)'\s*:", r'\1"\2":', fixed)  # convert single quotes
-        return json.loads(fixed)
+        parsed = json.loads(json_text)
+        return parsed
+    except json.JSONDecodeError:
+        # --- 4. Secondary cleanup fallback ---
+        fixed = re.sub(r",\s*([}\]])", r"\1", json_text)
+        fixed = re.sub(r"([{,])\s*'([^']+)'\s*:", r'\1"\2":', fixed)  # convert single quotes around keys
+        fixed = re.sub(r"'([^']*)'", r'"\1"', fixed)                  # convert quoted strings
+        fixed = re.sub(r'"\s*([+\-*/])\s*"', r'\1', fixed)            # clean operators accidentally quoted
+        try:
+            return json.loads(fixed)
+        except json.JSONDecodeError as e:
+            print("[ERROR] JSON still invalid after cleanup.")
+            print("Cleaned text preview:", fixed)
+            raise e
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
