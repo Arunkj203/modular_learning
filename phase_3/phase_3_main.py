@@ -19,10 +19,6 @@ CRITICAL INSTRUCTIONS:
 2. JSON Format (no other text allowed):
 {
     "result": "<new problem state after applying primitive>",
-    "primitive_applied": {
-    "id": "<primitive_id>",
-    "name": "<primitive_name>"
-    },
     "notes": "<short reasoning for transformation>"
 }
 3. Preserve all key details from the current state.
@@ -52,7 +48,7 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
 
     for idx,primitive_entry in enumerate(primitive_sequence):
 
-        print(f"Primitve running {idx+1}")
+        
         # primitive_entry = primitive_metadata.get(pid, {})
         if not primitive_entry:
             raise ValueError(f"Primitive ID {primitive_entry['id']} not found in metadata.")
@@ -69,8 +65,7 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
                 Problem State:
                 {state_text}
 
-                Primitive to apply:
-                {json.dumps(primitive_entry, indent=2)}
+                Apply primitive: "{primitive_entry['name']}" – {primitive_entry.get('description', '')}
 
                 Now, generate the next problem state strictly following the system instructions.
 
@@ -87,7 +82,7 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
         
         # Calculate dynamic max_tokens based on complexity
         complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
-        dynamic_max_tokens = min(512, max(600, 2 * complexity_estimate )) 
+        dynamic_max_tokens = min(512, max(400, 2 * complexity_estimate )) 
 
             # Call your generate_text wrapper
         op = generate_text(
@@ -98,8 +93,9 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
                 dynamic_max_tokens=dynamic_max_tokens
             )
         
+        # print(f"Primitve {idx+1} output:")
         # Record this step (include pre/post state for debugging)
-        steps.append((op, pid, primitive_name, description))
+        steps.append((op, primitive_name, description))
 
         # Update the state for the next primitive
         state_text = op["result"]
