@@ -6,6 +6,34 @@ from peft import PeftModel
 from ..config import *
 from ..model_config import OUTPUT_DIR, DEVICE , call_openrouter ,generate_text
 
+
+ # Build system and user prompts for primitive execution
+system_prompt = """
+You are a structured reasoning executor that applies human-like problem-solving primitives.
+
+Your task is to transform the current problem state by applying the given primitive. 
+Do not perform full problem solving — only apply the primitive’s transformation logic.
+
+CRITICAL INSTRUCTIONS:
+1. You must output ONLY valid JSON strictly between <<START>> and <<END>>.
+2. JSON Format (no other text allowed):
+{
+    "result": "<new problem state after applying primitive>",
+    "primitive_applied": {
+    "id": "<primitive_id>",
+    "name": "<primitive_name>"
+    },
+    "notes": "<short reasoning for transformation>"
+}
+3. Preserve all key details from the current state.
+4. Apply the primitive exactly as described — don’t infer new rules or solve unrelated steps.
+5. If the primitive involves symbolic or numeric manipulation, apply that change correctly and clearly.
+6. Never produce explanations outside JSON or markers.
+
+You are reasoning like a human who uses structured steps (primitives) to progressively modify the problem until solved.
+"""
+
+
 def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
 
     """
@@ -22,7 +50,6 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
     state_text = problem_text
     steps = []
 
-    
     for primitive_entry in primitive_sequence:
 
         # primitive_entry = primitive_metadata.get(pid, {})
@@ -33,32 +60,7 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
         primitive_name = primitive_entry.get("name", "")
         description = primitive_entry.get("description", "")
 
-        # Build system and user prompts for primitive execution
-        system_prompt = """
-            You are a structured reasoning executor that applies human-like problem-solving primitives.
-
-            Your task is to transform the current problem state by applying the given primitive. 
-            Do not perform full problem solving — only apply the primitive’s transformation logic.
-
-            CRITICAL INSTRUCTIONS:
-            1. You must output ONLY valid JSON strictly between <<START>> and <<END>>.
-            2. JSON Format (no other text allowed):
-            {
-                "result": "<new problem state after applying primitive>",
-                "primitive_applied": {
-                "id": "<primitive_id>",
-                "name": "<primitive_name>"
-                },
-                "notes": "<short reasoning for transformation>"
-            }
-            3. Preserve all key details from the current state.
-            4. Apply the primitive exactly as described — don’t infer new rules or solve unrelated steps.
-            5. If the primitive involves symbolic or numeric manipulation, apply that change correctly and clearly.
-            6. Never produce explanations outside JSON or markers.
-
-            You are reasoning like a human who uses structured steps (primitives) to progressively modify the problem until solved.
-            """
-
+       
         user_prompt = f"""
 
                 You are given the current state of a problem and a primitive to apply.
@@ -84,7 +86,7 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
         
         # Calculate dynamic max_tokens based on complexity
         complexity_estimate = len(tokenizer(system_prompt + user_prompt)['input_ids'])
-        dynamic_max_tokens = min(4096, max(600, 2 * complexity_estimate )) 
+        dynamic_max_tokens = min(512, max(600, 2 * complexity_estimate )) 
 
             # Call your generate_text wrapper
         op = generate_text(

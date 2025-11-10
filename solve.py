@@ -12,7 +12,6 @@ import os , json , re
 from typing import Dict, Any, List
 
 
-
 def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="Dataset"):
     """
     Generate Phase 4 execution data from Phase 2 primitive sequences.
@@ -164,10 +163,6 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     print(f"\nPhase 2 reasoning saved to {output2_file}")
 
 
-import os
-import json
-from typing import List, Dict, Any
-from datasets import load_dataset
 
 def generate_phase1_analysis(dataset_name: str, mode: str, model, tokenizer, output_dir="Dataset", batch_size=200):
     """
