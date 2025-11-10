@@ -73,10 +73,11 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
             print(f"Completed problem {idx+1} ({len(steps)} steps)")
             print("------------------------------------------------------------")
 
-            if idx >= 3:
+            if idx > 9:
                 break
             else:
-                print(f"\nQn:{question}\nprimitive_sequence:{primitive_sequence}\nProblem steps:\n{steps}\nState:{final_state}")
+                pass
+                # print(f"\nQn:{question}\nprimitive_sequence:{primitive_sequence}\nProblem steps:\n{steps}\nState:{final_state}")
 
         except Exception as e:
             errors += 1
