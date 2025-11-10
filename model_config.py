@@ -245,7 +245,7 @@ def extract_and_clean_json(generated_text: str):
 
      # --- 3. Convert single quotes ONLY around keys/values, not inside sentences ---
     json_text = re.sub(r"([{,]\s*)'([^']+?)'\s*:", r'\1"\2":', json_text)  # key fix
-    json_text = re.sub(r':\s*\'([^']*?)\'', r': "\1"', json_text)          # value fix
+    json_text = re.sub(r":\s*'([^']*?)'", r': "\1"', json_text)   # value fix
 
 
     # --- 4. Escape unescaped inner double quotes ---
