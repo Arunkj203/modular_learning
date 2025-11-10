@@ -238,41 +238,38 @@ def extract_and_clean_json(generated_text: str):
         else:
             raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
 
-    # --- 2. Normalize quotes and commas ---
-    json_text = re.sub(r",\s*([\]}])", r"\1", json_text)    # remove trailing commas
-    # json_text = re.sub(r"(?<!\\)'", '"', json_text)         # convert single → double
-    json_text = re.sub(r"\n+", " ", json_text)              # flatten newlines
+   # --- 2. Basic sanitization ---
+    json_text = re.sub(r",\s*([\]}])", r"\1", json_text)   # remove trailing commas
+    # json_text = re.sub(r"\n+", " ", json_text)             # flatten newlines
     json_text = json_text.strip()
 
-    # --- 3. Escape unescaped double quotes inside string values ---
-    # e.g. "Applied "Operation"" → "Applied \"Operation\""
+     # --- 3. Convert single quotes ONLY around keys/values, not inside sentences ---
+    json_text = re.sub(r"([{,]\s*)'([^']+?)'\s*:", r'\1"\2":', json_text)  # key fix
+    json_text = re.sub(r':\s*\'([^']*?)\'', r': "\1"', json_text)          # value fix
+
+
+    # --- 4. Escape unescaped inner double quotes ---
     def escape_inner_quotes(s):
-        pattern = r'("([^"\\]*(\\.[^"\\]*)*)")'  # all valid quoted strings
         def repl(match):
-            text = match.group(0)
-            inner = text[1:-1]
-            # escape inner quotes
+            inner = match.group(1)
             fixed = inner.replace('"', '\\"')
             return f'"{fixed}"'
-        return re.sub(pattern, repl, s)
+        return re.sub(r'"([^"\\]*(?:\\.[^"\\]*)*)"', repl, s)
     json_text = escape_inner_quotes(json_text)
 
-    # --- 4. Try parsing ---
+    # --- 5. Attempt parse with optional brace fix ---
     try:
         return json.loads(json_text)
     except json.JSONDecodeError:
-        # --- 5. Fallback cleanup ---
-        fixed = re.sub(r",\s*([}\]])", r"\1", json_text)
-        fixed = re.sub(r"([{,])\s*'([^']+)'\s*:", r'\1"\2":', fixed)
-        fixed = re.sub(r"'([^']*)'", r'"\1"', fixed)
-        fixed = fixed.strip()
+        # maybe missing a closing brace
+        if not json_text.strip().endswith("}"):
+            json_text = json_text.strip() + "}"
         try:
-            return json.loads(fixed)
+            return json.loads(json_text)
         except json.JSONDecodeError as e:
             print("[ERROR] JSON still invalid after cleanup.")
-            print("Cleaned text preview:", fixed[:600])
+            print("Cleaned text preview:", json_text[:500])
             raise e
-
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
