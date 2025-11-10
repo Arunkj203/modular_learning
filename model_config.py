@@ -213,22 +213,17 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     # raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
     raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}")
 
-
-import re, json
-
 def extract_and_clean_json(generated_text: str):
     """
-    Extract and sanitize JSON-like output from a language model.
+    Extract valid JSON from model output, removing artifacts and fixing quotes.
     Handles:
-      - <<START>> ... <<END>> delimiters
-      - single quotes, trailing commas, mixed quotes
-      - unescaped inner quotes in string values
-      - removal of all artifacts before <|eot_id|> and similar tokens
-    Returns:
-      A parsed Python object (dict or list).
+      - <<START>> ... <<END>> blocks
+      - <|eot_id|> tokens and other artifacts
+      - unescaped double quotes inside values
+      - mixed single/double quotes and trailing commas
     """
 
-    # --- 0. Pre-clean: cut off any prefix up to <|eot_id|> or similar ---
+    # --- 0. Cut off any prefix up to <|eot_id|> ---
     generated_text = re.split(r"<\|eot_id\|>", generated_text, 1)[0]
     generated_text = re.sub(r"<\|.*?\|>", "", generated_text).strip()
 
@@ -243,31 +238,26 @@ def extract_and_clean_json(generated_text: str):
         else:
             raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
 
-    # --- 2. Basic sanitation ---
-    # json_text = re.sub(r",\s*([\]}])", r"\1", json_text)   # remove trailing commas
-    # json_text = re.sub(r"(?<!\\)'", '"', json_text)        # convert single → double quotes
-    # json_text = re.sub(r"\n+", " ", json_text)             # flatten newlines
+    # --- 2. Normalize quotes and commas ---
+    json_text = re.sub(r",\s*([\]}])", r"\1", json_text)    # remove trailing commas
+    json_text = re.sub(r"(?<!\\)'", '"', json_text)         # convert single → double
+    json_text = re.sub(r"\n+", " ", json_text)              # flatten newlines
     json_text = json_text.strip()
 
     # --- 3. Escape unescaped double quotes inside string values ---
-    # e.g. "Applied "Operation Selection"" → "Applied \"Operation Selection\""
+    # e.g. "Applied "Operation"" → "Applied \"Operation\""
     def escape_inner_quotes(s):
-        result = []
-        in_string = False
-        escaped = False
-        for char in s:
-            if char == '"' and not escaped:
-                in_string = not in_string
-            elif in_string and char == '"' and not escaped:
-                result.append('\\"')
-                continue
-            escaped = (char == '\\')
-            result.append(char)
-        return ''.join(result)
-
+        pattern = r'("([^"\\]*(\\.[^"\\]*)*)")'  # all valid quoted strings
+        def repl(match):
+            text = match.group(0)
+            inner = text[1:-1]
+            # escape inner quotes
+            fixed = inner.replace('"', '\\"')
+            return f'"{fixed}"'
+        return re.sub(pattern, repl, s)
     json_text = escape_inner_quotes(json_text)
 
-    # --- 4. Attempt safe parse ---
+    # --- 4. Try parsing ---
     try:
         return json.loads(json_text)
     except json.JSONDecodeError:
@@ -280,7 +270,7 @@ def extract_and_clean_json(generated_text: str):
             return json.loads(fixed)
         except json.JSONDecodeError as e:
             print("[ERROR] JSON still invalid after cleanup.")
-            print("Cleaned text preview:", fixed)
+            print("Cleaned text preview:", fixed[:600])
             raise e
 
 
