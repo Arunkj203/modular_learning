@@ -50,8 +50,9 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
     state_text = problem_text
     steps = []
 
-    for primitive_entry in primitive_sequence:
+    for idx,primitive_entry in enumerate(primitive_sequence):
 
+        print(f"Primitve running {idx+1}")
         # primitive_entry = primitive_metadata.get(pid, {})
         if not primitive_entry:
             raise ValueError(f"Primitive ID {primitive_entry['id']} not found in metadata.")
