@@ -240,7 +240,7 @@ def extract_and_clean_json(generated_text: str):
 
     # --- 2. Normalize quotes and commas ---
     json_text = re.sub(r",\s*([\]}])", r"\1", json_text)    # remove trailing commas
-    json_text = re.sub(r"(?<!\\)'", '"', json_text)         # convert single → double
+    # json_text = re.sub(r"(?<!\\)'", '"', json_text)         # convert single → double
     json_text = re.sub(r"\n+", " ", json_text)              # flatten newlines
     json_text = json_text.strip()
 
