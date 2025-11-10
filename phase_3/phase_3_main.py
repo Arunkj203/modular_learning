@@ -93,13 +93,14 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
                 dynamic_max_tokens=dynamic_max_tokens
             )
         
-        print(f"Primitve {idx+1} output:\n{op}")
+        
         # Record this step (include pre/post state for debugging)
         steps.append((op, primitive_name, description))
 
         # Update the state for the next primitive
         state_text = op["result"]
-
+        print(f"Primitve {idx+1} output:\n{op}")
+        
     return state_text, steps 
 
 
