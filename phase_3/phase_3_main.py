@@ -99,8 +99,8 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
 
         # Update the state for the next primitive
         state_text = op["result"]
-        print(f"Primitve {idx+1} output:\n{op}")
-        
+        # print(f"Primitve {idx+1} output:\n{op}")
+
     return state_text, steps 
 
 

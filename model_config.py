@@ -209,8 +209,8 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
         except Exception as e:
             last_error = e
             debug_raw = generated_text if 'generated_text' in locals() else "<no raw output>"
-            # print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\nRaw output:\n{debug_raw}\n")
-            print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\n")
+            print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\nRaw output:\n{debug_raw}\n")
+            # print(f"[WARN] Attempt {attempt+1} failed: {type(e).__name__}: {e}\n")
 
             # Free memory after each failed attempt
             if 'outputs' in locals():

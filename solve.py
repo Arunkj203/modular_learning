@@ -44,6 +44,9 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
    
 
     for idx, entry in enumerate(data):  # limit for testing
+
+        if idx == 0 :
+            continue
         question = entry.get("question", "")
         primitive_sequence = entry.get("phase2_reasoning", [])
 
