@@ -244,9 +244,9 @@ def extract_and_clean_json(generated_text: str):
             raise ValueError("Could not find JSON object or <<START>>...<<END>> delimiters.")
 
     # --- 2. Basic sanitation ---
-    json_text = re.sub(r",\s*([\]}])", r"\1", json_text)   # remove trailing commas
-    json_text = re.sub(r"(?<!\\)'", '"', json_text)        # convert single → double quotes
-    json_text = re.sub(r"\n+", " ", json_text)             # flatten newlines
+    # json_text = re.sub(r",\s*([\]}])", r"\1", json_text)   # remove trailing commas
+    # json_text = re.sub(r"(?<!\\)'", '"', json_text)        # convert single → double quotes
+    # json_text = re.sub(r"\n+", " ", json_text)             # flatten newlines
     json_text = json_text.strip()
 
     # --- 3. Escape unescaped double quotes inside string values ---
