@@ -7,7 +7,7 @@ from transformers import GenerationConfig , BitsAndBytesConfig
 
 # Optional: load .env
 try:
-    from dotenv import load_dotenv 
+    from dotenv import load_dotenv  
     load_dotenv()
 except Exception:
     pass
@@ -18,8 +18,6 @@ except Exception:
 # -----------------------------
 # Config: model selection
 # -----------------------------
-
-
 # OLD: BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 
 # BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
@@ -28,9 +26,9 @@ except Exception:
 
 BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct" # For phase 3 - Execution
 
-
-
 # BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" # New Model
+
+
 
 # BASE_MODEL = "HuggingFaceM4/tiny-random-LlamaForCausalLM"  # Test Model
 OUTPUT_DIR = "./results/lora_adapters"

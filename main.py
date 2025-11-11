@@ -4,8 +4,11 @@ from .solve import *
 
 from .model_config import get_model_and_tokenizer
 
-from datasets import Dataset
 from . import config as mem
+
+
+
+
 
 def main():
 
@@ -64,6 +67,11 @@ if __name__ == "__main__":
 
 
 '''
+
+In SVAMP Dataset,
+
+Test dataset len - 300;
+
 In gsm8k datastet,
 
 # Load the GSM8K dataset

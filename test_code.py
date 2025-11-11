@@ -1,140 +1,103 @@
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
+from datasets import load_dataset
+
+import json
+import os
+from tqdm import tqdm
+
 from .phase_1.phase_1_main import run_phase1
 from .phase_2.phase_2_main import run_phase2
 from .phase_3.phase_3_main import run_phase3
 
-from .config import *
-from .model_config import get_model_and_tokenizer
-from datasets import load_dataset
+from .phase_2.generate_primitive import add_primitive, update_primitive_graph_from_sequence
 
-# Load dataset
-dataset_name = "SVAMP"
-dataset = load_dataset(dataset_path[dataset_name])
-
-problem = list(dataset["train"])[35]
-
-# print("Problem:", problem)
-# Load model and tokenizer
-model, tokenizer = get_model_and_tokenizer()
- 
-print(f"Model and tokenizer loaded for {dataset_name}.")
-
-print(f"\n--- Train on {dataset_name} ---")
-
-# for idx , problem in  enumerate(list(dataset[mode])[:20]):  # Limit to first 20 for testing
-print(f"\n=== Problem {1} ===")
-
-'''  Phase 1: Problem Analysis'''
-print(f"\nPhase 1 - Analysing...\n")
-
-processed, analysis = run_phase1(model, tokenizer , problem, dataset_name=dataset_name)
-
-#gt = normalize_answer(processed["answer"])
-
-print("Phase 1 : Processed:\n",processed,"\nAnalysis:",analysis)
+from . import config as mem
+from .solve import normalize_answer
 
 
+# Optional: load .env
+try:
+    from dotenv import load_dotenv  
+    load_dotenv()
+except Exception:
+    pass
+    
+HUGGINGFACEHUB_API_TOKEN_3B = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-'''  Phase 2: Primitive Generation  
+def get_model_and_tokenizer(BASE_MODEL):
 
-First retrieve relevant primitives from library
-split into subtasks
-the primitives to solve subtasks
-Then generate a sequence of primitives to solve the problem
-'''
-print(f"\nPhase 2 - Primitive Sequence Generating...\n")
+    print(f"Loading tokenizer for {BASE_MODEL}...")
+    tokenizer = AutoTokenizer.from_pretrained(
+        BASE_MODEL,
+        token=HUGGINGFACEHUB_API_TOKEN_3B,
+        use_fast=True,
+        trust_remote_code=True
+    )
 
-primitive_sequence , new_primitives_to_train = run_phase2(model, tokenizer ,processed["question"], analysis)
+    print(f"Loading full precision model {BASE_MODEL} on GPU...")
+    model = AutoModelForCausalLM.from_pretrained(
+        BASE_MODEL,
+        torch_dtype=torch.float16,   # use float16 for efficiency
+        device_map="auto",
+        trust_remote_code=True,
+        token=HUGGINGFACEHUB_API_TOKEN_3B
+    )
 
-print(f"Phase 2 : Primitive Sequence Generated\n", primitive_sequence,"\nNew Primitives to train:", new_primitives_to_train)
+    model.eval()
+    model.config.use_cache = True
+    model.config.pretraining_tp = 1
 
-
-'''  Phase 3: Primitive Training and Testing  '''
-# This is trained , next step is to use this trained primitive in phase 4
-# and see if it works correctly
-
-# status = run_phase3(model, tokenizer ,new_primitives_to_train)
-# if not status:
-#    print("Phase 3 failed. Exiting.")
-#    exit(1)
-
-print(f"\nPhase 3 - Skipping...\n")
-
-# print(f"Phase 3 completed. Trained {len(new_primitives_to_train)} new primitives.")
-# Note : Some changes need to made in phase 3 (In saving the lora adpaters , path changes etc)
-
-''' Phase 4: Problem Solving + Feedback 
-with the sequence of primitives generated in phase 2,solve the problem
-'''
-print(f"\nPhase 4 - Solving...\n")
-
-solution, steps, feedback_entries = run_phase3(model, tokenizer ,primitive_sequence, problem_text=processed["question"])
-
-print("Phase 4 : Problem Solved")
-
-print("Steps:", steps)
-print("Solution:", solution)
+    return model, tokenizer
 
 
-def normalize_answer(ans):
-    """Normalize numbers/strings for comparison."""
-    if ans is None:
-        return None
-    if isinstance(ans, str):
-        ans = ans.strip().lower()
-        # try to coerce to number if possible
+def load_datasets():
+    svamp = load_dataset("ChilleD/SVAMP", split="test")
+    gsm8k = load_dataset("gsm8k", "main", split="test")
+    print(f"Loaded SVAMP test: {len(svamp)} samples")
+    print(f"Loaded GSM8k test: {len(gsm8k)} samples")
+    return svamp, gsm8k
+
+
+def generate_phase1_analysis(dataset, model, tokenizer, output_dir="Base_L", dataset_name="svamp"):
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, f"{dataset_name}_test_phase1_analysis.json")
+    
+    results = []
+    l = len(dataset)
+    for i, problem in enumerate(tqdm(dataset)):
+        
+        print(f"Analyzing problem {i+1}/{l}")
         try:
-            return str(float(ans))
-        except:
-            return ans
-    if isinstance(ans, (int, float)):
-        return str(float(ans))
-    return str(ans)
+            processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
+            entry = {
+                "id": i,
+                "question": processed.get("question", ""),
+                "ground_truth": normalize_answer(processed.get("answer", "")),
+                "phase1_analysis": analysis
+            }
+            results.append(entry)
+        except Exception as e:
+            print(f"[ERROR] Problem {i+1} failed: {e}")
+            results.append({
+                "id": i,
+                "question": problem.get("question", ""),
+                "error": str(e)
+            })
 
+    
+    with open(output_file, "w") as f:
+        json.dump(results, f, indent=2)
+    
+    print(f"Saved Test-Phase 1 analysis for {dataset_name} at {output_file}")
 
+if __name__ == "__main__":
+    BASE_MODEL = "meta-llama/Meta-Llama-3-3B"  # or your local model path
+    model, tokenizer = get_model_and_tokenizer(BASE_MODEL)
+    
+    print("Load dataset")
+    svamp, gsm8k = load_datasets()
+    
+    generate_phase1_analysis(svamp, model, tokenizer, dataset_name="svamp")
+    generate_phase1_analysis(gsm8k, model, tokenizer, dataset_name="gsm8k")
 
-
-# '''
-
-# --- Train on SVAMP ---
-
-# === Problem 1 ===
-
-# Phase 1 - Analysing...
-
-
-# Decomposing...
-
-# Phase 1 : Processed:
-#  {'id': 'chal-370', 'question': 'Edward spent $ 17. Then he received $ 10 from his friend. Now he has $ 7. How much did Edward have before he spent his money?', 'answer': '14', 'intermediate_steps': '( ( 17.0 - 10.0 ) + 7.0 )', 'type': 'Addition'}
-# Analysis: 
-# {'problem_type': 'word_problem', 
-# 'domain': 'Arithmetic', 
-# 'sub_domain': 'Money Word Problem', 
-# 'tags': ['money', 'word_problem', 'arithmetic'], 
-# 'topics': ['addition', 'subtraction'], 
-# 'selected_reasoning_modules': ['Step-By-Step', 'Simplification'], 
-# 'methods': ['addition', 'subtraction'], 
-# 'decomposition_strategies': ['decompose_into_smaller_problems'], 
-# 'decomposition_plan': [{'goal': 'find_the_amount_of_money_Edward_had_before_he_spent_it', 
-# 'description': 'This is the core problem that we need to solve.'},
-#  {'goal': 'find_the_amount_of_money_Edward_received_from_his_friend', 
-#  'description': 'This is a supporting conceptual goal that we need to solve.'}], 
- 
-#  'subtasks': [{'step': 1, 'instruction': 'Identify the amount of money Edward spent.'}, 
-#  {'step': 2, 'instruction': 'Identify the amount of money Edward received.'},
-#    {'step': 3, 'instruction': 'Identify the amount of money Edward has.'}]}
-
-# Phase 2 - Primitive Sequence Generating...
-
-# Calling LLM to generate primitive sequence...
-# Phase 2 : Primitive Sequence Generated
-#  [{'id': 'find_the_amount_of_money_Edward_spent_05ce974f', 'name': 'find_the_amount_of_money_Edward_spent', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward spent.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_received_327604eb', 'name': 'find_the_amount_of_money_Edward_received', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward received.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_has_0899ccea', 'name': 'find_the_amount_of_money_Edward_has', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward has.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_had_before_he_spent_it_3837a93a', 'name': 'find_the_amount_of_money_Edward_had_before_he_spent_it', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward had before he spent it.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}]
-# New Primitives to train: [{'id': 'find_the_amount_of_money_Edward_spent_05ce974f', 'name': 'find_the_amount_of_money_Edward_spent', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward spent.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_received_327604eb', 'name': 'find_the_amount_of_money_Edward_received', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward received.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_has_0899ccea', 'name': 'find_the_amount_of_money_Edward_has', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward has.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}, {'id': 'find_the_amount_of_money_Edward_had_before_he_spent_it_3837a93a', 'name': 'find_the_amount_of_money_Edward_had_before_he_spent_it', 'input': {}, 'output': {}, 'description': 'Find the amount of money Edward had before he spent it.', 'problem_type': 'word_problem', 'domain': 'Arithmetic', 'methods': ['addition', 'subtraction'], 'tags': ['money', 'word_problem', 'arithmetic']}]
-
-# Phase 3 - Skipping...
-
-
-# Phase 4 - Solving...
-
-
-# '''

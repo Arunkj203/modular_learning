@@ -1,0 +1,27 @@
+Student model - meta-llama/Meta-Llama-3-3B-Instruct
+
+Lora training  needed for: 
+ - Phase 1 
+ - Phase 2 
+ - Phase 3(Optional) 
+
+ Models trained:
+
+ L_base - Baseline Model (No training)
+ L_reasonMix - Lora adapters trained with SVAMP + GSM8k
+ L_gsm - Lora adapters trained with only GSM8k
+ 
+ Test dataset:
+    Dataset - SVAMP + GSM8k (Tests)
+
+ Steps for training and testing the model:
+
+ 1. L_base:
+
+Training : No training needed
+Testing: 
+
+
+ 2. L_opt:
+
+ 3. L_direct:
