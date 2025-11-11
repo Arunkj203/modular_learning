@@ -24,7 +24,6 @@ except Exception:
     pass
     
 HUGGINGFACEHUB_API_TOKEN_3B = os.getenv("HUGGINGFACEHUB_API_TOKEN_3B")
-print(HUGGINGFACEHUB_API_TOKEN_3B)
 
 def get_model_and_tokenizer(BASE_MODEL):
 
@@ -93,7 +92,7 @@ def generate_phase1_analysis(dataset, model, tokenizer, output_dir="Base_L", dat
     print(f"Saved Test-Phase 1 analysis for {dataset_name} at {output_file}")
 
 if __name__ == "__main__":
-    BASE_MODEL = "meta-llama/Meta-Llama-3-3B"  # or your local model path
+    BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct"  # or your local model path
     model, tokenizer = get_model_and_tokenizer(BASE_MODEL)
     
     print("Load dataset")
