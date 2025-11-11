@@ -23,7 +23,8 @@ try:
 except Exception:
     pass
     
-HUGGINGFACEHUB_API_TOKEN_3B = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+HUGGINGFACEHUB_API_TOKEN_3B = os.getenv("HUGGINGFACEHUB_API_TOKEN_3B")
+print(HUGGINGFACEHUB_API_TOKEN_3B)
 
 def get_model_and_tokenizer(BASE_MODEL):
 
