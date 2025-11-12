@@ -66,6 +66,7 @@ def generate_phase1_analysis(dataset, model, tokenizer, output_dir="Base_L", dat
     results = []
     l = len(dataset)
     for i, problem in enumerate(dataset):
+        
         print(f"Analyzing problem {i+1}/{l}")
         try:
             processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
