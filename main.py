@@ -15,14 +15,14 @@ def main():
     # dataset_name = sys.argv[1] # e.g., "SVAMP"
 
     # Load dataset
-    dataset_name = "SVAMP"
-    # dataset_name = "GSM8K"
+    # dataset_name = "SVAMP"
+    dataset_name = "GSM8K"
 
-    svamp = load_dataset("ChilleD/SVAMP", split="test")
-    print(f"Loaded SVAMP test: {len(svamp)} samples")
+    # svamp = load_dataset("ChilleD/SVAMP", split="test")
+    # print(f"Loaded SVAMP test: {len(svamp)} samples")
 
-#     gsm8k = load_dataset("gsm8k", "main", split="test")
-#     print(f"Loaded GSM8k test: {len(gsm8k)} samples")
+    gsm8k = load_dataset("gsm8k", "main", split="test")
+    print(f"Loaded GSM8k test: {len(gsm8k)} samples")
 
     # Load model and tokenizer
     model , tokenizer = get_model_and_tokenizer()
@@ -30,9 +30,21 @@ def main():
     print(f"Model and tokenizer loaded for {dataset_name}.")
 
     # Base_L tetsing:
+
+    # SVAMP:
     # generate_phase1_analysis(svamp,"svamp", model, tokenizer, output_dir="Base_L")
     generate_phase2_execution("svamp_test_phase1_analysis.json", model, tokenizer, output_dir="Base_L")
     generate_phase3_execution("svamp_test_phase2_execution.json", model, tokenizer, output_dir="Base_L")
+
+    # GSM8k:
+    
+    # generate_phase1_analysis(gsm8k,"gsm8k", model, tokenizer, output_dir="Base_L")
+    # generate_phase2_execution("gsm8k_test_phase1_analysis.json", model, tokenizer, output_dir="Base_L")
+    # generate_phase3_execution("gsm8k_test_phase2_execution.json", model, tokenizer, output_dir="Base_L")
+
+
+
+
     
     
 

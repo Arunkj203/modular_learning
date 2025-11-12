@@ -9927,11 +9927,6 @@
     }
   },
   {
-    "id": 297,
-    "question": "",
-    "error": "Failed after 3 attempts.\nLast error: Expecting ',' delimiter: line 10 column 142 (char 983)"
-  },
-  {
     "id": 298,
     "question": "Dan has $ 3 left with him after he bought a candy bar for $ 2. How much money did he have initially?",
     "ground_truth": 5.0,

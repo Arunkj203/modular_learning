@@ -9,7 +9,6 @@ from . import config as mem
 from datasets import load_dataset
 
 import os , json , re
-from typing import Dict, Any, List
 
 
 def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="Dataset"):
@@ -115,10 +114,11 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     all_results = []
 
     for entry in data:
-        q = entry["question"]
-        analysis = entry["phase1_analysis"]
-
+        
         try:
+            q = entry["question"]
+            analysis = entry["phase1_analysis"]
+
             print(f"  Executing reasoning for problem {entry['id']+1}/{l}...")
 
             primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
@@ -189,11 +189,7 @@ def generate_phase1_analysis(dataset,dataset_name: str, model, tokenizer, output
             results.append(entry)
         except Exception as e:
             print(f"[ERROR] Problem {idx+1} failed: {e}")
-            results.append({
-                "id": idx,
-                "question": problem.get("question", ""),
-                "error": str(e)
-            })
+            
 
     # Save batch to file
     output_file = os.path.join(
@@ -216,8 +212,6 @@ def solve(dataset_name, mode, mode_text, model, tokenizer, log_dir="logs"):
     max_errors = 4
     errors = 0 
 
-
-    use_lora = False
     dataset = load_dataset(mem.dataset_path[dataset_name])
     mem.load_memory()
 
