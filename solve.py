@@ -118,25 +118,25 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
         q = entry["question"]
         analysis = entry["phase1_analysis"]
 
-        try:
+        # try:
 
-            print(f"  Executing reasoning for problem {entry['id']}...")
+        print(f"  Executing reasoning for problem {entry['id']}...")
 
-            primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
+        primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
 
-            all_results.append({
-                "question": q,
-                "phase2_reasoning": primitive_sequence
-            })
+        all_results.append({
+            "question": q,
+            "phase2_reasoning": primitive_sequence
+        })
 
-            print(f"Generated {len(primitive_sequence)} primitives, {len(new_prims)} new.")
-            print("----------------------------------------------------------------------")
-        except Exception as e:
-            no_errors += 1
-            print(f"  [ERROR] Problem {entry['id']} failed: {e}")
-            if no_errors >= max_errors:
-                print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early.\n")
-                break
+        print(f"Generated {len(primitive_sequence)} primitives, {len(new_prims)} new.")
+        print("----------------------------------------------------------------------")
+        # except Exception as e:
+        #     no_errors += 1
+        #     print(f"  [ERROR] Problem {entry['id']} failed: {e}")
+        #     if no_errors >= max_errors:
+        #         print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early.\n")
+        #         break
 
     # # --- After each batch ---
     # if batch_new_primitives:

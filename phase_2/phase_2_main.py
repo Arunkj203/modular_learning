@@ -41,14 +41,17 @@ def run_phase2(model, tokenizer, problem_text, analysis):
     # Step 2 — Evaluate sufficiency of retrieved primitives
     # --------------------------------------------------------------
     # print("\n[2] Evaluating sufficiency of retrieved primitives...")
-    sufficiency_result = evaluate_primitive_sufficiency(
-        model=model,
-        tokenizer=tokenizer,
-        problem_text=problem_text,
-        analysis=analysis,
-        retrieved=retrieved_primitives,
-    )
 
+    if retrieved_primitives:
+        sufficiency_result = evaluate_primitive_sufficiency(
+            model=model,
+            tokenizer=tokenizer,
+            problem_text=problem_text,
+            analysis=analysis,
+            retrieved=retrieved_primitives,
+        )
+    else:
+        sufficiency_result = []
     # reuse_ids = sufficiency_result.get("reuse", [])
     missing_caps = sufficiency_result.get("missing_capabilities", [])
 
