@@ -257,7 +257,7 @@ Rules:
     )
 
     modules = analysis.get("selected_modules", [])
-    modules_str = "; ".join([f"{m['name']}}" for m in modules])
+    modules_str = "; ".join([f"{m['name']}" for m in modules])
 
     user_prompt = f"""
 Problem Type: {analysis.get('problem_type', 'Unknown')}
