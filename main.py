@@ -18,12 +18,56 @@ def main():
     dataset_name = "SVAMP"
     # dataset_name = "GSM8K"
 
+    svamp = load_dataset("ChilleD/SVAMP", split="test")
+    print(f"Loaded SVAMP test: {len(svamp)} samples")
+
+#     gsm8k = load_dataset("gsm8k", "main", split="test")
+#     print(f"Loaded GSM8k test: {len(gsm8k)} samples")
+
     # Load model and tokenizer
     model , tokenizer = get_model_and_tokenizer()
 
     print(f"Model and tokenizer loaded for {dataset_name}.")
 
-    # Testing 
+    # Base_L tetsing:
+    generate_phase1_analysis(svamp,"svamp", model, tokenizer, output_dir="Base_L")
+    
+
+
+
+
+
+    
+
+
+if __name__ == "__main__":
+    main()
+
+
+'''
+
+In SVAMP Dataset,
+
+Test dataset len - 300;
+
+In gsm8k datastet,
+
+# Load the GSM8K dataset
+dataset = load_dataset("openai/gsm8k", "main")
+
+# Get the number of problems in train and test splits
+train_count = len(dataset["train"])
+test_count = len(dataset["test"])
+Number of problems in train set: 7473 
+Number of problems in test set: 1319
+Total number of problems: 8792
+
+'''
+
+# Phase 2 - Starts at 7.55 PM
+
+
+# Testing 
     
     # solve(dataset_name,"train","Training", model, tokenizer)    
 
@@ -55,35 +99,7 @@ def main():
     #     print(f"\nProcessing batch {i} with Batch Size - 200...")
     #     generate_phase2_execution(f"GSM8K_train_phase1_analysis_batch{i}_{i*200}.json", model, tokenizer)
     
-    for i in range(2,5):
-        print(f"\nProcessing batch {i} with Batch Size - 200...\n")
-        generate_phase3_execution(f"GSM8K_train_phase2_execution_batch{i}_{i*200}.json" , model, tokenizer)
+    # for i in range(2,5):
+    #     print(f"\nProcessing batch {i} with Batch Size - 200...\n")
+    #     generate_phase3_execution(f"GSM8K_train_phase2_execution_batch{i}_{i*200}.json" , model, tokenizer)
 
-
-
-
-if __name__ == "__main__":
-    main()
-
-
-'''
-
-In SVAMP Dataset,
-
-Test dataset len - 300;
-
-In gsm8k datastet,
-
-# Load the GSM8K dataset
-dataset = load_dataset("openai/gsm8k", "main")
-
-# Get the number of problems in train and test splits
-train_count = len(dataset["train"])
-test_count = len(dataset["test"])
-Number of problems in train set: 7473 
-Number of problems in test set: 1319
-Total number of problems: 8792
-
-'''
-
-# Phase 2 - Starts at 7.55 PM

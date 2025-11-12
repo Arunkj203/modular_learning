@@ -18,13 +18,18 @@ except Exception:
 # -----------------------------
 # Config: model selection
 # -----------------------------
+
+# Test code:
+BASE_MODEL = "meta-llama/Llama-3.2-3B-Instruct"  # or your local model path
+
+# Old Uses:
 # OLD: BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 
 # BASE_MODEL = "Qwen/Qwen2.5-14B-Instruct" # For phase 1 - Analysis
 
 # BASE_MODEL = "meta-llama/Meta-Llama-3-70B-Instruct" # For phase 2 - Synthesis
 
-BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct" # For phase 3 - Execution
+# BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct" # For phase 3 - Execution
 
 # BASE_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" # New Model
 
@@ -39,8 +44,7 @@ OUTPUT_DIR = "./results/lora_adapters"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 
-HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-
+HUGGINGFACEHUB_API_TOKEN_3B = os.getenv("HUGGINGFACEHUB_API_TOKEN_3B")
 
 # Constants
 Retries = 3
@@ -50,63 +54,90 @@ Retries = 3
 # Singleton loader
 # -----------------------------
 
-def get_model_and_tokenizer():
+def get_model_and_tokenizer(BASE_MODEL):
+
     print(f"Loading tokenizer for {BASE_MODEL}...")
-    # tokenizer = AutoTokenizer.from_pretrained(
-    #     BASE_MODEL,
-    #     use_fast=True,
-    #     local_files_only=True  # avoid re-downloading if already cached
-    # )
-
     tokenizer = AutoTokenizer.from_pretrained(
-    BASE_MODEL,
-    token=HUGGINGFACEHUB_API_TOKEN,
-    use_fast=True,
-    local_files_only=False,  # allow fetching updated tokenizer if missing
-    trust_remote_code=True   # needed for new chat template logic
-)
-
-
-    print(f"Loading model {BASE_MODEL} in 4-bit mode on GPU...")
-
-    # # 4-bit quantization config (QLoRA style)
-    # bnb_config = BitsAndBytesConfig(
-    #     load_in_4bit=True,
-    #     bnb_4bit_use_double_quant=True,
-    #     bnb_4bit_quant_type="nf4",
-    #     bnb_4bit_compute_dtype=torch.bfloat16
-    # )
-
-    # model = AutoModelForCausalLM.from_pretrained(
-    #     BASE_MODEL,
-    #     quantization_config=bnb_config,
-    #     device_map="auto",
-    #     low_cpu_mem_usage=True,
-    #     local_files_only=True
-    # )
-
-    bnb_config = BitsAndBytesConfig(
-        load_in_8bit=True,                # <-- switch from 4-bit to 8-bit
-        llm_int8_threshold=6.0,           # auto-determine outlier handling
-        llm_int8_has_fp16_weight=False,   # recommended for inference
+        BASE_MODEL,
+        token=HUGGINGFACEHUB_API_TOKEN_3B,
+        use_fast=True,
+        trust_remote_code=True
     )
 
+    print(f"Loading full precision model {BASE_MODEL} on GPU...")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
-        quantization_config=bnb_config,
+        dtype=torch.float16,   # use float16 for efficiency
         device_map="auto",
-        dtype=torch.float16,
-        low_cpu_mem_usage=True,
         trust_remote_code=True,
-        token=HUGGINGFACEHUB_API_TOKEN
+        token=HUGGINGFACEHUB_API_TOKEN_3B
     )
 
-    # optional: faster generation tweaks
     model.eval()
     model.config.use_cache = True
     model.config.pretraining_tp = 1
-    
+
     return model, tokenizer
+
+
+
+# def get_model_and_tokenizer():
+#     print(f"Loading tokenizer for {BASE_MODEL}...")
+#     # tokenizer = AutoTokenizer.from_pretrained(
+#     #     BASE_MODEL,
+#     #     use_fast=True,
+#     #     local_files_only=True  # avoid re-downloading if already cached
+#     # )
+
+#     tokenizer = AutoTokenizer.from_pretrained(
+#     BASE_MODEL,
+#     token=HUGGINGFACEHUB_API_TOKEN_3B,
+#     use_fast=True,
+#     local_files_only=False,  # allow fetching updated tokenizer if missing
+#     trust_remote_code=True   # needed for new chat template logic
+# )
+
+
+#     print(f"Loading model {BASE_MODEL} in 4-bit mode on GPU...")
+
+#     # # 4-bit quantization config (QLoRA style)
+#     # bnb_config = BitsAndBytesConfig(
+#     #     load_in_4bit=True,
+#     #     bnb_4bit_use_double_quant=True,
+#     #     bnb_4bit_quant_type="nf4",
+#     #     bnb_4bit_compute_dtype=torch.bfloat16
+#     # )
+
+#     # model = AutoModelForCausalLM.from_pretrained(
+#     #     BASE_MODEL,
+#     #     quantization_config=bnb_config,
+#     #     device_map="auto",
+#     #     low_cpu_mem_usage=True,
+#     #     local_files_only=True
+#     # )
+
+#     bnb_config = BitsAndBytesConfig(
+#         load_in_8bit=True,                # <-- switch from 4-bit to 8-bit
+#         llm_int8_threshold=6.0,           # auto-determine outlier handling
+#         llm_int8_has_fp16_weight=False,   # recommended for inference
+#     )
+
+#     model = AutoModelForCausalLM.from_pretrained(
+#         BASE_MODEL,
+#         quantization_config=bnb_config,
+#         device_map="auto",
+#         dtype=torch.float16,
+#         low_cpu_mem_usage=True,
+#         trust_remote_code=True,
+#         token=HUGGINGFACEHUB_API_TOKEN_3B
+#     )
+
+#     # optional: faster generation tweaks
+#     model.eval()
+#     model.config.use_cache = True
+#     model.config.pretraining_tp = 1
+    
+#     return model, tokenizer
 
 # -----------------------------
 # Helper function for generation
