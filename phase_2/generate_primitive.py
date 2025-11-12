@@ -66,7 +66,7 @@ def retrieve_primitives(
         weights.append(0.7)
 
     for m in modules:
-        desc = f"{m['name']}: {m['description']}"
+        desc = f"{m['name']}"
         embeddings.append(mem.embed_model.encode(desc))
         weights.append(1.5)
 
@@ -257,7 +257,7 @@ Rules:
     )
 
     modules = analysis.get("selected_modules", [])
-    modules_str = "; ".join([f"{m['name']}: {m['description']}" for m in modules])
+    modules_str = "; ".join([f"{m['name']}}" for m in modules])
 
     user_prompt = f"""
 Problem Type: {analysis.get('problem_type', 'Unknown')}
