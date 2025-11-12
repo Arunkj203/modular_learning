@@ -30,7 +30,10 @@ def main():
     print(f"Model and tokenizer loaded for {dataset_name}.")
 
     # Base_L tetsing:
-    generate_phase1_analysis(svamp,"svamp", model, tokenizer, output_dir="Base_L")
+    # generate_phase1_analysis(svamp,"svamp", model, tokenizer, output_dir="Base_L")
+    generate_phase2_execution("svamp", model, tokenizer, output_dir="Base_L")
+    generate_phase3_execution("svamp", model, tokenizer, output_dir="Base_L")
+    
     
 
 

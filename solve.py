@@ -63,7 +63,7 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
             all_phase3_data.append({
                 "id": idx,
                 "question": question,
-                "primitive_sequence": primitive_sequence,
+                # "primitive_sequence": primitive_sequence,
                 "execution_trace": steps,        # step-by-step transformation logs
                 "final_state": final_state,
             })
@@ -107,12 +107,11 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     # all_results = []
 
     no_errors = 0
-    max_errors = int(0.3 * 200)
+    max_errors = int(0.3 * 300)
 
     mem.load_memory()
 
 
-    batch_new_primitives = []
     all_results = []
 
     for entry in data:
@@ -124,7 +123,6 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
             print(f"  Executing reasoning for problem {entry['id']}...")
 
             primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
-            batch_new_primitives.extend(new_prims)
 
             all_results.append({
                 "question": q,
@@ -140,14 +138,14 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
                 print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early.\n")
                 break
 
-    # --- After each batch ---
-    if batch_new_primitives:
-        print(f"  Adding {len(batch_new_primitives)} new primitives from this batch...")
-        for prim in batch_new_primitives:
-            add_primitive(prim)
+    # # --- After each batch ---
+    # if batch_new_primitives:
+    #     print(f"  Adding {len(batch_new_primitives)} new primitives from this batch...")
+    #     for prim in batch_new_primitives:
+    #         add_primitive(prim)
 
-    for i in all_results:
-        update_primitive_graph_from_sequence(i["phase2_reasoning"])
+    # for i in all_results:
+    #     update_primitive_graph_from_sequence(i["phase2_reasoning"])
 
             
     print(f"Library updated. Total primitives now: {len(mem.primitive_metadata)}")

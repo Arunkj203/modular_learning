@@ -54,7 +54,7 @@ Retries = 3
 # Singleton loader
 # -----------------------------
 
-def get_model_and_tokenizer(BASE_MODEL):
+def get_model_and_tokenizer():
 
     print(f"Loading tokenizer for {BASE_MODEL}...")
     tokenizer = AutoTokenizer.from_pretrained(
