@@ -51,7 +51,7 @@ def run_phase2(model, tokenizer, problem_text, analysis):
             retrieved=retrieved_primitives,
         )
     else:
-        sufficiency_result = []
+        sufficiency_result = {}
     # reuse_ids = sufficiency_result.get("reuse", [])
     missing_caps = sufficiency_result.get("missing_capabilities", [])
 

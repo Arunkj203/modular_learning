@@ -164,7 +164,7 @@ def evaluate_primitive_sufficiency(model, tokenizer, problem_text, analysis, ret
     )
 
     modules = analysis.get("selected_modules", [])
-    modules_str = "; ".join([f"{m['name']}: {m['description']}" for m in modules])
+    modules_str = "; ".join([f"{m['name']}" for m in modules])
 
     system_prompt = """
 You are an analytical reasoning expert evaluating a set of available cognitive primitives.
