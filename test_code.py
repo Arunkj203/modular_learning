@@ -70,7 +70,7 @@ def generate_phase1_analysis(dataset, model, tokenizer, output_dir="Base_L", dat
 
         if i == 10:
             break
-        
+
         print(f"Analyzing problem {i+1}/{l}")
         try:
             processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
@@ -96,7 +96,7 @@ def generate_phase1_analysis(dataset, model, tokenizer, output_dir="Base_L", dat
     print(f"Saved Test-Phase 1 analysis for {dataset_name} at {output_file}")
 
 if __name__ == "__main__":
-    BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct"  # or your local model path
+    BASE_MODEL = "meta-llama/Llama-3.2-3B-Instruct"  # or your local model path
     model, tokenizer = get_model_and_tokenizer(BASE_MODEL)
     
     # print("Load dataset:")
