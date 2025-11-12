@@ -38,7 +38,7 @@ def get_model_and_tokenizer(BASE_MODEL):
     print(f"Loading full precision model {BASE_MODEL} on GPU...")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
-        torch_dtype=torch.float16,   # use float16 for efficiency
+        dtype=torch.float16,   # use float16 for efficiency
         device_map="auto",
         trust_remote_code=True,
         token=HUGGINGFACEHUB_API_TOKEN_3B
@@ -65,8 +65,7 @@ def generate_phase1_analysis(dataset, model, tokenizer, output_dir="Base_L", dat
     
     results = []
     l = len(dataset)
-    for i, problem in enumerate(tqdm(dataset)):
-        
+    for i, problem in enumerate(dataset):
         print(f"Analyzing problem {i+1}/{l}")
         try:
             processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
@@ -95,7 +94,7 @@ if __name__ == "__main__":
     BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct"  # or your local model path
     model, tokenizer = get_model_and_tokenizer(BASE_MODEL)
     
-    print("Load dataset")
+    # print("Load dataset:")
     svamp, gsm8k = load_datasets()
     
     generate_phase1_analysis(svamp, model, tokenizer, dataset_name="svamp")
