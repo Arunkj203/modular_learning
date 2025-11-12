@@ -67,6 +67,10 @@ def generate_phase1_analysis(dataset, model, tokenizer, output_dir="Base_L", dat
     l = len(dataset)
     for i, problem in enumerate(dataset):
         
+
+        if i == 10:
+            break
+        
         print(f"Analyzing problem {i+1}/{l}")
         try:
             processed, analysis = run_phase1(model, tokenizer, problem, dataset_name=dataset_name)
@@ -99,5 +103,5 @@ if __name__ == "__main__":
     svamp, gsm8k = load_datasets()
     
     generate_phase1_analysis(svamp, model, tokenizer, dataset_name="svamp")
-    generate_phase1_analysis(gsm8k, model, tokenizer, dataset_name="gsm8k")
+    # generate_phase1_analysis(gsm8k, model, tokenizer, dataset_name="gsm8k")
 
