@@ -72,11 +72,11 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
 
             
         except Exception as e:
-            errors += 1
+            # errors += 1
             print(f"  [ERROR] Problem {idx+1} failed: {e}")
-            if errors >= max_errors:
-                print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
-                break
+            # if errors >= max_errors:
+            #     print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
+            #     break
     
     print(f"\n{len(all_phase3_data)} problems executed for Phase 3.")
     
@@ -133,9 +133,9 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
         except Exception as e:
             no_errors += 1
             print(f"  [ERROR] Problem {entry['id']} failed: {e}")
-            if no_errors >= max_errors:
-                print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early.\n")
-                break
+            # if no_errors >= max_errors:
+            #     print(f"\n[ABORT] Too many errors ({no_errors}). Stopping early.\n")
+                # break
 
     # # --- After each batch ---
     # if batch_new_primitives:

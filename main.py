@@ -33,7 +33,7 @@ def main():
 
     # SVAMP:
     # generate_phase1_analysis(svamp,"svamp", model, tokenizer, output_dir="Base_L")
-    generate_phase2_execution("svamp_test_phase1_analysis.json", model, tokenizer, output_dir="Base_L")
+    # generate_phase2_execution("svamp_test_phase1_analysis.json", model, tokenizer, output_dir="Base_L")
     generate_phase3_execution("svamp_test_phase2_execution.json", model, tokenizer, output_dir="Base_L")
 
     # GSM8k:
