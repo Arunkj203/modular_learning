@@ -2,7 +2,7 @@
 import os
 import json
 
-dataset_dir = "Dataset"
+dataset_dir = "Base_L"
 
 for filename in os.listdir(dataset_dir):
     if filename.endswith(".json"):
