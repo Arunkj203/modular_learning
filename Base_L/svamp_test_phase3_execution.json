@@ -1,0 +1,3847 @@
+[
+  {
+    "id": 0,
+    "question": "Winter is almost here and most animals are migrating to warmer countries. There are 41 bird families living near the mountain. If 35 bird families flew away to asia and 62 bird families flew away to africa How many more bird families flew away to africa than those that flew away to asia?",
+    "execution_trace": [
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Identify' primitive to identify the number of bird families that flew away to africa and asia"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Analyze' primitive to 62"
+        },
+        "Analyze",
+        "Auto-generated primitive: Analyze"
+      ],
+      [
+        {
+          "result": 62,
+          "notes": "Applied 'Compare' primitive to 62"
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": "Order 62",
+          "notes": "Applied 'Order' primitive to the given number 62"
+        },
+        "Order",
+        "Auto-generated primitive: Order"
+      ],
+      [
+        {
+          "result": "Order 62",
+          "notes": "Applied 'Justify' primitive to Order 62"
+        },
+        "Justify",
+        "Auto-generated primitive: Justify"
+      ],
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Evaluate' primitive to Order 62"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ],
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Identify' primitive to 62"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Analyze' primitive to 62"
+        },
+        "Analyze",
+        "Auto-generated primitive: Analyze"
+      ],
+      [
+        {
+          "result": 62,
+          "notes": "Applied 'Compare' primitive to 62"
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": "Order 62",
+          "notes": "Applied 'Order' primitive to the given number 62"
+        },
+        "Order",
+        "Auto-generated primitive: Order"
+      ],
+      [
+        {
+          "result": "Order 62",
+          "notes": "Applied 'Justify' primitive to Order 62"
+        },
+        "Justify",
+        "Auto-generated primitive: Justify"
+      ],
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Evaluate' primitive to Order 62"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ]
+    ],
+    "final_state": "62"
+  },
+  {
+    "id": 3,
+    "question": "There were 106 dollars in Olivia's wallet. After she visited a supermarket and a showroom there were 26 dollars left. If she spent 49 dollars at the showroom How much did she spend at the supermarket?",
+    "execution_trace": [
+      [
+        {
+          "result": "There were 106 dollars in Olivia's wallet. After she visited a supermarket and a showroom there were 26 dollars left. If she spent 49 dollars at the showroom How much did she spend at the supermarket?",
+          "notes": "Applied 'Identify-Problem' primitive to identify the problem"
+        },
+        "Identify-Problem",
+        "Auto-generated primitive: Identify-Problem"
+      ],
+      [
+        {
+          "result": {
+            "Supermarket-Spending": "49",
+            "Wallet-Initial-State": "106",
+            "Wallet-Current-State": "26"
+          },
+          "notes": "Applied Define-Variables primitive to define variables for supermarket spending, initial wallet state, and current wallet state."
+        },
+        "Define-Variables",
+        "Auto-generated primitive: Define-Variables"
+      ],
+      [
+        {
+          "result": {
+            "Supermarket-Spending": "49",
+            "Wallet-Initial-State": "106",
+            "Wallet-Current-State": "26",
+            "Relationship": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "106",
+              "Wallet-Current-State": "26"
+            }
+          },
+          "notes": "Applied 'Represent-Relationship' primitive to preserve the original problem state"
+        },
+        "Represent-Relationship",
+        "Auto-generated primitive: Represent-Relationship"
+      ],
+      [
+        {
+          "result": {
+            "Supermarket-Spending": "49",
+            "Wallet-Initial-State": "106",
+            "Wallet-Current-State": "26",
+            "Relationship": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "106",
+              "Wallet-Current-State": "26"
+            },
+            "Identify-Operations": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "106",
+              "Wallet-Current-State": "26",
+              "Type": "Subtraction",
+              "Description": "Subtracting supermarket spending from wallet initial state"
+            }
+          },
+          "notes": "Applied 'Identify-Operations' primitive to identify the operation between Supermarket-Spending and Wallet-Current-State"
+        },
+        "Identify-Operations",
+        "Auto-generated primitive: Identify-Operations"
+      ],
+      [
+        {
+          "result": {
+            "Supermarket-Spending": "49",
+            "Wallet-Initial-State": "106",
+            "Wallet-Current-State": "26",
+            "Relationship": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "106",
+              "Wallet-Current-State": "26"
+            },
+            "Identify-Operations": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "106",
+              "Wallet-Current-State": "26",
+              "Type": "Subtraction",
+              "Description": "Subtracting supermarket spending from wallet initial state"
+            },
+            "Selected-Operation": "Subtraction"
+          },
+          "notes": "Applied 'Select-Operation' primitive to identify the operation to solve the problem."
+        },
+        "Select-Operation",
+        "Select the appropriate operation (e.g., subtraction) to solve the problem."
+      ],
+      [
+        {
+          "result": {
+            "Supermarket-Spending": "49",
+            "Wallet-Initial-State": "59",
+            "Wallet-Current-State": "26",
+            "Relationship": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "59",
+              "Wallet-Current-State": "26",
+              "Type": "Subtraction",
+              "Description": "Subtracting supermarket spending from wallet initial state"
+            },
+            "Identify-Operations": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "106",
+              "Wallet-Current-State": "26",
+              "Type": "Subtraction",
+              "Description": "Subtracting supermarket spending from wallet initial state"
+            },
+            "Selected-Operation": "Subtraction"
+          },
+          "notes": "Applied the selected operation to the problem."
+        },
+        "Apply-Operation",
+        "Apply the selected operation to the problem."
+      ],
+      [
+        {
+          "result": {
+            "Supermarket-Spending": "49",
+            "Wallet-Initial-State": "59",
+            "Wallet-Current-State": "26",
+            "Relationship": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "59",
+              "Wallet-Current-State": "26",
+              "Type": "Subtraction",
+              "Description": "Subtracting supermarket spending from wallet initial state"
+            },
+            "Identify-Operations": {
+              "Supermarket-Spending": "49",
+              "Wallet-Initial-State": "106",
+              "Wallet-Current-State": "26",
+              "Type": "Subtraction",
+              "Description": "Subtracting supermarket spending from wallet initial state"
+            },
+            "Selected-Operation": "Subtraction"
+          },
+          "notes": "Applying 'Simplify-Expression' primitive to the expression '26 - 49' in 'Wallet-Current-State' and '49 - 26' in 'Supermarket-Spending' and '106 - 26' in 'Wallet-Initial-State'"
+        },
+        "Simplify-Expression",
+        "Simplify the expression after applying the operation."
+      ],
+      [
+        {
+          "result": "26",
+          "notes": "Applying 'Evaluate-Expression' primitive to 'Wallet-Current-State' expression '26'"
+        },
+        "Evaluate-Expression",
+        "Evaluate the simplified expression to find the solution."
+      ],
+      [
+        {
+          "result": "26",
+          "notes": "Applying 'Reflect-Result' primitive to the given solution, but no reflection is needed as the result is a single number."
+        },
+        "Reflect-Result",
+        "Reflect on the solution and check for accuracy."
+      ],
+      [
+        {
+          "result": "The final answer is 26",
+          "notes": "Applied 'Justify-Answer' primitive to the given number 26."
+        },
+        "Justify-Answer",
+        "Justify the solution using the identified operations and reasoning."
+      ],
+      [
+        {
+          "result": "The final answer is 26",
+          "notes": "Reviewing sequence of operations and reasoning used to solve the problem."
+        },
+        "Review-Sequence",
+        "Review the sequence of operations and reasoning used to solve the problem."
+      ],
+      [
+        {
+          "result": "26",
+          "notes": "Applied primitive 'Evaluate-Sequence' to the problem state"
+        },
+        "Evaluate-Sequence",
+        "Evaluate the overall sequence of operations and reasoning used to solve the problem."
+      ]
+    ],
+    "final_state": "26"
+  },
+  {
+    "id": 4,
+    "question": "Faye was placing her pencils and crayons into 30 rows with 71 crayons and 24 pencils in each row. How many pencils does she have?",
+    "execution_trace": [
+      [
+        {
+          "result": "71",
+          "notes": "Applied 'Identify' primitive to the problem state"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "71",
+          "notes": "Applied 'Separate' primitive to 71"
+        },
+        "Separate",
+        "Auto-generated primitive: Separate"
+      ],
+      [
+        {
+          "result": "71",
+          "notes": "Applied 'Count' primitive to the given number 71"
+        },
+        "Count",
+        "Auto-generated primitive: Count"
+      ],
+      [
+        {
+          "result": "71",
+          "notes": "Applied 'Combine' primitive to the initial value 71"
+        },
+        "Combine",
+        "Auto-generated primitive: Combine"
+      ],
+      [
+        {
+          "result": 71,
+          "notes": "Applied 'Compare' primitive to 71"
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": "71",
+          "notes": "Applying 'Add' primitive to the initial state 71"
+        },
+        "Add",
+        "Auto-generated primitive: Add"
+      ],
+      [
+        {
+          "result": 71,
+          "notes": "Applying 'Repeat' primitive to the given problem state"
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": 71,
+          "notes": "Applying 'Repeat' primitive to the given problem state"
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": 71,
+          "notes": "Applying 'Repeat' primitive to the given problem state"
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": 71,
+          "notes": "Applying 'Repeat' primitive to the given problem state"
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": 71,
+          "notes": "Applying 'Repeat' primitive to the given problem state"
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": "71",
+          "notes": "Applied 'Evaluate' primitive to the given number 71"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ]
+    ],
+    "final_state": "71"
+  },
+  {
+    "id": 6,
+    "question": "26 children were riding on the bus. At the bus stop 38 more children got on the bus. How many children are on the bus now?",
+    "execution_trace": [
+      [
+        {
+          "result": "64",
+          "notes": "Applied 'Review-Sequence' primitive to the problem state, which involves reviewing the sequence of events (children getting on the bus) to ensure the correct calculation is performed."
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "2 * 32",
+          "notes": "Applying 'Evaluate-Sequence' primitive to the given number 64"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": "2 * 32"
+  },
+  {
+    "id": 9,
+    "question": "An industrial machine made 9 shirts yesterday and 44 shirts today. It can make 3 shirts a minute. How many minutes did the machine work yesterday?",
+    "execution_trace": [
+      [
+        {
+          "result": "9",
+          "notes": "Applying 'Identify Distance' primitive is not applicable to this problem. Primitive 'Identify Distance' is used for finding the distance between two points. This problem involves time, not distance."
+        },
+        "Identify Distance",
+        "Auto-generated primitive: Identify Distance"
+      ],
+      [
+        {
+          "result": "9 mph",
+          "notes": "Applied 'Identify Speed' primitive to 9"
+        },
+        "Identify Speed",
+        "Auto-generated primitive: Identify Speed"
+      ],
+      [
+        {
+          "result": "9 mph",
+          "notes": "Applied primitive: Identify Time"
+        },
+        "Identify Time",
+        "Auto-generated primitive: Identify Time"
+      ],
+      [
+        {
+          "result": "9 mph",
+          "notes": "Apply 'Calculate Rate' primitive: Divide distance by time"
+        },
+        "Calculate Rate",
+        "Divide distance by time"
+      ],
+      [
+        {
+          "result": "9 * 1",
+          "notes": "Applying 'Apply Rate' primitive: multiplying 9 mph by time (implied as 1 hour)"
+        },
+        "Apply Rate",
+        "Multiply rate by time"
+      ],
+      [
+        {
+          "result": "9 * 1",
+          "notes": "Applying primitive 'Calculate Distance' to the given problem state '9 * 1' results in the same expression, as 'Calculate Distance' is not applicable to this problem state."
+        },
+        "Calculate Distance",
+        "Multiply rate by time"
+      ],
+      [
+        {
+          "result": "9",
+          "notes": "Applied 'Evaluate' primitive to the expression '9 * 1'"
+        },
+        "Evaluate",
+        "Final evaluation of the solution"
+      ]
+    ],
+    "final_state": "9"
+  },
+  {
+    "id": 10,
+    "question": "Bryan took a look at his books and magazines. If he has 9 books and 46 magazines in each of his 10 bookshelves How many magazines does he have in total?",
+    "execution_trace": [
+      [
+        {
+          "result": "9",
+          "notes": "Applied 'Identify' primitive to identify the number of books Bryan has"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": 9,
+          "notes": "Applied 'Compare' primitive to 9"
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": "9",
+          "notes": "Applied 'Count' primitive to the initial value 9"
+        },
+        "Count",
+        "Auto-generated primitive: Count"
+      ],
+      [
+        {
+          "result": "9",
+          "notes": "Applied 'Sequence' primitive to 9"
+        },
+        "Sequence",
+        "Auto-generated primitive: Sequence"
+      ],
+      [
+        {
+          "result": 9,
+          "notes": "Applying 'Repeat' primitive to the initial value 9"
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": "9",
+          "notes": "Applying 'Add' primitive to the initial value 9"
+        },
+        "Add",
+        "Auto-generated primitive: Add"
+      ],
+      [
+        {
+          "result": 9,
+          "notes": "Applied 'Filter' primitive to the initial value 9"
+        },
+        "Filter",
+        "Auto-generated primitive: Filter"
+      ],
+      [
+        {
+          "result": "9 | 9",
+          "notes": "Applied 'Map' primitive to the problem state"
+        },
+        "Map",
+        "Auto-generated primitive: Map"
+      ],
+      [
+        {
+          "result": "9 | 9",
+          "notes": "Applying 'Reduce' primitive: No reduction operation defined for this input"
+        },
+        "Reduce",
+        "Auto-generated primitive: Reduce"
+      ],
+      [
+        {
+          "result": "9 + 9",
+          "notes": "Applied 'Evaluate' primitive to the given problem state"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ],
+      [
+        {
+          "result": "9 + 9",
+          "notes": "Applying auto-generated 'Conditional' primitive"
+        },
+        "Conditional",
+        "Auto-generated primitive: Conditional"
+      ],
+      [
+        {
+          "result": "9 + 9",
+          "notes": "Applied 'Order' primitive to the problem state"
+        },
+        "Order",
+        "Auto-generated primitive: Order"
+      ]
+    ],
+    "final_state": "9 + 9"
+  },
+  {
+    "id": 11,
+    "question": "Dave had 17 apps on his phone. After adding some he had 18 left. How many apps did he add?",
+    "execution_trace": [
+      [
+        {
+          "result": "17",
+          "notes": "Applying 'Review-Sequence' primitive to the problem state, we are reviewing the sequence of events. Dave had 17 apps initially."
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": 17,
+          "notes": "Applying 'Iterate' primitive to the given number 17"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "17",
+          "notes": "Applying primitive 'Evaluate-Sequence' to the initial value 17"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": "17"
+  },
+  {
+    "id": 17,
+    "question": "The ring toss game at the carnival made the same amount of money each day. In total in 5 days they earned 165 dollars. How much did they make per day?",
+    "execution_trace": [
+      [
+        {
+          "result": "165",
+          "notes": "Applying 'Review-Sequence' primitive to the problem state, reviewing the given information about the total earnings over 5 days."
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "165",
+          "notes": "Applying 'Iterate' primitive to 165"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "165",
+          "notes": "Applying primitive 'Evaluate-Sequence' to the given number 165"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": "165"
+  },
+  {
+    "id": 18,
+    "question": "Dave had 24 files and 13 apps on his phone. After deleting some apps and files he had 17 apps and 21 files left. How many files did he delete?",
+    "execution_trace": [
+      [
+        {
+          "result": {
+            "files": 24,
+            "apps": 13
+          },
+          "notes": "Applying 'Review-Sequence' primitive to the problem state"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "files": 24,
+            "apps": 13
+          },
+          "notes": "Applying 'Iterate' primitive without any changes"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "files": 24,
+            "apps": 13
+          },
+          "notes": "Applying primitive 'Evaluate-Sequence' to the problem state"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": {
+      "files": 24,
+      "apps": 13
+    }
+  },
+  {
+    "id": 19,
+    "question": "In a school there are 569 girls and 236 boys. How many more girls than boys does the school have?",
+    "execution_trace": [
+      [
+        {
+          "result": "Identify",
+          "notes": "Applied 'Identify' primitive to the problem state"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare"
+          },
+          "notes": "Applying 'Compare' primitive to the problem state."
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Count' primitive to the problem state"
+        },
+        "Count",
+        "Auto-generated primitive: Count"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Combine' primitive, but 'Combine' is not a valid primitive for this problem state."
+        },
+        "Combine",
+        "Auto-generated primitive: Combine"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Order' primitive to the problem state, but no change was made as 'Order' is not a valid next step."
+        },
+        "Order",
+        "Auto-generated primitive: Order"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Repeat' primitive, but no action is taken as 'Repeat' is not a valid option for this problem state."
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Switched to 'Evaluate' as the next step"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Negate' primitive to 'nextStep', resulting in 'Count'"
+        },
+        "Negate",
+        "Auto-generated primitive: Negate"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Quantify' primitive, but 'Quantify' is not a valid next step for the current state."
+        },
+        "Quantify",
+        "Auto-generated primitive: Quantify"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Partition' primitive, but 'Partition' is not a valid next step. Current option remains 'Compare'."
+        },
+        "Partition",
+        "Auto-generated primitive: Partition"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Merge' primitive, but 'Merge' is not a valid primitive for this problem state."
+        },
+        "Merge",
+        "Auto-generated primitive: Merge"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Applied 'Justify' primitive, but 'Justify' is not a valid next step for the current state."
+        },
+        "Justify",
+        "Auto-generated primitive: Justify"
+      ],
+      [
+        {
+          "result": {
+            "id": "Identify",
+            "question": "What is the next step to apply?",
+            "options": [
+              "Compare",
+              "Classify",
+              "Analyze",
+              "Evaluate"
+            ],
+            "currentOption": "Compare",
+            "nextStep": "Count"
+          },
+          "notes": "Switched to 'Evaluate' as the next step"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ]
+    ],
+    "final_state": {
+      "id": "Identify",
+      "question": "What is the next step to apply?",
+      "options": [
+        "Compare",
+        "Classify",
+        "Analyze",
+        "Evaluate"
+      ],
+      "currentOption": "Compare",
+      "nextStep": "Count"
+    }
+  },
+  {
+    "id": 20,
+    "question": "Rebecca wants to split a collection of eggs into groups of 11. If each group has 2 eggs How many eggs does Rebecca have?",
+    "execution_trace": [
+      [
+        {
+          "result": "Rebecca wants to split a collection of eggs into groups of 11. If each group has 2 eggs How many eggs does Rebecca have?",
+          "notes": "Applying 'Review-Sequence' primitive to the problem state"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "Rebecca wants to split a collection of eggs into groups of 11. If each group has 2 eggs",
+          "notes": "Applying the 'Iterate' primitive to the problem state"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "Rebecca has 11 eggs",
+          "notes": "Applied 'Evaluate-Sequence' primitive to determine the number of eggs Rebecca has"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": "Rebecca has 11 eggs"
+  },
+  {
+    "id": 22,
+    "question": "During summer break 202958 kids from Lawrence county go to camp and the other 777622 kids stay home. How many more kids stayed home compared to those who went to the camp?",
+    "execution_trace": [
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Identify' primitive to extract the number of kids who stayed home"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Compare' primitive to 202958"
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Count' primitive to the given number"
+        },
+        "Count",
+        "Auto-generated primitive: Count"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Sequence' primitive to the given number"
+        },
+        "Sequence",
+        "Auto-generated primitive: Sequence"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applying 'Add' primitive to the given number"
+        },
+        "Add",
+        "Auto-generated primitive: Add"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Justify' primitive to the given number without any changes."
+        },
+        "Justify",
+        "Auto-generated primitive: Justify"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Reflect' primitive to the given number"
+        },
+        "Reflect",
+        "Auto-generated primitive: Reflect"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Analyze' primitive to 202958"
+        },
+        "Analyze",
+        "Auto-generated primitive: Analyze"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Partition' primitive to the given number without any further context or specification."
+        },
+        "Partition",
+        "Auto-generated primitive: Partition"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Generalize' primitive to the given number without any changes."
+        },
+        "Generalize",
+        "Auto-generated primitive: Generalize"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Synthesize' primitive to 202958"
+        },
+        "Synthesize",
+        "Auto-generated primitive: Synthesize"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Justify' primitive to the given number without any changes."
+        },
+        "Justify",
+        "Auto-generated primitive: Justify"
+      ],
+      [
+        {
+          "result": "202958",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ]
+    ],
+    "final_state": "202958"
+  },
+  {
+    "id": 25,
+    "question": "He then went to see the oranges being harvested. He found out that they harvest 8 sacks per day. How many days will it take to harvest 24 sacks of oranges?",
+    "execution_trace": [
+      [
+        {
+          "result": "24 / 8",
+          "notes": "Applying Review-Sequence primitive to the problem state"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "24 / 8",
+          "notes": "Applying 'Iterate' primitive to problem state '24 / 8'"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "3",
+          "notes": "Applied 'Justify-Answer' primitive to 24 / 8"
+        },
+        "Justify-Answer",
+        ""
+      ],
+      [
+        {
+          "result": "3",
+          "notes": "Applying primitive 'Evaluate-Sequence' to the initial value 3"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": "3"
+  },
+  {
+    "id": 27,
+    "question": "There were 12 people on the bus. At the next stop 4 more people got on the bus. Each bus can not have more than 36 people. How many people are there on the bus now?",
+    "execution_trace": [
+      [
+        {
+          "result": "12 + 4",
+          "notes": "Applying 'Review-Sequence' primitive to the problem state"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "12 + 4",
+          "notes": "Applying 'Iterate' primitive to the problem state '12 + 4'"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "12 + 4",
+          "notes": "Applying primitive 'Evaluate-Sequence' to the given expression"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": "12 + 4"
+  },
+  {
+    "id": 28,
+    "question": "Allan brought 5 balloons and Jake brought 6 balloons to the park. Jake then bought 3 more balloons at the park. How many balloons did Jake bring to the park?",
+    "execution_trace": [
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Identify' primitive to the problem state"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Parse' primitive to the initial value '6', but no parsing operation was specified, so the result remains the same."
+        },
+        "Parse",
+        "Auto-generated primitive: Parse"
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Translate' primitive to the problem state '6' without any additional context or information."
+        },
+        "Translate",
+        "Auto-generated primitive: Translate"
+      ],
+      [
+        {
+          "result": 6,
+          "notes": "Applied 'Compare' primitive to 6"
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": "Order(6)",
+          "notes": "Applied 'Order' primitive to the given number"
+        },
+        "Order",
+        "Auto-generated primitive: Order"
+      ],
+      [
+        {
+          "result": "Order(6)",
+          "notes": "Applied 'Analyze' primitive to Order(6)"
+        },
+        "Analyze",
+        "Auto-generated primitive: Analyze"
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Evaluate' primitive to Order(6)"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ],
+      [
+        {
+          "result": "Justify 6",
+          "notes": "Applied 'Justify' primitive to the given number"
+        },
+        "Justify",
+        "Auto-generated primitive: Justify"
+      ],
+      [
+        {
+          "result": "Justify 6",
+          "notes": "Applied primitive: Sequence"
+        },
+        "Sequence",
+        "Auto-generated primitive: Sequence"
+      ],
+      [
+        {
+          "result": "Justify 6",
+          "notes": "Applying 'Iterate' primitive to 'Justify 6'"
+        },
+        "Iterate",
+        "Auto-generated primitive: Iterate"
+      ],
+      [
+        {
+          "result": "Justify 6",
+          "notes": "Applying 'Repeat' primitive to 'Justify 6'"
+        },
+        "Repeat",
+        "Auto-generated primitive: Repeat"
+      ],
+      [
+        {
+          "result": "Justify 6",
+          "notes": "Applied primitive: Conclusion – Auto-generated primitive: Conclusion"
+        },
+        "Conclusion",
+        "Auto-generated primitive: Conclusion"
+      ],
+      [
+        {
+          "result": "Justify 6",
+          "notes": "Applied 'Justify' primitive to the problem state"
+        },
+        "Justify",
+        "Auto-generated primitive: Justify"
+      ],
+      [
+        {
+          "result": "Justify 6",
+          "notes": "Apply primitive: Evaluate"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ]
+    ],
+    "final_state": "Justify 6"
+  },
+  {
+    "id": 29,
+    "question": "An industrial machine worked for 5 minutes. It can make 4 shirts a minute. How many shirts did machine make?",
+    "execution_trace": [
+      [
+        {
+          "result": "5",
+          "notes": "Applied 'Review-Sequence' primitive to the problem state"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "5",
+          "notes": "Applying 'Evaluate-Sequence' primitive to the initial value 5"
+        },
+        "Evaluate-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "The answer is 5",
+          "notes": "Applied 'Justify-Answer' primitive to the initial problem state of 5"
+        },
+        "Justify-Answer",
+        ""
+      ]
+    ],
+    "final_state": "The answer is 5"
+  },
+  {
+    "id": 30,
+    "question": "Paco had 9 sweet cookies and 6 salty cookies. He ate 36 sweet cookies and 3 salty cookies. How many salty cookies did Paco have left?",
+    "execution_trace": [
+      [
+        {
+          "result": {
+            "salty_cookies": 3,
+            "sweet_cookies": 9,
+            "total_cookies": 12
+          },
+          "notes": "Applied 'Review-Sequence' primitive, which reviews the current state and does not change it."
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "salty_cookies": 3,
+            "sweet_cookies": 9,
+            "total_cookies": "12 + 0"
+          },
+          "notes": "Applied 'Iterate' primitive, added 0 to all cookie quantities"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "salty_cookies": 3,
+            "sweet_cookies": 9,
+            "total_cookies": "12 + 0"
+          },
+          "notes": "Applied 'Evaluate-Sequence' primitive to the problem state"
+        },
+        "Evaluate-Sequence",
+        ""
+      ]
+    ],
+    "final_state": {
+      "salty_cookies": 3,
+      "sweet_cookies": 9,
+      "total_cookies": "12 + 0"
+    }
+  },
+  {
+    "id": 33,
+    "question": "Rebecca wants to split a collection of eggs into 3 groups. Rebecca has 4 marbles and 15 eggs. How many eggs will each group have?",
+    "execution_trace": [
+      [
+        {
+          "result": "Rebecca wants to split a collection of eggs into 3 groups. Rebecca has 4 marbles and 15 eggs.",
+          "notes": "Applying the 'Reflect' primitive, the problem statement remains unchanged."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "marbles": 4,
+            "eggs": 15,
+            "groups": 3
+          },
+          "notes": "Applied 'Review' primitive to the problem state, no changes detected."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "marbles": 4,
+            "eggs": 15,
+            "groups": 3
+          },
+          "notes": "Applying primitive 'EVALUATE_RESULT' without any changes."
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": {
+      "marbles": 4,
+      "eggs": 15,
+      "groups": 3
+    }
+  },
+  {
+    "id": 34,
+    "question": "After finding some bottle caps at the park danny has 32 bottle caps in his collection. If he had 25 bottle caps in his collection earlier How many bottle caps did he find at the park?",
+    "execution_trace": [
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Reflect' primitive to find the difference between the current and earlier bottle cap count"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Review' primitive to the current state"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the given problem state"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "7"
+  },
+  {
+    "id": 35,
+    "question": "Julia played tag with 15 kids on monday, 18 kids on tuesday and 97 kids on wednesday. How many kids did she play with on monday and tuesday?",
+    "execution_trace": [
+      [
+        {
+          "result": "15",
+          "notes": "Applied 'Reflect' primitive to get the number of kids Julia played with on monday"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "15",
+          "notes": "Applied 'Review' primitive to the problem state '15', but no change is made as 'Review' primitive does not modify the value."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "15",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the given problem state"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "15"
+  },
+  {
+    "id": 36,
+    "question": "In Haley's class some boys love to play marbles. If Haley has 10 marbles and she gave 5 marbles to each boy How many boys did she give the marbles to?",
+    "execution_trace": [
+      [
+        {
+          "result": "Haley has 5 marbles left",
+          "notes": "Applied 'Reflect' primitive to the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Haley has 5 marbles left",
+          "notes": "Applied 'Review' primitive"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "Haley has 5 marbles left",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the problem state 'Haley has 5 marbles left'"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "Haley has 5 marbles left"
+  },
+  {
+    "id": 37,
+    "question": "After resting they decided to go for a swim. If the depth of the water is 10 times Dean's height and he stands at 9 feet How much deeper is the water than Dean's height?",
+    "execution_trace": [
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Reflect' primitive to the problem, which does not change the problem state as 'Reflect' is not applicable in this context."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Review' primitive to the problem state '10', but no change occurred as 'Review' is not a numerical operation."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied primitive 'EVALUATE_RESULT' to the initial value '10'"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "10"
+  },
+  {
+    "id": 39,
+    "question": "After eating a hearty meal they went to see the Buckingham palace. There, Rachel learned that 317 visitors came to the Buckingham palace that day. If there were 295 visitors the previous day How many more visitors visited the Buckingham palace on that day than on the previous day?",
+    "execution_trace": [
+      [
+        {
+          "result": "317 - 295",
+          "notes": "Applied 'Reflect' primitive to the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "22",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "22",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the given problem state"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "22"
+  },
+  {
+    "id": 47,
+    "question": "Friends of Katie had 57 games and she had 63 ds games. How many more games does Katie have than her friends?",
+    "execution_trace": [
+      [
+        {
+          "result": "Katie has 120 games",
+          "notes": "Applied 'Reflect' primitive to Katie's total games (57 + 63)"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Katie has 120 games",
+          "notes": "Applied 'Review' primitive"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "Katie has 120 games",
+          "notes": "Applying primitive 'EVALUATE_RESULT' without any changes"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "Katie has 120 games"
+  },
+  {
+    "id": 49,
+    "question": "6 red peaches, 90 yellow peaches and 16 green peaches are in the basket. How many red and green peaches are in the basket?",
+    "execution_trace": [
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Reflect' primitive to the problem, which means we are reflecting the number of red and green peaches in the basket."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the current state '6'"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "6"
+  },
+  {
+    "id": 53,
+    "question": "There are some baskets of peaches. Each basket has 4 red peaches and 3 green peaches. If there are a total of 7 peaches in all baskets How many baskets of peaches are there?",
+    "execution_trace": [
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Reflect' primitive to the problem, which does not change the problem state as it is an identity function."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Review' primitive to the current state"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the given problem state"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "7"
+  },
+  {
+    "id": 54,
+    "question": "Jessie currently weighs 27 kilograms. After she started to go jogging everyday she lost 101 kilograms. How much did she weigh before starting to jog?",
+    "execution_trace": [
+      [
+        {
+          "result": "27",
+          "notes": "Applied 'Reflect' primitive to the problem state, reflecting Jessie's weight before jogging"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "27",
+          "notes": "Applied 'Review' primitive to the given number 27."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "27",
+          "notes": "Applied primitive 'EVALUATE_RESULT' to the initial value 27"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "27"
+  },
+  {
+    "id": 62,
+    "question": "Each pack of dvds costs 76 dollars. If there is a discount of 25 dollars on each pack How much do you have to pay to buy each pack?",
+    "execution_trace": [
+      [
+        {
+          "result": "76 - 25",
+          "notes": "Apply 'Generate Alternatives' primitive to find the discounted price of each pack"
+        },
+        "Generate Alternatives",
+        ""
+      ],
+      [
+        {
+          "result": "51",
+          "notes": "Applied 'Simplify Problem' primitive to the given problem state"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "51",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the given problem state"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "51"
+  },
+  {
+    "id": 63,
+    "question": "They decided to hold the party in their backyard. They have 14 chairs for each set of table. If they have 9 sets of tables How many more chairs than tables do they have?",
+    "execution_trace": [
+      [
+        {
+          "result": "9",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "9",
+          "notes": "Applied 'Review' primitive to the given number 9."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": 9,
+          "notes": "Applying 'Reflect' primitive to 9"
+        },
+        "Reflect",
+        ""
+      ]
+    ],
+    "final_state": 9
+  },
+  {
+    "id": 64,
+    "question": "Next on his checklist is wax to stick the feathers together and colors to paint them. He needs a total of 57 g of colors to paint them. He needs 22 g of wax more. If the feathers require a total of 353 g of wax How many grams of wax does he already have?",
+    "execution_trace": [
+      [
+        {
+          "result": "353 - 22",
+          "notes": "Apply 'Evaluate' primitive to subtract 22 from 353"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "353 - 22"
+  },
+  {
+    "id": 66,
+    "question": "Jerry had 5 action figures and 2 books on a shelf in his room. Later he added 9 more books to the shelf. How many more books than action figures were on his shelf?",
+    "execution_trace": [
+      [
+        {
+          "result": "Jerry had 5 action figures and 11 books on a shelf in his room.",
+          "notes": "Applied 'Reflect' primitive to the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Jerry had 5 action figures and 11 books on a shelf in his room.",
+          "notes": "Applied 'Evaluate' primitive without any changes to the problem state."
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Jerry had 5 action figures and 11 books on a shelf in his room.",
+          "notes": "Applied 'Review' primitive without any changes to the problem state."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "Jerry had 5 action figures and 11 books on a shelf in his room."
+  },
+  {
+    "id": 67,
+    "question": "Paul got a box of some crayons for his birthday. By the end of the school year he had either lost or given away 551 of them and only had 177 left. How many crayons did he get for his birthday?",
+    "execution_trace": [
+      [
+        {
+          "result": 728,
+          "notes": "Applied 'Reflect' primitive to the problem state, which means adding the number of crayons Paul lost or gave away to the number he had left."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "728",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "728",
+          "notes": "Applied 'Review' primitive to the given number."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "728"
+  },
+  {
+    "id": 68,
+    "question": "Because of the decision Sofia asked the students to suggest specific types of food. If 324 students suggested adding mashed potatoes 374 suggested adding bacon to the menu and 128 suggested adding tomatoes How many students participated in the suggestion of new food items?",
+    "execution_trace": [
+      [
+        {
+          "result": "324 + 374 + 128",
+          "notes": "Applied 'Reflect' primitive to include all suggestions"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "826",
+          "notes": "Applied 'Evaluate' primitive to the given expression"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "826"
+  },
+  {
+    "id": 69,
+    "question": "A book has 31 chapters. Each chapter is 61 pages long. How many pages does the book have altogether?",
+    "execution_trace": [
+      [
+        {
+          "result": "31 * 61",
+          "notes": "Applying the 'Evaluate' primitive to multiply the number of chapters by the number of pages per chapter"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "31 * 61"
+  },
+  {
+    "id": 70,
+    "question": "The school is planning a field trip. The school has 67 classrooms. There are 66 students in each classroom in the school. If there are 6 seats on each school bus How many buses are needed to take the trip?",
+    "execution_trace": [
+      [
+        {
+          "result": "67 * 66",
+          "notes": "Applying the 'Evaluate' primitive to the multiplication operation in the problem state"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "67 * 66"
+  },
+  {
+    "id": 72,
+    "question": "Paco had 36 cookies. He gave 14 cookies to his friend and ate 10 cookies. How many cookies did Paco have left?",
+    "execution_trace": [
+      [
+        {
+          "result": "36",
+          "notes": "Initial state of cookies"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 36",
+          "notes": "Applied 'Justify-Answer' primitive to the given number 36"
+        },
+        "Justify-Answer",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 36",
+          "notes": "Applying 'Review' primitive to justify the answer 36"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "Justify the answer 36"
+  },
+  {
+    "id": 73,
+    "question": "During summer break 61619 kids from Lawrence county stayed home and the rest went to camp. The total number of kids in Lawrence county is 91676. About how many kids in Lawrence county went to camp?",
+    "execution_trace": [
+      [
+        {
+          "result": "61619",
+          "notes": "Applied 'Reflect' primitive to get the number of kids who stayed home"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "61619",
+          "notes": "Applied 'Review' primitive to the given number."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "61619",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "61619"
+  },
+  {
+    "id": 74,
+    "question": "2 children were riding on the bus. At the bus stop some more children got on the bus. Then there were 10 children altogether on the bus. How many more children are on the bus now than there were before the bus stop?",
+    "execution_trace": [
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Simplify Problem' primitive to the initial problem state"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Review' primitive to the problem state '10', but no change occurred as 'Review' is not a numerical operation."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "10"
+  },
+  {
+    "id": 75,
+    "question": "3 birds were sitting on the fence. 2 more birds and 6 more storks came to join them. How many more storks than birds are sitting on the fence?",
+    "execution_trace": [
+      [
+        {
+          "result": "2",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "2",
+          "notes": "Applied 'Review' primitive to the current state"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": 2,
+          "notes": "Applied 'Reflect' primitive to the number 2"
+        },
+        "Reflect",
+        ""
+      ]
+    ],
+    "final_state": 2
+  },
+  {
+    "id": 76,
+    "question": "The Ferris wheel in paradise park has 6 seats. Each seat can hold 14 people. If there are 16 people on the wheel right now How many more people can join the wheel?",
+    "execution_trace": [
+      [
+        {
+          "result": "0",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "0"
+  },
+  {
+    "id": 78,
+    "question": "The Razorback shop makes $ 115 dollars off each jersey and $ 25 off each t-shirt. During the Arkansas and Texas tech game they sold 113 t-shirts and 78 jerseys. How much more does a jersey cost than a t-shirt?",
+    "execution_trace": [
+      [
+        {
+          "result": "113 * 25 + 78 * 115",
+          "notes": "Apply 'Evaluate' primitive to calculate total revenue from t-shirts and jerseys"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "113 * 25 + 78 * 115",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "113 * 25 + 78 * 115"
+  },
+  {
+    "id": 80,
+    "question": "Paul had 21 books. After selling some in a garage sale he bought 42 new ones. If he has 15 books now How many more books did he sell than he bought?",
+    "execution_trace": [
+      [
+        {
+          "result": "15 - (42 - 21)",
+          "notes": "Apply 'Evaluate' primitive to the expression '42 - 21' to get the number of books sold"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "15 - (42 - 21)",
+          "notes": "Applied 'Review' primitive to the given expression"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "15 - (42 - 21)",
+          "notes": "Applying 'Reflect' primitive, no change in expression"
+        },
+        "Reflect",
+        ""
+      ]
+    ],
+    "final_state": "15 - (42 - 21)"
+  },
+  {
+    "id": 81,
+    "question": "There are 65 baskets of peaches. Each basket has 7 red peaches and 3 green peaches. How many peaches are in each basket?",
+    "execution_trace": [
+      [
+        {
+          "result": "65",
+          "notes": "Applied 'Evaluate' primitive to the number of baskets"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "65"
+  },
+  {
+    "id": 82,
+    "question": "You had 14 bags with equal number of cookies. If you had 28 cookies and 86 candies in total How many bags of cookies do you have?",
+    "execution_trace": [
+      [
+        {
+          "result": "14",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "14",
+          "notes": "Applied 'Review' primitive to the given number without any changes."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "14"
+  },
+  {
+    "id": 83,
+    "question": "Carol was sending out birthday invitations to her friends. Each package of invitations she bought had 14 invitations in it and she bought 6 packs. Then she bought 11 extra invitations. How many friends can she invite?",
+    "execution_trace": [
+      [
+        {
+          "result": "6 * 14 + 11",
+          "notes": "Applied 'Simplify Problem' primitive to the problem"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "6 * 14",
+          "notes": "Applying the 'Evaluate' primitive to the given expression"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "6 * 14",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "6 * 14"
+  },
+  {
+    "id": 85,
+    "question": "A grocery store had 22 bottles of regular soda and 61 bottles of diet soda. How many more bottles of diet soda than regular soda did they have?",
+    "execution_trace": [
+      [
+        {
+          "result": "61",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "61",
+          "notes": "Applied 'Review' primitive to the given number."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": 61,
+          "notes": "Applying 'Reflect' primitive to 61"
+        },
+        "Reflect",
+        ""
+      ]
+    ],
+    "final_state": 61
+  },
+  {
+    "id": 86,
+    "question": "A grocery store had 36 apples, 80 bottles of regular soda and 54 bottles of diet soda. How many more bottles than apple did they have?",
+    "execution_trace": [
+      [
+        {
+          "result": "36",
+          "notes": "Applied 'Reflect' primitive to the problem, which does not change the quantities of apples or bottles of soda."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "36",
+          "notes": "Applied 'Review' primitive to the given number 36."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Evaluate' primitive to 36"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "6"
+  },
+  {
+    "id": 89,
+    "question": "During summer break 907611 kids from Lawrence county stay home and the other 455682 kids go to camp. About how many kids are in Lawrence county?",
+    "execution_trace": [
+      [
+        {
+          "result": "907611",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "907611",
+          "notes": "Applied 'Review' primitive to the given number."
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "907611",
+          "notes": "Applied 'Reflect' primitive to the given number"
+        },
+        "Reflect",
+        ""
+      ]
+    ],
+    "final_state": "907611"
+  },
+  {
+    "id": 90,
+    "question": "Danny collects bottle caps and wrappers. He found 66 wrappers and 39 bottle caps at the park. Now he has 16 bottle caps and 68 wrappers in his collection. How many wrappers did danny have at first?",
+    "execution_trace": [
+      [
+        {
+          "result": "66",
+          "notes": "Applying 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "66",
+          "notes": "Applying 'Iterate' primitive to the given number 66"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "66",
+          "notes": "Applied 'Review' primitive to the given number 66."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "66"
+  },
+  {
+    "id": 91,
+    "question": "After Jessie started to go jogging everyday she lost 35 kilograms. She weighed 69 kilograms before beginning jogging. How much does she weigh now?",
+    "execution_trace": [
+      [
+        {
+          "result": "69 - 35",
+          "notes": "Applying the 'Evaluate' primitive to the given problem state"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "69 - 35"
+  },
+  {
+    "id": 92,
+    "question": "Josh had 20 marbles in his collection. He gave 2 marbles to Jack. How many marbles does Josh have now?",
+    "execution_trace": [
+      [
+        {
+          "result": "20",
+          "notes": "Applying 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 20",
+          "notes": "Applied 'Justify-Answer' primitive"
+        },
+        "Justify-Answer",
+        ""
+      ]
+    ],
+    "final_state": "Justify the answer 20"
+  },
+  {
+    "id": 93,
+    "question": "Zachary did 15 push-ups in gym class today. David did 39 more push-ups than Zachary. John did 9 push-ups less than David. How many more push-ups did Zachary do than John?",
+    "execution_trace": [
+      [
+        {
+          "result": "15",
+          "notes": "Applied 'Reflect' primitive to the problem state, which does not change the state as 'Reflect' is not applicable to numerical values."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "15",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "15"
+  },
+  {
+    "id": 94,
+    "question": "Lewis earns $ 368 every week during the 1359 weeks of harvest. If he has to pay $ 388 rent every week How much money does he pay as rent during the harvest season?",
+    "execution_trace": [
+      [
+        {
+          "result": "368 * 1359",
+          "notes": "Apply 'Evaluate' primitive to multiply weekly earnings by total weeks"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "368 * 1359"
+  },
+  {
+    "id": 97,
+    "question": "A farmer had 175 tomatoes and 77 potatoes in his garden. If he picked 172 potatoes How many tomatoes and potatoes does he have left?",
+    "execution_trace": [
+      [
+        {
+          "result": "175",
+          "notes": "Applied 'Evaluate' primitive to the number of tomatoes (175) and the number of potatoes (77) and the number of potatoes picked (172)"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Justify-Answer of 175",
+          "notes": "Applied 'Justify-Answer' primitive to 175"
+        },
+        "Justify-Answer",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 175",
+          "notes": "Applying 'Review' primitive"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 175",
+          "notes": "Apply primitive: Iterate"
+        },
+        "Iterate",
+        ""
+      ]
+    ],
+    "final_state": "Justify the answer 175"
+  },
+  {
+    "id": 98,
+    "question": "The Ferris wheel in paradise park has 3 small seats and 7 large seats. Each small seat can hold 16 people and large seat can hold 12 people. How many people can ride the Ferris wheel on large seats?",
+    "execution_trace": [
+      [
+        {
+          "result": "7 * 12",
+          "notes": "Applying 'Evaluate' primitive to calculate the number of people that can ride the Ferris wheel on large seats"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "7 * 12"
+  },
+  {
+    "id": 99,
+    "question": "There are 2 baskets of peaches. Each basket has 4 red peaches and some more green peaches. If there are a total of 12 peaches in all baskets How many green peaches are in each basket?",
+    "execution_trace": [
+      [
+        {
+          "result": "12",
+          "notes": "Applied 'Evaluate' primitive to the total number of peaches (12) to determine the total count"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "12"
+  },
+  {
+    "id": 100,
+    "question": "Baker made some cakes. He sold 145 of them. If he still has 72 cakes left How many cakes did baker make?",
+    "execution_trace": [
+      [
+        {
+          "result": "145 + 72",
+          "notes": "Applying 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "145 + 72",
+          "notes": "Applying 'Iterate' primitive to the problem state '145 + 72' without any changes."
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "145 + 72",
+          "notes": "Applying 'Review-Sequence' primitive to the given problem state"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "145 + 72",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "145 + 72"
+  },
+  {
+    "id": 101,
+    "question": "David did 40 more push-ups but 17 less crunches than Zachary in gym class today. If Zachary did 34 push-ups and 62 crunches How many crunches did David do?",
+    "execution_trace": [
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Reflect' primitive to the problem state, reflecting the original value of crunches Zachary did"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "62",
+          "notes": "Applied 'Review' primitive to the given number."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "62"
+  },
+  {
+    "id": 102,
+    "question": "Olivia spent 78 dollars at a supermarket. If she has 33 dollars left with her How much money did she have initially?",
+    "execution_trace": [
+      [
+        {
+          "result": "Olivia spent 78 dollars at a supermarket. If she has 33 dollars left with her How much money did she have initially?",
+          "notes": "Apply 'Simplify Problem' primitive to the given problem state"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "78 + 33",
+          "notes": "Applying 'Evaluate' primitive to find the initial amount of money Olivia had"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "78 + 33"
+  },
+  {
+    "id": 103,
+    "question": "Bobby ate 17 pieces of candy. Then he ate 15 more. If he initially had 36 pieces of candy How many pieces of candy does he still have left?",
+    "execution_trace": [
+      [
+        {
+          "result": "36",
+          "notes": "Applying 'Evaluate' primitive to the initial candy count"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 36",
+          "notes": "Applied 'Justify-Answer' primitive to the given number 36"
+        },
+        "Justify-Answer",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 36",
+          "notes": "Applying 'Review' primitive to justify the answer 36"
+        },
+        "Review",
+        ""
+      ],
+      [
+        {
+          "result": "Justify the answer 36",
+          "notes": "Apply the 'Iterate' primitive to the problem"
+        },
+        "Iterate",
+        ""
+      ]
+    ],
+    "final_state": "Justify the answer 36"
+  },
+  {
+    "id": 105,
+    "question": "Adam has 10 apples. Jackie has 2 apples. How many more apples does Adam have than Jackie?",
+    "execution_trace": [
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Evaluate' primitive to get the initial values of apples"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Prioritize' primitive to the given number without any additional context or specification, so no change occurred."
+        },
+        "Prioritize",
+        ""
+      ]
+    ],
+    "final_state": "10"
+  },
+  {
+    "id": 106,
+    "question": "Jake has 7 fewer peaches than Steven and 9 more peaches than Jill. Steven has 16 peaches. How many peaches does Jake have?",
+    "execution_trace": [
+      [
+        {
+          "result": "Steven has 16 peaches.",
+          "notes": "Applied 'Reflect' primitive to the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Steven has 16 peaches",
+          "notes": "Applied 'Prioritize' primitive without any criteria specified, so no change occurred."
+        },
+        "Prioritize",
+        "Determine the order of comparison based on specific criteria"
+      ],
+      [
+        {
+          "result": "Steven has 16 peaches",
+          "notes": "Applied 'Evaluate' primitive"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Steven has 16 peaches, then 16 peaches",
+          "notes": "Applied 'Sequence' primitive to add 'then' to the problem state"
+        },
+        "Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "Steven has 16 peaches, then 16 peaches",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        "Assess the final result"
+      ]
+    ],
+    "final_state": "Steven has 16 peaches, then 16 peaches"
+  },
+  {
+    "id": 107,
+    "question": "Dan has $ 5. He bought a candy bar for $ 2 and a chocolate for $ 3. How much money did he spend to buy chocolate than he did to buy candy bar?",
+    "execution_trace": [
+      [
+        {
+          "result": "Dan has $ 3",
+          "notes": "Applied 'Reflect' primitive to the problem state, reflecting the amount spent on the candy bar ($ 2) to find the remaining amount Dan has after buying the candy bar"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Dan has $3",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Dan has $3",
+          "notes": "Applying 'Prioritize' primitive without any additional context or information about what to prioritize, the result remains unchanged."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "Dan has $3",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "Dan has $3"
+  },
+  {
+    "id": 108,
+    "question": "There are 8 different movies and 21 different books in the ' crazy silly school ' series. If you read 7 of the books and watched 4 of the movies How many more movies do you still have to watch?",
+    "execution_trace": [
+      [
+        {
+          "result": "4",
+          "notes": "Applied 'Reflect' primitive to the problem state, reflecting the number of movies watched"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "4",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "4",
+          "notes": "Applied 'Prioritize' primitive to the given number without any additional context or value, as the primitive does not specify how to prioritize the number."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "4",
+          "notes": "Applied 'Review' primitive to the current state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "4"
+  },
+  {
+    "id": 109,
+    "question": "White t - shirts can be purchased in packages of 13. If mom buys 39 white t - shirts How many packages will she have?",
+    "execution_trace": [
+      [
+        {
+          "result": "3",
+          "notes": "Applying 'Review-Sequence' primitive to the problem state: 39 / 13"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "3",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "3"
+  },
+  {
+    "id": 110,
+    "question": "Julia played tag with 19 kids on monday. She played tag with 18 kids on tuesday. She spent a total of 38 hours to play tag on both days. How many more kids did she play with on monday than on tuesday?",
+    "execution_trace": [
+      [
+        {
+          "result": "19",
+          "notes": "Applied 'Reflect' primitive to the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "19",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": 19,
+          "notes": "Applying 'Prioritize' primitive without a specified priority level, so no change is made."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "19",
+          "notes": "Applied 'Review' primitive to the given number."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "19"
+  },
+  {
+    "id": 111,
+    "question": "3 birds and 4 storks were sitting on the fence. 6 more storks came to join them. How many birds and storks are sitting on the fence?",
+    "execution_trace": [
+      [
+        {
+          "result": "3 birds and 4 storks and 6 more storks were sitting on the fence.",
+          "notes": "Applied 'Reflect' primitive to the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "3 birds and 4 storks and 10 storks were sitting on the fence.",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "3 birds and 4 storks and 10 storks were sitting on the fence.",
+          "notes": "Applied 'Prioritize' primitive without any changes to the problem state."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "3 birds and 4 storks and 10 storks were sitting on the fence.",
+          "notes": "Applied 'Review' primitive without any changes."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "3 birds and 4 storks and 10 storks were sitting on the fence."
+  },
+  {
+    "id": 112,
+    "question": "He then went to see the oranges being harvested. He found out that they harvest 16 sacks per day and that each sack containes 57 oranges. How many days will it take to harvest 80 sacks of oranges?",
+    "execution_trace": [
+      [
+        {
+          "result": "80 / 16",
+          "notes": "Applied 'Simplify Problem' primitive to reduce the problem to a division operation"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "5",
+          "notes": "Applied 'Evaluate' primitive to 80 / 16"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "5",
+          "notes": "Applied 'Review' primitive to the initial state '5', but no change occurred as 'Review' is not applicable to a numeric value."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "5"
+  },
+  {
+    "id": 113,
+    "question": "Adam has 3 more apples than jackie. Adam has 9 apples. How many apples does Jackie have?",
+    "execution_trace": [
+      [
+        {
+          "result": "Jackie has 6 apples",
+          "notes": "Applied 'Reflect' primitive to the problem, which means we are essentially reversing the statement 'Adam has 3 more apples than Jackie' to find Jackie's apples"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Jackie has 6 apples",
+          "notes": "Applying 'Evaluate' primitive, no change expected"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Jackie has 6 apples",
+          "notes": "Applying 'Prioritize' primitive without any additional context or specification, the problem state remains unchanged."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "Jackie has 6 apples",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "Jackie has 6 apples"
+  },
+  {
+    "id": 114,
+    "question": "An industrial machine can make 3 shirts per minute. It made 6 shirts in all. How many minutes was the machine working?",
+    "execution_trace": [
+      [
+        {
+          "result": "6 / 3",
+          "notes": "Applied 'Evaluate' primitive to divide total shirts made by shirts made per minute"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "6 / 3"
+  },
+  {
+    "id": 115,
+    "question": "Allan brought 5 balloons. If Allan and Jake brought total of 6 balloons to the park How many balloons did Jake bring to the park?",
+    "execution_trace": [
+      [
+        {
+          "result": "Allan brought 5 balloons. If Allan and Jake brought total of 6 balloons to the park How many balloons did Jake bring to the park?",
+          "notes": "Applied 'Reflect' primitive, which does not change the problem state."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "5",
+          "notes": "Applying 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "5",
+          "notes": "Applied 'Prioritize' primitive to the given number without any additional context or specification, so the result remains unchanged."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "5",
+          "notes": "Applied 'Review' primitive to the initial state '5', but no change occurred as 'Review' is not applicable to a numeric value."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "5"
+  },
+  {
+    "id": 118,
+    "question": "Jerry had 2 action figures and 10 books on a shelf in his room. Later he added 4 more action figures to the shelf. How many more books than action figures were on his shelf?",
+    "execution_trace": [
+      [
+        {
+          "result": "Jerry had 2 action figures and 10 books on a shelf in his room. Later he added 4 more action figures to the shelf. How many more books than action figures were on his shelf?",
+          "notes": "Applied 'Reflect' primitive, which does not change the problem state."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "2 + 4",
+          "notes": "Applied 'Evaluate' primitive to add 4 action figures to Jerry's existing 2 action figures"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "2 + 4",
+          "notes": "Applying 'Prioritize' primitive without any changes to the expression"
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "2 + 4",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "2 + 4"
+  },
+  {
+    "id": 119,
+    "question": "There are 11 baskets of peaches. Each basket has 10 red peaches and 18 green peaches. How many peaches are in the baskets altogether?",
+    "execution_trace": [
+      [
+        {
+          "result": "11 * (10 + 18)",
+          "notes": "Applied 'Simplify Problem' primitive to combine peach quantities per basket"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "11 * (10 + 18)",
+          "notes": "Applying 'Evaluate' primitive to expression '11 * (10 + 18)'"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "11 * (10 + 18)"
+  },
+  {
+    "id": 120,
+    "question": "Adam has 9 apples. Jackie has 10 apples. How many more apples does Jackie have than Adam?",
+    "execution_trace": [
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Reflect' primitive to compare Jackie's and Adam's apples"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 10",
+          "notes": "Applied 'Justify' primitive to the problem state"
+        },
+        "Justify",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 10",
+          "notes": "Apply primitive: Evaluate"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 10",
+          "notes": "Applying 'Prioritize' primitive to 'Justify 10'"
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 10",
+          "notes": "Applied 'Review' primitive to 'Justify 10'"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "Justify 10"
+  },
+  {
+    "id": 121,
+    "question": "The school is planning a field trip. The school has 72 classrooms. There are 3 seats on each school bus. If there are a total of 111 students in the school How many buses are needed to take the trip?",
+    "execution_trace": [
+      [
+        {
+          "result": "111 / 3",
+          "notes": "Applying the 'Evaluate' primitive to the given problem state"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "111 / 3"
+  },
+  {
+    "id": 122,
+    "question": "Kelly has 80 nintendo games. She found 31 more nintendo games. How many does she need to give away so that she will have 6 games left?",
+    "execution_trace": [
+      [
+        {
+          "result": "Kelly has 80 + 31 = 111 nintendo games",
+          "notes": "Applied 'Iterate' primitive to add 31 to the initial number of games"
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "Kelly has 80 + 31 = 111 nintendo games",
+          "notes": "Applying 'Review-Sequence' primitive"
+        },
+        "Review-Sequence",
+        ""
+      ],
+      [
+        {
+          "result": "Kelly has 111 nintendo games",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ]
+    ],
+    "final_state": "Kelly has 111 nintendo games"
+  },
+  {
+    "id": 123,
+    "question": "Paco had 40 cookies. He ate 2 of them. Then he bought 37 more cookies How many cookies did Paco have left?",
+    "execution_trace": [
+      [
+        {
+          "result": "40 - 2",
+          "notes": "Apply the 'Evaluate' primitive to the initial state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "40",
+          "notes": "Applying 'Iterate' primitive to the problem state '40 - 2' results in iterating the operation, effectively removing the operator and leaving the number '40' as the new problem state."
+        },
+        "Iterate",
+        ""
+      ],
+      [
+        {
+          "result": "40",
+          "notes": "Applied 'Review' primitive to the given number 40."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "40"
+  },
+  {
+    "id": 124,
+    "question": "Paul got a box of 457 erasers and 617 crayons for his birthday. At the end of the school year he only had 523 crayons left while not having lost a single eraser. How many more crayons than erasers did he have left?",
+    "execution_trace": [
+      [
+        {
+          "result": "457",
+          "notes": "Applying 'Evaluate' primitive to the number of erasers (457) to get the initial number of crayons"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "457",
+          "notes": "Applied 'Prioritize' primitive without any additional context or input, as the primitive does not specify any specific criteria for prioritization."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "457",
+          "notes": "Applied 'Justify' primitive to the given number without any additional context or explanation."
+        },
+        "Justify",
+        ""
+      ]
+    ],
+    "final_state": "457"
+  },
+  {
+    "id": 125,
+    "question": "There are 4 different books and 17 different movies in the ' crazy silly school ' series. If you read 19 of the books and watched 7 of the movies How many more movies do you still have to watch?",
+    "execution_trace": [
+      [
+        {
+          "result": "17 - 7",
+          "notes": "Applied 'Simplify Problem' primitive to reduce the number of movies watched from 7 to a simple expression"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Simplify Problem' primitive to the given expression"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": 10,
+          "notes": "Applied 'Reflect' primitive to the number 10"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Prioritize' primitive to the given number without any additional context or specification, so no change occurred."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "10",
+          "notes": "Applied 'Review' primitive to the problem state '10', but no change occurred as 'Review' is not a numerical operation."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "10"
+  },
+  {
+    "id": 126,
+    "question": "Debby bought some water bottles when they were on sale. She drank 109 bottles a day. If the bottles lasted for 74 days How many bottles had she bought?",
+    "execution_trace": [
+      [
+        {
+          "result": "109 * 74",
+          "notes": "Applied 'Identify' primitive to identify the number of bottles Debby drank per day and the number of days the bottles lasted"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Compare' primitive to the given problem state, but since 'Compare' is not applicable to the given problem, the result remains unchanged."
+        },
+        "Compare",
+        "Auto-generated primitive: Compare"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Identify' primitive to 8096"
+        },
+        "Identify",
+        "Auto-generated primitive: Identify"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied 'Evaluate' primitive to the given number 8096"
+        },
+        "Evaluate",
+        "Auto-generated primitive: Evaluate"
+      ],
+      [
+        {
+          "result": "8096",
+          "notes": "Applied primitive 'Analyze' to the given number without any additional context or elements to analyze."
+        },
+        "Analyze",
+        "Analyze the relationship between the identified elements."
+      ]
+    ],
+    "final_state": "8096"
+  },
+  {
+    "id": 128,
+    "question": "6 storks and 2 birds were sitting on the fence. 3 more birds came to join them. How many more storks than birds are sitting on the fence?",
+    "execution_trace": [
+      [
+        {
+          "result": "6",
+          "notes": "Establishing 'Count' primitive to bridge the gap between 'Compare' and 'Order' to count the total number of birds"
+        },
+        "Justify",
+        "Establish the necessity of a new primitive to bridge the gap between 'Compare' and 'Order'"
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Prioritize' primitive to the given number without any additional context or value, as the primitive does not specify any parameters."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "6"
+  },
+  {
+    "id": 129,
+    "question": "At the arcade Dave had won 7 tickets. He used some tickets to buy toys. If he still has 2 tickets left How many tickets did Dave use to buy toys?",
+    "execution_trace": [
+      [
+        {
+          "result": "7",
+          "notes": "Applying 'Reflect' primitive to the problem state, reflecting the initial value of tickets Dave had before buying toys."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Simplify Problem' primitive to the initial problem state of 7, which does not require simplification."
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Evaluate' primitive to the given number"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Prioritize' primitive to the given number without any additional context or value, as the primitive does not specify any priority level."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "7",
+          "notes": "Applied 'Review' primitive to the current state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "7"
+  },
+  {
+    "id": 130,
+    "question": "Jerry had some action figures on a shelf in his room. Later he added 7 more action figures to the shelf. If there are a total of 10 action figures on his shelf now How many action figures did he have initially on the shelf?",
+    "execution_trace": [
+      [
+        {
+          "result": "10 - 7",
+          "notes": "Apply 'Evaluate' primitive to subtract 7 from 10"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "10 - 7",
+          "notes": "Apply the 'Iterate' primitive to the problem state"
+        },
+        "Iterate",
+        "Repeat the refinement process until a satisfactory solution is achieved"
+      ]
+    ],
+    "final_state": "10 - 7"
+  },
+  {
+    "id": 132,
+    "question": "The ring toss game at the carnival made 144 dollars per day. They were at the carnival for 22 days. How much money did they make?",
+    "execution_trace": [
+      [
+        {
+          "result": "144 * 22",
+          "notes": "Applying the 'Evaluate' primitive to multiply the daily earnings by the number of days"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "144 * 22",
+          "notes": "Applying 'Prioritize' primitive without any changes to the expression"
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "144 * 22",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "144 * 22"
+  },
+  {
+    "id": 135,
+    "question": "Paco had 13 cookies. He ate 2 of them. Then he bought 36 more cookies How many more cookies did he buy than those he ate?",
+    "execution_trace": [
+      [
+        {
+          "result": "36",
+          "notes": "Applied 'Reflect' primitive to analyze the reasoning process, resulting in identifying the difference between the number of cookies bought and eaten."
+        },
+        "Reflect",
+        "Analyze the reasoning process"
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Evaluate' primitive to 36"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Prioritize' primitive to the given number without any additional context or value, as the primitive does not specify any parameters."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "6",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "6"
+  },
+  {
+    "id": 136,
+    "question": "White t - shirts can be purchased in packages. If mom buys 28 packages which contain 56 white t - shirts in total How many white t - shirts does each package have?",
+    "execution_trace": [
+      [
+        {
+          "result": "56 / 28",
+          "notes": "Divide total number of white t-shirts by the number of packages to find out how many t-shirts per package"
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "2",
+          "notes": "Applied 'Evaluate' primitive to 56 / 28"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": 2,
+          "notes": "Applied 'Reflect' primitive to the number 2"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "2",
+          "notes": "Applied 'Review' primitive to the current state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "2"
+  },
+  {
+    "id": 139,
+    "question": "The Razorback shop makes $ 192 dollars off each t-shirt and $ 34 off each jersey. During the Arkansas and Texas tech game they sold 157 t-shirts and 19 jerseys. How much more does a t-shirt cost than a jersey?",
+    "execution_trace": [
+      [
+        {
+          "result": {
+            "total_tshirts": 157,
+            "total_jerseys": 19,
+            "tshirt_profit": 192,
+            "jersey_profit": 34
+          },
+          "notes": "Applied 'Reflect' primitive to preserve the current problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "total_tshirts": 157,
+            "total_jerseys": 19,
+            "tshirt_profit": "157 * 192",
+            "jersey_profit": "19 * 34"
+          },
+          "notes": "Applied 'Evaluate' primitive to calculate profit for each item"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "total_tshirts": 157,
+            "total_jerseys": 19,
+            "tshirt_profit": "157 * 192",
+            "jersey_profit": "19 * 34"
+          },
+          "notes": "Applied 'Prioritize' primitive without any changes to the problem state."
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": {
+            "total_tshirts": 157,
+            "total_jerseys": 19,
+            "tshirt_profit": "157 * 192",
+            "jersey_profit": "19 * 34"
+          },
+          "notes": "Applied 'Justify' primitive without any changes to the problem state."
+        },
+        "Justify",
+        ""
+      ]
+    ],
+    "final_state": {
+      "total_tshirts": 157,
+      "total_jerseys": 19,
+      "tshirt_profit": "157 * 192",
+      "jersey_profit": "19 * 34"
+    }
+  },
+  {
+    "id": 141,
+    "question": "A waiter had 12 customers. While 15 customers left he got 14 new customers. How many customers does he still have?",
+    "execution_trace": [
+      [
+        {
+          "result": "12 - 15",
+          "notes": "Apply 'Evaluate' primitive to subtract 15 from 12"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "12 - 15",
+          "notes": "Applying 'Justify-Answer' primitive to problem state '12 - 15'"
+        },
+        "Justify-Answer",
+        ""
+      ],
+      [
+        {
+          "result": "Justify",
+          "notes": "Applying 'Justify' primitive to problem state '12 - 15'"
+        },
+        "Justify",
+        ""
+      ]
+    ],
+    "final_state": "Justify"
+  },
+  {
+    "id": 142,
+    "question": "Allan brought 2 balloons and Jake brought 4 balloons to the park. Allan then bought 3 more balloons at the park. How many more balloons did Allan have than Jake in the park?",
+    "execution_trace": [
+      [
+        {
+          "result": "Allan had 5 balloons and Jake had 4 balloons",
+          "notes": "Applied 'Reflect' primitive to the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Allan had 5 balloons and Jake had 4 balloons",
+          "notes": "Applied 'Justify' primitive without any changes to the problem state"
+        },
+        "Justify",
+        ""
+      ],
+      [
+        {
+          "result": "Allan had 5 balloons and Jake had 4 balloons",
+          "notes": "Applied 'Evaluate' primitive without any changes"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Allan had 5 balloons and Jake had 4 balloons",
+          "notes": "Applied 'Prioritize' primitive without any changes to the problem state"
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "Allan had 5 balloons and Jake had 4 balloons",
+          "notes": "Applied 'Review' primitive, no change to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "Allan had 5 balloons and Jake had 4 balloons"
+  },
+  {
+    "id": 152,
+    "question": "Lewis earns $ 403 every week during the 233 weeks of harvest. If he has to pay $ 49 rent every week How much money does he earn during harvest season?",
+    "execution_trace": [
+      [
+        {
+          "result": "403 * 233",
+          "notes": "Applying 'Evaluation' primitive to calculate total earnings"
+        },
+        "Evaluation",
+        ""
+      ],
+      [
+        {
+          "result": "403 * 233",
+          "notes": "Applying primitive: Evaluation"
+        },
+        "Evaluation",
+        "Evaluate the result of a calculation."
+      ],
+      [
+        {
+          "result": "403 * 233",
+          "notes": "Applying primitive 'EVALUATE_RESULT' to the given problem state"
+        },
+        "EVALUATE_RESULT",
+        ""
+      ]
+    ],
+    "final_state": "403 * 233"
+  },
+  {
+    "id": 154,
+    "question": "There are 11 different books and 17 different movies in the ' crazy silly school ' series. If you read 7 of the books and watched 21 of the movies How many more movies than books have you read?",
+    "execution_trace": [
+      [
+        {
+          "result": "None",
+          "notes": "Applied 'Reflect' primitive, which does not change the problem state"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": null,
+          "notes": "Applying primitive 'Evaluate' to empty problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": null,
+          "notes": "Applying 'Prioritize' primitive to an empty problem state"
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": null,
+          "notes": "Applied 'Review' primitive to the problem state, but no initial state provided."
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": null
+  },
+  {
+    "id": 155,
+    "question": "For the walls of the house he would use 12 large planks of wood and 10 small planks. If large planks together need 15 pieces of nails to be secured and small planks together need 5 nails. How many nails does John need for the house wall?",
+    "execution_trace": [
+      [
+        {
+          "result": "For the walls of the house he would use 12 large planks of wood and 10 small planks. If large planks together need 15 pieces of nails to be secured and small planks together need 5 nails. How many nails does John need for the house wall?",
+          "notes": "Applied 'Simplify Problem' primitive without changing the problem statement."
+        },
+        "Simplify Problem",
+        ""
+      ],
+      [
+        {
+          "result": "12 * 15 + 10 * 5",
+          "notes": "Applying 'Evaluate' primitive to calculate total nails needed"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "12 * 15",
+          "notes": "Applying 'Reflect' primitive to the given expression"
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "12 * 15",
+          "notes": "Applied 'Review' primitive to the problem state"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "12 * 15"
+  },
+  {
+    "id": 158,
+    "question": "Rebecca wants to split a collection of eggs into groups of 20. Rebecca has 5 marbles and 12 eggs. How many more eggs does Rebecca have than marbles?",
+    "execution_trace": [
+      [
+        {
+          "result": "Rebecca has 12 eggs and 5 marbles",
+          "notes": "Applied 'Evaluate' primitive to the problem state"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Rebecca has 12 eggs and 5 marbles",
+          "notes": "No change, 'Prioritize' primitive does not affect the current state"
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "Rebecca has 12 eggs and 5 marbles",
+          "notes": "Establishing 'Compare' and 'Order' requires a new primitive to bridge the gap between them, but first, we need to clarify the relationship between 'Compare' and 'Order'."
+        },
+        "Justify",
+        "Establish the necessity of a new primitive to bridge the gap between 'Compare' and 'Order'"
+      ],
+      [
+        {
+          "result": "Rebecca has 12 eggs and 5 marbles",
+          "notes": "Applied 'Reflect' primitive to maintain the current state"
+        },
+        "Reflect",
+        "Analyze the reasoning process"
+      ]
+    ],
+    "final_state": "Rebecca has 12 eggs and 5 marbles"
+  },
+  {
+    "id": 159,
+    "question": "A mailman has to give 32 pieces of junk mail to each of the 55 blocks. If he gives 8 mails to each house in a block How many houses are there in a block?",
+    "execution_trace": [
+      [
+        {
+          "result": "4",
+          "notes": "Applied 'Reflect' primitive to the problem, which is a reversal of the operation, so we are now finding the number of blocks instead of houses per block."
+        },
+        "Reflect",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 4",
+          "notes": "Applied 'Justify' primitive to the given number"
+        },
+        "Justify",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 4",
+          "notes": "Apply primitive: Evaluate"
+        },
+        "Evaluate",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 4",
+          "notes": "Applying 'Prioritize' primitive to 'Justify 4'"
+        },
+        "Prioritize",
+        ""
+      ],
+      [
+        {
+          "result": "Justify 4",
+          "notes": "Applied 'Review' primitive to 'Justify 4'"
+        },
+        "Review",
+        ""
+      ]
+    ],
+    "final_state": "Justify 4"
+  }
+]
