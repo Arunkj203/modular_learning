@@ -104,7 +104,6 @@ def phase_train(files,phase,adapter_name):
     train_lora_adapter(
         model=model,
         tokenizer=tokenizer,
-        train_data=dataset["train"],
-        val_data=dataset["val"],
+        data=dataset,
         adapter_name=adapter_name
     )
