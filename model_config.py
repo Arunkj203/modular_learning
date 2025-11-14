@@ -197,6 +197,8 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             max_tokens = min(4096, dynamic_max_tokens * (2 ** attempt))
             gen_cfg = GenerationConfig(
                 max_new_tokens=max_tokens,
+                temperature=0,
+                top_p=1,    
                 do_sample=False,
                 pad_token_id=tokenizer.eos_token_id,
                 eos_token_id=tokenizer.eos_token_id,
