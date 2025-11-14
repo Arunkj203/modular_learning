@@ -37,8 +37,10 @@ def main():
     # GSM8k:
     
     # generate_phase1_analysis(gsm8k,"gsm8k", model, tokenizer, output_dir="Base_L")
-    generate_phase2_execution("gsm8k_test_phase1_analysis.json", model, tokenizer, output_dir="Base_L")
-    generate_phase3_execution("gsm8k_test_phase2_execution.json", model, tokenizer, output_dir="Base_L")
+    generate_phase2_execution_batch("gsm8k_test_phase1_analysis.json", model, tokenizer, output_dir="Base_L")
+
+    for i in range(1,7):
+        generate_phase3_execution(f"gsm8k_test_phase2_execution_batch{i}_{i*100}.json", model, tokenizer, output_dir="Base_L")
 
 
 
