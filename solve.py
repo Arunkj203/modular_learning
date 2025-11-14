@@ -35,7 +35,7 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
     output3_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase3_execution"))
     print(f"Phase 3 logs will be saved to: {output3_file}")
 
-    mem.load_memory()
+    mem.load_memory("base-l")
     all_phase3_data = []
     errors = 0
     max_errors = int(0.3 * len(data))
@@ -108,7 +108,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     no_errors = 0
     max_errors = int(0.3 * 300)
 
-    mem.load_memory()
+    mem.load_memory("base-l")
 
 
     all_results = []

@@ -25,9 +25,17 @@ primitve_storage_dir = os.path.join(Base_dir_path, "primitve_storage")
 os.makedirs(primitve_storage_dir, exist_ok=True)  # create if missing
 
 # --- Paths inside Datasets ---
-GRAPH_PATH = os.path.join(primitve_storage_dir, "primitive_graph.gpickle")
-FAISS_PATH = os.path.join(primitve_storage_dir, "primitive_vectors.index")
-METADATA_PATH = os.path.join(primitve_storage_dir, "primitive_maps.pkl")
+# GRAPH_PATH = os.path.join(primitve_storage_dir, "primitive_graph.gpickle")
+# FAISS_PATH = os.path.join(primitve_storage_dir, "primitive_vectors.index")
+# METADATA_PATH = os.path.join(primitve_storage_dir, "primitive_maps.pkl")
+
+# --- Paths inside Datasets ---
+GRAPH_PATH = None
+FAISS_PATH = None
+METADATA_PATH = None
+
+
+
 
 # --- Globals ---
 primitive_graph = nx.DiGraph()
@@ -38,8 +46,16 @@ primitive_id_map = {}      # FAISS index -> primitive ID
 primitive_metadata = {}    # primitive ID -> metadata dict
 
 # --- Load Memory Function ---
-def load_memory():
+def load_memory(prims_dir):
     global primitive_graph, faiss_index, primitive_id_map, primitive_metadata
+    global GRAPH_PATH, FAISS_PATH, METADATA_PATH
+    
+    prims_storage_dir = os.path.join(Base_dir_path, "primitve_storage",prims_dir)
+    os.makedirs(prims_storage_dir, exist_ok=True)  # create if missing
+
+    GRAPH_PATH = os.path.join(prims_storage_dir, "primitive_graph.gpickle")
+    FAISS_PATH = os.path.join(prims_storage_dir, "primitive_vectors.index")
+    METADATA_PATH = os.path.join(prims_storage_dir, "primitive_maps.pkl")
 
     # Load graph
     if os.path.exists(GRAPH_PATH):
