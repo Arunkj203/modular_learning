@@ -130,7 +130,14 @@ def preprocess_phase3_dataset(json_files, val_split=0.1, seed=42):
 
             exec_seq = "\n".join(exec_lines)
 
-            final_state = item.get("final_state", "").strip()
+            fs = item.get("final_state", "")
+
+            if isinstance(fs, dict):
+                final_state = "\n".join(f"{k}: {v}" for k, v in fs.items())
+            elif isinstance(fs, list):
+                final_state = "\n".join(str(x) for x in fs)
+            else:
+                final_state = str(fs).strip()
 
             text = (
                 f"Question: {q}\nOutput:\n"
