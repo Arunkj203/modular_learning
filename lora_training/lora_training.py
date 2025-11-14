@@ -5,7 +5,7 @@ from trl import SFTTrainer, SFTConfig
 
 from .preprocess_json import preprocess_phase1_dataset,preprocess_phase2_dataset,preprocess_phase3_dataset
 from ..model_config import get_model_and_tokenizer
-
+from ..config import Base_dir_path
 
 def train_lora_adapter(model, tokenizer, data, adapter_name,
                        output_root="Adapters", lr=2e-4, epochs=3, batch_size=4, max_length=256):
@@ -28,7 +28,7 @@ def train_lora_adapter(model, tokenizer, data, adapter_name,
     val_data = data["val"]
     
     # Prepare output directory
-    output_dir = os.path.join(output_root, adapter_name)
+    output_dir = os.path.join(Base_dir_path,"lora_training",output_root, adapter_name)
     os.makedirs(output_dir, exist_ok=True)
 
     # LoRA adapter config
