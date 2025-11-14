@@ -43,7 +43,6 @@ def main():
 
     gsm_phase3 = [
         "Dataset/GSM8K_train_phase3_execution_batch1_200.json",
-
     ]
 
 
@@ -64,7 +63,7 @@ def main():
     # ---------------------------
 
     phase_train(
-        files=svamp_phase1 + gsm_phase2,
+        files=svamp_phase2 + gsm_phase2,
         phase=2,
         adapter_name="L_reasonMix_phase2"
     )
@@ -74,7 +73,7 @@ def main():
     # TRAINING — Phase 3
     # ---------------------------
     phase_train(
-        files=svamp_phase1 + gsm_phase3,
+        files=svamp_phase3 + gsm_phase3,
         phase=3,
         adapter_name="L_reasonMix_phase3"
     )
