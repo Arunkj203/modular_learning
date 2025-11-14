@@ -19,9 +19,20 @@ Lora training  needed for:
  1. L_base:
 
 Training : No training needed
-Testing: 
+Testing: Direct testing 
 
 
- 2. L_opt:
+ 2. L_reasonMix:
 
- 3. L_direct:
+   Preprocess dataset:
+      dataset --> svamp + gsm8k(few problems)
+
+   
+   Training : Preprocess Dataset --> Lora training --> Save trained model
+
+   Testing : Load model --> Test it on svamp + gsm8k
+
+
+ 3. L_gsm:
+   Training : Preprocess Dataset --> Lora training --> Save trained model
+   Testing : Load model --> Test it on svamp + gsm8k

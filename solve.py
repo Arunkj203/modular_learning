@@ -116,6 +116,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
     for entry in data:
         
         try:
+            # idx = entry["id"]
             q = entry["question"]
             analysis = entry["phase1_analysis"]
 
@@ -124,6 +125,7 @@ def generate_phase2_execution(phase1_file: str, model, tokenizer, output_dir="Da
             primitive_sequence, new_prims = run_phase2(model, tokenizer, q, analysis)
 
             all_results.append({
+                # "id":idx,
                 "question": q,
                 "phase2_reasoning": primitive_sequence
             })
