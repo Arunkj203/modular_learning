@@ -79,7 +79,7 @@ def train_lora_adapter(model, tokenizer, data, adapter_name,
     torch.cuda.empty_cache()
 
 
-def phase_train(files,phase,adapter_name,OUTPUT_DIR):
+def phase_train(files,phase,adapter_name):
     
     print(f"[Phase1] Loading {len(files)} files...")
 
@@ -106,6 +106,5 @@ def phase_train(files,phase,adapter_name,OUTPUT_DIR):
         tokenizer=tokenizer,
         train_data=dataset["train"],
         val_data=dataset["val"],
-        adapter_name=adapter_name,
-        output_root=OUTPUT_DIR
+        adapter_name=adapter_name
     )
