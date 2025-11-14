@@ -1,5 +1,6 @@
 
 from .lora_training import phase_train
+import traceback
 
 def main():
     # ---------------------------
@@ -37,31 +38,43 @@ def main():
     # TRAINING — Phase 1
     # ---------------------------
 
-    phase_train(
-        files=gsm_phase1,
-        phase=2,
-        adapter_name="L_gsm_phase1"
-    )
-
+    try:
+        print("\n=== Running Phase 1 Training (GSM) ===")
+        phase_train(
+            files=gsm_phase1,
+            phase=2,
+            adapter_name="L_gsm_phase1"
+        )
+    except Exception as e:
+        print(f"[Phase 1 ERROR] Training failed: {e}\n")
+        traceback.print_exc()
     # ---------------------------
     # TRAINING — Phase 2
     # ---------------------------
-   
-    phase_train(
-        files=gsm_phase2,
-        phase=2,
-        adapter_name="L_gsm_phase2"
-    )
-
+    try:
+        print("\n=== Running Phase 2 Training (GSM) ===")
+        phase_train(
+            files=gsm_phase2,
+            phase=2,
+            adapter_name="L_gsm_phase2"
+        )
+    except Exception as e:
+        print(f"[Phase 2 ERROR] Training failed: {e}\n")
+        traceback.print_exc()
     # ---------------------------
     # TRAINING — Phase 3
     # ---------------------------
     
-    phase_train(
-        files=gsm_phase3,
-        phase=3,
-        adapter_name="L_gsm_phase3"
-    )
+    try:
+        print("\n=== Running Phase 3 Training (GSM) ===")
+        phase_train(
+            files=gsm_phase3,
+            phase=3,
+            adapter_name="L_gsm_phase3"
+        )
+    except Exception as e:
+        print(f"[Phase 3 ERROR] Training failed: {e}\n")
+        traceback.print_exc()
 
     print("\nAll phase models of GSM8K direct trained successfully.")
 
