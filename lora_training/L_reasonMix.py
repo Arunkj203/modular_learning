@@ -1,5 +1,6 @@
 
 from .lora_training import phase_train
+import traceback
 
 def main():
     
@@ -49,34 +50,54 @@ def main():
     # ---------------------------
     # TRAINING — Phase 1
     # ---------------------------
-    
-    # ReasonMix Phase 1 = SVAMP + GSM
-    phase_train(
-        files=svamp_phase1 + gsm_phase1,
-        phase=1,
-        adapter_name="L_reasonMix_phase1"
-    )
+    try:
+        print("\n=== Running Phase 1 Training (ReasonMix) ===")
+        phase_train(
+            files=svamp_phase1 + gsm_phase1,
+            phase=1,
+            adapter_name="L_reasonMix_phase1"
+        )
+        print("[Phase 1] Completed successfully.\n")
+
+    except Exception as e:
+        print(f"[Phase 1 ERROR] Training failed: {e}\n")
+        traceback.print_exc()
+
 
 
     # ---------------------------
     # TRAINING — Phase 2
     # ---------------------------
+    try:
+        print("\n=== Running Phase 2 Training (ReasonMix) ===")
+        phase_train(
+            files=svamp_phase2 + gsm_phase2,
+            phase=2,
+            adapter_name="L_reasonMix_phase2"
+        )
+        print("[Phase 2] Completed successfully.\n")
 
-    phase_train(
-        files=svamp_phase2 + gsm_phase2,
-        phase=2,
-        adapter_name="L_reasonMix_phase2"
-    )
+    except Exception as e:
+        print(f"[Phase 2 ERROR] Training failed: {e}\n")
+        traceback.print_exc()
+
 
 
     # ---------------------------
     # TRAINING — Phase 3
     # ---------------------------
-    phase_train(
-        files=svamp_phase3 + gsm_phase3,
-        phase=3,
-        adapter_name="L_reasonMix_phase3"
-    )
+    try:
+        print("\n=== Running Phase 3 Training (ReasonMix) ===")
+        phase_train(
+            files=svamp_phase3 + gsm_phase3,
+            phase=3,
+            adapter_name="L_reasonMix_phase3"
+        )
+        print("[Phase 3] Completed successfully.\n")
+
+    except Exception as e:
+        print(f"[Phase 3 ERROR] Training failed: {e}\n")
+        traceback.print_exc()
 
     print("\nAll phase models of ReasonMix trained successfully.")
 

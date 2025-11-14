@@ -23,7 +23,7 @@ def load_json_records(path):
             return data["data"]
         return [data]
 
-    return data[:10] 
+    return data
 
 
 def split_dataset(examples, val_split, seed):
