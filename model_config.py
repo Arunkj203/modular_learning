@@ -161,7 +161,7 @@ class StopOnToken(StoppingCriteria):
         recent_tokens = input_ids[0, -len(self.stop_token_ids):].tolist()
         return recent_tokens == self.stop_token_ids
 
-def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=200, Retries=3, DEVICE="cuda"):
+def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_tokens=200, Retries=3, DEVICE="cuda",phase3=False):
     import torch, gc, re, json
     from transformers import GenerationConfig, StoppingCriteriaList
 
@@ -217,8 +217,10 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
             generated_tokens = outputs[0][prompt_len:]
             generated_text = tokenizer.decode(generated_tokens, skip_special_tokens=False).strip()
 
-            
-            json_op = extract_and_clean_json(generated_text)
+            if phase3:
+                json_op = extract_and_clean_json_phase3(generated_text)
+            else:
+                json_op = extract_and_clean_json(generated_text)
             # Cleanup memory before returning
             del outputs, inputs
             torch.cuda.empty_cache()
@@ -245,6 +247,35 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}")
 
 def extract_and_clean_json(generated_text: str):
+    # 1. Remove eot / control tokens
+    generated_text = re.split(r"<\|eot_id\|>", generated_text, 1)[0]
+    generated_text = re.sub(r"<\|.*?\|>", "", generated_text).strip()
+
+    # 2. Extract JSON from <<START>> ... <<END>>
+    block = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", generated_text)
+    if block:
+        json_text = block.group(1).strip()
+    else:
+        # fallback: find first { and last }
+        start = generated_text.find("{")
+        end   = generated_text.rfind("}")
+        if start == -1 or end == -1:
+            raise ValueError("No JSON object found.")
+        json_text = generated_text[start:end+1]
+
+    # 3. No aggressive sanitization. Only remove stray trailing tokens.
+    # Never touch commas inside JSON.
+    json_text = json_text.strip()
+
+    # 4. Try parsing directly
+    try:
+        return json.loads(json_text)
+    except json.JSONDecodeError as e:
+        print("Raw JSON failed, preview:")
+        print(json_text[:400])
+        raise e
+
+def extract_and_clean_json_phase3(generated_text: str):
     """
     Extract valid JSON from model output, removing artifacts and fixing quotes.
     Handles:

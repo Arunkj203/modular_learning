@@ -95,7 +95,8 @@ def run_phase3(base_model, tokenizer  ,primitive_sequence, problem_text):
                 tokenizer=tokenizer, 
                 system_prompt=system_prompt, 
                 user_prompt=user_prompt,
-                dynamic_max_tokens=dynamic_max_tokens
+                dynamic_max_tokens=dynamic_max_tokens,
+                phase3=True
             )
         
         

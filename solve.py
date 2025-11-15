@@ -75,7 +75,7 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer,adapter, outpu
             print(f"  [ERROR] Problem {idx+1} failed: {e}")
             all_phase3_data.append({
                 "id": idx,
-                "error":e
+                "error":str(e)
             })
 
             # if errors >= max_errors:
@@ -154,7 +154,7 @@ def generate_phase2_execution_batch(phase1_file: str, model, tokenizer,adapter,t
                 print(f"[ERROR] Problem {entry['id']} failed: {e}")
                 all_results.append({
                     "id": pid,
-                    "error": e
+                    "error": str(e)
                 })
 
 
@@ -207,7 +207,7 @@ def generate_phase1_analysis(dataset,dataset_name: str, model, tokenizer, output
             print(f"[ERROR] Problem {idx+1} failed: {e}")
             results.append({
                 "id": idx,
-                "error": e
+                "error": str(e)
             })
             
 

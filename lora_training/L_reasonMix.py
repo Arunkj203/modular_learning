@@ -24,8 +24,8 @@ def test_phase(dataset,dataset_name,total_batches):
     model2,tokenizer = load_phase_model(PHASE2_ADAPTER)
     print("\n=== Running Phase 2 Testing (ReasonMix) ===")
     generate_phase2_execution_batch(f"{dataset_name}_test_phase1_analysis.json", model2, tokenizer,adapter,total_batches, output_dir=output_dir)
-
-
+       
+    
     model3,tokenizer = load_phase_model(PHASE3_ADAPTER)
     print("\n=== Running Phase 3 Testing (ReasonMix) ===")
     for i in range(1,total_batches+1):
