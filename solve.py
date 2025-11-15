@@ -152,7 +152,7 @@ def generate_phase2_execution_batch(phase1_file: str, model, tokenizer, output_d
                 print(f"  [ERROR] Problem {entry['id']} failed: {e}")
 
         # --- Save results for this batch ---
-        file_name = f"gsm8k_test_phase2_execution_batch{start+1}_{batch_no*batch_size}.json"
+        file_name = f"gsm8k_test_phase2_execution_batch{batch_no}_{batch_no*batch_size}.json"
         output_file = os.path.join(full_path, file_name)
 
         with open(output_file, "w", encoding="utf-8") as f:
