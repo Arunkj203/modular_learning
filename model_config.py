@@ -246,34 +246,39 @@ def generate_text(model, tokenizer, system_prompt, user_prompt, dynamic_max_toke
     # raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}\nRaw: {raw}")
     raise RuntimeError(f"Failed after {Retries} attempts.\nLast error: {last_error}")
 
-def extract_and_clean_json(generated_text: str):
-    # 1. Remove eot / control tokens
-    generated_text = re.split(r"<\|eot_id\|>", generated_text, 1)[0]
-    generated_text = re.sub(r"<\|.*?\|>", "", generated_text).strip()
+def extract_brace_balanced(text: str):
+    start = text.find("{")
+    if start == -1:
+        raise ValueError("No JSON object found.")
 
-    # 2. Extract JSON from <<START>> ... <<END>>
-    block = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", generated_text)
-    if block:
-        json_text = block.group(1).strip()
+    depth = 0
+    for i in range(start, len(text)):
+        if text[i] == "{":
+            depth += 1
+        elif text[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start:i+1]
+
+    raise ValueError("Unbalanced braces; JSON appears incomplete.")
+
+def extract_and_clean_json(text: str):
+    text = re.sub(r"<\|.*?\|>", "", text).strip()
+
+    # try <<START>>...<<END>>
+    m = re.search(r"<<START>>\s*([\s\S]*?)\s*<<END>>", text)
+    if m:
+        candidate = m.group(1).strip()
     else:
-        # fallback: find first { and last }
-        start = generated_text.find("{")
-        end   = generated_text.rfind("}")
-        if start == -1 or end == -1:
-            raise ValueError("No JSON object found.")
-        json_text = generated_text[start:end+1]
+        candidate = extract_brace_balanced(text)
 
-    # 3. No aggressive sanitization. Only remove stray trailing tokens.
-    # Never touch commas inside JSON.
-    json_text = json_text.strip()
-
-    # 4. Try parsing directly
     try:
-        return json.loads(json_text)
-    except json.JSONDecodeError as e:
-        print("Raw JSON failed, preview:")
-        print(json_text)
+        return json.loads(candidate)
+    except json.JSONDecodeError:
+        print("Cleaned but failed, preview:")
+        print(candidate[:400])
         raise e
+
 
 def extract_and_clean_json_phase3(generated_text: str):
     """
