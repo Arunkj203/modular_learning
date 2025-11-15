@@ -272,7 +272,7 @@ def extract_and_clean_json(generated_text: str):
         return json.loads(json_text)
     except json.JSONDecodeError as e:
         print("Raw JSON failed, preview:")
-        print(json_text[:400])
+        print(json_text)
         raise e
 
 def extract_and_clean_json_phase3(generated_text: str):
