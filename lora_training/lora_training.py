@@ -1,6 +1,6 @@
 import os
 import torch
-from peft import LoraConfig
+from peft import LoraConfig,PeftModel
 from trl import SFTTrainer, SFTConfig 
 
 from .preprocess_json import preprocess_phase1_dataset,preprocess_phase2_dataset,preprocess_phase3_dataset
@@ -107,3 +107,13 @@ def phase_train(files,phase,adapter_name):
         data=dataset,
         adapter_name=adapter_name
     )
+
+def load_phase_model(adapter_path):
+
+    # ---- Load Base Model ----
+    base_model, tokenizer = get_model_and_tokenizer()
+
+
+    model = PeftModel.from_pretrained(base_model, adapter_path)
+    model.eval()
+    return model,tokenizer

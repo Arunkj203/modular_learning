@@ -1,4 +1,3 @@
-
 from .phase_1.phase_1_main import run_phase1
 from .phase_2.phase_2_main import run_phase2
 from .phase_3.phase_3_main import run_phase3
@@ -11,7 +10,7 @@ from datasets import load_dataset
 import os , json , re
 import math
 
-def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="Dataset"):
+def generate_phase3_execution(phase2_file: str , model, tokenizer,adapter, output_dir="Dataset"):
     """
     Generate Phase 4 execution data from Phase 2 primitive sequences.
 
@@ -35,7 +34,7 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
     output3_file = os.path.join(full_path, phase2_file.replace("phase2_execution", "phase3_execution"))
     print(f"Phase 3 logs will be saved to: {output3_file}")
 
-    mem.load_memory("base-l")
+    mem.load_memory(adapter)
     all_phase3_data = []
     errors = 0
     max_errors = int(0.3 * len(data))
@@ -74,6 +73,11 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
         except Exception as e:
             # errors += 1
             print(f"  [ERROR] Problem {idx+1} failed: {e}")
+            all_phase3_data.append({
+                "id": idx,
+                "error":e
+            })
+
             # if errors >= max_errors:
             #     print(f"\n[ABORT] Too many errors ({errors}). Stopping early.\n")
             #     break
@@ -90,7 +94,7 @@ def generate_phase3_execution(phase2_file: str , model, tokenizer, output_dir="D
 
 
 
-def generate_phase2_execution_batch(phase1_file: str, model, tokenizer, output_dir="Dataset"):
+def generate_phase2_execution_batch(phase1_file: str, model, tokenizer,adapter,total_batches,output_dir="Dataset"):
     """
     Batch processing version of Phase 2 execution.
     Processes 100 problems per batch and saves one file per batch.
@@ -108,14 +112,12 @@ def generate_phase2_execution_batch(phase1_file: str, model, tokenizer, output_d
     batch_size = 100
     # total_batches = math.ceil(total / batch_size)
 
-    total_batches = 6
-
     print(f"Total problems: {total}")
     print(f"Batch size: {batch_size}")
     print(f"Total batches: {total_batches}\n")
 
     # Load memory once
-    mem.load_memory("base-l")
+    mem.load_memory(adapter)
 
     for batch_no in range(1, total_batches + 1):
         start = (batch_no - 1) * batch_size
@@ -149,12 +151,16 @@ def generate_phase2_execution_batch(phase1_file: str, model, tokenizer, output_d
                 print("----------------------------------------------------------------------")
 
             except Exception as e:
-                print(f"  [ERROR] Problem {entry['id']} failed: {e}")
+                print(f"[ERROR] Problem {entry['id']} failed: {e}")
+                all_results.append({
+                    "id": pid,
+                    "error": e
+                })
+
 
         # --- Save results for this batch ---
-        file_name = f"gsm8k_test_phase2_execution_batch{batch_no}_{batch_no*batch_size}.json"
-        output_file = os.path.join(full_path, file_name)
-
+        output_file = os.path.join(full_path, phase1_file.replace("phase1_analysis", f"phase2_execution_batch{batch_no}_{batch_no*batch_size}"))
+       
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(all_results, f, indent=2, ensure_ascii=False)
 
@@ -199,6 +205,10 @@ def generate_phase1_analysis(dataset,dataset_name: str, model, tokenizer, output
             results.append(entry)
         except Exception as e:
             print(f"[ERROR] Problem {idx+1} failed: {e}")
+            results.append({
+                "id": idx,
+                "error": e
+            })
             
 
     # Save batch to file
