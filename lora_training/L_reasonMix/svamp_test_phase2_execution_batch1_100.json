@@ -1,0 +1,142 @@
+[
+  {
+    "id": 0,
+    "error": "Failed after 3 attempts.\nLast error: Unbalanced braces; JSON appears incomplete."
+  },
+  {
+    "id": 1,
+    "error": "Failed after 3 attempts.\nLast error: Expecting ',' delimiter: line 15 column 1 (char 1132)"
+  },
+  {
+    "id": 2,
+    "error": "Failed after 3 attempts.\nLast error: Expecting ',' delimiter: line 15 column 1 (char 1278)"
+  },
+  {
+    "id": 3,
+    "question": "Debby bought 200 water bottles and 256 soda bottles when they were on sale. If she drank 312 water bottles and 4 soda bottles a day How many days would the soda bottles last?",
+    "phase2_reasoning": [
+      {
+        "step": 1,
+        "id": "P_new_53e09",
+        "name": "Identify Operation",
+        "status": "New",
+        "description": "Auto-generated primitive: Identify Operation"
+      },
+      {
+        "step": 2,
+        "id": "P_new_1c34f",
+        "name": "Determine Operation Type",
+        "status": "New",
+        "description": "Auto-generated primitive: Determine Operation Type",
+        "related_primitives": [
+          "P_new_53e09"
+        ]
+      },
+      {
+        "step": 3,
+        "id": "P_new_5cf99",
+        "name": "Fraction Representation",
+        "status": "New",
+        "description": "Auto-generated primitive: Fraction Representation"
+      },
+      {
+        "step": 4,
+        "id": "P_new_306ba",
+        "name": "Ratio Analysis",
+        "status": "New",
+        "description": "Auto-generated primitive: Ratio Analysis"
+      },
+      {
+        "step": 5,
+        "id": "P_new_aeb73",
+        "name": "Division Operation",
+        "status": "New",
+        "description": "Auto-generated primitive: Division Operation"
+      },
+      {
+        "step": 6,
+        "id": "P_new_ba048",
+        "name": "Progress Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Progress Evaluation"
+      },
+      {
+        "step": 7,
+        "id": "P_new_2f14b",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation"
+      },
+      {
+        "step": 8,
+        "id": "P_new_6f655",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_2f14b"
+        ]
+      },
+      {
+        "step": 9,
+        "id": "P_new_58e53",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_2f14b",
+          "P_new_6f655"
+        ]
+      },
+      {
+        "step": 10,
+        "id": "P_new_3324f",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_2f14b",
+          "P_new_6f655",
+          "P_new_58e53"
+        ]
+      },
+      {
+        "step": 11,
+        "id": "P_new_fff9d",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_2f14b",
+          "P_new_6f655",
+          "P_new_58e53",
+          "P_new_3324f"
+        ]
+      },
+      {
+        "step": 12,
+        "id": "P_new_e12df",
+        "name": "Evaluation",
+        "status": "New",
+        "description": "Auto-generated primitive: Evaluation",
+        "related_primitives": [
+          "P_new_2f14b",
+          "P_new_6f655",
+          "P_new_58e53",
+          "P_new_3324f",
+          "P_new_fff9d"
+        ]
+      },
+      {
+        "step": 13,
+        "id": "P001",
+        "name": "EVALUATE_RESULT",
+        "status": "Existing"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "error": "string indices must be integers, not 'str'"
+  }
+]
