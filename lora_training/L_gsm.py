@@ -21,33 +21,33 @@ def test_phase(dataset,dataset_name,total_batches):
     print("\n=== Running Phase 1 Testing (gsm) ===")
     generate_phase1_analysis(dataset,dataset_name, model1, tokenizer, output_dir=output_dir)
 
-    model2,tokenizer = load_phase_model(PHASE2_ADAPTER)
-    print("\n=== Running Phase 2 Testing (gsm) ===")
-    generate_phase2_execution_batch(f"{dataset_name}_test_phase1_analysis.json", model2, tokenizer,adapter,total_batches, output_dir=output_dir)
+    # model2,tokenizer = load_phase_model(PHASE2_ADAPTER)
+    # print("\n=== Running Phase 2 Testing (gsm) ===")
+    # generate_phase2_execution_batch(f"{dataset_name}_test_phase1_analysis.json", model2, tokenizer,adapter,total_batches, output_dir=output_dir)
 
 
-    model3,tokenizer = load_phase_model(PHASE3_ADAPTER)
-    print("\n=== Running Phase 3 Testing (gsm) ===")
-    for i in range(1,total_batches+1):
-        print(f"Phase 3 Batch {i} processing....")
-        generate_phase3_execution(f"{dataset_name}_test_phase2_execution_batch{i}_{i*100}.json", model3,tokenizer,adapter, output_dir=output_dir)
+    # model3,tokenizer = load_phase_model(PHASE3_ADAPTER)
+    # print("\n=== Running Phase 3 Testing (gsm) ===")
+    # for i in range(1,total_batches+1):
+    #     print(f"Phase 3 Batch {i} processing....")
+    #     generate_phase3_execution(f"{dataset_name}_test_phase2_execution_batch{i}_{i*100}.json", model3,tokenizer,adapter, output_dir=output_dir)
 
-    print(f"\nAll phase models of gsm tested for {dataset_name} successfully.")
+    print(f"\n Phase 1 models of gsm tested for {dataset_name} successfully.")
 
 
 if __name__ == "__main__":
     
-    svamp = list(load_dataset("ChilleD/SVAMP", split="test"))[:10]
+    svamp = list(load_dataset("ChilleD/SVAMP", split="test"))
     print(f"Loaded SVAMP test: {len(svamp)} samples")
 
     # SVAMP:
-    test_phase(svamp,"svamp",1)
+    test_phase(svamp,"svamp",3)
 
-    gsm8k = list(load_dataset("gsm8k", "main", split="test"))[:10]
+    gsm8k = list(load_dataset("gsm8k", "main", split="test"))
     print(f"Loaded GSM8k test: {len(gsm8k)} samples")
 
     # GSM8k:
-    test_phase(gsm8k,"gsm8k",1)
+    test_phase(gsm8k,"gsm8k",6)
 
 
 
