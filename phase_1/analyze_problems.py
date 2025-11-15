@@ -164,13 +164,12 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
             Output schema:
             <<START>>
             {{
-              "problem_type": "<choose one from predefined list>",
-              "topics": ["<choose one or more from predefined list>"],
-              "tags": ["<choose one or more from predefined list>"],
-              "selected_modules": ["<choose one or more reasoning modules>"]
+              "problem_type": "<one valid option>",
+              "topics": ["<one or more valid topics>"],
+              "tags": ["<one or more valid tags>"],
+              "selected_modules": ["<module name>", "<module name>", ...]
             }}
             <<END>>
-
             Now generate ONLY the JSON analysis within the delimiters.
             """
 
