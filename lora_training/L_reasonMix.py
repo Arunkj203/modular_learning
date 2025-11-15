@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
 
     # SVAMP:
-    test_phase(svamp,"svamp",1)
+    test_phase(svamp,"svamp",1) 
 
     gsm8k = list(load_dataset("gsm8k", "main", split="test"))[:10]
     print(f"Loaded GSM8k test: {len(gsm8k)} samples")

@@ -113,7 +113,9 @@ def load_phase_model(adapter):
     # ---- Load Base Model ----
     base_model, tokenizer = get_model_and_tokenizer()
 
-    adapter_path = os.path.join("Adapters",adapter)
-    model = PeftModel.from_pretrained(base_model, adapter_path)
+    adapter_path = os.path.join(Base_dir_path,"lora_training","Adapters",adapter)
+    model = PeftModel.from_pretrained(base_model, adapter_path,is_trainable=False)
     model.eval()
+
+    print(f"Adapter {adapter} Loaded")
     return model,tokenizer
