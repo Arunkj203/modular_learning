@@ -119,11 +119,11 @@ tags = [
 ]
 
 
-default_modules = json.dumps(reasoning_modules['default_reasoning_module'], separators=(",", ":"), ensure_ascii=False)
-compact_modules = json.dumps(reasoning_modules['available_reasoning_modules'], separators=(",", ":"), ensure_ascii=False)
+# default_modules = json.dumps(reasoning_modules['default_reasoning_module'], separators=(",", ":"), ensure_ascii=False)
+# compact_modules = json.dumps(reasoning_modules['available_reasoning_modules'], separators=(",", ":"), ensure_ascii=False)
 
 # Extract only the names
-module_names = [m["name"] for m in default_modules + compact_modules]
+module_names = [m["name"] for m in reasoning_modules['default_reasoning_module'] + reasoning_modules['available_reasoning_modules']]
 module_names_str = ", ".join(module_names)
 
 
