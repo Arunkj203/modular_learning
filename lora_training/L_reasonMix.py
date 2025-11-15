@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
 
     # GSM8k:
-    test_phase(gsm8k,"gsm8k",1)
+    # test_phase(gsm8k,"gsm8k",1)
 
 
 '''

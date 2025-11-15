@@ -122,6 +122,9 @@ tags = [
 default_modules = json.dumps(reasoning_modules['default_reasoning_module'], separators=(",", ":"), ensure_ascii=False)
 compact_modules = json.dumps(reasoning_modules['available_reasoning_modules'], separators=(",", ":"), ensure_ascii=False)
 
+# Extract only the names
+module_names = [m["name"] for m in default_modules + compact_modules]
+module_names_str = ", ".join(module_names)
 
 
 def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Dict[str, Any]:
@@ -149,9 +152,7 @@ def analyze_and_decompose(model, tokenizer, problem_entry: Dict[str, Any]) -> Di
             • problem_type (one of): {', '.join(problem_types)}
             • topics (select two or more): {', '.join(topics)}
             • tags (select five or more): {', '.join(tags)}
-            • selected_modules (choose from these):
-              Default modules: {default_modules}
-              Available modules: {compact_modules}
+            • selected_modules (choose from these): {module_names_str}
 
           Your role is purely analytical — describe the reasoning structure and thinking process categories.
           """
