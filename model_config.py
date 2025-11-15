@@ -274,9 +274,9 @@ def extract_and_clean_json(text: str):
 
     try:
         return json.loads(candidate)
-    except json.JSONDecodeError:
+    except json.JSONDecodeError as e:
         print("Cleaned but failed, preview:")
-        print(candidate[:400])
+        print(candidate)
         raise e
 
 
