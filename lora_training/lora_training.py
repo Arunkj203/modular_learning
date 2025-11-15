@@ -108,12 +108,12 @@ def phase_train(files,phase,adapter_name):
         adapter_name=adapter_name
     )
 
-def load_phase_model(adapter_path):
+def load_phase_model(adapter):
 
     # ---- Load Base Model ----
     base_model, tokenizer = get_model_and_tokenizer()
 
-
+    adapter_path = os.path.join("Adapters",adapter)
     model = PeftModel.from_pretrained(base_model, adapter_path)
     model.eval()
     return model,tokenizer

@@ -37,15 +37,14 @@ def test_phase(dataset,dataset_name,total_batches):
 
 if __name__ == "__main__":
     
-    svamp = load_dataset("ChilleD/SVAMP", split="test")[:10]
+    svamp = list(load_dataset("ChilleD/SVAMP", split="test"))[:10]
     print(f"Loaded SVAMP test: {len(svamp)} samples")
-
-    gsm8k = load_dataset("gsm8k", "main", split="test")[:10]
-    print(f"Loaded GSM8k test: {len(gsm8k)} samples")
-
 
     # SVAMP:
     test_phase(svamp,"svamp",1)
+
+    gsm8k = list(load_dataset("gsm8k", "main", split="test"))[:10]
+    print(f"Loaded GSM8k test: {len(gsm8k)} samples")
 
     # GSM8k:
     test_phase(gsm8k,"gsm8k",1)
